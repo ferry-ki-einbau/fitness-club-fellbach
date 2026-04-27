@@ -135,16 +135,23 @@ function Hero() {
       {/* Ambient particles overlay */}
       <AmbientParticles />
       {/* Grain + tint overlay */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'radial-gradient(ellipse at 70% 50%, transparent 0%, rgba(8,8,8,0.6) 60%, rgba(8,8,8,0.95) 100%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'radial-gradient(ellipse at 70% 50%, transparent 0%, rgba(8,4,4,0.55) 55%, rgba(8,4,4,0.92) 100%)', pointerEvents: 'none' }} />
+      {/* cinematic edge vignette */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 3, background: 'linear-gradient(180deg, rgba(0,0,0,0.6) 0%, transparent 18%, transparent 70%, rgba(0,0,0,0.85) 100%)', pointerEvents: 'none' }} />
+      {/* film grain */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 4, opacity: 0.18, mixBlendMode: 'overlay', pointerEvents: 'none', backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")" }} />
 
       <div style={{ position: 'relative', zIndex: 10, maxWidth: 1280, margin: '0 auto', padding: '160px 24px 96px', width: '100%' }}>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 2.0 }}
-          className="label" style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
-          <span className="pulse-dot" />
-          Fellbach — 24 Stunden, 7 Tage
+          className="label" style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 }}>
+          <span style={{ width: 28, height: 1, background: 'linear-gradient(90deg, transparent, #B8924A)' }} />
+          <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 500 }}>ΜΟΛΩΝ ΛΑΒΕ</span>
+          <span style={{ width: 28, height: 1, background: 'linear-gradient(90deg, #B8924A, transparent)' }} />
+          <span className="pulse-dot" style={{ marginLeft: 8 }} />
+          <span style={{ fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Fellbach · 24/7 · Seit 2018</span>
         </motion.div>
         <motion.h1
           initial={{ opacity: 0, y: 30 }}

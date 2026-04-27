@@ -6,8 +6,8 @@ import { motion } from 'framer-motion'
  * Slowly rotates behind the hero, providing brand continuity.
  */
 export default function GreekMeander({
-  size = 'min(110vmin, 1100px)',
-  opacity = 0.12,
+  size = 'min(140vmin, 1400px)',
+  opacity = 0.32,
 }: { size?: string; opacity?: number }) {
   return (
     <motion.div
@@ -28,9 +28,10 @@ export default function GreekMeander({
       <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg" style={{ width: '100%', height: '100%' }}>
         <defs>
           <radialGradient id="meanderFade" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#C44552" stopOpacity="0" />
-            <stop offset="60%" stopColor="#C44552" stopOpacity="0.4" />
-            <stop offset="100%" stopColor="#8E2A35" stopOpacity="0.9" />
+            <stop offset="0%" stopColor="#B8924A" stopOpacity="0" />
+            <stop offset="55%" stopColor="#C44552" stopOpacity="0.7" />
+            <stop offset="85%" stopColor="#E15464" stopOpacity="1" />
+            <stop offset="100%" stopColor="#B8924A" stopOpacity="1" />
           </radialGradient>
           <pattern id="meanderPattern" patternUnits="userSpaceOnUse" width="48" height="48" patternTransform="rotate(0)">
             <path
