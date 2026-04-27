@@ -3,13 +3,20 @@
 @import "tailwindcss";
 
 :root {
-  --lime: #C8FF00;
-  --lime-dim: #9ec700;
-  --black: #080808;
-  --gray-dark: #111111;
-  --gray-mid: #141414;
-  --gray-border: #232323;
-  --text-muted: #555555;
+  /* Original brand: Greek / Spartan, deep wine-black + burgundy red */
+  --accent: #C44552;
+  --accent-deep: #8E2A35;
+  --accent-bright: #E15464;
+  --gold: #B8924A;
+  --black: #150A0A;
+  --gray-dark: #1F1010;
+  --gray-mid: #2A1717;
+  --gray-border: #3A2020;
+  --text: #F5F0E8;
+  --text-muted: #6E5050;
+  /* Legacy aliases (kept so older code keeps compiling) */
+  --lime: var(--accent);
+  --lime-dim: var(--accent-deep);
   /* Physio bridge tokens */
   --section-spacing: clamp(48px, 10vw, 120px);
   --container-padding: clamp(16px, 4vw, 48px);
@@ -38,8 +45,8 @@ html { scroll-behavior: smooth; }
 
 body {
   background: var(--black);
-  color: #ffffff;
-  font-family: 'Barlow', sans-serif;
+  color: var(--text);
+  font-family: 'DM Sans Variable', sans-serif;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -87,8 +94,8 @@ body {
 
 /* Buttons */
 .btn-lime {
-  background: var(--lime);
-  color: #000;
+  background: var(--accent);
+  color: #fff;
   font-family: 'Oswald', sans-serif;
   font-weight: 600;
   font-size: 14px;
@@ -108,12 +115,13 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: #fff;
+  background: var(--accent-bright);
   transform: translateX(-101%);
   transition: transform 0.35s cubic-bezier(0.16,1,0.3,1);
   z-index: 0;
 }
 .btn-lime:hover::after { transform: translateX(0); }
+.btn-lime:hover { color: #fff; }
 .btn-lime > * { position: relative; z-index: 1; }
 
 .btn-outline {
@@ -132,7 +140,7 @@ body {
   cursor: pointer;
   text-decoration: none;
 }
-.btn-outline:hover { border-color: var(--lime); color: var(--lime); }
+.btn-outline:hover { border-color: var(--accent); color: var(--accent-bright); }
 
 /* Section label */
 .label {

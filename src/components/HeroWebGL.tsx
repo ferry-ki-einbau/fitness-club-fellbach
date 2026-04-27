@@ -22,8 +22,8 @@ function EnergyBlob() {
   const uniforms = useMemo(() => ({
     uTime: { value: 0 },
     uMouse: { value: new THREE.Vector2(0, 0) },
-    uColorA: { value: new THREE.Color(0xC8FF00) },
-    uColorB: { value: new THREE.Color(0x4d6600) },
+    uColorA: { value: new THREE.Color(0xE15464) },
+    uColorB: { value: new THREE.Color(0x3a0d12) },
   }), [])
 
   useFrame((_, delta) => {
@@ -114,7 +114,8 @@ export default function HeroWebGL() {
       gl={{ antialias: true, alpha: true }}
     >
       <ambientLight intensity={0.4} />
-      <pointLight position={[5, 5, 5]} intensity={1.5} color="#C8FF00" />
+      <pointLight position={[5, 5, 5]} intensity={1.8} color="#E15464" />
+      <pointLight position={[-4, -2, 3]} intensity={0.8} color="#8E2A35" />
       <EnergyBlob />
       <EffectComposer>
         <Bloom intensity={1.2} luminanceThreshold={0.2} luminanceSmoothing={0.85} mipmapBlur />

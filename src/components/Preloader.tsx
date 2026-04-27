@@ -15,14 +15,14 @@ export default function Preloader() {
           exit={{ y: '-100%' }}
           transition={{ duration: 0.9, ease: [0.65, 0, 0.35, 1] }}
           className="fixed inset-0 z-[9998] flex items-center justify-center"
-          style={{ background: '#080808' }}>
+          style={{ background: 'var(--black)' }}>
           <div className="relative" style={{ width: 'min(560px, 80vw)' }}>
-            {/* Lime line */}
+            {/* Burgundy line */}
             <motion.div
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 1.0, ease: [0.65, 0, 0.35, 1], delay: 0.1 }}
-              style={{ height: 1, background: 'var(--lime)', transformOrigin: 'left', marginBottom: 24 }}
+              style={{ height: 2, background: 'linear-gradient(90deg, var(--accent-deep), var(--accent-bright))', transformOrigin: 'left', marginBottom: 24 }}
             />
             {/* Wordmark mask reveal */}
             <motion.div
@@ -33,14 +33,14 @@ export default function Preloader() {
             >
               <div className="font-display" style={{
                 fontSize: 'clamp(2rem, 6vw, 4rem)',
-                fontWeight: 700, color: '#fff',
-                letterSpacing: '-0.02em', lineHeight: 0.95,
+                fontWeight: 700, color: 'var(--text)',
+                letterSpacing: '0.05em', lineHeight: 0.95, textTransform: 'uppercase',
               }}>
-                FITNESS<span style={{ color: 'var(--lime)' }}>CLUB</span>
+                FITNESS CLUB
                 <div className="font-condensed" style={{
-                  fontSize: 11, letterSpacing: '0.4em', fontWeight: 500,
-                  color: 'var(--text-muted)', marginTop: 8,
-                }}>FELLBACH — EST. 2018</div>
+                  fontSize: 11, letterSpacing: '0.5em', fontWeight: 500,
+                  color: 'var(--accent-bright)', marginTop: 12,
+                }}>FELLBACH — SEIT 2018</div>
               </div>
             </motion.div>
             {/* Loading dot */}
@@ -51,8 +51,8 @@ export default function Preloader() {
               className="absolute -bottom-8 right-0 flex items-center gap-2"
               style={{ fontSize: 10, letterSpacing: '0.35em', color: 'var(--text-muted)', fontFamily: 'Barlow Condensed' }}
             >
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--lime)', display: 'inline-block', animation: 'pulse 1s ease-in-out infinite' }} />
-              ENTERING THE CLUB
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-bright)', display: 'inline-block', animation: 'pulse 1s ease-in-out infinite' }} />
+              ΜΟΛΩΝ ΛΑΒΕ
             </motion.div>
           </div>
         </motion.div>

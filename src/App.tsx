@@ -9,6 +9,8 @@ import MagneticButton from './components/MagneticButton'
 import HorizontalBereiche from './components/HorizontalBereiche'
 import LiveTicker from './components/LiveTicker'
 import Konfigurator from './components/Konfigurator'
+import GreekMeander from './components/GreekMeander'
+import SpartanMark from './components/SpartanMark'
 
 const CDN = 'https://cdn.prod.website-files.com/64c8b8357249be90e806d8b9'
 const img = (path: string) => `${CDN}/${path}`
@@ -79,9 +81,12 @@ function Nav() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'nav-glass' : ''}`}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72 }}>
-        <a href="#" className="font-display" style={{ color: '#fff', textDecoration: 'none', fontSize: 16, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', lineHeight: 1.2 }}>
-          FITNESS<span style={{ color: 'var(--lime)' }}>CLUB</span>
-          <span style={{ display: 'block', fontSize: 9, letterSpacing: '0.35em', fontWeight: 300, color: 'var(--text-muted)', fontFamily: 'Barlow Condensed, sans-serif' }}>FELLBACH</span>
+        <a href="#" style={{ color: 'var(--text)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 12 }}>
+          <SpartanMark size={40} />
+          <span className="font-display" style={{ fontSize: 14, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', lineHeight: 1.15 }}>
+            FITNESS CLUB
+            <span style={{ display: 'block', fontSize: 9, letterSpacing: '0.4em', fontWeight: 300, color: 'var(--text-muted)', fontFamily: 'Barlow Condensed, sans-serif' }}>FELLBACH</span>
+          </span>
         </a>
         <div className="hidden md:flex" style={{ gap: 32, alignItems: 'center' }}>
           {links.map(l => (
@@ -123,7 +128,9 @@ function Nav() {
 function Hero() {
   return (
     <section data-hero style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', overflow: 'hidden', background: 'var(--black)' }}>
-      {/* WebGL energy blob */}
+      {/* Greek meander pattern, slow rotate */}
+      <GreekMeander />
+      {/* WebGL energy blob (now burgundy) */}
       <HeroWebGL />
       {/* Ambient particles overlay */}
       <AmbientParticles />
@@ -145,9 +152,9 @@ function Hero() {
           transition={{ duration: 0.9, delay: 2.15, ease: [0.16, 1, 0.3, 1] }}
           className="font-display"
           style={{ fontSize: 'clamp(3.5rem, 10vw, 9rem)', fontWeight: 700, lineHeight: 0.95, letterSpacing: '-0.02em', margin: '0 0 24px' }}>
-          MEHR ALS<br />
-          <span style={{ color: 'var(--lime)' }}>NUR EIN</span><br />
-          CLUB.
+          STÄRKE.<br />
+          <span style={{ color: 'var(--accent-bright)', fontStyle: 'italic', fontWeight: 600 }}>DISZIPLIN.</span><br />
+          GEMEINSCHAFT.
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -474,8 +481,11 @@ function Footer() {
   return (
     <footer style={{ background: 'var(--black)', borderTop: '1px solid var(--gray-border)', padding: '32px 0' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
-        <div className="font-display" style={{ fontSize: 13, fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' }}>
-          FITNESS<span style={{ color: 'var(--lime)' }}>CLUB</span> FELLBACH
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <SpartanMark size={28} />
+          <span className="font-display" style={{ fontSize: 13, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text)' }}>
+            FITNESS CLUB FELLBACH
+          </span>
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24 }}>
           {[['Datenschutz', 'https://www.fitness-club-fellbach.de/datenschutz'], ['Impressum', 'https://www.fitness-club-fellbach.de/impressum'], ['Kündigung', 'https://www.fitness-club-fellbach.de/kundigung'], ['Karriere', 'https://www.fitness-club-fellbach.de/karriere']].map(([l, h]) => (
