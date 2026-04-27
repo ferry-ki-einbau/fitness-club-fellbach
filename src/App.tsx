@@ -1,5 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
+import { motion } from 'framer-motion'
 import './index.css'
+import Preloader from './components/Preloader'
+import CustomCursor from './components/CustomCursor'
+import AmbientParticles from './components/AmbientParticles'
+import HeroWebGL from './components/HeroWebGL'
+import MagneticButton from './components/MagneticButton'
+import HorizontalBereiche from './components/HorizontalBereiche'
+import LiveTicker from './components/LiveTicker'
+import Konfigurator from './components/Konfigurator'
 
 const CDN = 'https://cdn.prod.website-files.com/64c8b8357249be90e806d8b9'
 const img = (path: string) => `${CDN}/${path}`
@@ -61,9 +70,9 @@ function Nav() {
     return () => window.removeEventListener('scroll', fn)
   }, [])
   const links = [
-    { label: 'Training', href: '#training' },
-    { label: 'Kurse', href: '#kurse' },
-    { label: 'Wellness', href: '#wellness' },
+    { label: 'Bereiche', href: '#bereiche' },
+    { label: 'Galerie', href: '#galerie' },
+    { label: 'Konfigurator', href: '#konfigurator' },
     { label: 'Preise', href: '#preise' },
     { label: 'Kontakt', href: '#kontakt' },
   ]
@@ -113,42 +122,66 @@ function Nav() {
 
 function Hero() {
   return (
-    <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', overflow: 'hidden' }}>
-      <div style={{ position: 'absolute', inset: 0 }}>
-        <img src={img('64c8c31c5845992f13a9ad54_3.png')} alt="Fitness Club Fellbach"
-             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
-             loading="eager" fetchPriority="high" />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, rgba(8,8,8,0.95) 0%, rgba(8,8,8,0.75) 55%, rgba(8,8,8,0.35) 100%)' }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(8,8,8,1) 0%, rgba(8,8,8,0.5) 35%, transparent 100%)' }} />
-      </div>
+    <section data-hero style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', overflow: 'hidden', background: 'var(--black)' }}>
+      {/* WebGL energy blob */}
+      <HeroWebGL />
+      {/* Ambient particles overlay */}
+      <AmbientParticles />
+      {/* Grain + tint overlay */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'radial-gradient(ellipse at 70% 50%, transparent 0%, rgba(8,8,8,0.6) 60%, rgba(8,8,8,0.95) 100%)', pointerEvents: 'none' }} />
+
       <div style={{ position: 'relative', zIndex: 10, maxWidth: 1280, margin: '0 auto', padding: '160px 24px 96px', width: '100%' }}>
-        <div className="label hero-animate" style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 2.0 }}
+          className="label" style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
           <span className="pulse-dot" />
           Fellbach — 24 Stunden, 7 Tage
-        </div>
-        <h1 className="font-display hero-animate-delay"
-            style={{ fontSize: 'clamp(3.5rem, 10vw, 9rem)', fontWeight: 700, lineHeight: 0.95, letterSpacing: '-0.02em', margin: '0 0 24px' }}>
+        </motion.div>
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 2.15, ease: [0.16, 1, 0.3, 1] }}
+          className="font-display"
+          style={{ fontSize: 'clamp(3.5rem, 10vw, 9rem)', fontWeight: 700, lineHeight: 0.95, letterSpacing: '-0.02em', margin: '0 0 24px' }}>
           MEHR ALS<br />
           <span style={{ color: 'var(--lime)' }}>NUR EIN</span><br />
           CLUB.
-        </h1>
-        <p className="hero-animate-delay2" style={{ color: '#888', fontSize: 'clamp(1rem, 2vw, 1.1rem)', lineHeight: 1.7, marginBottom: 40, maxWidth: 480 }}>
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 2.35 }}
+          style={{ color: '#888', fontSize: 'clamp(1rem, 2vw, 1.1rem)', lineHeight: 1.7, marginBottom: 40, maxWidth: 480 }}>
           Training. Kurse. Wellness. Alles in einem Studio mitten in Fellbach.
-        </p>
-        <div className="hero-animate-delay3" style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
-          <a href="#preise" className="btn-lime"><span>14 Tage kostenlos testen</span><span>→</span></a>
-          <a href="#training" className="btn-outline"><span>Mehr erfahren</span></a>
-        </div>
-        <div className="hero-animate-delay3" style={{ display: 'flex', flexWrap: 'wrap', gap: 32, marginTop: 64, paddingTop: 32, borderTop: '1px solid var(--gray-border)' }}>
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 2.5 }}
+          style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
+          <MagneticButton href="#preise" variant="lime">
+            <span>14 Tage kostenlos testen</span><span>→</span>
+          </MagneticButton>
+          <MagneticButton href="#bereiche" variant="outline">
+            <span>Mehr erfahren</span>
+          </MagneticButton>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 2.7 }}
+          style={{ display: 'flex', flexWrap: 'wrap', gap: 32, marginTop: 64, paddingTop: 32, borderTop: '1px solid var(--gray-border)' }}>
           {[['24/7', 'Geöffnet'], ['3', 'Bereiche'], ['500+', 'Mitglieder'], ['100%', 'Risikofrei']].map(([n, l]) => (
             <div key={l}>
               <div className="font-display" style={{ fontSize: 24, fontWeight: 700, color: 'var(--lime)', lineHeight: 1 }}>{n}</div>
               <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--text-muted)', marginTop: 6 }}>{l}</div>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
-      <div style={{ position: 'absolute', bottom: 32, right: 32, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, opacity: 0.35 }}>
+      <div style={{ position: 'absolute', bottom: 32, right: 32, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, opacity: 0.35, zIndex: 5 }}>
         <div style={{ width: 1, height: 48, background: 'linear-gradient(to bottom, var(--lime), transparent)' }} />
         <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', writingMode: 'vertical-rl' }}>Scroll</span>
       </div>
@@ -185,47 +218,11 @@ function Stat({ target, suffix, label }: { target: number; suffix?: string; labe
   )
 }
 
-function Angebote() {
-  useReveal()
-  const offers = [
-    { id: 'training', tag: '24/7 verfügbar', title: 'Trainingsfläche', desc: 'Modernste Geräte auf großzügiger Fläche. Kraft, Ausdauer, funktionelles Training — alles was du brauchst, um deine Ziele zu erreichen.', img: img('64c8ee1414476c15c5c9e632_DSC02147%201.png') },
-    { id: 'kurse', tag: '30+ Kurse / Woche', title: 'Gruppenkurse', desc: 'Yoga, Rückenfit, BodyPump, Pilates und mehr. Von Experten geleitet, motivierend und abwechslungsreich.', img: img('64c8ee149b835c3ec80ea6c5_DSC02110%201.png') },
-    { id: 'wellness', tag: '05:00 – 24:00 Uhr', title: 'Sauna & Pool', desc: 'Sauna, Pool und Ruhebereich für pure Erholung. Dein verdientes Abschalten nach dem Training — täglich.', img: img('64c8ee144047408110a5798a_DSC02219%201.png') },
-  ]
+function Stats() {
   return (
-    <section id="training" style={{ background: 'var(--black)', padding: '96px 0' }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px' }}>
-        <div className="label reveal" style={{ marginBottom: 12 }}>Unser Angebot</div>
-        <h2 className="font-display reveal delay-1"
-            style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 700, lineHeight: 1.0, letterSpacing: '-0.02em', marginBottom: 64 }}>
-          ALLES UNTER<br /><span style={{ color: 'var(--lime)' }}>EINEM DACH.</span>
-        </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 1, background: 'var(--gray-border)' }}>
-          {offers.map((o, i) => (
-            <div key={o.id} id={o.id === 'training' ? undefined : o.id}
-                 className={`reveal delay-${i + 1}`}
-                 style={{ background: 'var(--black)', overflow: 'hidden', position: 'relative' }}>
-              <div style={{ position: 'relative', height: 280, overflow: 'hidden' }}
-                   onMouseEnter={e => { const img = e.currentTarget.querySelector('img') as HTMLElement; if (img) img.style.transform = 'scale(1.06)' }}
-                   onMouseLeave={e => { const img = e.currentTarget.querySelector('img') as HTMLElement; if (img) img.style.transform = 'scale(1)' }}>
-                <img src={o.img} alt={o.title} loading="lazy"
-                     style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.65s cubic-bezier(0.16,1,0.3,1)', display: 'block' }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(8,8,8,1) 0%, transparent 65%)' }} />
-              </div>
-              <div style={{ padding: '32px' }}>
-                <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--text-muted)', marginBottom: 8 }}>{o.tag}</div>
-                <h3 className="font-display" style={{ fontSize: 22, fontWeight: 600, letterSpacing: '0.03em', marginBottom: 14 }}>{o.title}</h3>
-                <p style={{ color: '#555', fontSize: 14, lineHeight: 1.7 }}>{o.desc}</p>
-                <div className="font-condensed" style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 24, fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--lime)' }}>
-                  <span style={{ width: 32, height: 1, background: 'var(--lime)', display: 'block' }} />
-                  Entdecken
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 32, marginTop: 80, paddingTop: 48, borderTop: '1px solid var(--gray-border)' }}
-             className="md:grid-cols-4">
+    <section style={{ background: 'var(--black)', padding: 'var(--section-spacing) 0', borderBottom: '1px solid var(--gray-border)' }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 var(--container-padding)' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 32 }} className="md:grid-cols-4">
           <Stat target={24} suffix="h" label="Täglich geöffnet" />
           <Stat target={3} label="Bereiche" />
           <Stat target={30} suffix="+" label="Kurse / Woche" />
@@ -238,10 +235,10 @@ function Angebote() {
 
 function Gallery() {
   return (
-    <section style={{ background: 'var(--gray-dark)' }}>
+    <section id="galerie" style={{ background: 'var(--gray-dark)' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '96px 24px 32px' }}>
         <div className="label reveal" style={{ marginBottom: 12 }}>Einblick</div>
-        <h2 className="font-display reveal delay-1" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 48 }}>
+        <h2 className="font-display reveal delay-1" style={{ fontSize: 'var(--heading-lg)', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 48 }}>
           IN DEN <span style={{ color: 'var(--lime)' }}>CLUB.</span>
         </h2>
       </div>
@@ -265,7 +262,7 @@ function Gallery() {
 
 function PromoBand() {
   return (
-    <section id="kurse" style={{ background: 'var(--lime)', padding: '80px 0' }}>
+    <section style={{ background: 'var(--lime)', padding: '80px 0' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 32 }}>
         <div>
           <div className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.5)', marginBottom: 12 }}>Jubiläums-Aktion</div>
@@ -308,7 +305,7 @@ function Pricing() {
     <section id="preise" style={{ background: 'var(--black)', padding: '96px 0' }}>
       <div style={{ maxWidth: 900, margin: '0 auto', padding: '0 24px' }}>
         <div className="label reveal" style={{ marginBottom: 12 }}>Mitgliedschaft</div>
-        <h2 className="font-display reveal delay-1" style={{ fontSize: 'clamp(2.5rem, 6vw, 4rem)', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 12 }}>
+        <h2 className="font-display reveal delay-1" style={{ fontSize: 'var(--heading-lg)', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 12 }}>
           DEIN <span style={{ color: 'var(--lime)' }}>PLAN.</span>
         </h2>
         <p className="reveal delay-2" style={{ color: '#555', fontSize: 14, lineHeight: 1.7, marginBottom: 56, maxWidth: 480 }}>
@@ -335,12 +332,14 @@ function Pricing() {
                   </li>
                 ))}
               </ul>
-              <a href="https://www.fitness-club-fellbach.de/membership/memberships"
-                 target="_blank" rel="noopener noreferrer"
-                 className={p.featured ? 'btn-lime' : 'btn-outline'}
-                 style={{ width: '100%', justifyContent: 'center' }}>
+              <MagneticButton
+                href="https://www.fitness-club-fellbach.de/membership/memberships"
+                target="_blank" rel="noopener noreferrer"
+                variant={p.featured ? 'lime' : 'outline'}
+                className="w-full"
+              >
                 <span>{p.cta}</span><span>→</span>
-              </a>
+              </MagneticButton>
             </div>
           ))}
         </div>
@@ -361,10 +360,10 @@ function Testimonials() {
     { name: 'Marco B.', text: 'Der Box-Ring ist ein absolutes Alleinstellungsmerkmal. Als Kampfsportler finde ich hier alles was ich brauche.', stars: 5 },
   ]
   return (
-    <section id="wellness" style={{ background: 'var(--gray-dark)', padding: '96px 0' }}>
+    <section style={{ background: 'var(--gray-dark)', padding: '96px 0' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px' }}>
         <div className="label reveal" style={{ marginBottom: 12 }}>Mitglieder</div>
-        <h2 className="font-display reveal delay-1" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 48 }}>
+        <h2 className="font-display reveal delay-1" style={{ fontSize: 'var(--heading-lg)', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 48 }}>
           WAS ANDERE <span style={{ color: 'var(--lime)' }}>SAGEN.</span>
         </h2>
         <div style={{ display: 'flex', gap: 16, overflowX: 'auto', paddingBottom: 8, scrollbarWidth: 'none' }}>
@@ -398,7 +397,7 @@ function FAQ() {
     <section style={{ background: 'var(--black)', padding: '96px 0' }}>
       <div style={{ maxWidth: 720, margin: '0 auto', padding: '0 24px' }}>
         <div className="label reveal" style={{ marginBottom: 12 }}>FAQ</div>
-        <h2 className="font-display reveal delay-1" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 48 }}>
+        <h2 className="font-display reveal delay-1" style={{ fontSize: 'var(--heading-lg)', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 48 }}>
           NOCH <span style={{ color: 'var(--lime)' }}>FRAGEN?</span>
         </h2>
         {items.map((item, i) => (
@@ -424,7 +423,7 @@ function Contact() {
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '96px 24px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: 64, alignItems: 'center' }}>
         <div>
           <div className="label reveal" style={{ marginBottom: 16 }}>Kontakt</div>
-          <h2 className="font-display reveal delay-1" style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 32 }}>
+          <h2 className="font-display reveal delay-1" style={{ fontSize: 'var(--heading-lg)', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 32 }}>
             KOMM VORBEI.<br /><span style={{ color: 'var(--lime)' }}>JEDERZEIT.</span>
           </h2>
           <div className="reveal delay-2" style={{ display: 'flex', flexDirection: 'column', gap: 14, marginBottom: 32 }}>
@@ -454,13 +453,17 @@ function Contact() {
           <p style={{ color: '#555', fontSize: 14, lineHeight: 1.7, marginBottom: 32 }}>
             Starte noch heute mit 14 Tagen komplett kostenlos. Kein Risiko — voller Zugang ab Tag 1.
           </p>
-          <a href="https://www.fitness-club-fellbach.de/membership/memberships" target="_blank" rel="noopener noreferrer"
-             className="btn-lime" style={{ width: '100%', justifyContent: 'center', marginBottom: 12 }}>
+          <MagneticButton
+            href="https://www.fitness-club-fellbach.de/membership/memberships"
+            target="_blank" rel="noopener noreferrer"
+            variant="lime" className="w-full"
+          >
             <span>14 Tage gratis starten</span><span>→</span>
-          </a>
-          <a href="tel:+4971158 8654" className="btn-outline" style={{ width: '100%', justifyContent: 'center' }}>
+          </MagneticButton>
+          <div style={{ height: 12 }} />
+          <MagneticButton href="tel:+4971158 8654" variant="outline" className="w-full">
             <span>Anrufen</span>
-          </a>
+          </MagneticButton>
         </div>
       </div>
     </section>
@@ -492,12 +495,21 @@ export default function App() {
   useReveal()
   return (
     <>
+      <Preloader />
+      <CustomCursor />
+      <LiveTicker />
       <Nav />
       <Hero />
       <Marquee />
-      <Angebote />
+      <div id="bereiche">
+        <HorizontalBereiche />
+      </div>
+      <Stats />
       <Gallery />
       <PromoBand />
+      <div id="konfigurator">
+        <Konfigurator />
+      </div>
       <Pricing />
       <Testimonials />
       <FAQ />

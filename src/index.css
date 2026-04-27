@@ -1,13 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Barlow+Condensed:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap');
+@import "@fontsource-variable/dm-sans";
 @import "tailwindcss";
 
 :root {
   --lime: #C8FF00;
+  --lime-dim: #9ec700;
   --black: #080808;
   --gray-dark: #111111;
   --gray-mid: #141414;
   --gray-border: #232323;
   --text-muted: #555555;
+  /* Physio bridge tokens */
+  --section-spacing: clamp(48px, 10vw, 120px);
+  --container-padding: clamp(16px, 4vw, 48px);
+  --heading-xl: clamp(2rem, 5vw + 1rem, 4.5rem);
+  --heading-lg: clamp(2rem, 3vw + 0.5rem, 3rem);
+  --heading-md: clamp(1.5rem, 2vw + 0.5rem, 2rem);
+}
+
+body {
+  font-family: 'DM Sans Variable', sans-serif !important;
+}
+.font-display { font-family: 'Oswald', sans-serif !important; }
+.font-condensed { font-family: 'Barlow Condensed', sans-serif !important; }
+.font-sans { font-family: 'DM Sans Variable', sans-serif !important; }
+
+/* Hide cursor on hero when custom is active */
+[data-hero] * { cursor: none !important; }
+[data-hero] a, [data-hero] button { cursor: none !important; }
+@media (max-width: 768px) {
+  [data-hero] *, [data-hero] a, [data-hero] button { cursor: pointer !important; }
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
