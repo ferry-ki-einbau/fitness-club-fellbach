@@ -37,6 +37,8 @@ body {
 [data-hero] a, [data-hero] button { cursor: none !important; }
 @media (max-width: 768px) {
   [data-hero] *, [data-hero] a, [data-hero] button { cursor: pointer !important; }
+  [data-hero] > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; padding-left: 24px !important; padding-right: 24px !important; }
+  .hero-side-card { display: none !important; }
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

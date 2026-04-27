@@ -3,8 +3,6 @@ import { motion } from 'framer-motion'
 import './index.css'
 import Preloader from './components/Preloader'
 import CustomCursor from './components/CustomCursor'
-import AmbientParticles from './components/AmbientParticles'
-import HeroWebGL from './components/HeroWebGL'
 import MagneticButton from './components/MagneticButton'
 import HorizontalBereiche from './components/HorizontalBereiche'
 import LiveTicker from './components/LiveTicker'
@@ -126,78 +124,115 @@ function Nav() {
 }
 
 function Hero() {
+  const heroImg = img('64c8f4a51bf8dc010d2f3801_DSC02040%202.png')
+  const sideImg = img('64c8ee1414476c15c5c9e632_DSC02147%201.png')
   return (
-    <section data-hero style={{ position: 'relative', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', overflow: 'hidden', background: 'var(--black)' }}>
-      {/* Greek meander pattern, slow rotate */}
-      <GreekMeander />
-      {/* WebGL energy blob (now burgundy) */}
-      <HeroWebGL />
-      {/* Ambient particles overlay */}
-      <AmbientParticles />
-      {/* Grain + tint overlay */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'radial-gradient(ellipse at 70% 50%, transparent 0%, rgba(8,4,4,0.55) 55%, rgba(8,4,4,0.92) 100%)', pointerEvents: 'none' }} />
-      {/* cinematic edge vignette */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 3, background: 'linear-gradient(180deg, rgba(0,0,0,0.6) 0%, transparent 18%, transparent 70%, rgba(0,0,0,0.85) 100%)', pointerEvents: 'none' }} />
-      {/* film grain */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 4, opacity: 0.18, mixBlendMode: 'overlay', pointerEvents: 'none', backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")" }} />
+    <section data-hero style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden', background: '#0A0505' }}>
+      {/* Full-bleed gym photograph — sharp, no filters */}
+      <motion.div
+        initial={{ scale: 1.08, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 2.4, delay: 1.9, ease: [0.16, 1, 0.3, 1] }}
+        style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
+        <img src={heroImg} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%', imageRendering: 'crisp-edges', filter: 'contrast(1.12) saturate(0.85)' }} />
+      </motion.div>
 
-      <div style={{ position: 'relative', zIndex: 10, maxWidth: 1280, margin: '0 auto', padding: '160px 24px 96px', width: '100%' }}>
+      {/* Gradient — left dark for type, right reveal */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(95deg, rgba(8,4,4,0.96) 0%, rgba(8,4,4,0.85) 35%, rgba(8,4,4,0.45) 65%, rgba(8,4,4,0.2) 100%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(180deg, rgba(8,4,4,0.7) 0%, transparent 22%, transparent 65%, rgba(8,4,4,0.95) 100%)', pointerEvents: 'none' }} />
+
+      {/* Greek meander, larger + brighter behind the right side */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 3, pointerEvents: 'none' }}>
+        <GreekMeander />
+      </div>
+
+      {/* Film grain */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 4, opacity: 0.14, mixBlendMode: 'overlay', pointerEvents: 'none', backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")" }} />
+
+      {/* Vertical edge label — left */}
+      <div style={{ position: 'absolute', left: 24, top: '50%', transform: 'translateY(-50%) rotate(180deg)', writingMode: 'vertical-rl', zIndex: 5, fontSize: 10, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 500 }}>EST · MMXVIII · Fellbach</div>
+
+      {/* Content grid */}
+      <div style={{ position: 'relative', zIndex: 10, maxWidth: 1440, margin: '0 auto', padding: 'clamp(140px, 18vh, 200px) clamp(56px, 6vw, 96px) clamp(64px, 10vh, 120px)', width: '100%', minHeight: '100vh', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 0.85fr)', gap: 'clamp(24px, 4vw, 80px)', alignItems: 'end' }}>
+        <div>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 2.0 }}
+            style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 36 }}>
+            <span style={{ width: 48, height: 1, background: '#B8924A' }} />
+            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.55em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>ΜΟΛΩΝ ΛΑΒΕ</span>
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.1, delay: 2.1, ease: [0.16, 1, 0.3, 1] }}
+            className="font-display"
+            style={{ fontSize: 'clamp(3.5rem, 9vw, 9rem)', fontWeight: 800, lineHeight: 0.88, letterSpacing: '-0.035em', margin: '0 0 32px', textTransform: 'uppercase', color: '#F5F0E8', maxWidth: '14ch' }}>
+            <span style={{ display: 'block' }}>Stärke.</span>
+            <span style={{ display: 'block', color: 'var(--accent-bright)', fontStyle: 'italic', fontWeight: 700, transform: 'translateX(0.08em)' }}>Disziplin.</span>
+            <span style={{ display: 'block', WebkitTextStroke: '1.5px #F5F0E8', color: 'transparent' }}>Gemeinschaft.</span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 2.35 }}
+            style={{ color: '#C9BFB3', fontSize: 'clamp(1.05rem, 1.4vw, 1.25rem)', lineHeight: 1.55, marginBottom: 44, maxWidth: 520, fontWeight: 400 }}>
+            Box-Ring, Cardio, Kraft, Kurse, Sauna, Pool. <span style={{ color: '#F5F0E8' }}>Alles unter einem Dach</span> — mitten in Fellbach, 24 Stunden am Tag.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 2.5 }}
+            style={{ display: 'flex', flexWrap: 'wrap', gap: 16, marginBottom: 64 }}>
+            <MagneticButton href="#preise" variant="lime">
+              <span>14 Tage kostenlos testen</span><span>→</span>
+            </MagneticButton>
+            <MagneticButton href="#bereiche" variant="outline">
+              <span>Studio entdecken</span>
+            </MagneticButton>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 2.7 }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(4, auto)', gap: 'clamp(20px, 3vw, 56px)', paddingTop: 32, borderTop: '1px solid rgba(184, 146, 74, 0.25)' }}>
+            {[['24/7', 'Geöffnet'], ['3', 'Bereiche'], ['500+', 'Mitglieder'], ['2018', 'Seit']].map(([n, l]) => (
+              <div key={l}>
+                <div className="font-display" style={{ fontSize: 'clamp(1.5rem, 2.2vw, 2rem)', fontWeight: 700, color: '#B8924A', lineHeight: 1, letterSpacing: '-0.02em' }}>{n}</div>
+                <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#8A7A66', marginTop: 8 }}>{l}</div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Right: floating editorial card */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 2.0 }}
-          className="label" style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 }}>
-          <span style={{ width: 28, height: 1, background: 'linear-gradient(90deg, transparent, #B8924A)' }} />
-          <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 500 }}>ΜΟΛΩΝ ΛΑΒΕ</span>
-          <span style={{ width: 28, height: 1, background: 'linear-gradient(90deg, #B8924A, transparent)' }} />
-          <span className="pulse-dot" style={{ marginLeft: 8 }} />
-          <span style={{ fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Fellbach · 24/7 · Seit 2018</span>
-        </motion.div>
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, delay: 2.15, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display"
-          style={{ fontSize: 'clamp(3.5rem, 10vw, 9rem)', fontWeight: 700, lineHeight: 0.95, letterSpacing: '-0.02em', margin: '0 0 24px' }}>
-          STÄRKE.<br />
-          <span style={{ color: 'var(--accent-bright)', fontStyle: 'italic', fontWeight: 600 }}>DISZIPLIN.</span><br />
-          GEMEINSCHAFT.
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 2.35 }}
-          style={{ color: '#888', fontSize: 'clamp(1rem, 2vw, 1.1rem)', lineHeight: 1.7, marginBottom: 40, maxWidth: 480 }}>
-          Training. Kurse. Wellness. Alles in einem Studio mitten in Fellbach.
-        </motion.p>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 2.5 }}
-          style={{ display: 'flex', flexWrap: 'wrap', gap: 16 }}>
-          <MagneticButton href="#preise" variant="lime">
-            <span>14 Tage kostenlos testen</span><span>→</span>
-          </MagneticButton>
-          <MagneticButton href="#bereiche" variant="outline">
-            <span>Mehr erfahren</span>
-          </MagneticButton>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 2.7 }}
-          style={{ display: 'flex', flexWrap: 'wrap', gap: 32, marginTop: 64, paddingTop: 32, borderTop: '1px solid var(--gray-border)' }}>
-          {[['24/7', 'Geöffnet'], ['3', 'Bereiche'], ['500+', 'Mitglieder'], ['100%', 'Risikofrei']].map(([n, l]) => (
-            <div key={l}>
-              <div className="font-display" style={{ fontSize: 24, fontWeight: 700, color: 'var(--lime)', lineHeight: 1 }}>{n}</div>
-              <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--text-muted)', marginTop: 6 }}>{l}</div>
+          transition={{ duration: 1.2, delay: 2.6, ease: [0.16, 1, 0.3, 1] }}
+          className="hero-side-card"
+          style={{ position: 'relative', aspectRatio: '3/4', maxHeight: '60vh', alignSelf: 'center', justifySelf: 'end', width: '100%', maxWidth: 380 }}>
+          <div style={{ position: 'absolute', inset: -2, border: '1px solid #B8924A', transform: 'translate(12px, 12px)', pointerEvents: 'none' }} />
+          <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', boxShadow: '0 40px 80px -20px rgba(0,0,0,0.8)' }}>
+            <img src={sideImg} alt="Trainingsbereich Fitness Club Fellbach" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.1) saturate(0.9)' }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 60%, rgba(8,4,4,0.85) 100%)' }} />
+            <div style={{ position: 'absolute', left: 20, bottom: 20, right: 20 }}>
+              <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: '#B8924A', marginBottom: 6 }}>01 — Trainingsbereich</div>
+              <div className="font-display" style={{ fontSize: 18, fontWeight: 700, color: '#F5F0E8', letterSpacing: '-0.01em' }}>Kraft · Cardio · Functional</div>
             </div>
-          ))}
+          </div>
         </motion.div>
       </div>
-      <div style={{ position: 'absolute', bottom: 32, right: 32, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8, opacity: 0.35, zIndex: 5 }}>
-        <div style={{ width: 1, height: 48, background: 'linear-gradient(to bottom, var(--lime), transparent)' }} />
-        <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', writingMode: 'vertical-rl' }}>Scroll</span>
+
+      {/* Bottom-right scroll indicator */}
+      <div style={{ position: 'absolute', bottom: 24, right: 32, display: 'flex', alignItems: 'center', gap: 12, zIndex: 5 }}>
+        <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: '#B8924A' }}>Scroll</span>
+        <div style={{ width: 64, height: 1, background: 'linear-gradient(90deg, #B8924A, transparent)' }} />
       </div>
     </section>
   )
