@@ -150,7 +150,7 @@ function Hero() {
       <div style={{ position: 'absolute', inset: 0, zIndex: 4, opacity: 0.14, mixBlendMode: 'overlay', pointerEvents: 'none', backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")" }} />
 
       {/* Vertical edge label — left */}
-      <div style={{ position: 'absolute', left: 24, top: '50%', transform: 'translateY(-50%) rotate(180deg)', writingMode: 'vertical-rl', zIndex: 5, fontSize: 10, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 500 }}>EST · MMXVIII · Fellbach</div>
+      <div style={{ position: 'absolute', left: 24, top: '50%', transform: 'translateY(-50%) rotate(180deg)', writingMode: 'vertical-rl', zIndex: 5, fontSize: 10, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 500 }}>EST · MCMLX · Fellbach</div>
 
       {/* Content grid */}
       <div style={{ position: 'relative', zIndex: 10, maxWidth: 1440, margin: '0 auto', padding: 'clamp(140px, 18vh, 200px) clamp(56px, 6vw, 96px) clamp(64px, 10vh, 120px)', width: '100%', minHeight: '100vh', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 0.85fr)', gap: 'clamp(24px, 4vw, 80px)', alignItems: 'end' }}>
@@ -201,7 +201,7 @@ function Hero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 2.7 }}
             style={{ display: 'grid', gridTemplateColumns: 'repeat(4, auto)', gap: 'clamp(20px, 3vw, 56px)', paddingTop: 32, borderTop: '1px solid rgba(184, 146, 74, 0.25)' }}>
-            {[['24/7', 'Geöffnet'], ['3', 'Bereiche'], ['500+', 'Mitglieder'], ['2018', 'Seit']].map(([n, l]) => (
+            {[['24/7', 'Geöffnet'], ['3', 'Bereiche'], ['500+', 'Mitglieder'], ['1960', 'Seit']].map(([n, l]) => (
               <div key={l}>
                 <div className="font-display" style={{ fontSize: 'clamp(1.5rem, 2.2vw, 2rem)', fontWeight: 700, color: '#B8924A', lineHeight: 1, letterSpacing: '-0.02em' }}>{n}</div>
                 <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#8A7A66', marginTop: 8 }}>{l}</div>
