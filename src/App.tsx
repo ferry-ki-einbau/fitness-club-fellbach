@@ -9,6 +9,7 @@ import LiveTicker from './components/LiveTicker'
 import Konfigurator from './components/Konfigurator'
 import GreekMeander from './components/GreekMeander'
 import SpartanMark from './components/SpartanMark'
+import WhatsAppFab from './components/WhatsAppFab'
 
 const CDN = 'https://cdn.prod.website-files.com/64c8b8357249be90e806d8b9'
 const img = (path: string) => `${CDN}/${path}`
@@ -550,6 +551,7 @@ export default function App() {
       <Preloader />
       <CustomCursor />
       <LiveTicker />
+      <WhatsAppFab />
       <Nav />
       <Hero />
       <Marquee />
