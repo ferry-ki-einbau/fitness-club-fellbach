@@ -40,7 +40,7 @@ export default function Preloader() {
                 <div className="font-condensed" style={{
                   fontSize: 11, letterSpacing: '0.5em', fontWeight: 500,
                   color: 'var(--accent-bright)', marginTop: 12,
-                }}>FELLBACH — SEIT 1960</div>
+                }}>FELLBACH · 24 / 7</div>
               </div>
             </motion.div>
             {/* Loading dot */}

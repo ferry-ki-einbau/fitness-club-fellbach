@@ -1,7 +1,5 @@
 import { motion } from 'framer-motion'
 
-const CDN = 'https://cdn.prod.website-files.com/64c8b8357249be90e806d8b9'
-
 /**
  * Differentiator section — echter Box-Ring im Studio.
  * Selten in deutschen Studios, also pushen.
@@ -40,9 +38,13 @@ export default function BoxRingSpotlight() {
           <div style={{ position: 'absolute', bottom: -12, right: -12, width: 1, height: 64, background: '#B8924A', zIndex: 3 }} />
           <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', boxShadow: '0 40px 80px -20px rgba(0,0,0,0.8)' }}>
             <img
-              src={`${CDN}/64ca17b4cde1577e5e4dafd6_DSC02052%201.png`}
-              alt="Box-Ring im Fitness Club Fellbach"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.15) saturate(0.85)' }}
+              src="/images/boxing-gloves-md.webp"
+              srcSet="/images/boxing-gloves-sm.webp 800w, /images/boxing-gloves-md.webp 1600w"
+              sizes="(max-width: 900px) 100vw, 55vw"
+              alt="Boxhandschuhe im Fitness Club Fellbach"
+              decoding="async"
+              loading="lazy"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.05)' }}
             />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(45deg, rgba(8,4,4,0.5) 0%, transparent 50%)' }} />
             {/* Bottom badge */}

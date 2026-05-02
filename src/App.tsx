@@ -12,19 +12,19 @@ import SpartanMark from './components/SpartanMark'
 import WhatsAppFab from './components/WhatsAppFab'
 import StatementBanner from './components/StatementBanner'
 import BoxRingSpotlight from './components/BoxRingSpotlight'
+import EgymSpotlight from './components/EgymSpotlight'
+import WellnessSpotlight from './components/WellnessSpotlight'
 
-const CDN = 'https://cdn.prod.website-files.com/64c8b8357249be90e806d8b9'
-const img = (path: string) => `${CDN}/${path}`
 
 const GALLERY = [
-  { src: img('64c8f4a51bf8dc010d2f3801_DSC02040%202.png'), label: 'Box-Ring' },
-  { src: img('64c8ee1414476c15c5c9e632_DSC02147%201.png'), label: 'Trainingsbereich' },
-  { src: img('64ca17b393996cd8252f4065_DSC02123%201.png'), label: 'Kursraum' },
-  { src: img('64f83856658cd0d76e14a167_Cardioarea.png'), label: 'Cardio' },
-  { src: img('64f838771c7353d88f0e13fe_Eingangsbereich.png'), label: 'Eingang' },
-  { src: img('64f8392473ca306920e2b4ca_Poolarea.png'), label: 'Wellness Pool' },
-  { src: img('64f8390773ca306920e2892e_Wellnessarea.png'), label: 'Sauna' },
-  { src: img('64f839c3c0bf005c90ea03e4_Kursraum%202.png'), label: 'Gruppenraum' },
+  { src: '/images/hero-boxring-md.webp', srcSm: '/images/hero-boxring-sm.webp', label: 'Boxring', tag: '01' },
+  { src: '/images/cardio-cinematic-md.webp', srcSm: '/images/cardio-cinematic-sm.webp', label: 'Cardio', tag: '02' },
+  { src: '/images/dumbbells-md.webp', srcSm: '/images/dumbbells-sm.webp', label: 'Free Weights', tag: '03' },
+  { src: '/images/kursraum-md.webp', srcSm: '/images/kursraum-sm.webp', label: 'Kursraum', tag: '04' },
+  { src: '/images/sauna-mood-md.webp', srcSm: '/images/sauna-mood-sm.webp', label: 'Sauna', tag: '05' },
+  { src: '/images/pool-night-md.webp', srcSm: '/images/pool-night-sm.webp', label: 'Pool', tag: '06' },
+  { src: '/images/reception-md.webp', srcSm: '/images/reception-sm.webp', label: 'Eingang', tag: '07' },
+  { src: '/images/barbell-chalk-md.webp', srcSm: '/images/barbell-chalk-sm.webp', label: 'Strength Detail', tag: '08' },
 ]
 
 function useReveal() {
@@ -127,8 +127,9 @@ function Nav() {
 }
 
 function Hero() {
-  const heroImg = img('64c8f4a51bf8dc010d2f3801_DSC02040%202.png')
-  const sideImg = img('64c8ee1414476c15c5c9e632_DSC02147%201.png')
+  const heroImg = '/images/hero-boxring-md.webp'
+  const heroImgSm = '/images/hero-boxring-sm.webp'
+  const sideImg = '/images/athlete-silhouette-md.webp'
   return (
     <section data-hero style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden', background: '#0A0505' }}>
       {/* Full-bleed gym photograph — sharp, no filters */}
@@ -137,7 +138,15 @@ function Hero() {
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 2.4, delay: 1.9, ease: [0.16, 1, 0.3, 1] }}
         style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
-        <img src={heroImg} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%', imageRendering: 'crisp-edges', filter: 'contrast(1.12) saturate(0.85)' }} />
+        <img
+          src={heroImg}
+          srcSet={`${heroImgSm} 800w, ${heroImg} 1600w`}
+          sizes="100vw"
+          alt="Boxring im Fitness Club Fellbach"
+          fetchPriority="high"
+          decoding="async"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 35%', filter: 'contrast(1.05) saturate(0.95)' }}
+        />
       </motion.div>
 
       {/* Gradient — left dark for type, right reveal */}
@@ -153,7 +162,7 @@ function Hero() {
       <div style={{ position: 'absolute', inset: 0, zIndex: 4, opacity: 0.14, mixBlendMode: 'overlay', pointerEvents: 'none', backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")" }} />
 
       {/* Vertical edge label — left */}
-      <div style={{ position: 'absolute', left: 24, top: '50%', transform: 'translateY(-50%) rotate(180deg)', writingMode: 'vertical-rl', zIndex: 5, fontSize: 10, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 500 }}>EST · MCMLX · Fellbach</div>
+      <div style={{ position: 'absolute', left: 24, top: '50%', transform: 'translateY(-50%) rotate(180deg)', writingMode: 'vertical-rl', zIndex: 5, fontSize: 10, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 500 }}>Bruckstraße 61 · Fellbach</div>
 
       {/* Content grid */}
       <div style={{ position: 'relative', zIndex: 10, maxWidth: 1440, margin: '0 auto', padding: 'clamp(140px, 18vh, 200px) clamp(56px, 6vw, 96px) clamp(64px, 10vh, 120px)', width: '100%', minHeight: '100vh', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 0.85fr)', gap: 'clamp(24px, 4vw, 80px)', alignItems: 'end' }}>
@@ -204,7 +213,7 @@ function Hero() {
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 2.7 }}
             style={{ display: 'grid', gridTemplateColumns: 'repeat(4, auto)', gap: 'clamp(20px, 3vw, 56px)', paddingTop: 32, borderTop: '1px solid rgba(184, 146, 74, 0.25)' }}>
-            {[['24/7', 'Geöffnet'], ['3', 'Bereiche'], ['500+', 'Mitglieder'], ['1960', 'Seit']].map(([n, l]) => (
+            {[['24/7', 'Geöffnet'], ['8', 'Bereiche'], ['500+', 'Mitglieder'], ['30+', 'Kurse / Woche']].map(([n, l]) => (
               <div key={l}>
                 <div className="font-display" style={{ fontSize: 'clamp(1.5rem, 2.2vw, 2rem)', fontWeight: 700, color: '#B8924A', lineHeight: 1, letterSpacing: '-0.02em' }}>{n}</div>
                 <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#8A7A66', marginTop: 8 }}>{l}</div>
@@ -222,11 +231,11 @@ function Hero() {
           style={{ position: 'relative', aspectRatio: '3/4', maxHeight: '60vh', alignSelf: 'center', justifySelf: 'end', width: '100%', maxWidth: 380 }}>
           <div style={{ position: 'absolute', inset: -2, border: '1px solid #B8924A', transform: 'translate(12px, 12px)', pointerEvents: 'none' }} />
           <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', boxShadow: '0 40px 80px -20px rgba(0,0,0,0.8)' }}>
-            <img src={sideImg} alt="Trainingsbereich Fitness Club Fellbach" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.1) saturate(0.9)' }} />
+            <img src={sideImg} alt="Athlet beim Krafttraining" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.05) saturate(0.95)' }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 60%, rgba(8,4,4,0.85) 100%)' }} />
             <div style={{ position: 'absolute', left: 20, bottom: 20, right: 20 }}>
               <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: '#B8924A', marginBottom: 6 }}>01 — Trainingsbereich</div>
-              <div className="font-display" style={{ fontSize: 18, fontWeight: 700, color: '#F5F0E8', letterSpacing: '-0.01em' }}>Kraft · Cardio · Functional</div>
+              <div className="font-display" style={{ fontSize: 18, fontWeight: 700, color: '#F5F0E8', letterSpacing: '-0.01em' }}>Stärke unter Kontrolle</div>
             </div>
           </div>
         </motion.div>
@@ -287,25 +296,52 @@ function Stats() {
 
 function Gallery() {
   return (
-    <section id="galerie" style={{ background: 'var(--gray-dark)' }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '96px 24px 32px' }}>
-        <div className="label reveal" style={{ marginBottom: 12 }}>Einblick</div>
-        <h2 className="font-display reveal delay-1" style={{ fontSize: 'var(--heading-lg)', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 48 }}>
-          IN DEN <span style={{ color: 'var(--lime)' }}>CLUB.</span>
+    <section id="galerie" style={{ background: '#0A0505', padding: 'clamp(80px, 12vh, 140px) 0' }}>
+      <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 24px 56px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
+          <span style={{ width: 32, height: 1, background: '#B8924A' }} />
+          <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>Einblick</span>
+        </div>
+        <h2 className="font-display" style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800, letterSpacing: '-0.025em', textTransform: 'uppercase', color: '#F5F0E8', lineHeight: 0.95 }}>
+          In den <span style={{ color: 'var(--accent-bright)', fontStyle: 'italic' }}>Club.</span>
         </h2>
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gridTemplateRows: 'auto', gap: 1, background: 'var(--gray-border)' }}>
+      <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 24px', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12 }}
+        className="gallery-grid"
+      >
         {GALLERY.map((item, i) => (
-          <div key={item.label}
-               className={`gallery-item reveal delay-${Math.min(i + 1, 5)}`}
-               style={{
-                 gridColumn: i === 0 ? 'span 2' : i === 5 ? 'span 2' : 'span 1',
-                 aspectRatio: i === 0 || i === 5 ? '16/9' : '1/1',
-                 background: '#0d0d0d',
-               }}>
-            <img src={item.src} alt={item.label} loading="lazy" />
-            <div className="cap">{item.label}</div>
-          </div>
+          <motion.div
+            key={item.label}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.6, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              gridColumn: i === 0 ? 'span 2' : i === 5 ? 'span 2' : 'span 1',
+              aspectRatio: i === 0 || i === 5 ? '16/9' : '1/1',
+              position: 'relative',
+              overflow: 'hidden',
+              background: '#0d0d0d',
+            }}>
+            <img
+              src={item.src}
+              srcSet={`${item.srcSm} 800w, ${item.src} 1600w`}
+              sizes="(max-width: 768px) 50vw, 25vw"
+              alt={item.label}
+              loading="lazy"
+              decoding="async"
+              style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.05)', transition: 'transform 0.6s ease' }}
+              onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
+              onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
+            />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 50%, rgba(8,4,4,0.85) 100%)', pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', top: 16, left: 16, padding: '6px 10px', background: 'rgba(8,4,4,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.3)' }}>
+              <span className="font-condensed" style={{ fontSize: 9, letterSpacing: '0.4em', color: '#B8924A', fontWeight: 700 }}>{item.tag}</span>
+            </div>
+            <div style={{ position: 'absolute', bottom: 16, left: 16, right: 16, pointerEvents: 'none' }}>
+              <div className="font-display" style={{ fontSize: 14, fontWeight: 700, color: '#F5F0E8', textTransform: 'uppercase', letterSpacing: '0.02em' }}>{item.label}</div>
+            </div>
+          </motion.div>
         ))}
       </div>
     </section>
@@ -630,6 +666,8 @@ export default function App() {
         <HorizontalBereiche />
       </div>
       <BoxRingSpotlight />
+      <EgymSpotlight />
+      <WellnessSpotlight />
       <Stats />
       <Gallery />
       <PromoBand />

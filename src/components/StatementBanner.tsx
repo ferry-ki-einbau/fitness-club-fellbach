@@ -21,11 +21,22 @@ export default function StatementBanner() {
       borderTop: '1px solid rgba(184, 146, 74, 0.2)',
       borderBottom: '1px solid rgba(184, 146, 74, 0.2)',
     }}>
+      {/* Background athlete silhouette */}
+      <div style={{
+        position: 'absolute',
+        inset: 0,
+        opacity: 0.18,
+        backgroundImage: 'url(/images/athlete-silhouette-md.webp)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center 20%',
+        filter: 'blur(2px)',
+      }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(8,4,4,0.9) 0%, rgba(8,4,4,0.7) 30%, rgba(8,4,4,0.7) 70%, rgba(8,4,4,0.95) 100%)' }} />
       {/* Background meander pattern (subtle) */}
       <div style={{
         position: 'absolute',
         inset: 0,
-        opacity: 0.04,
+        opacity: 0.05,
         backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'><path d='M0 48 L0 24 L24 24 L24 48 L48 48 L48 0 L72 0 L72 72 L0 72 Z' fill='none' stroke='%23B8924A' stroke-width='2'/></svg>")`,
       }} />
 
