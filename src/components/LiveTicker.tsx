@@ -1,22 +1,30 @@
 import { useEffect, useState } from 'react'
 
-function isOpenNow(d: Date) {
+function statusText(d: Date) {
   const h = d.getHours()
-  return h >= 5 && h < 24
-}
-
-function fmt(d: Date) {
-  return d.toLocaleTimeString('de-DE', { hour: '2-digit', minute: '2-digit' })
+  const m = d.getMinutes()
+  if (h >= 5 && h < 24) {
+    // Schließt um 24:00 → Stunden bis Schließung
+    const minsToClose = (24 - h) * 60 - m
+    const ch = Math.floor(minsToClose / 60)
+    const cm = minsToClose % 60
+    return { open: true, label: 'Geöffnet', sub: `Schließt in ${ch}h ${String(cm).padStart(2, '0')}min` }
+  }
+  // 00:00 - 05:00 → Stunden bis Öffnung
+  const minsToOpen = (5 - h - 1) * 60 + (60 - m)
+  const oh = Math.floor(minsToOpen / 60)
+  const om = minsToOpen % 60
+  return { open: false, label: 'Geschlossen', sub: `Öffnet in ${oh}h ${String(om).padStart(2, '0')}min` }
 }
 
 export default function LiveTicker() {
   const [now, setNow] = useState(() => new Date())
   useEffect(() => {
-    const t = setInterval(() => setNow(new Date()), 1000)
+    const t = setInterval(() => setNow(new Date()), 30_000)
     return () => clearInterval(t)
   }, [])
 
-  const open = isOpenNow(now)
+  const s = statusText(now)
 
   return (
     <div
@@ -29,28 +37,30 @@ export default function LiveTicker() {
         display: 'flex',
         alignItems: 'center',
         gap: 12,
-        padding: '10px 16px',
-        background: 'rgba(8,8,8,0.85)',
+        padding: '12px 18px',
+        background: 'rgba(8,4,4,0.92)',
         backdropFilter: 'blur(12px)',
-        border: '1px solid var(--gray-border)',
-        fontSize: 11,
-        letterSpacing: '0.25em',
+        border: '1px solid rgba(184, 146, 74, 0.25)',
+        fontSize: 10,
+        letterSpacing: '0.3em',
         textTransform: 'uppercase',
-        color: '#888',
+        color: '#9A8470',
+        boxShadow: '0 8px 24px rgba(0,0,0,0.4)',
       }}
     >
       <span
         style={{
-          width: 7,
-          height: 7,
+          width: 8,
+          height: 8,
           borderRadius: '50%',
-          background: open ? 'var(--lime)' : '#666',
-          animation: open ? 'pulse 1.6s ease-in-out infinite' : 'none',
+          background: s.open ? '#E15464' : '#5A3030',
+          animation: s.open ? 'pulse 1.6s ease-in-out infinite' : 'none',
+          boxShadow: s.open ? '0 0 12px rgba(225, 84, 100, 0.7)' : 'none',
         }}
       />
-      <span style={{ color: open ? 'var(--lime)' : '#888' }}>{open ? 'Offen jetzt' : 'Geschlossen'}</span>
-      <span style={{ color: '#444' }}>·</span>
-      <span style={{ color: '#888' }}>{fmt(now)}</span>
+      <span style={{ color: s.open ? '#E15464' : '#888', fontWeight: 600 }}>{s.label}</span>
+      <span style={{ color: '#3A2020' }}>·</span>
+      <span style={{ color: '#B8924A' }}>{s.sub}</span>
     </div>
   )
 }

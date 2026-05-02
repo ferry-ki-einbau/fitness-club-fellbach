@@ -10,6 +10,8 @@ import Konfigurator from './components/Konfigurator'
 import GreekMeander from './components/GreekMeander'
 import SpartanMark from './components/SpartanMark'
 import WhatsAppFab from './components/WhatsAppFab'
+import StatementBanner from './components/StatementBanner'
+import BoxRingSpotlight from './components/BoxRingSpotlight'
 
 const CDN = 'https://cdn.prod.website-files.com/64c8b8357249be90e806d8b9'
 const img = (path: string) => `${CDN}/${path}`
@@ -335,66 +337,134 @@ function PromoBand() {
 }
 
 function Pricing() {
+  const [term, setTerm] = useState<'3' | '12' | '24'>('24')
+
+  // Echte Preise vom Original (Stand 2026)
+  const pricing: Record<string, { basic: { promo: string; reg: string }; premium: { promo: string; reg: string }; allin: { promo: string; reg: string }; bonus?: string }> = {
+    '3': { basic: { promo: '15,99', reg: '15,99' }, premium: { promo: '16,99', reg: '16,99' }, allin: { promo: '17,99', reg: '17,99' } },
+    '12': { basic: { promo: '15,99', reg: '13,99' }, premium: { promo: '6,99', reg: '13,99' }, allin: { promo: '18,99', reg: '15,99' }, bonus: '2 Monate gratis' },
+    '24': { basic: { promo: '13,99', reg: '12,99' }, premium: { promo: '6,49', reg: '12,99' }, allin: { promo: '16,99', reg: '14,99' }, bonus: '2 Monate gratis' },
+  }
+  const p = pricing[term]
+
   const plans = [
-    {
-      name: 'Basic',
-      amount: '29',
-      featured: false,
-      features: ['Volle Trainingsfläche', 'Duschen inklusive', 'Getränke inklusive', '24/7 Zugang', 'Add-Ons ab 3,49€/Woche zubuchbar'],
-      cta: 'Basic starten',
-    },
-    {
-      name: 'All-In',
-      amount: '49',
-      featured: true,
-      features: ['Trainingsfläche inklusive', 'Duschen & Getränke', 'Sauna inklusive', 'Alle Gruppenkurse', 'EGYM-Training', 'Betreutes Zirkeltraining', '24/7 Zugang'],
-      cta: 'All-In starten',
-    },
+    { key: 'basic', name: 'Basic', tag: 'Best Value', featured: false, price: p.basic, features: ['Volle Trainingsfläche', 'Duschen inklusive', '24/7 Zugang (05 – 24 Uhr)', 'Add-Ons ab 2,99€/Woche zubuchbar'] },
+    { key: 'premium', name: 'Premium', tag: 'Bestseller', featured: false, price: p.premium, features: ['Volle Trainingsfläche', 'Duschen inklusive', '1 Add-On für 2,99€ inkl.', 'Weitere Add-Ons ab 2,99€/Woche'] },
+    { key: 'allin', name: 'All-In', tag: 'Komplett', featured: true, price: p.allin, features: ['Trainingsfläche & Duschen', 'Getränke-Flatrate', 'Sauna-Oase', 'Alle Gruppenkurse', 'EGYM Training', 'Betreutes Zirkeltraining'] },
   ]
+
   return (
-    <section id="preise" style={{ background: 'var(--black)', padding: '96px 0' }}>
-      <div style={{ maxWidth: 900, margin: '0 auto', padding: '0 24px' }}>
-        <div className="label reveal" style={{ marginBottom: 12 }}>Mitgliedschaft</div>
-        <h2 className="font-display reveal delay-1" style={{ fontSize: 'var(--heading-lg)', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 12 }}>
-          DEIN <span style={{ color: 'var(--lime)' }}>PLAN.</span>
+    <section id="preise" style={{ background: '#0A0505', padding: 'clamp(80px, 12vh, 160px) 0' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
+          <span style={{ width: 32, height: 1, background: '#B8924A' }} />
+          <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>Mitgliedschaft</span>
+        </div>
+        <h2 className="font-display" style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800, letterSpacing: '-0.025em', marginBottom: 16, textTransform: 'uppercase', color: '#F5F0E8', lineHeight: 0.95 }}>
+          Dein Plan. <span style={{ color: 'var(--accent-bright)', fontStyle: 'italic' }}>Dein Preis.</span>
         </h2>
-        <p className="reveal delay-2" style={{ color: '#555', fontSize: 14, lineHeight: 1.7, marginBottom: 56, maxWidth: 480 }}>
-          Keine versteckten Kosten. 14 Tage Widerrufsrecht. Starte sofort — 100% risikofrei.
+        <p style={{ color: '#9A8470', fontSize: 15, lineHeight: 1.7, marginBottom: 48, maxWidth: 540 }}>
+          Echte Preise. Keine Tricks. 14 Tage testen — voller Erstattung wenn's nicht passt.
         </p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
-          {plans.map((p, i) => (
-            <div key={p.name} className={`card reveal delay-${i + 2}`}
-                 style={{ padding: 36, borderColor: p.featured ? 'var(--lime)' : undefined, position: 'relative' }}>
-              {p.featured && (
-                <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: 'var(--lime)', marginBottom: 20, display: 'flex', alignItems: 'center', gap: 8 }}>
-                  <span>◆</span> Beliebteste Wahl
-                </div>
-              )}
-              <div className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#555', marginBottom: 8 }}>{p.name}</div>
-              <div className="font-display" style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', fontWeight: 700, color: p.featured ? 'var(--lime)' : '#fff', lineHeight: 1, marginBottom: 6 }}>
-                {p.amount}€
-              </div>
-              <div style={{ fontSize: 12, color: '#444', marginBottom: 32 }}>/ Monat · Preis variiert nach Laufzeit</div>
-              <ul style={{ listStyle: 'none', padding: 0, marginBottom: 36, display: 'flex', flexDirection: 'column', gap: 12 }}>
-                {p.features.map(f => (
-                  <li key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, fontSize: 13, color: '#888' }}>
-                    <span style={{ color: 'var(--lime)', flexShrink: 0, marginTop: 1 }}>✓</span>{f}
-                  </li>
-                ))}
-              </ul>
-              <MagneticButton
-                href="https://www.fitness-club-fellbach.de/membership/memberships"
-                target="_blank" rel="noopener noreferrer"
-                variant={p.featured ? 'lime' : 'outline'}
-                className="w-full"
-              >
-                <span>{p.cta}</span><span>→</span>
-              </MagneticButton>
-            </div>
+
+        {/* Term tabs */}
+        <div style={{ display: 'inline-flex', gap: 4, padding: 4, background: 'rgba(58, 32, 32, 0.4)', border: '1px solid rgba(184, 146, 74, 0.2)', marginBottom: 48 }}>
+          {(['3', '12', '24'] as const).map(t => (
+            <button
+              key={t}
+              onClick={() => setTerm(t)}
+              className="font-condensed"
+              style={{
+                padding: '12px 24px',
+                fontSize: 11,
+                letterSpacing: '0.35em',
+                textTransform: 'uppercase',
+                fontWeight: 600,
+                background: term === t ? '#B8924A' : 'transparent',
+                color: term === t ? '#0A0505' : '#9A8470',
+                border: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+              }}
+            >
+              {t} Monate
+            </button>
           ))}
         </div>
-        <p className="reveal" style={{ textAlign: 'center', color: '#333', fontSize: 11, marginTop: 28, letterSpacing: '0.05em' }}>
-          Einmalige Aufnahmegebühr: 20,00€ (Transponder-Armband) · Monatlich kündbar nach Laufzeitende
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
+          {plans.map((plan, i) => {
+            const hasPromo = plan.price.promo !== plan.price.reg
+            return (
+              <motion.div
+                key={plan.key}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                style={{
+                  position: 'relative',
+                  padding: 36,
+                  background: plan.featured ? 'linear-gradient(180deg, #1F1010 0%, #150A0A 100%)' : '#150A0A',
+                  border: plan.featured ? '1px solid #B8924A' : '1px solid rgba(184, 146, 74, 0.15)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                }}
+              >
+                {/* Top corner — Bonus badge */}
+                {p.bonus && plan.featured && (
+                  <div style={{ position: 'absolute', top: -1, right: -1, padding: '8px 14px', background: '#B8924A', color: '#0A0505' }}>
+                    <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', fontWeight: 700 }}>{p.bonus}</span>
+                  </div>
+                )}
+
+                {/* Tag */}
+                <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: plan.featured ? '#B8924A' : '#5A4030', marginBottom: 8, fontWeight: 600 }}>{plan.tag}</div>
+
+                {/* Plan name */}
+                <div className="font-display" style={{ fontSize: 28, fontWeight: 700, color: '#F5F0E8', textTransform: 'uppercase', marginBottom: 24, letterSpacing: '-0.01em' }}>{plan.name}</div>
+
+                {/* Price block */}
+                <div style={{ marginBottom: 32 }}>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+                    <span className="font-display" style={{ fontSize: 'clamp(2.5rem, 4vw, 3.5rem)', fontWeight: 800, color: plan.featured ? 'var(--accent-bright)' : '#F5F0E8', lineHeight: 1, letterSpacing: '-0.03em' }}>
+                      {plan.price.promo}€
+                    </span>
+                    <span className="font-condensed" style={{ fontSize: 12, color: '#9A8470', letterSpacing: '0.15em', textTransform: 'uppercase' }}>/ Woche</span>
+                  </div>
+                  <div style={{ fontSize: 12, color: '#6E5A48', marginTop: 8, lineHeight: 1.5 }}>
+                    {hasPromo ? (
+                      <>Erste 4 Monate · danach <span style={{ color: '#9A8470' }}>{plan.price.reg}€/Woche</span></>
+                    ) : (
+                      <>Konstanter Preis über {term} Monate</>
+                    )}
+                  </div>
+                </div>
+
+                {/* Features */}
+                <ul style={{ listStyle: 'none', padding: 0, marginBottom: 36, display: 'flex', flexDirection: 'column', gap: 14, flex: 1 }}>
+                  {plan.features.map(f => (
+                    <li key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, fontSize: 13, color: '#C9BFB3', lineHeight: 1.5 }}>
+                      <span style={{ color: '#B8924A', flexShrink: 0, marginTop: 1, fontWeight: 700 }}>+</span>{f}
+                    </li>
+                  ))}
+                </ul>
+
+                <MagneticButton
+                  href="https://www.fitness-club-fellbach.de/membership/memberships"
+                  target="_blank" rel="noopener noreferrer"
+                  variant={plan.featured ? 'lime' : 'outline'}
+                  className="w-full"
+                >
+                  <span>14 Tage testen</span><span>→</span>
+                </MagneticButton>
+              </motion.div>
+            )
+          })}
+        </div>
+
+        <p style={{ textAlign: 'center', color: '#5A4030', fontSize: 11, marginTop: 36, letterSpacing: '0.08em', lineHeight: 1.6 }}>
+          Einmalige Aufnahmegebühr: 20,00€ (Transponder-Armband) · 14 Tage Widerrufsrecht mit voller Erstattung · Kündigungsfrist 13 Wochen zum Laufzeitende
         </p>
       </div>
     </section>
@@ -555,9 +625,11 @@ export default function App() {
       <Nav />
       <Hero />
       <Marquee />
+      <StatementBanner />
       <div id="bereiche">
         <HorizontalBereiche />
       </div>
+      <BoxRingSpotlight />
       <Stats />
       <Gallery />
       <PromoBand />
