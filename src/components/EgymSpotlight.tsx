@@ -88,7 +88,7 @@ export default function EgymSpotlight() {
               alt="EGYM Smart Strength Geräte im Trainingsbereich"
               loading="lazy"
               decoding="async"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.05) saturate(0.95)' }}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.02) brightness(1.05) saturate(1.05)' }}
             />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(225deg, rgba(8,4,4,0.5) 0%, transparent 50%)' }} />
             <div style={{ position: 'absolute', top: 24, right: 24, padding: '8px 14px', background: 'rgba(8,4,4,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.4)' }}>

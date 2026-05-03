@@ -4,18 +4,18 @@ import './index.css'
 import Preloader from './components/Preloader'
 import CustomCursor from './components/CustomCursor'
 import MagneticButton from './components/MagneticButton'
-import HorizontalBereiche from './components/HorizontalBereiche'
 import LiveTicker from './components/LiveTicker'
 import Konfigurator from './components/Konfigurator'
 import GreekMeander from './components/GreekMeander'
 import SpartanMark from './components/SpartanMark'
 import WhatsAppFab from './components/WhatsAppFab'
 import StatementBanner from './components/StatementBanner'
-import BoxRingSpotlight from './components/BoxRingSpotlight'
 import EgymSpotlight from './components/EgymSpotlight'
 import WellnessSpotlight from './components/WellnessSpotlight'
 import SpecialPrograms from './components/SpecialPrograms'
 import AddonsBand from './components/AddonsBand'
+import TrainingsflaecheSpotlight from './components/TrainingsflaecheSpotlight'
+import KurseGrid from './components/KurseGrid'
 
 
 const GALLERY = [
@@ -129,9 +129,9 @@ function Nav() {
 }
 
 function Hero() {
-  const heroImg = '/images/real-boxring-1-md.webp'
-  const heroImgSm = '/images/real-boxring-1-sm.webp'
-  const sideImg = '/images/real-trainingsbereich-md.webp'
+  const heroImg = '/images/real-trainingsbereich-md.webp'
+  const heroImgSm = '/images/real-trainingsbereich-sm.webp'
+  const sideImg = '/images/real-cardio-md.webp'
   return (
     <section data-hero style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden', background: '#0A0505' }}>
       {/* Full-bleed gym photograph — sharp, no filters */}
@@ -144,16 +144,16 @@ function Hero() {
           src={heroImg}
           srcSet={`${heroImgSm} 800w, ${heroImg} 1600w`}
           sizes="100vw"
-          alt="Boxring im Fitness Club Fellbach"
+          alt="Trainingsbereich im Fitness Club Fellbach"
           fetchPriority="high"
           decoding="async"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 35%', filter: 'contrast(1.05) saturate(0.95)' }}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 50%', filter: 'contrast(1.02) brightness(0.95) saturate(1.05)' }}
         />
       </motion.div>
 
       {/* Gradient — left dark for type, right reveal */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(95deg, rgba(8,4,4,0.96) 0%, rgba(8,4,4,0.85) 35%, rgba(8,4,4,0.45) 65%, rgba(8,4,4,0.2) 100%)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(180deg, rgba(8,4,4,0.7) 0%, transparent 22%, transparent 65%, rgba(8,4,4,0.95) 100%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(95deg, rgba(8,4,4,0.92) 0%, rgba(8,4,4,0.7) 40%, rgba(8,4,4,0.25) 70%, rgba(8,4,4,0.1) 100%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(180deg, rgba(8,4,4,0.55) 0%, transparent 25%, transparent 70%, rgba(8,4,4,0.92) 100%)', pointerEvents: 'none' }} />
 
       {/* Greek meander, larger + brighter behind the right side */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 3, pointerEvents: 'none' }}>
@@ -194,7 +194,7 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 2.35 }}
             style={{ color: '#C9BFB3', fontSize: 'clamp(1.05rem, 1.4vw, 1.25rem)', lineHeight: 1.55, marginBottom: 44, maxWidth: 520, fontWeight: 400 }}>
-            Box-Ring, Cardio, Kraft, Kurse, Sauna, Pool. <span style={{ color: '#F5F0E8' }}>Alles unter einem Dach</span> — mitten in Fellbach, 24 Stunden am Tag.
+            Trainingsfläche, EGYM Smart Strength, 30+ Kurse, Wellness mit Sauna & Pool. <span style={{ color: '#F5F0E8' }}>Alles unter einem Dach</span> — mitten in Fellbach, 24 Stunden am Tag.
           </motion.p>
 
           <motion.div
@@ -233,11 +233,11 @@ function Hero() {
           style={{ position: 'relative', aspectRatio: '3/4', maxHeight: '60vh', alignSelf: 'center', justifySelf: 'end', width: '100%', maxWidth: 380 }}>
           <div style={{ position: 'absolute', inset: -2, border: '1px solid #B8924A', transform: 'translate(12px, 12px)', pointerEvents: 'none' }} />
           <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', boxShadow: '0 40px 80px -20px rgba(0,0,0,0.8)' }}>
-            <img src={sideImg} alt="Athlet beim Krafttraining" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.05) saturate(0.95)' }} />
+            <img src={sideImg} alt="Athlet beim Krafttraining" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.02) brightness(1.05) saturate(1.05)' }} />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 60%, rgba(8,4,4,0.85) 100%)' }} />
             <div style={{ position: 'absolute', left: 20, bottom: 20, right: 20 }}>
-              <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: '#B8924A', marginBottom: 6 }}>01 — Trainingsbereich</div>
-              <div className="font-display" style={{ fontSize: 18, fontWeight: 700, color: '#F5F0E8', letterSpacing: '-0.01em' }}>Stärke unter Kontrolle</div>
+              <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: '#B8924A', marginBottom: 6 }}>Cardio · 24/7</div>
+              <div className="font-display" style={{ fontSize: 18, fontWeight: 700, color: '#F5F0E8', letterSpacing: '-0.01em' }}>Wenn's passt für dich</div>
             </div>
           </div>
         </motion.div>
@@ -332,7 +332,7 @@ function Gallery() {
               alt={item.label}
               loading="lazy"
               decoding="async"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.05)', transition: 'transform 0.6s ease' }}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.02) brightness(1.05) saturate(1.05)', transition: 'transform 0.6s ease' }}
               onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
               onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
             />
@@ -665,14 +665,14 @@ export default function App() {
       <Marquee />
       <StatementBanner />
       <div id="bereiche">
-        <HorizontalBereiche />
+        <TrainingsflaecheSpotlight />
       </div>
-      <BoxRingSpotlight />
       <EgymSpotlight />
-      <SpecialPrograms />
+      <KurseGrid />
       <WellnessSpotlight />
       <Stats />
       <Gallery />
+      <SpecialPrograms />
       <AddonsBand />
       <PromoBand />
       <div id="konfigurator">

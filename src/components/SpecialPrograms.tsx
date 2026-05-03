@@ -2,21 +2,6 @@ import { motion } from 'framer-motion'
 
 const programs = [
   {
-    img: 'real-boxen-kurs',
-    label: 'Boxen',
-    price: '69€ / Monat',
-    headline: 'Mit zertifizierten Boxexperten',
-    text: 'Schlagtechnik, Fußarbeit, Verteidigung. Anfänger bis Fortgeschrittene. Jede Trainingseinheit fordert dich neu.',
-  },
-  {
-    img: 'real-exercube',
-    label: 'Gaming Exercube',
-    price: '5,99€ / Woche',
-    headline: 'VR-Fitness im Studio',
-    text: 'Tauche in virtuelle Abenteuer ein, während du trainierst. Effizientestes Training unserer Zeit — Kalorien verbrennen während du spielst.',
-    tag: 'NEU',
-  },
-  {
     img: 'real-personal-training',
     label: 'Personal Training',
     price: 'Auf Anfrage',
@@ -29,6 +14,21 @@ const programs = [
     price: 'Add-On',
     headline: 'Beweglichkeit & Rücken',
     text: 'Verletzungen vorbeugen, Rückenbeschwerden lindern, Wohlbefinden steigern. Erfahrene Experten betreuen dich Schritt für Schritt.',
+  },
+  {
+    img: 'real-exercube',
+    label: 'Gaming Exercube',
+    price: '5,99€ / Woche',
+    headline: 'VR-Fitness im Studio',
+    text: 'Tauche in virtuelle Abenteuer ein, während du trainierst. Effizientestes Training unserer Zeit — Kalorien verbrennen während du spielst.',
+    tag: 'NEU',
+  },
+  {
+    img: 'real-boxen-kurs',
+    label: 'Boxen',
+    price: '69€ / Monat',
+    headline: 'Box-Kurs mit Experten',
+    text: 'Schlagtechnik, Fußarbeit, Verteidigung. Anfänger bis Fortgeschrittene. Jede Trainingseinheit fordert dich neu.',
   },
 ]
 
@@ -55,7 +55,7 @@ export default function SpecialPrograms() {
             Mehr als nur <span style={{ fontStyle: 'italic', color: 'var(--accent-bright)' }}>Geräte.</span>
           </h2>
           <p style={{ color: '#B5A99A', fontSize: 'clamp(1rem, 1.3vw, 1.15rem)', lineHeight: 1.65, maxWidth: 580 }}>
-            Box-Kurs, VR-Fitness, 1-zu-1 Personal Training, Präventionskurse — Programme die du in keinem anderen Studio in Fellbach findest.
+            Über das normale Training hinaus — 1-zu-1 Personal Training, Präventionskurse, VR-Fitness und Box-Kurs.
           </p>
         </div>
 
@@ -78,7 +78,7 @@ export default function SpecialPrograms() {
                   alt={p.label}
                   loading="lazy"
                   decoding="async"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.05) saturate(0.95)', transition: 'transform 0.7s ease' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.02) brightness(1.05) saturate(1.05)', transition: 'transform 0.7s ease' }}
                   onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
                   onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
                 />

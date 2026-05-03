@@ -53,7 +53,7 @@ export default function WellnessSpotlight() {
                 alt={it.label}
                 loading="lazy"
                 decoding="async"
-                style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.05) saturate(0.95)' }}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.02) brightness(1.05) saturate(1.05)' }}
               />
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(8,4,4,0.3) 0%, transparent 35%, transparent 55%, rgba(8,4,4,0.92) 100%)' }} />
               {/* Number tag top-left */}
