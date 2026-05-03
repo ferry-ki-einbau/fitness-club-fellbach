@@ -15,7 +15,6 @@ import AddonsBand from './components/AddonsBand'
 import TrainingsflaecheSpotlight from './components/TrainingsflaecheSpotlight'
 import KurseGrid from './components/KurseGrid'
 import WelcomeIntro from './components/WelcomeIntro'
-import PlanFinder from './components/PlanFinder'
 import TrainerSection from './components/TrainerSection'
 import StudioTour from './components/StudioTour'
 import PhysioBridge from './components/PhysioBridge'
@@ -777,7 +776,6 @@ export default function App() {
         variant="light"
         bg="#F5F0E8"
       />
-      <PlanFinder />
       <PromoBand />
       <Pricing />
       <Testimonials />
