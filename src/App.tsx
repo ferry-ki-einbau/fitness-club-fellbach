@@ -25,7 +25,6 @@ import MagneticNavLink from './components/MagneticNav'
 import ZielRechner from './components/ZielRechner'
 import TrainingsplanSection from './components/TrainingsplanSection'
 import TageszeitenSection from './components/TageszeitenSection'
-import StickyCTA from './components/StickyCTA'
 
 
 const GALLERY = [
@@ -996,8 +995,6 @@ export default function App() {
       <FAQ />
       <Contact />
       <Footer />
-
-      <StickyCTA />
 
       {/* Mobile Sticky Call Bar */}
       <div className="md:hidden" style={{
