@@ -13,9 +13,9 @@ export default function Preloader() {
   const [stage, setStage] = useState(0)
 
   useEffect(() => {
-    const t1 = setTimeout(() => setStage(1), 800)
-    const t2 = setTimeout(() => setStage(2), 1700)
-    const t3 = setTimeout(() => setVisible(false), 2700)
+    const t1 = setTimeout(() => setStage(1), 400)
+    const t2 = setTimeout(() => setStage(2), 900)
+    const t3 = setTimeout(() => setVisible(false), 1500)
     return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3) }
   }, [])
 

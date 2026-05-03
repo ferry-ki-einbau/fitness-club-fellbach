@@ -172,7 +172,7 @@ function Hero() {
       <motion.div
         initial={{ scale: 1.06, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 2.2, delay: 1.9, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 2.2, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
         style={{ position: 'absolute', inset: -20, zIndex: 1 }}>
         <img
           src={heroImg}
@@ -203,7 +203,7 @@ function Hero() {
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 2.0 }}
+        transition={{ duration: 0.6, delay: 1.2 }}
         style={{ position: 'absolute', top: 100, left: '50%', transform: 'translateX(-50%)', zIndex: 11, display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center' }}
       >
         <div style={{ padding: '8px 16px', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(12px)', border: '1px solid rgba(184, 146, 74, 0.4)', display: 'flex', alignItems: 'center', gap: 8, borderRadius: 999 }}>
@@ -227,7 +227,7 @@ function Hero() {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 2.15 }}
+            transition={{ duration: 0.8, delay: 1.25 }}
             style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 }}>
             <span style={{ width: 48, height: 1, background: '#B8924A' }} />
             <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.55em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>Bruckstraße 61 · Fellbach</span>
@@ -236,7 +236,7 @@ function Hero() {
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 2.25, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1, delay: 1.35, ease: [0.16, 1, 0.3, 1] }}
             className="font-display"
             style={{ fontSize: 'clamp(2.8rem, 9vw, 7.5rem)', fontWeight: 800, lineHeight: 0.95, letterSpacing: '-0.03em', margin: '0 0 28px', color: '#F5F0E8', textTransform: 'uppercase' }}>
             Kein Discounter.<br />
@@ -246,7 +246,7 @@ function Hero() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 2.4 }}
+            transition={{ duration: 0.8, delay: 1.45 }}
             style={{ color: '#F0E5D5', fontSize: 'clamp(1rem, 1.3vw, 1.2rem)', lineHeight: 1.8, marginBottom: 44, maxWidth: 520, fontWeight: 400, textShadow: '0 1px 2px rgba(0,0,0,0.4)' }}>
             1.500m² · EGYM · Box-Ring · Sauna · Whirlpool · 30+ Kurse pro Woche.<br />
             <span style={{ color: '#FFFFFF', fontWeight: 600 }}>24h offen. 7 Tage. 365 Tage.</span> Ab <span style={{ color: '#FFFFFF', fontWeight: 600 }}>13,99€/Woche</span> — inkl. persönlichem Trainingsplan.
@@ -255,7 +255,7 @@ function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 2.55 }}
+            transition={{ duration: 0.8, delay: 1.55 }}
             className="hero-cta-group"
             style={{ display: 'flex', flexWrap: 'wrap', gap: 14, marginBottom: 56 }}>
             <MagneticButton href="#preise" variant="lime">
@@ -284,7 +284,7 @@ function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 2.6, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 1.2, delay: 1.6, ease: [0.16, 1, 0.3, 1] }}
           className="hero-mosaic"
           style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12, alignSelf: 'center' }}
         >
@@ -294,7 +294,7 @@ function Hero() {
               href="#tour"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, delay: 2.7 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.7, delay: 1.7 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
               whileHover={{ scale: 1.03 }}
               style={{ position: 'relative', aspectRatio: '1/1', overflow: 'hidden', cursor: 'pointer', textDecoration: 'none', display: 'block', boxShadow: '0 12px 32px -8px rgba(0,0,0,0.5)' }}
             >
@@ -803,6 +803,25 @@ function Contact() {
           </MagneticButton>
         </div>
       </div>
+
+      {/* Google Maps */}
+      <div style={{ position: 'relative', height: 300, overflow: 'hidden', borderTop: '1px solid var(--gray-border)' }}>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.6!2d9.2767!3d48.8088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4799d9b8d7c3d4a9%3A0x1234!2sBruckstra%C3%9Fe+61%2C+70736+Fellbach!5e0!3m2!1sde!2sde!4v1700000000000!5m2!1sde!2sde&q=Bruckstraße+61+Fellbach"
+          width="100%" height="100%"
+          style={{ border: 'none', display: 'block', filter: 'invert(90%) hue-rotate(180deg) contrast(0.85) brightness(0.9)' }}
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title="Fitness Club Fellbach Standort"
+        />
+        <div style={{ position: 'absolute', bottom: 20, left: '50%', transform: 'translateX(-50%)', zIndex: 2 }}>
+          <a href="https://maps.google.com/?q=Bruckstraße+61+Fellbach" target="_blank" rel="noopener noreferrer"
+            className="btn-lime" style={{ padding: '12px 24px', fontSize: 11, display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            <span>Route starten</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          </a>
+        </div>
+      </div>
     </section>
   )
 }
@@ -832,8 +851,8 @@ function Footer() {
             <Logo size="md" variant="light" />
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24 }}>
-            {[['Datenschutz', 'https://www.fitness-club-fellbach.de/datenschutz'], ['Impressum', 'https://www.fitness-club-fellbach.de/impressum'], ['Kündigung', 'https://www.fitness-club-fellbach.de/kundigung'], ['Karriere', 'https://www.fitness-club-fellbach.de/karriere']].map(([l, h]) => (
-              <a key={l} href={h} target="_blank" rel="noopener noreferrer"
+            {[['Datenschutz', '/datenschutz'], ['Impressum', '/impressum'], ['Kündigung', '/kuendigung'], ['Karriere', '/karriere']].map(([l, h]) => (
+              <a key={l} href={h}
                  style={{ fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#9A8470', textDecoration: 'none' }}>
                 {l}
               </a>
