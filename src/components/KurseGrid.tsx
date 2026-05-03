@@ -8,7 +8,7 @@ const kurse = [
   { name: 'Rückenfit', desc: 'Rückenmuskulatur stärken, Schmerzen lindern', cat: 'Prävention', color: '#9A8470' },
   { name: 'BodyCombat', desc: 'Kampfsport-inspiriertes Cardio-Training', cat: 'Les Mills', color: '#E15464' },
   { name: 'Spinning', desc: 'Indoor-Cycling mit Musik & Trainer', cat: 'Cardio', color: '#C44552' },
-  { name: 'Functional', desc: 'Kettlebells, Battle Ropes, Bewegungsmuster', cat: 'Strength', color: '#8E2A35' },
+  { name: 'Functional', desc: 'Mobility Raum · Beweglichkeit & Körperkontrolle', cat: 'Strength', color: '#8E2A35' },
   { name: 'Stretching', desc: 'Mobility & Regeneration nach dem Training', cat: 'Recovery', color: '#9A8470' },
 ]
 

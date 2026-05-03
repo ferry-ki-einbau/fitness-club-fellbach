@@ -683,15 +683,27 @@ function KursplanWidget() {
             </div>
           </div>
           {/* Live iframe — überlagert Fallback wenn geladen */}
-          <iframe
-            src="https://courseplan.noexcuse.io/?origin=https%3A%2F%2Fwww.fitness-club-fellbach.de&id=Zml0bmVzcy1jbHViLWZlbGxiYWNoOjEyMTAwMTEzOTA%253D&disableEmployeeExpertises=true&height=auto&baseHost=mysports.com"
-            width="100%"
-            height="700"
-            frameBorder="0"
-            title="Kursplan Fitness Club Fellbach"
-            style={{ display: 'block', border: 'none', position: 'relative', zIndex: 1, background: 'transparent' }}
-            loading="lazy"
-          />
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <iframe
+              src="https://courseplan.noexcuse.io/?origin=https%3A%2F%2Fwww.fitness-club-fellbach.de&id=Zml0bmVzcy1jbHViLWZlbGxiYWNoOjEyMTAwMTEzOTA%253D&disableEmployeeExpertises=true&height=auto&baseHost=mysports.com"
+              width="100%"
+              height="750"
+              frameBorder="0"
+              title="Kursplan Fitness Club Fellbach"
+              style={{ display: 'block', border: 'none', marginTop: -52 }}
+              loading="lazy"
+            />
+            {/* Dropdown-Maske — blendet Standort-Auswahl aus */}
+            <div style={{
+              position: 'absolute', top: 0, left: 0, right: 0, height: 52,
+              background: '#ffffff', zIndex: 2, pointerEvents: 'none',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+            }}>
+              <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#9A8878', fontWeight: 600 }}>
+                Fitness Club Fellbach
+              </span>
+            </div>
+          </div>
         </div>
         <p style={{ fontSize: 11, color: '#5A6770', marginTop: 12, letterSpacing: '0.05em', maxWidth: 'none' }}>
           Kursplan wird live geladen — immer aktuell, keine Pflege nötig.
