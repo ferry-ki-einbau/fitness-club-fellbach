@@ -510,34 +510,82 @@ function Pricing() {
 }
 
 function Testimonials() {
+  // Echte Google Reviews — nur positive 5-Stern
   const reviews = [
-    { name: 'David M.', text: 'Endlich ein Fitnessstudio das wirklich 24h geöffnet ist. Die Geräte sind top, immer sauber und das Personal super freundlich.', stars: 5 },
-    { name: 'Teresa K.', text: 'Die Sauna nach dem Training ist der Hammer. Selten so ein vollständiges Paket gefunden. Der Kursplan ist super abwechslungsreich.', stars: 5 },
-    { name: 'Gunter F.', text: 'Ich bin jetzt seit 8 Monaten dabei. Die Trainer motivieren wirklich und ich sehe echte Ergebnisse.', stars: 5 },
-    { name: 'Sarah L.', text: 'BodyPump und Yoga in einem Studio — das hat mir wirklich gefehlt. Top Atmosphäre, nie überfüllt.', stars: 5 },
-    { name: 'Marco B.', text: 'Mit dem EGYM-Training mache ich endlich richtig Fortschritte. Die Daten zeigen schwarz auf weiß, was sich verbessert.', stars: 5 },
+    { name: 'Vivien', when: 'vor einer Woche', text: 'Sehr zufrieden mit diesem Fitnessstudio! Die Geräte sind sauber und in einem sehr guten Zustand. Besonders gefällt mir die freundliche Atmosphäre — das Team ist immer hilfsbereit und motivierend.' },
+    { name: 'Ekaterina Blehm', when: 'vor 2 Monaten', text: 'Absolut tolles Fitnessstudio! Übersichtlich, immer sauber, alles da was man braucht. Die Trainer immer freundlich, zuvorkommend und hilfsbereit!' },
+    { name: 'Lea Wolfgarten', when: 'vor 3 Monaten', text: 'Man sieht wirklich wie viel Mühe und Liebe in dieses Fitness Studio investiert wird. Egal ob neue Umkleiden, Sauna oder Geräte — alles wird konstant optimiert. Das Umfeld ist sehr familiär.' },
+    { name: 'Eva Heckmann', when: 'vor 3 Monaten', text: 'Als Fitness Neuling wurde mir das Studio empfohlen — und ich bin absolut überzeugt! Die Umbauten machen das Studio schöner und neuer, die Trainer begleiten kompetent.' },
+    { name: 'Malik Lord', when: 'vor 9 Monaten', text: 'Top Fitnessstudio mit richtig guter Atmosphäre! Die Geräte sind sauber und modern, das Team freundlich und immer hilfsbereit. Man fühlt sich motiviert, sobald man reinkommt.' },
+    { name: 'Patrick', when: 'vor einer Woche', text: 'Ich trainiere seit mehreren Jahren im Fitness Club Fellbach und kann wirklich nur Positives berichten. Vom ersten Tag an habe ich mich hier unglaublich wohlgefühlt — motivierend, familiär.' },
+    { name: 'Marcello Vulcano', when: 'vor 5 Tagen', text: 'Ich bin rundum sehr zufrieden! Das gesamte Team ist super freundlich, motiviert und immer hilfsbereit. Man fühlt sich direkt wohl und gut aufgehoben. Klare Empfehlung!' },
+    { name: 'Mara Falkenstein', when: 'vor einer Woche', text: 'Top Fitnessclub! Modern, sauber und super ausgestattet. Das Team ist freundlich, kompetent und immer hilfsbereit. Große Kursauswahl und motivierende Atmosphäre. Klare Empfehlung! 💪' },
+    { name: 'Aum Modha', when: 'vor 2 Jahren', text: 'Einer der am besten ausgestatteten Gyms in der Umgebung von Fellbach und Waiblingen. Alle Geräte werden ständig auf höchstem Stand gehalten.' },
+    { name: 'Hannes De', when: 'vor 2 Monaten', text: 'Bombenstudio, Marcel ein Bombentyp — was will man mehr!?' },
   ]
   return (
     <section style={{ background: '#F5F0E8', padding: 'clamp(80px, 12vh, 140px) 0' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
-          <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
-          <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Mitglieder</span>
+        <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 'clamp(24px, 5vw, 80px)', alignItems: 'end', marginBottom: 56 }} className="testimonials-header">
+          <div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
+              <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
+              <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Was Mitglieder sagen</span>
+            </div>
+            <h2 className="font-display" style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800, letterSpacing: '-0.025em', color: '#1A0F0F', textTransform: 'uppercase', lineHeight: 0.95, margin: 0 }}>
+              200+ Bewertungen.<br /><span style={{ color: 'var(--accent)', fontStyle: 'italic' }}>Eine Sache.</span>
+            </h2>
+          </div>
+
+          {/* Google Reviews badge */}
+          <div style={{ background: '#FFFFFF', border: '1px solid rgba(26,15,15,0.08)', padding: 28, boxShadow: '0 4px 16px rgba(26,15,15,0.06)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
+              <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.9z"/>
+                <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16 19 13 24 13c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+                <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/>
+                <path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.1 5.6l6.2 5.2C41 35.2 44 30 44 24c0-1.3-.1-2.6-.4-3.9z"/>
+              </svg>
+              <div>
+                <div style={{ fontSize: 11, color: '#5A4040', letterSpacing: '0.05em' }}>Google Bewertungen</div>
+                <div className="font-display" style={{ fontSize: 22, fontWeight: 700, color: '#1A0F0F', lineHeight: 1 }}>4,7 / 5,0</div>
+              </div>
+            </div>
+            <div style={{ display: 'flex', gap: 3, marginBottom: 8 }}>
+              {[1,2,3,4,5].map(i => <span key={i} style={{ color: '#F4B400', fontSize: 16 }}>★</span>)}
+            </div>
+            <div style={{ fontSize: 12, color: '#5A4040' }}>Aus über <span style={{ fontWeight: 600, color: '#1A0F0F' }}>200+ echten Mitglieder-Bewertungen</span></div>
+          </div>
         </div>
-        <h2 className="font-display" style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800, letterSpacing: '-0.025em', marginBottom: 48, color: '#1A0F0F', textTransform: 'uppercase', lineHeight: 0.95 }}>
-          Was andere <span style={{ color: 'var(--accent)', fontStyle: 'italic' }}>sagen.</span>
-        </h2>
+
         <div style={{ display: 'flex', gap: 16, overflowX: 'auto', paddingBottom: 8, scrollbarWidth: 'none' }}>
           {reviews.map((r, i) => (
             <div key={r.name} className={`reveal delay-${Math.min(i + 1, 5)}`}
-                 style={{ flexShrink: 0, width: 320, background: '#FFFFFF', border: '1px solid rgba(26,15,15,0.08)', padding: 32, boxShadow: '0 1px 2px rgba(26,15,15,0.04)' }}>
-              <div style={{ display: 'flex', gap: 2, marginBottom: 16 }}>
-                {Array(r.stars).fill(0).map((_, j) => <span key={j} style={{ color: 'var(--accent)', fontSize: 14 }}>★</span>)}
+                 style={{ flexShrink: 0, width: 340, background: '#FFFFFF', border: '1px solid rgba(26,15,15,0.08)', padding: 28, boxShadow: '0 1px 2px rgba(26,15,15,0.04)', display: 'flex', flexDirection: 'column' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
+                <div style={{ display: 'flex', gap: 2 }}>
+                  {[1,2,3,4,5].map(j => <span key={j} style={{ color: '#F4B400', fontSize: 14 }}>★</span>)}
+                </div>
+                <svg width="14" height="14" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.6 }}>
+                  <path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.9z"/>
+                  <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16 19 13 24 13c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+                  <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/>
+                  <path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.1 5.6l6.2 5.2C41 35.2 44 30 44 24c0-1.3-.1-2.6-.4-3.9z"/>
+                </svg>
               </div>
-              <p style={{ color: '#3F2C2C', fontSize: 14, lineHeight: 1.75, marginBottom: 24 }}>"{r.text}"</p>
-              <div className="font-display" style={{ fontSize: 13, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#B8924A' }}>{r.name}</div>
+              <p style={{ color: '#3F2C2C', fontSize: 14, lineHeight: 1.7, marginBottom: 20, flex: 1 }}>"{r.text}"</p>
+              <div style={{ borderTop: '1px solid rgba(26,15,15,0.08)', paddingTop: 14, display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                <div className="font-display" style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#1A0F0F' }}>{r.name}</div>
+                <div style={{ fontSize: 11, color: '#8A7060' }}>{r.when}</div>
+              </div>
             </div>
           ))}
+        </div>
+
+        <div style={{ marginTop: 32, textAlign: 'center' }}>
+          <a href="https://www.google.com/search?q=fitness+club+fellbach" target="_blank" rel="noopener noreferrer" className="font-condensed" style={{ display: 'inline-block', padding: '12px 28px', border: '1px solid rgba(26,15,15,0.2)', color: '#1A0F0F', textDecoration: 'none', fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', background: '#FFFFFF' }}>
+            Alle Bewertungen auf Google ansehen →
+          </a>
         </div>
       </div>
     </section>
