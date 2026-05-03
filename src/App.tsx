@@ -23,7 +23,6 @@ import MouseSpotlight from './components/MouseSpotlight'
 import BigStats from './components/BigStats'
 import MagneticNavLink from './components/MagneticNav'
 import ZielRechner from './components/ZielRechner'
-import KursplanKalender from './components/KursplanKalender'
 import TrainingsplanSection from './components/TrainingsplanSection'
 
 
@@ -640,6 +639,39 @@ function Testimonials() {
   )
 }
 
+function KursplanWidget() {
+  return (
+    <section style={{ background: 'linear-gradient(180deg, #0F1419 0%, #111820 100%)', padding: 'clamp(64px, 10vh, 100px) clamp(16px, 4vw, 80px)' }}>
+      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+          <span style={{ width: 32, height: 1, background: '#C44552' }} />
+          <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#C44552', fontWeight: 600 }}>Kursprogramm</span>
+        </div>
+        <h2 className="font-display" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 800, textTransform: 'uppercase', color: '#F5F0E8', lineHeight: 1, marginBottom: 8, letterSpacing: '-0.025em' }}>
+          Dein Wochenplan.
+        </h2>
+        <p style={{ color: '#9A8878', fontSize: 14, marginBottom: 40, maxWidth: 'none' }}>
+          Alle Kurse inkl. im Mitgliedsbeitrag — Platz reservieren über die <span style={{ color: '#F5F0E8', fontWeight: 600 }}>MySports App</span>.
+        </p>
+        <div style={{ background: '#fff', borderRadius: 4, overflow: 'hidden', minHeight: 500 }}>
+          <iframe
+            src="https://courseplan.noexcuse.io/?origin=https%3A%2F%2Fwww.fitness-club-fellbach.de&id=Zml0bmVzcy1jbHViLWZlbGxiYWNoOjEyMTAwMTEzOTA%253D&disableEmployeeExpertises=true&height=auto&baseHost=mysports.com"
+            width="100%"
+            height="700"
+            frameBorder="0"
+            title="Kursplan Fitness Club Fellbach"
+            style={{ display: 'block', border: 'none' }}
+            loading="lazy"
+          />
+        </div>
+        <p style={{ fontSize: 11, color: '#5A6770', marginTop: 16, letterSpacing: '0.05em', maxWidth: 'none' }}>
+          Kursplan wird live vom Buchungssystem geladen — immer aktuell.
+        </p>
+      </div>
+    </section>
+  )
+}
+
 function FAQ() {
   const [open, setOpen] = useState<number | null>(null)
   const items = [
@@ -802,7 +834,7 @@ export default function App() {
       <BigStats />
       <ZielRechner />
       <Gallery />
-      <KursplanKalender />
+      <KursplanWidget />
       <TrainerSection />
       <SpecialPrograms />
       <AddonsBand />
