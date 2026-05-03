@@ -148,6 +148,18 @@ function Nav() {
 
 function Hero() {
   const heroImg = '/images/real-trainingsbereich-md.webp'
+  const heroImgSm = '/images/real-trainingsbereich-sm.webp'
+  const [parallax, setParallax] = useState({ x: 0, y: 0 })
+  useEffect(() => {
+    if (window.matchMedia('(hover: none)').matches) return
+    const onMove = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 12
+      const y = (e.clientY / window.innerHeight - 0.5) * 8
+      setParallax({ x, y })
+    }
+    window.addEventListener('mousemove', onMove)
+    return () => window.removeEventListener('mousemove', onMove)
+  }, [])
   const tiles = [
     { src: '/images/real-cardio-sm.webp', label: 'Cardio' },
     { src: '/images/real-wellness-area-sm.webp', label: 'Sauna' },
@@ -156,24 +168,26 @@ function Hero() {
   ]
   return (
     <section data-hero style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden', background: '#0F1419' }}>
-      {/* Hero Video — Kling generated, loop */}
+      {/* Full-bleed photo with cursor parallax */}
       <motion.div
         initial={{ scale: 1.06, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1.8, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
-        style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
-        <video
-          autoPlay muted loop playsInline
-          poster={heroImg}
+        transition={{ duration: 2.2, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
+        style={{ position: 'absolute', inset: -20, zIndex: 1 }}>
+        <img
+          src={heroImg}
+          srcSet={`${heroImgSm} 800w, ${heroImg} 1600w`}
+          sizes="100vw"
+          alt="Fitness Club Fellbach Trainingsbereich"
+          fetchPriority="high"
+          decoding="async"
           style={{
-            width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%',
-            filter: 'contrast(1.05) brightness(0.95) saturate(1.1)',
+            width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 45%',
+            filter: 'contrast(1.02) brightness(1) saturate(1.05)',
+            transform: `translate(${parallax.x}px, ${parallax.y}px) scale(1.04)`,
+            transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
           }}
-        >
-          <source src="/videos/hero.mp4" type="video/mp4" />
-          {/* Fallback Foto */}
-          <img src={heroImg} alt="Fitness Club Fellbach" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-        </video>
+        />
       </motion.div>
 
       {/* Smoother gradient — readable text but image bright */}
