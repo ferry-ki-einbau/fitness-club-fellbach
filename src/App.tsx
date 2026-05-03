@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, lazy, Suspense } from 'react'
 import { motion } from 'framer-motion'
 import './index.css'
 import Preloader from './components/Preloader'
@@ -9,25 +9,27 @@ import Logo from './components/Logo'
 import StatementBanner from './components/StatementBanner'
 import EgymSpotlight from './components/EgymSpotlight'
 import WellnessSpotlight from './components/WellnessSpotlight'
-import SpecialPrograms from './components/SpecialPrograms'
 import AddonsBand from './components/AddonsBand'
 import TrainingsflaecheSpotlight from './components/TrainingsflaecheSpotlight'
 import KurseGrid from './components/KurseGrid'
 import WelcomeIntro from './components/WelcomeIntro'
 import TrainerSection from './components/TrainerSection'
 import StudioTour from './components/StudioTour'
-import PhysioBridge from './components/PhysioBridge'
 import ScrollProgress from './components/ScrollProgress'
 import PullQuote from './components/PullQuote'
 import MouseSpotlight from './components/MouseSpotlight'
 import BigStats from './components/BigStats'
 import MagneticNavLink from './components/MagneticNav'
-import ZielRechner from './components/ZielRechner'
-import TrainingsplanSection from './components/TrainingsplanSection'
-import TageszeitenSection from './components/TageszeitenSection'
 import ScrambleHeadline from './components/ScrambleHeadline'
 import TiltCard from './components/TiltCard'
-import CommunityWall from './components/CommunityWall'
+
+// Lazy-loaded — erst laden wenn gebraucht
+const ZielRechner = lazy(() => import('./components/ZielRechner'))
+const TrainingsplanSection = lazy(() => import('./components/TrainingsplanSection'))
+const TageszeitenSection = lazy(() => import('./components/TageszeitenSection'))
+const CommunityWall = lazy(() => import('./components/CommunityWall'))
+const SpecialPrograms = lazy(() => import('./components/SpecialPrograms'))
+const PhysioBridge = lazy(() => import('./components/PhysioBridge'))
 
 
 const GALLERY = [
@@ -264,7 +266,7 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.45 }}
             style={{ color: '#F0E5D5', fontSize: 'clamp(1rem, 1.3vw, 1.2rem)', lineHeight: 1.8, marginBottom: 44, maxWidth: 520, fontWeight: 400, textShadow: '0 1px 2px rgba(0,0,0,0.4)' }}>
-            1.500m² · EGYM · Box-Ring · Sauna · Whirlpool · 30+ Kurse pro Woche.<br />
+            1.500m² · EGYM · Box-Ring · Sauna · Whirlpool · 30+ Kurse/Woche.<br />
             <span style={{ color: '#FFFFFF', fontWeight: 600 }}>24h offen. 7 Tage. 365 Tage.</span> Ab <span style={{ color: '#FFFFFF', fontWeight: 600 }}>13,99€/Woche</span> — inkl. persönlichem Trainingsplan.
           </motion.p>
 
@@ -977,13 +979,19 @@ export default function App() {
         highlight="kein Mensch"
         variant="dark"
       />
-      <TageszeitenSection />
+      <Suspense fallback={null}>
+        <TageszeitenSection />
+      </Suspense>
       <BigStats />
-      <ZielRechner />
+      <Suspense fallback={null}>
+        <ZielRechner />
+      </Suspense>
       <Gallery />
       <KursplanWidget />
       <TrainerSection />
-      <SpecialPrograms />
+      <Suspense fallback={null}>
+        <SpecialPrograms />
+      </Suspense>
       <AddonsBand />
       <PullQuote
         before="500+ Mitglieder · Fellbach"
@@ -994,9 +1002,13 @@ export default function App() {
       />
       <PromoBand />
       <Pricing />
-      <TrainingsplanSection />
+      <Suspense fallback={null}>
+        <TrainingsplanSection />
+      </Suspense>
       <Testimonials />
-      <CommunityWall />
+      <Suspense fallback={null}>
+        <CommunityWall />
+      </Suspense>
       <PullQuote
         before="Bruckstraße 61"
         text="Eine Tür weiter — eine ganze Welt weiter."
@@ -1004,7 +1016,9 @@ export default function App() {
         after="Physio Zentrum Fellbach · vom selben Inhaber"
         variant="dark"
       />
-      <PhysioBridge />
+      <Suspense fallback={null}>
+        <PhysioBridge />
+      </Suspense>
       <FAQ />
       <Contact />
       <Footer />

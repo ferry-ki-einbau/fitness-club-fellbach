@@ -11,12 +11,16 @@ import { motion, AnimatePresence } from 'framer-motion'
 export default function Preloader() {
   const [visible, setVisible] = useState(true)
   const [stage, setStage] = useState(0)
+  const [showSkip, setShowSkip] = useState(false)
+
+  const skip = () => setVisible(false)
 
   useEffect(() => {
     const t1 = setTimeout(() => setStage(1), 400)
     const t2 = setTimeout(() => setStage(2), 900)
     const t3 = setTimeout(() => setVisible(false), 1500)
-    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3) }
+    const ts = setTimeout(() => setShowSkip(true), 600)
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); clearTimeout(ts) }
   }, [])
 
   return (
@@ -87,6 +91,15 @@ export default function Preloader() {
               </div>
             </motion.div>
           </div>
+
+          {/* Skip Button */}
+          {showSkip && (
+            <button onClick={skip} style={{ position: 'absolute', bottom: 28, right: 28, background: 'none', border: '1px solid rgba(245,240,232,0.15)', color: '#9A8878', fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', padding: '8px 16px', cursor: 'pointer', fontFamily: 'inherit', transition: 'color 0.2s, border-color 0.2s' }}
+              onMouseEnter={e => { e.currentTarget.style.color = '#F5F0E8'; e.currentTarget.style.borderColor = 'rgba(245,240,232,0.4)' }}
+              onMouseLeave={e => { e.currentTarget.style.color = '#9A8878'; e.currentTarget.style.borderColor = 'rgba(245,240,232,0.15)' }}>
+              Überspringen
+            </button>
+          )}
 
           {/* Burgund accent on left edge */}
           <motion.div
