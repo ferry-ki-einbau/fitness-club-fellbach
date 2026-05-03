@@ -13,7 +13,8 @@
   --gray-mid: #2A1717;
   --gray-border: #3A2020;
   --text: #F5F0E8;
-  --text-muted: #6E5050;
+  --text-muted: #B5A99A;
+  --text-dim: #9A8470;
   /* Legacy aliases (kept so older code keeps compiling) */
   --lime: var(--accent);
   --lime-dim: var(--accent-deep);

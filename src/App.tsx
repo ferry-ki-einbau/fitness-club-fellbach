@@ -92,7 +92,7 @@ function Nav() {
         <div className="hidden md:flex" style={{ gap: 32, alignItems: 'center' }}>
           {links.map(l => (
             <a key={l.href} href={l.href} className="font-condensed"
-               style={{ fontSize: 12, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#666', textDecoration: 'none', transition: 'color 0.2s' }}
+               style={{ fontSize: 12, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#B5A99A', textDecoration: 'none', transition: 'color 0.2s' }}
                onMouseEnter={e => (e.target as HTMLElement).style.color = '#fff'}
                onMouseLeave={e => (e.target as HTMLElement).style.color = '#666'}>
               {l.label}
@@ -112,7 +112,7 @@ function Nav() {
         <div style={{ background: 'var(--black)', borderTop: '1px solid var(--gray-border)', padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: 16 }}>
           {links.map(l => (
             <a key={l.href} href={l.href} className="font-condensed"
-               style={{ fontSize: 12, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#666', textDecoration: 'none' }}
+               style={{ fontSize: 12, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#B5A99A', textDecoration: 'none' }}
                onClick={() => setOpen(false)}>
               {l.label}
             </a>
@@ -258,7 +258,7 @@ function Marquee() {
       <div className="marquee-track">
         {doubled.map((item, i) => (
           <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 20, padding: '0 20px', whiteSpace: 'nowrap' }}>
-            <span className="font-condensed" style={{ fontSize: 12, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#444' }}>{item}</span>
+            <span className="font-condensed" style={{ fontSize: 12, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#9A8470' }}>{item}</span>
             <span style={{ color: 'var(--lime)', fontSize: 5 }}>◆</span>
           </div>
         ))}
@@ -529,7 +529,7 @@ function Testimonials() {
               <div style={{ display: 'flex', gap: 2, marginBottom: 16 }}>
                 {Array(r.stars).fill(0).map((_, j) => <span key={j} style={{ color: 'var(--lime)', fontSize: 13 }}>★</span>)}
               </div>
-              <p style={{ color: '#666', fontSize: 13, lineHeight: 1.75, marginBottom: 20 }}>"{r.text}"</p>
+              <p style={{ color: '#B5A99A', fontSize: 13, lineHeight: 1.75, marginBottom: 20 }}>"{r.text}"</p>
               <div className="font-display" style={{ fontSize: 13, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>{r.name}</div>
             </div>
           ))}
@@ -564,7 +564,7 @@ function FAQ() {
               <span style={{ color: 'var(--lime)', flexShrink: 0, fontSize: 22, lineHeight: 1, transition: 'transform 0.3s', transform: open === i ? 'rotate(45deg)' : 'none', display: 'block' }}>+</span>
             </button>
             <div className={`faq-answer ${open === i ? 'open' : ''}`}>
-              <p style={{ color: '#555', fontSize: 14, lineHeight: 1.75, paddingBottom: 20 }}>{item.a}</p>
+              <p style={{ color: '#C9BFB3', fontSize: 14, lineHeight: 1.75, paddingBottom: 20 }}>{item.a}</p>
             </div>
           </div>
         ))}
@@ -584,19 +584,19 @@ function Contact() {
           </h2>
           <div className="reveal delay-2" style={{ display: 'flex', flexDirection: 'column', gap: 14, marginBottom: 32 }}>
             {[['📍', 'Bruckstraße 61, 70734 Fellbach', '#'], ['📞', '+49 711 58 8654', 'tel:+4971158 8654'], ['✉', 'info@fitnessclubfellbach.de', 'mailto:info@fitnessclubfellbach.de']].map(([icon, text, href]) => (
-              <div key={text} style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 14, color: '#666' }}>
+              <div key={text} style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 14, color: '#B5A99A' }}>
                 <span style={{ color: 'var(--lime)' }}>{icon}</span>
-                <a href={href} style={{ color: '#666', textDecoration: 'none' }}
+                <a href={href} style={{ color: '#B5A99A', textDecoration: 'none' }}
                    onMouseEnter={e => (e.target as HTMLElement).style.color = '#fff'}
                    onMouseLeave={e => (e.target as HTMLElement).style.color = '#666'}>{text}</a>
               </div>
             ))}
           </div>
           <div className="reveal delay-3" style={{ background: 'var(--black)', border: '1px solid var(--gray-border)', padding: 24 }}>
-            <div className="label" style={{ color: '#444', marginBottom: 14 }}>Öffnungszeiten</div>
+            <div className="label" style={{ color: '#9A8470', marginBottom: 14 }}>Öffnungszeiten</div>
             {[['Studio (täglich)', '05:00 – 00:00', true], ['Betreuung Mo–Fr', '08–12 · 16–21 Uhr', false], ['Betreuung Sa+So', '09–14 Uhr', false]].map(([k, v, highlight]) => (
               <div key={String(k)} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, marginBottom: 8 }}>
-                <span style={{ color: '#555' }}>{k}</span>
+                <span style={{ color: '#C9BFB3' }}>{k}</span>
                 <span style={{ color: highlight ? 'var(--lime)' : '#666' }}>{v}</span>
               </div>
             ))}
@@ -606,7 +606,7 @@ function Contact() {
           <div className="font-display" style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 700, letterSpacing: '-0.01em', marginBottom: 16 }}>
             BEREIT ZUM<br /><span style={{ color: 'var(--lime)' }}>TRAINING?</span>
           </div>
-          <p style={{ color: '#555', fontSize: 14, lineHeight: 1.7, marginBottom: 32 }}>
+          <p style={{ color: '#C9BFB3', fontSize: 14, lineHeight: 1.7, marginBottom: 32 }}>
             Starte noch heute mit 14 Tagen komplett kostenlos. Kein Risiko — voller Zugang ab Tag 1.
           </p>
           <MagneticButton
@@ -639,7 +639,7 @@ function Footer() {
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24 }}>
           {[['Datenschutz', 'https://www.fitness-club-fellbach.de/datenschutz'], ['Impressum', 'https://www.fitness-club-fellbach.de/impressum'], ['Kündigung', 'https://www.fitness-club-fellbach.de/kundigung'], ['Karriere', 'https://www.fitness-club-fellbach.de/karriere']].map(([l, h]) => (
             <a key={l} href={h} target="_blank" rel="noopener noreferrer"
-               style={{ fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#333', textDecoration: 'none' }}>
+               style={{ fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#9A8470', textDecoration: 'none' }}>
               {l}
             </a>
           ))}

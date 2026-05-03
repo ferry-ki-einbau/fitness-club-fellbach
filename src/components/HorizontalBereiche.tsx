@@ -94,7 +94,7 @@ export default function HorizontalBereiche() {
                 >
                   {s.title}
                 </h2>
-                <p style={{ color: '#888', fontSize: 'clamp(1rem, 1.6vw, 1.15rem)', lineHeight: 1.7, maxWidth: 520 }}>
+                <p style={{ color: '#C9BFB3', fontSize: 'clamp(1rem, 1.6vw, 1.15rem)', lineHeight: 1.7, maxWidth: 520 }}>
                   {s.text}
                 </p>
               </div>

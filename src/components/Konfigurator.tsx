@@ -48,7 +48,7 @@ export default function Konfigurator() {
         >
           BAU DIR <span style={{ color: 'var(--lime)' }}>DEINEN PLAN.</span>
         </h2>
-        <p style={{ color: '#555', fontSize: 14, lineHeight: 1.7, maxWidth: 520, marginBottom: 56 }}>
+        <p style={{ color: '#C9BFB3', fontSize: 14, lineHeight: 1.7, maxWidth: 520, marginBottom: 56 }}>
           Wähle deine Mitgliedschaft, Laufzeit und Add-Ons. Preis berechnet sich live.
         </p>
 
@@ -57,7 +57,7 @@ export default function Konfigurator() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
             {/* Base */}
             <div>
-              <div className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#666', marginBottom: 14 }}>
+              <div className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#B8924A', marginBottom: 14 }}>
                 Mitgliedschaft
               </div>
               <div style={{ display: 'flex', gap: 1, background: 'var(--gray-border)' }}>
@@ -88,7 +88,7 @@ export default function Konfigurator() {
 
             {/* Duration */}
             <div>
-              <div className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#666', marginBottom: 14 }}>
+              <div className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#B8924A', marginBottom: 14 }}>
                 Laufzeit
               </div>
               <div style={{ display: 'flex', gap: 1, background: 'var(--gray-border)' }}>
@@ -118,7 +118,7 @@ export default function Konfigurator() {
 
             {/* Add-Ons */}
             <div>
-              <div className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#666', marginBottom: 14 }}>
+              <div className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#B8924A', marginBottom: 14 }}>
                 {base === 'allin' ? 'Im All-In bereits enthalten' : 'Add-Ons'}
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
@@ -168,7 +168,7 @@ export default function Konfigurator() {
 
           {/* Result */}
           <div style={{ background: 'var(--black)', border: '1px solid var(--gray-border)', padding: 36, position: 'sticky', top: 96, alignSelf: 'start' }}>
-            <div className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#666', marginBottom: 18 }}>
+            <div className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#B8924A', marginBottom: 18 }}>
               Dein Preis
             </div>
             <motion.div
@@ -181,7 +181,7 @@ export default function Konfigurator() {
             >
               {monthly}€
             </motion.div>
-            <div style={{ fontSize: 13, color: '#555', marginBottom: 32 }}>/ Monat · {duration} Monate Laufzeit</div>
+            <div style={{ fontSize: 13, color: '#C9BFB3', marginBottom: 32 }}>/ Monat · {duration} Monate Laufzeit</div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 28, paddingBottom: 24, borderBottom: '1px solid var(--gray-border)' }}>
               {[
@@ -191,8 +191,8 @@ export default function Konfigurator() {
                 ['Aufnahme', 'einmal 20€'],
               ].map(([k, v]) => (
                 <div key={String(k)} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12 }}>
-                  <span style={{ color: '#444', letterSpacing: '0.05em' }}>{k}</span>
-                  <span style={{ color: '#888' }}>{v}</span>
+                  <span style={{ color: '#9A8470', letterSpacing: '0.05em' }}>{k}</span>
+                  <span style={{ color: '#C9BFB3' }}>{v}</span>
                 </div>
               ))}
             </div>
@@ -207,7 +207,7 @@ export default function Konfigurator() {
               <span>Diesen Plan starten</span>
               <span>→</span>
             </a>
-            <p style={{ fontSize: 11, color: '#333', textAlign: 'center', marginTop: 12, letterSpacing: '0.05em' }}>
+            <p style={{ fontSize: 11, color: '#9A8470', textAlign: 'center', marginTop: 12, letterSpacing: '0.05em' }}>
               14 Tage Widerrufsrecht. Risikofrei.
             </p>
           </div>
