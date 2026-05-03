@@ -28,7 +28,7 @@ const GALLERY = [
   { src: '/images/real-cardio-md.webp', srcSm: '/images/real-cardio-sm.webp', label: 'Cardio', tag: '03' },
   { src: '/images/real-geraete-md.webp', srcSm: '/images/real-geraete-sm.webp', label: 'Krafttraining', tag: '04' },
   { src: '/images/real-kursraum-1-md.webp', srcSm: '/images/real-kursraum-1-sm.webp', label: 'Kursraum', tag: '05' },
-  { src: '/images/real-pool-area-md.webp', srcSm: '/images/real-pool-area-sm.webp', label: 'Pool', tag: '06' },
+  { src: '/images/real-pool-area-md.webp', srcSm: '/images/real-pool-area-sm.webp', label: 'Whirlpool', tag: '06' },
   { src: '/images/real-wellness-area-md.webp', srcSm: '/images/real-wellness-area-sm.webp', label: 'Sauna & Wellness', tag: '07' },
   { src: '/images/real-eingang-md.webp', srcSm: '/images/real-eingang-sm.webp', label: 'Eingang', tag: '08' },
 ]
@@ -134,7 +134,7 @@ function Hero() {
   const tiles = [
     { src: '/images/real-cardio-sm.webp', label: 'Cardio' },
     { src: '/images/real-wellness-area-sm.webp', label: 'Sauna' },
-    { src: '/images/real-pool-area-sm.webp', label: 'Pool' },
+    { src: '/images/real-pool-area-sm.webp', label: 'Whirlpool' },
     { src: '/images/real-kursraum-1-sm.webp', label: 'Kurse' },
   ]
   // Typische Auslastung nach Tageszeit (kein Live-Tracking)
@@ -231,8 +231,8 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 2.4 }}
-            style={{ color: '#E8DDCE', fontSize: 'clamp(1.1rem, 1.5vw, 1.35rem)', lineHeight: 1.55, marginBottom: 44, maxWidth: 580, fontWeight: 400 }}>
-            Modernes Fitnessstudio in Fellbach. <span style={{ color: '#F5F0E8', fontWeight: 500 }}>24 Stunden täglich offen.</span> Trainingsfläche, EGYM, Sauna, Pool, 30+ Kurse — alles inklusive ab 13,99€/Woche.
+            style={{ color: '#F0E5D5', fontSize: 'clamp(1.15rem, 1.5vw, 1.4rem)', lineHeight: 1.7, marginBottom: 44, maxWidth: 600, fontWeight: 400, textShadow: '0 1px 2px rgba(0,0,0,0.4)' }}>
+            Modernes Fitnessstudio in Fellbach. <span style={{ color: '#FFFFFF', fontWeight: 600 }}>24 Stunden täglich offen.</span> Trainingsfläche, EGYM, Sauna, Whirlpool und über 30 Kurse — alles inklusive ab <span style={{ color: '#FFFFFF', fontWeight: 600 }}>13,99€/Woche</span>.
           </motion.p>
 
           <motion.div
@@ -295,7 +295,7 @@ function Hero() {
 }
 
 function Marquee() {
-  const items = ['Training', 'Wellness', 'Sauna', 'Kurse', 'BodyPump', 'Yoga', 'Cardio', 'Box-Ring', 'Pilates', 'EGYM', '24/7', 'Zirkeltraining', 'Fitness', 'Pool']
+  const items = ['Training', 'Wellness', 'Sauna', 'Kurse', 'BodyPump', 'Yoga', 'Cardio', 'Box-Ring', 'Pilates', 'EGYM', '24/7', 'Zirkeltraining', 'Fitness', 'Whirlpool', 'Kaltbecken']
   const doubled = [...items, ...items]
   return (
     <div style={{ overflow: 'hidden', borderTop: '1px solid var(--gray-border)', borderBottom: '1px solid var(--gray-border)', background: 'var(--gray-mid)', padding: '16px 0' }}>

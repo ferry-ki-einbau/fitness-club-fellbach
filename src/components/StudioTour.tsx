@@ -43,12 +43,12 @@ const zones = [
     stats: ['Sauna', 'Whirlpool', 'Kaltbecken'],
   },
   {
-    id: 'pool',
-    label: 'Pool',
+    id: 'whirlpool',
+    label: 'Whirlpool',
     img: 'real-pool-area',
-    headline: 'Schwimm dich frei',
-    text: 'Pool für Cardio, Aqua-Fitness oder einfach Erholung. Im Wellness-Bereich integriert.',
-    stats: ['Pool', 'Aqua-Kurse', 'Ruhezone'],
+    headline: 'Whirlpool & Kaltbecken',
+    text: 'Heißer Whirlpool für die müden Muskeln, kaltes Becken zum Wachwerden. Direkt im Wellness-Bereich neben der Sauna.',
+    stats: ['Whirlpool', 'Kaltwasserbecken', 'Ruheraum'],
   },
 ]
 

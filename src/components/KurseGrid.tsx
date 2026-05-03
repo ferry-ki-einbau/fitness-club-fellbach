@@ -76,7 +76,7 @@ export default function KurseGrid() {
         </div>
 
         <p style={{ textAlign: 'center', color: '#6E5050', fontSize: 12, marginTop: 32, letterSpacing: '0.05em' }}>
-          + Les Mills BodyAttack, Stepp, Aqua-Fitness, Senioren-Gymnastik & mehr — vollständiger Plan in der App
+          + Les Mills BodyAttack, Stepp, Senioren-Gymnastik & mehr — vollständiger Plan in der App
         </p>
       </div>
     </section>

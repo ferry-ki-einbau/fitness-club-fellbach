@@ -26,13 +26,13 @@ export default function WelcomeIntro() {
           </div>
 
           <h2 className="font-display" style={{
-            fontSize: 'clamp(2.2rem, 5vw, 4.5rem)',
+            fontSize: 'clamp(2.4rem, 5vw, 4.5rem)',
             fontWeight: 700,
             lineHeight: 1.05,
-            letterSpacing: '-0.02em',
+            letterSpacing: '-0.025em',
             color: '#1A0F0F',
-            margin: '0 0 32px',
-            maxWidth: 16 + 'ch',
+            margin: '0 0 36px',
+            maxWidth: 18 + 'ch',
             marginInline: 'auto',
           }}>
             Wir sind kein Discounter.<br />
@@ -41,16 +41,17 @@ export default function WelcomeIntro() {
 
           <p style={{
             color: '#3F2C2C',
-            fontSize: 'clamp(1.05rem, 1.5vw, 1.3rem)',
-            lineHeight: 1.65,
-            maxWidth: '60ch',
+            fontSize: 'clamp(1.15rem, 1.5vw, 1.35rem)',
+            lineHeight: 1.75,
+            maxWidth: '58ch',
             marginInline: 'auto',
             marginBottom: 48,
             fontWeight: 400,
           }}>
-            Familiäre Atmosphäre. Trainer die deinen Namen kennen. Saubere Geräte, Sauna, Pool.
-            Über 200 Mitglieder vertrauen uns — viele seit Jahren.
-            <span style={{ color: '#1A0F0F', fontWeight: 500 }}> Komm vorbei wann du willst</span> — wir freuen uns auf dich.
+            Familiäre Atmosphäre. Trainer, die deinen Namen kennen. Saubere Geräte, Sauna und Whirlpool.
+            <br /><br />
+            Über <span style={{ color: '#1A0F0F', fontWeight: 600 }}>200 Mitglieder</span> vertrauen uns — viele schon seit Jahren.
+            <span style={{ color: '#1A0F0F', fontWeight: 600 }}> Komm vorbei, wann du willst</span> — wir freuen uns auf dich.
           </p>
 
           {/* Three quick value props */}

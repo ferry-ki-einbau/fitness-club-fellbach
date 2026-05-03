@@ -22,7 +22,7 @@ const SLIDES = [
     no: '03',
     tag: '05:00 – 24:00 Uhr',
     title: 'WELLNESS',
-    text: 'Sauna, Pool, Ruhebereich. Dein verdientes Abschalten — täglich, ohne Aufpreis im All-In.',
+    text: 'Sauna, Whirlpool, Kaltwasserbecken, Ruhebereich. Dein verdientes Abschalten — täglich, ohne Aufpreis im All-In.',
     img: `${CDN}/64c8ee144047408110a5798a_DSC02219%201.png`,
   },
 ]

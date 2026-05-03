@@ -36,7 +36,7 @@ export default function WellnessSpotlight() {
         <div className="wellness-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(16px, 2.5vw, 36px)' }}>
           {[
             { src: 'real-wellness-area', label: 'Sauna-Oase', sub: '05:00 – 24:00 · Frei wählbar', tag: '01' },
-            { src: 'real-pool-area', label: 'Pool & Whirlpool', sub: 'Inklusive Kaltwasserbecken', tag: '02' },
+            { src: 'real-pool-area', label: 'Whirlpool', sub: 'Mit Kaltwasserbecken', tag: '02' },
           ].map((it, i) => (
             <motion.div
               key={it.src}

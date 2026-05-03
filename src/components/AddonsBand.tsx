@@ -4,7 +4,7 @@ const addons = [
   { name: 'Getränke', price: '2,99€/Wo', desc: 'Iso-Drink Flatrate' },
   { name: 'Zirkeltraining', price: '2,99€/Wo', desc: 'Gesundheitszirkel' },
   { name: 'Kurse', price: '2,99€/Wo', desc: 'Les Mills + alle Gruppenkurse' },
-  { name: 'Wellness', price: '2,99€/Wo', desc: 'Sauna · Pool · Whirlpool' },
+  { name: 'Wellness', price: '2,99€/Wo', desc: 'Sauna · Whirlpool · Kaltbecken' },
   { name: 'EGYM Smart', price: 'Im All-In', desc: 'Daten-getrackte Geräte' },
   { name: 'Boxen', price: '69€/Mo', desc: 'Kurs mit Boxexperten' },
 ]

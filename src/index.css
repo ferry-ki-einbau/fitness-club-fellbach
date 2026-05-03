@@ -12,9 +12,15 @@
   --gray-dark: #1F1010;
   --gray-mid: #2A1717;
   --gray-border: #3A2020;
-  --text: #F5F0E8;
-  --text-muted: #B5A99A;
-  --text-dim: #9A8470;
+  --text: #F8F4ED;
+  --text-soft: #E8DCCB;
+  --text-muted: #C4B7A4;
+  --text-dim: #A89880;
+  /* Light mode text */
+  --ink-strong: #1F1414;
+  --ink: #2F2020;
+  --ink-soft: #4A3636;
+  --ink-muted: #6E5A4F;
   /* Legacy aliases (kept so older code keeps compiling) */
   --lime: var(--accent);
   --lime-dim: var(--accent-deep);
@@ -55,12 +61,23 @@ body {
 
 html { scroll-behavior: smooth; }
 
+/* Global readability defaults — angenehm fürs Auge */
+p { line-height: 1.65; max-width: 70ch; }
+h1, h2, h3, h4 { line-height: 1.1; letter-spacing: -0.01em; }
+button, a { transition: all 0.2s ease; }
+
+/* Smooth section transitions */
+section { position: relative; }
+
 body {
   background: var(--black);
   color: var(--text);
   font-family: 'DM Sans Variable', sans-serif;
-  font-weight: 300;
+  font-weight: 400;
+  font-size: 16.5px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
   overflow-x: hidden;
 }
 

@@ -28,7 +28,7 @@ const steps: Step[] = [
     options: [
       { label: 'Nur Geräte', sub: 'Cardio + Kraft reicht', weight: 1 },
       { label: 'Kurse & Geräte', sub: 'Abwechslung ist König', weight: 2 },
-      { label: 'Wellness dazu', sub: 'Sauna & Pool gehören rein', weight: 3 },
+      { label: 'Wellness dazu', sub: 'Sauna & Whirlpool gehören rein', weight: 3 },
     ],
   },
   {
@@ -45,7 +45,7 @@ const steps: Step[] = [
 const plans = {
   basic: { name: 'Basic', price: '13,99€', sub: '/Woche · 24 Monate', text: 'Trainingsfläche, Duschen, 24/7 Zugang. Add-Ons jederzeit dazubuchbar.', accent: '#B8924A' },
   premium: { name: 'Premium', price: '12,99€', sub: '/Woche · 24 Monate', text: 'Alles aus Basic + 1 Add-On nach Wahl inklusive (Kurse oder Wellness).', accent: 'var(--accent-bright)' },
-  allin: { name: 'All-In', price: '14,99€', sub: '/Woche · 24 Monate · 2 Mo. gratis', text: 'Komplett-Paket: Trainingsfläche, alle Kurse, Sauna, Pool, EGYM, Getränke.', accent: 'var(--accent)' },
+  allin: { name: 'All-In', price: '14,99€', sub: '/Woche · 24 Monate · 2 Mo. gratis', text: 'Komplett-Paket: Trainingsfläche, alle Kurse, Sauna, Whirlpool, EGYM, Getränke.', accent: 'var(--accent)' },
 }
 
 export default function PlanFinder() {
