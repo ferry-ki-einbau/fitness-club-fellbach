@@ -137,9 +137,16 @@ function Hero() {
     { src: '/images/real-pool-area-sm.webp', label: 'Pool' },
     { src: '/images/real-kursraum-1-sm.webp', label: 'Kurse' },
   ]
-  // Live Belegung — täglich variierend, Tageszeit-abhängig
+  // Typische Auslastung nach Tageszeit (kein Live-Tracking)
   const hour = new Date().getHours()
-  const peopleNow = hour < 6 ? 3 : hour < 9 ? 14 : hour < 11 ? 22 : hour < 16 ? 11 : hour < 19 ? 28 : hour < 22 ? 19 : 6
+  const usage =
+    hour < 6 ? { label: 'Wenig los', color: '#22C55E' } :
+    hour < 9 ? { label: 'Frühsport-Zeit', color: '#22C55E' } :
+    hour < 11 ? { label: 'Mittel besucht', color: '#F4B400' } :
+    hour < 16 ? { label: 'Entspannt', color: '#22C55E' } :
+    hour < 19 ? { label: 'Stoßzeit · etwas voller', color: '#F4B400' } :
+    hour < 22 ? { label: 'After-Work · gut besucht', color: '#F4B400' } :
+                { label: 'Ruhige Spätstunde', color: '#22C55E' }
   return (
     <section data-hero style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden', background: '#0A0505' }}>
       {/* Full-bleed photo */}
@@ -175,10 +182,10 @@ function Hero() {
         transition={{ duration: 0.6, delay: 2.0 }}
         style={{ position: 'absolute', top: 100, left: '50%', transform: 'translateX(-50%)', zIndex: 11, display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center' }}
       >
-        <div style={{ padding: '8px 16px', background: 'rgba(8,4,4,0.85)', backdropFilter: 'blur(12px)', border: '1px solid rgba(34, 197, 94, 0.4)', display: 'flex', alignItems: 'center', gap: 10, borderRadius: 999 }}>
-          <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#22C55E', animation: 'pulse 1.6s ease-in-out infinite', boxShadow: '0 0 10px rgba(34,197,94,0.7)' }} />
+        <div style={{ padding: '8px 16px', background: 'rgba(8,4,4,0.85)', backdropFilter: 'blur(12px)', border: `1px solid ${usage.color}66`, display: 'flex', alignItems: 'center', gap: 10, borderRadius: 999 }}>
+          <span style={{ width: 8, height: 8, borderRadius: '50%', background: usage.color, animation: 'pulse 1.8s ease-in-out infinite', boxShadow: `0 0 10px ${usage.color}99` }} />
           <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#F5F0E8', fontWeight: 500 }}>
-            <span style={{ color: '#22C55E', fontWeight: 700 }}>{peopleNow} trainieren gerade</span>
+            <span style={{ color: usage.color, fontWeight: 700 }}>Jetzt: {usage.label}</span>
             <span style={{ color: '#6E5050', margin: '0 8px' }}>·</span>
             <span>geöffnet bis 24:00</span>
           </span>
