@@ -237,7 +237,7 @@ function Hero() {
       </motion.div>
 
       {/* Content grid */}
-      <div className="hero-content-grid" style={{ position: 'relative', zIndex: 10, maxWidth: 1440, margin: '0 auto', padding: 'clamp(160px, 22vh, 240px) clamp(20px, 5vw, 80px) clamp(48px, 8vh, 100px)', width: '100%', minHeight: '100vh', display: 'grid', gridTemplateColumns: 'minmax(0, 1.4fr) minmax(0, 1fr)', gap: 'clamp(32px, 5vw, 80px)', alignItems: 'end' }}>
+      <div className="hero-content-grid" style={{ position: 'relative', zIndex: 10, maxWidth: 1440, margin: '0 auto', padding: 'clamp(100px, 14vh, 160px) clamp(20px, 5vw, 80px) clamp(32px, 5vh, 64px)', width: '100%', minHeight: '100vh', display: 'grid', gridTemplateColumns: 'minmax(0, 1.4fr) minmax(0, 1fr)', gap: 'clamp(32px, 5vw, 80px)', alignItems: 'center' }}>
         <div>
           <motion.div
             initial={{ opacity: 0, x: -20 }}
@@ -947,6 +947,12 @@ function Footer() {
 
 export default function App() {
   useReveal()
+  const [pastHero, setPastHero] = useState(false)
+  useEffect(() => {
+    const fn = () => setPastHero(window.scrollY > window.innerHeight * 0.8)
+    window.addEventListener('scroll', fn, { passive: true })
+    return () => window.removeEventListener('scroll', fn)
+  }, [])
   return (
     <>
       <Preloader />
@@ -1003,10 +1009,12 @@ export default function App() {
       <Contact />
       <Footer />
 
-      {/* Mobile Sticky Call Bar — nur Mobile */}
+      {/* Mobile Sticky Call Bar — nur Mobile, erst nach Hero */}
       <div className="mobile-sticky-bar" style={{
         position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 100,
         gap: 1, boxShadow: '0 -4px 24px rgba(0,0,0,0.4)',
+        transform: pastHero ? 'translateY(0)' : 'translateY(100%)',
+        transition: 'transform 0.35s cubic-bezier(0.16,1,0.3,1)',
       }}>
         <a href="tel:+4971158 8654" style={{
           flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
