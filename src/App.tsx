@@ -25,6 +25,7 @@ import BigStats from './components/BigStats'
 import MagneticNavLink from './components/MagneticNav'
 import ZielRechner from './components/ZielRechner'
 import KursplanKalender from './components/KursplanKalender'
+import TrainingsplanSection from './components/TrainingsplanSection'
 
 
 const GALLERY = [
@@ -71,51 +72,75 @@ function Nav() {
     return () => clearInterval(t)
   }, [])
   const links = [
-    { label: 'Studio Tour', href: '#tour' },
-    { label: 'Bereiche', href: '#bereiche' },
-    { label: 'Galerie', href: '#galerie' },
+    { label: 'Kurse', href: '#kurse' },
     { label: 'Preise', href: '#preise' },
     { label: 'Kontakt', href: '#kontakt' },
   ]
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'nav-glass' : ''}`}>
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72 }}>
-        <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 12 }}>
+    <nav style={{
+      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
+      transition: 'background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease',
+      background: scrolled ? 'rgba(15,20,25,0.92)' : 'transparent',
+      backdropFilter: scrolled ? 'blur(20px)' : 'none',
+      borderBottom: scrolled ? '1px solid rgba(245,240,232,0.06)' : '1px solid transparent',
+    }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 clamp(20px, 4vw, 48px)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 68 }}>
+
+        {/* Logo + Status */}
+        <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 14 }}>
           <Logo size="lg" variant="light" />
-          <span style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '4px 10px', borderRadius: 999, background: isOpen ? 'rgba(34,197,94,0.12)' : 'rgba(196,69,82,0.12)', border: `1px solid ${isOpen ? 'rgba(34,197,94,0.3)' : 'rgba(196,69,82,0.3)'}` }}>
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: isOpen ? '#22c55e' : '#C44552', boxShadow: `0 0 6px ${isOpen ? '#22c55e' : '#C44552'}`, animation: 'pulse 1.8s ease-in-out infinite' }} />
-            <span className="font-condensed hidden md:inline" style={{ fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: isOpen ? '#22c55e' : '#C44552', fontWeight: 600 }}>
-              {isOpen ? 'Jetzt geöffnet' : 'Geschlossen'}
+          <span style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '3px 9px', borderRadius: 999, background: isOpen ? 'rgba(34,197,94,0.1)' : 'rgba(196,69,82,0.1)', border: `1px solid ${isOpen ? 'rgba(34,197,94,0.25)' : 'rgba(196,69,82,0.25)'}` }}>
+            <span style={{ width: 5, height: 5, borderRadius: '50%', background: isOpen ? '#22c55e' : '#C44552', animation: 'pulse 2s ease-in-out infinite' }} />
+            <span className="font-condensed hidden md:inline" style={{ fontSize: 9, letterSpacing: '0.3em', textTransform: 'uppercase', color: isOpen ? '#22c55e' : '#C44552', fontWeight: 700 }}>
+              {isOpen ? 'Geöffnet' : 'Geschlossen'}
             </span>
           </span>
         </a>
-        <div className="hidden md:flex" style={{ gap: 8, alignItems: 'center' }}>
+
+        {/* Desktop Links */}
+        <div className="hidden md:flex" style={{ gap: 4, alignItems: 'center' }}>
           {links.map(l => (
-            <MagneticNavLink key={l.href} href={l.href}>
-              {l.label}
-            </MagneticNavLink>
+            <MagneticNavLink key={l.href} href={l.href}>{l.label}</MagneticNavLink>
           ))}
         </div>
-        <a href="#preise" className="btn-lime hidden md:inline-flex" style={{ padding: '12px 24px', fontSize: 12 }}>
-          <span>Mitglied werden</span>
-        </a>
-        <button className="md:hidden" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 8 }} onClick={() => setOpen(!open)}>
-          <div style={{ width: 24, height: 2, background: '#fff', marginBottom: 5, transition: 'all 0.3s', transform: open ? 'rotate(45deg) translate(5px, 5px)' : 'none' }} />
-          <div style={{ width: 24, height: 2, background: '#fff', marginBottom: 5, opacity: open ? 0 : 1, transition: 'opacity 0.3s' }} />
-          <div style={{ width: 24, height: 2, background: '#fff', transition: 'all 0.3s', transform: open ? 'rotate(-45deg) translate(5px, -5px)' : 'none' }} />
-        </button>
+
+        {/* CTA */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <a href="tel:+4971158 8654" className="hidden md:flex font-condensed" style={{ alignItems: 'center', gap: 6, fontSize: 11, letterSpacing: '0.15em', color: '#B5A99A', textDecoration: 'none', transition: 'color 0.2s' }}
+            onMouseEnter={e => (e.currentTarget.style.color = '#F5F0E8')}
+            onMouseLeave={e => (e.currentTarget.style.color = '#B5A99A')}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            07115 8 8654
+          </a>
+          <a href="#preise" className="btn-lime hidden md:inline-flex" style={{ padding: '10px 22px', fontSize: 11 }}>
+            <span>Jetzt Mitglied</span>
+          </a>
+
+          {/* Mobile Burger */}
+          <button className="md:hidden" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 8, display: 'flex', flexDirection: 'column', gap: 5 }} onClick={() => setOpen(!open)}>
+            <span style={{ width: 22, height: 1.5, background: '#F5F0E8', display: 'block', transition: 'all 0.25s', transform: open ? 'rotate(45deg) translate(4.5px, 4.5px)' : 'none' }} />
+            <span style={{ width: 22, height: 1.5, background: '#F5F0E8', display: 'block', transition: 'opacity 0.25s', opacity: open ? 0 : 1 }} />
+            <span style={{ width: 22, height: 1.5, background: '#F5F0E8', display: 'block', transition: 'all 0.25s', transform: open ? 'rotate(-45deg) translate(4.5px, -4.5px)' : 'none' }} />
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Menu */}
       {open && (
-        <div style={{ background: 'var(--black)', borderTop: '1px solid var(--gray-border)', padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: 16 }}>
-          {links.map(l => (
-            <a key={l.href} href={l.href} className="font-condensed"
-               style={{ fontSize: 12, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#B5A99A', textDecoration: 'none' }}
-               onClick={() => setOpen(false)}>
-              {l.label}
+        <div style={{ background: 'rgba(15,20,25,0.97)', backdropFilter: 'blur(20px)', borderTop: '1px solid rgba(245,240,232,0.07)', padding: '28px 24px 32px', display: 'flex', flexDirection: 'column', gap: 0 }}>
+          {links.map((l, i) => (
+            <a key={l.href} href={l.href}
+              onClick={() => setOpen(false)}
+              style={{ display: 'block', padding: '16px 0', borderBottom: i < links.length - 1 ? '1px solid rgba(245,240,232,0.06)' : 'none', textDecoration: 'none' }}>
+              <span className="font-display" style={{ fontSize: 22, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.02em', color: '#F5F0E8' }}>{l.label}</span>
             </a>
           ))}
-          <a href="#preise" className="btn-lime" style={{ justifyContent: 'center', marginTop: 8 }} onClick={() => setOpen(false)}>
-            <span>Mitglied werden</span>
+          <a href="#preise" className="btn-lime" style={{ justifyContent: 'center', marginTop: 24 }} onClick={() => setOpen(false)}>
+            <span>Jetzt Mitglied werden</span>
+          </a>
+          <a href="tel:+4971158 8654" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginTop: 16, color: '#8A7A6A', fontSize: 13, textDecoration: 'none' }}>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            07115 8 8654
           </a>
         </div>
       )}
@@ -778,6 +803,7 @@ export default function App() {
       />
       <PromoBand />
       <Pricing />
+      <TrainingsplanSection />
       <Testimonials />
       <PullQuote
         before="Bruckstraße 61"

@@ -14,7 +14,7 @@ const kurse = [
 
 export default function KurseGrid() {
   return (
-    <section style={{
+    <section id="kurse" style={{
       position: 'relative',
       background: '#EDE7DD',
       padding: 'clamp(80px, 12vh, 160px) 24px',
