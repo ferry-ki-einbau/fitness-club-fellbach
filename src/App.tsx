@@ -241,7 +241,7 @@ function Hero() {
             transition={{ duration: 1, delay: 2.25, ease: [0.16, 1, 0.3, 1] }}
             className="font-display"
             style={{ fontSize: 'clamp(2.8rem, 9vw, 7.5rem)', fontWeight: 800, lineHeight: 0.95, letterSpacing: '-0.03em', margin: '0 0 28px', color: '#F5F0E8', textTransform: 'uppercase' }}>
-            Kein McFit.<br />
+            Kein Discounter.<br />
             <span style={{ color: 'var(--accent-bright)', fontStyle: 'italic' }}>Dein</span> Studio.
           </motion.h1>
 
