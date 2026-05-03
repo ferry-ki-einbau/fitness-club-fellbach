@@ -793,7 +793,7 @@ function Contact() {
       {/* Google Maps */}
       <div style={{ position: 'relative', height: 300, overflow: 'hidden', borderTop: '1px solid var(--gray-border)' }}>
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.6!2d9.2767!3d48.8088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4799d9b8d7c3d4a9%3A0x1234!2sBruckstra%C3%9Fe+61%2C+70736+Fellbach!5e0!3m2!1sde!2sde!4v1700000000000!5m2!1sde!2sde&q=Bruckstraße+61+Fellbach"
+          src="https://maps.google.com/maps?q=Fitness+Club+Fellbach,+Bruckstraße+61,+70736+Fellbach&z=16&output=embed&hl=de"
           width="100%" height="100%"
           style={{ border: 'none', display: 'block', filter: 'invert(90%) hue-rotate(180deg) contrast(0.85) brightness(0.9)' }}
           loading="lazy"
