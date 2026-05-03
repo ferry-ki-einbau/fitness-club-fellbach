@@ -41,7 +41,7 @@ export default function PullQuote({ before, text, highlight, after, variant = 'd
     <section ref={ref} style={{
       position: 'relative',
       background,
-      padding: 'clamp(80px, 14vh, 180px) 24px',
+      padding: 'clamp(64px, 10vh, 120px) clamp(16px, 4vw, 48px)',
       overflow: 'hidden',
     }}>
       {/* Subtle gold rule top */}

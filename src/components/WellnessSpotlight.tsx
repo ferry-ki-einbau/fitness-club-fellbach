@@ -9,7 +9,7 @@ export default function WellnessSpotlight() {
     <section style={{
       position: 'relative',
       background: 'linear-gradient(180deg, #1A2128 0%, #0F1419 100%)',
-      padding: 'clamp(80px, 12vh, 160px) 24px',
+      padding: 'clamp(64px, 10vh, 120px) clamp(16px, 4vw, 48px)',
       overflow: 'hidden',
     }}>
       <div style={{ maxWidth: 1440, margin: '0 auto' }}>

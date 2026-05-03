@@ -13,7 +13,7 @@ export default function WelcomeIntro() {
     <section style={{
       position: 'relative',
       background: '#FFFBF4',
-      padding: 'clamp(80px, 12vh, 140px) 24px',
+      padding: 'clamp(64px, 10vh, 120px) clamp(16px, 4vw, 48px)',
       borderBottom: '1px solid rgba(184, 146, 74, 0.18)',
     }}>
       <div style={{ maxWidth: 1100, margin: '0 auto', textAlign: 'center' }}>

@@ -74,7 +74,8 @@ body {
 [data-hero] a, [data-hero] button { cursor: none !important; }
 @media (max-width: 768px) {
   [data-hero] *, [data-hero] a, [data-hero] button { cursor: pointer !important; }
-  [data-hero] > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; padding-left: 24px !important; padding-right: 24px !important; }
+  .hero-content-grid { grid-template-columns: 1fr !important; }
+  [data-hero] > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; padding-left: 20px !important; padding-right: 20px !important; }
   .hero-side-card { display: none !important; }
   .hero-mosaic { display: none !important; }
   .boxring-grid { grid-template-columns: 1fr !important; }
@@ -87,6 +88,10 @@ body {
   .tour-tabs { gap: 6px !important; }
   .physio-bridge-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
   .big-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+@media (max-width: 400px) {
+  .hero-cta-group { flex-direction: column !important; }
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -150,32 +155,6 @@ body {
   100% { transform: translateX(0); }
 }
 
-/* ── WHATSAPP FLOAT ─────────────────────────────────────────── */
-.whatsapp-float {
-  position: fixed;
-  bottom: 28px;
-  right: 28px;
-  z-index: 200;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #25D366;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 20px rgba(37,211,102,0.45);
-  text-decoration: none;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  animation: wa-pulse 3s ease-in-out infinite;
-}
-.whatsapp-float:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 28px rgba(37,211,102,0.6);
-}
-@keyframes wa-pulse {
-  0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.45); }
-  50%       { box-shadow: 0 4px 32px rgba(37,211,102,0.7), 0 0 0 8px rgba(37,211,102,0.12); }
-}
 
 /* Noise */
 .noise::after {

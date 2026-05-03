@@ -57,7 +57,7 @@ export default function StudioTour() {
   const z = zones[active]
 
   return (
-    <section id="tour" style={{ background: '#0F1419', padding: 'clamp(80px, 12vh, 160px) 24px', overflow: 'hidden' }}>
+    <section id="tour" style={{ background: '#0F1419', padding: 'clamp(64px, 10vh, 120px) clamp(16px, 4vw, 48px)', overflow: 'hidden' }}>
       <div style={{ maxWidth: 1440, margin: '0 auto' }}>
         {/* Header */}
         <div style={{ marginBottom: 56, maxWidth: 720 }}>

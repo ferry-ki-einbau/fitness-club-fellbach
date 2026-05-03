@@ -72,7 +72,7 @@ export default function BeforeAfter() {
     <section
       style={{
         background: '#111820',
-        padding: '100px 24px',
+        padding: 'clamp(64px, 10vh, 100px) clamp(16px, 4vw, 48px)',
         fontFamily: 'inherit',
       }}
     >

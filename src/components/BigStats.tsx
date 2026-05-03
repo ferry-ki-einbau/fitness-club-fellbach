@@ -39,7 +39,7 @@ export default function BigStats() {
     <section style={{
       position: 'relative',
       background: '#0F1419',
-      padding: 'clamp(80px, 14vh, 180px) 24px',
+      padding: 'clamp(64px, 10vh, 120px) clamp(16px, 4vw, 48px)',
       borderTop: '1px solid rgba(184, 146, 74, 0.15)',
       borderBottom: '1px solid rgba(184, 146, 74, 0.15)',
       overflow: 'hidden',

@@ -66,7 +66,7 @@ export default function PlanFinder() {
   const recommended = total <= 4 ? plans.basic : total <= 7 ? plans.premium : plans.allin
 
   return (
-    <section style={{ background: 'linear-gradient(135deg, #0F1419 0%, #0F1419 100%)', padding: 'clamp(80px, 12vh, 140px) 24px', position: 'relative', overflow: 'hidden' }}>
+    <section style={{ background: 'linear-gradient(135deg, #0F1419 0%, #0F1419 100%)', padding: 'clamp(64px, 10vh, 120px) clamp(16px, 4vw, 48px)', position: 'relative', overflow: 'hidden' }}>
       {/* Subtle meander pattern background */}
       <div style={{
         position: 'absolute', inset: 0, opacity: 0.04,

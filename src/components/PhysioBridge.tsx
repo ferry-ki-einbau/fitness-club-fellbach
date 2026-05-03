@@ -10,7 +10,7 @@ export default function PhysioBridge() {
     <section style={{
       position: 'relative',
       background: 'linear-gradient(135deg, #0d9488 0%, #0a6e64 50%, #064e47 100%)',
-      padding: 'clamp(72px, 10vh, 120px) 24px',
+      padding: 'clamp(64px, 10vh, 120px) clamp(16px, 4vw, 48px)',
       overflow: 'hidden',
     }}>
       {/* Subtle pattern overlay */}

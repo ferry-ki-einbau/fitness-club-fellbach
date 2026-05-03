@@ -14,7 +14,7 @@ export default function AddonsBand() {
     <section style={{
       position: 'relative',
       background: '#EDE7DD',
-      padding: 'clamp(72px, 10vh, 120px) 24px',
+      padding: 'clamp(64px, 10vh, 120px) clamp(16px, 4vw, 48px)',
       borderTop: '1px solid rgba(26, 15, 15, 0.08)',
       borderBottom: '1px solid rgba(26, 15, 15, 0.08)',
     }}>

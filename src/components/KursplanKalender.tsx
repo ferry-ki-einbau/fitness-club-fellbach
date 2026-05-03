@@ -156,7 +156,7 @@ export default function KursplanKalender() {
     <section
       style={{
         background: 'linear-gradient(180deg, #0F1419 0%, #111820 100%)',
-        padding: '96px 24px',
+        padding: 'clamp(64px, 10vh, 96px) clamp(16px, 4vw, 48px)',
         fontFamily: 'inherit',
       }}
     >

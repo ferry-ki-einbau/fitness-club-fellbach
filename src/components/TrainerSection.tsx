@@ -16,7 +16,7 @@ const colors = ['#C44552', '#B8924A', '#8E2A35', '#9A8470']
 
 export default function TrainerSection() {
   return (
-    <section style={{ background: '#FFFBF4', padding: 'clamp(80px, 12vh, 140px) 24px' }}>
+    <section style={{ background: '#FFFBF4', padding: 'clamp(64px, 10vh, 120px) clamp(16px, 4vw, 48px)' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto' }}>
         {/* Header */}
         <div style={{ marginBottom: 56, maxWidth: 720 }}>

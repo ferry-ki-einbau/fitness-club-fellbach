@@ -17,7 +17,7 @@ export default function KurseGrid() {
     <section id="kurse" style={{
       position: 'relative',
       background: '#EDE7DD',
-      padding: 'clamp(80px, 12vh, 160px) 24px',
+      padding: 'clamp(64px, 10vh, 120px) clamp(16px, 4vw, 48px)',
       overflow: 'hidden',
     }}>
       <div style={{ maxWidth: 1440, margin: '0 auto' }}>

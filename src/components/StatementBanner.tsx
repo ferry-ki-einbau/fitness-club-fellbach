@@ -19,7 +19,7 @@ export default function StatementBanner() {
     <section ref={ref} style={{
       position: 'relative',
       background: 'linear-gradient(180deg, #0F1419 0%, #1A2128 50%, #0F1419 100%)',
-      padding: 'clamp(96px, 16vh, 200px) 24px',
+      padding: 'clamp(64px, 10vh, 120px) clamp(16px, 4vw, 48px)',
       overflow: 'hidden',
       borderTop: '1px solid rgba(184, 146, 74, 0.2)',
       borderBottom: '1px solid rgba(184, 146, 74, 0.2)',
