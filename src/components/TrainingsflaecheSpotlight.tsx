@@ -8,7 +8,7 @@ export default function TrainingsflaecheSpotlight() {
   return (
     <section style={{
       position: 'relative',
-      background: '#0A0505',
+      background: '#F5F0E8',
       padding: 'clamp(80px, 12vh, 160px) 24px',
       overflow: 'hidden',
     }}>
@@ -64,31 +64,31 @@ export default function TrainingsflaecheSpotlight() {
           <h2 className="font-display" style={{
             fontSize: 'clamp(2.5rem, 5.5vw, 5rem)',
             fontWeight: 800, lineHeight: 0.92, letterSpacing: '-0.03em',
-            margin: '0 0 28px', textTransform: 'uppercase', color: '#F5F0E8',
+            margin: '0 0 28px', textTransform: 'uppercase', color: '#1A0F0F',
           }}>
-            Dein Raum für <span style={{ fontStyle: 'italic', color: 'var(--accent-bright)' }}>Fortschritt.</span>
+            Dein Raum für <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>Fortschritt.</span>
           </h2>
 
           <p style={{
-            color: '#C9BFB3',
+            color: '#3F2C2C',
             fontSize: 'clamp(1rem, 1.3vw, 1.15rem)',
             lineHeight: 1.65, marginBottom: 36, maxWidth: '54ch',
           }}>
             Großzügige Trainingsfläche mit allem was du brauchst — Ausdauer, Kraft, funktionelles Training.
-            <span style={{ color: '#F5F0E8' }}> Modernste Geräte</span>, viel Platz, kein Drängeln.
+            <span style={{ color: '#1A0F0F', fontWeight: 500 }}> Modernste Geräte</span>, viel Platz, kein Drängeln.
             Egal ob 5 Uhr morgens oder 23 Uhr abends — wir sind offen.
           </p>
 
           {/* Three-feature grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginTop: 40, paddingTop: 32, borderTop: '1px solid rgba(184, 146, 74, 0.2)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginTop: 40, paddingTop: 32, borderTop: '1px solid rgba(26, 15, 15, 0.15)' }}>
             {[
               ['Cardio', 'Laufband · Crosstrainer · Bike'],
               ['Kraft', 'Maschinen · Free Weights · Racks'],
               ['Functional', 'Battle Ropes · TRX · Mobility'],
             ].map(([n, l]) => (
               <div key={n}>
-                <div className="font-display" style={{ fontSize: 18, fontWeight: 700, color: '#B8924A', lineHeight: 1, letterSpacing: '-0.01em', marginBottom: 8 }}>{n}</div>
-                <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#9A8470' }}>{l}</div>
+                <div className="font-display" style={{ fontSize: 18, fontWeight: 700, color: 'var(--accent)', lineHeight: 1, letterSpacing: '-0.01em', marginBottom: 8 }}>{n}</div>
+                <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#6E5050' }}>{l}</div>
               </div>
             ))}
           </div>

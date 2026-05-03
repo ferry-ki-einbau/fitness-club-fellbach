@@ -13,10 +13,10 @@ export default function AddonsBand() {
   return (
     <section style={{
       position: 'relative',
-      background: '#0A0505',
+      background: '#EDE7DD',
       padding: 'clamp(72px, 10vh, 120px) 24px',
-      borderTop: '1px solid rgba(184, 146, 74, 0.15)',
-      borderBottom: '1px solid rgba(184, 146, 74, 0.15)',
+      borderTop: '1px solid rgba(26, 15, 15, 0.08)',
+      borderBottom: '1px solid rgba(26, 15, 15, 0.08)',
     }}>
       <div style={{ maxWidth: 1440, margin: '0 auto' }}>
         <div style={{ marginBottom: 48, maxWidth: 720 }}>
@@ -26,11 +26,11 @@ export default function AddonsBand() {
           </div>
           <h2 className="font-display" style={{
             fontSize: 'clamp(2rem, 4.5vw, 4rem)', fontWeight: 800,
-            letterSpacing: '-0.025em', color: '#F5F0E8', textTransform: 'uppercase', lineHeight: 0.95,
+            letterSpacing: '-0.025em', color: '#1A0F0F', textTransform: 'uppercase', lineHeight: 0.95,
           }}>
-            Bau dir <span style={{ fontStyle: 'italic', color: 'var(--accent-bright)' }}>deinen Plan.</span>
+            Bau dir <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>deinen Plan.</span>
           </h2>
-          <p style={{ color: '#B5A99A', fontSize: 15, lineHeight: 1.65, marginTop: 16, maxWidth: 520 }}>
+          <p style={{ color: '#3F2C2C', fontSize: 15, lineHeight: 1.65, marginTop: 16, maxWidth: 520 }}>
             Starte mit Basic, ergänze nach Bedarf. Alle Module sind monatlich kombinierbar — keine Zwangs-Pakete.
           </p>
         </div>
@@ -45,20 +45,21 @@ export default function AddonsBand() {
               transition={{ duration: 0.5, delay: i * 0.05 }}
               style={{
                 padding: '24px 20px',
-                background: '#150A0A',
-                border: '1px solid rgba(184, 146, 74, 0.18)',
+                background: '#FFFFFF',
+                border: '1px solid rgba(26, 15, 15, 0.08)',
                 position: 'relative',
                 overflow: 'hidden',
+                boxShadow: '0 1px 2px rgba(26,15,15,0.04)',
               }}
             >
-              <div style={{ position: 'absolute', top: 0, left: 0, width: 32, height: 1, background: '#B8924A' }} />
+              <div style={{ position: 'absolute', top: 0, left: 0, width: 32, height: 1, background: 'var(--accent)' }} />
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
-                <div className="font-display" style={{ fontSize: 17, fontWeight: 700, color: '#F5F0E8', textTransform: 'uppercase', letterSpacing: '-0.005em' }}>
+                <div className="font-display" style={{ fontSize: 17, fontWeight: 700, color: '#1A0F0F', textTransform: 'uppercase', letterSpacing: '-0.005em' }}>
                   {a.name}
                 </div>
-                <div className="font-condensed" style={{ fontSize: 11, color: '#B8924A', fontWeight: 600, letterSpacing: '0.05em' }}>{a.price}</div>
+                <div className="font-condensed" style={{ fontSize: 11, color: 'var(--accent)', fontWeight: 600, letterSpacing: '0.05em' }}>{a.price}</div>
               </div>
-              <div style={{ fontSize: 13, color: '#B5A99A', lineHeight: 1.5 }}>{a.desc}</div>
+              <div style={{ fontSize: 13, color: '#5A4040', lineHeight: 1.5 }}>{a.desc}</div>
             </motion.div>
           ))}
         </div>
@@ -69,7 +70,7 @@ export default function AddonsBand() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          style={{ marginTop: 56, padding: '28px 32px', background: '#150A0A', border: '1px dashed rgba(184, 146, 74, 0.3)', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: 24 }}
+          style={{ marginTop: 56, padding: '28px 32px', background: '#1A0F0F', border: '1px solid rgba(184, 146, 74, 0.4)', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: 24 }}
         >
           <div>
             <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#B8924A', marginBottom: 6 }}>App · Kurs-Buchung</div>

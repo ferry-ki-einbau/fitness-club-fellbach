@@ -515,24 +515,27 @@ function Testimonials() {
     { name: 'Teresa K.', text: 'Die Sauna nach dem Training ist der Hammer. Selten so ein vollständiges Paket gefunden. Der Kursplan ist super abwechslungsreich.', stars: 5 },
     { name: 'Gunter F.', text: 'Ich bin jetzt seit 8 Monaten dabei. Die Trainer motivieren wirklich und ich sehe echte Ergebnisse.', stars: 5 },
     { name: 'Sarah L.', text: 'BodyPump und Yoga in einem Studio — das hat mir wirklich gefehlt. Top Atmosphäre, nie überfüllt.', stars: 5 },
-    { name: 'Marco B.', text: 'Der Box-Ring ist ein absolutes Alleinstellungsmerkmal. Als Kampfsportler finde ich hier alles was ich brauche.', stars: 5 },
+    { name: 'Marco B.', text: 'Mit dem EGYM-Training mache ich endlich richtig Fortschritte. Die Daten zeigen schwarz auf weiß, was sich verbessert.', stars: 5 },
   ]
   return (
-    <section style={{ background: 'var(--gray-dark)', padding: '96px 0' }}>
+    <section style={{ background: '#F5F0E8', padding: 'clamp(80px, 12vh, 140px) 0' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px' }}>
-        <div className="label reveal" style={{ marginBottom: 12 }}>Mitglieder</div>
-        <h2 className="font-display reveal delay-1" style={{ fontSize: 'var(--heading-lg)', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 48 }}>
-          WAS ANDERE <span style={{ color: 'var(--lime)' }}>SAGEN.</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
+          <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
+          <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Mitglieder</span>
+        </div>
+        <h2 className="font-display" style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800, letterSpacing: '-0.025em', marginBottom: 48, color: '#1A0F0F', textTransform: 'uppercase', lineHeight: 0.95 }}>
+          Was andere <span style={{ color: 'var(--accent)', fontStyle: 'italic' }}>sagen.</span>
         </h2>
         <div style={{ display: 'flex', gap: 16, overflowX: 'auto', paddingBottom: 8, scrollbarWidth: 'none' }}>
           {reviews.map((r, i) => (
             <div key={r.name} className={`reveal delay-${Math.min(i + 1, 5)}`}
-                 style={{ flexShrink: 0, width: 300, background: 'var(--gray-mid)', border: '1px solid var(--gray-border)', padding: 28 }}>
+                 style={{ flexShrink: 0, width: 320, background: '#FFFFFF', border: '1px solid rgba(26,15,15,0.08)', padding: 32, boxShadow: '0 1px 2px rgba(26,15,15,0.04)' }}>
               <div style={{ display: 'flex', gap: 2, marginBottom: 16 }}>
-                {Array(r.stars).fill(0).map((_, j) => <span key={j} style={{ color: 'var(--lime)', fontSize: 13 }}>★</span>)}
+                {Array(r.stars).fill(0).map((_, j) => <span key={j} style={{ color: 'var(--accent)', fontSize: 14 }}>★</span>)}
               </div>
-              <p style={{ color: '#B5A99A', fontSize: 13, lineHeight: 1.75, marginBottom: 20 }}>"{r.text}"</p>
-              <div className="font-display" style={{ fontSize: 13, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>{r.name}</div>
+              <p style={{ color: '#3F2C2C', fontSize: 14, lineHeight: 1.75, marginBottom: 24 }}>"{r.text}"</p>
+              <div className="font-display" style={{ fontSize: 13, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#B8924A' }}>{r.name}</div>
             </div>
           ))}
         </div>
@@ -552,21 +555,24 @@ function FAQ() {
     { q: 'Gibt es eine Altersbeschränkung?', a: 'Für eine Mitgliedschaft ohne elterliche Zustimmung min. 18 Jahre. Für Jugendliche ab 14 Jahren gibt es spezielle Angebote — einfach direkt anfragen.' },
   ]
   return (
-    <section style={{ background: 'var(--black)', padding: '96px 0' }}>
-      <div style={{ maxWidth: 720, margin: '0 auto', padding: '0 24px' }}>
-        <div className="label reveal" style={{ marginBottom: 12 }}>FAQ</div>
-        <h2 className="font-display reveal delay-1" style={{ fontSize: 'var(--heading-lg)', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 48 }}>
-          NOCH <span style={{ color: 'var(--lime)' }}>FRAGEN?</span>
+    <section style={{ background: '#EDE7DD', padding: 'clamp(80px, 12vh, 140px) 0' }}>
+      <div style={{ maxWidth: 760, margin: '0 auto', padding: '0 24px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
+          <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
+          <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>FAQ</span>
+        </div>
+        <h2 className="font-display" style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800, letterSpacing: '-0.025em', marginBottom: 48, color: '#1A0F0F', textTransform: 'uppercase', lineHeight: 0.95 }}>
+          Noch <span style={{ color: 'var(--accent)', fontStyle: 'italic' }}>Fragen?</span>
         </h2>
         {items.map((item, i) => (
-          <div key={i} style={{ borderBottom: '1px solid var(--gray-border)' }}>
-            <button className="reveal" onClick={() => setOpen(open === i ? null : i)}
-                    style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 0', background: 'none', border: 'none', color: '#fff', cursor: 'pointer', gap: 16, textAlign: 'left' }}>
-              <span className="font-display" style={{ fontSize: 'clamp(0.9rem, 2vw, 1.05rem)', fontWeight: 500, letterSpacing: '0.02em' }}>{item.q}</span>
-              <span style={{ color: 'var(--lime)', flexShrink: 0, fontSize: 22, lineHeight: 1, transition: 'transform 0.3s', transform: open === i ? 'rotate(45deg)' : 'none', display: 'block' }}>+</span>
+          <div key={i} style={{ borderBottom: '1px solid rgba(26,15,15,0.12)' }}>
+            <button onClick={() => setOpen(open === i ? null : i)}
+                    style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '22px 0', background: 'none', border: 'none', color: '#1A0F0F', cursor: 'pointer', gap: 16, textAlign: 'left' }}>
+              <span className="font-display" style={{ fontSize: 'clamp(0.95rem, 2vw, 1.1rem)', fontWeight: 500, letterSpacing: '0.02em' }}>{item.q}</span>
+              <span style={{ color: 'var(--accent)', flexShrink: 0, fontSize: 22, lineHeight: 1, transition: 'transform 0.3s', transform: open === i ? 'rotate(45deg)' : 'none', display: 'block' }}>+</span>
             </button>
             <div className={`faq-answer ${open === i ? 'open' : ''}`}>
-              <p style={{ color: '#C9BFB3', fontSize: 14, lineHeight: 1.75, paddingBottom: 20 }}>{item.a}</p>
+              <p style={{ color: '#3F2C2C', fontSize: 14.5, lineHeight: 1.75, paddingBottom: 24 }}>{item.a}</p>
             </div>
           </div>
         ))}

@@ -16,14 +16,6 @@ const programs = [
     text: 'Verletzungen vorbeugen, Rückenbeschwerden lindern, Wohlbefinden steigern. Erfahrene Experten betreuen dich Schritt für Schritt.',
   },
   {
-    img: 'real-exercube',
-    label: 'Gaming Exercube',
-    price: '5,99€ / Woche',
-    headline: 'Fitness & Gaming in einem',
-    text: 'Interaktiver Trainingswürfel — du bewegst dich, der Würfel spielt. Effizientestes Training unserer Zeit, das richtig Spaß macht. Anfänger bis Profis.',
-    tag: 'NEU',
-  },
-  {
     img: 'real-boxen-kurs',
     label: 'Boxen',
     price: '69€ / Monat',
@@ -36,7 +28,7 @@ export default function SpecialPrograms() {
   return (
     <section style={{
       position: 'relative',
-      background: '#150A0A',
+      background: '#F5F0E8',
       padding: 'clamp(80px, 12vh, 160px) 24px',
       overflow: 'hidden',
     }}>
@@ -49,18 +41,18 @@ export default function SpecialPrograms() {
           </div>
           <h2 className="font-display" style={{
             fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800,
-            letterSpacing: '-0.025em', color: '#F5F0E8', textTransform: 'uppercase',
+            letterSpacing: '-0.025em', color: '#1A0F0F', textTransform: 'uppercase',
             lineHeight: 0.95, marginBottom: 20,
           }}>
-            Mehr als nur <span style={{ fontStyle: 'italic', color: 'var(--accent-bright)' }}>Geräte.</span>
+            Mehr als nur <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>Geräte.</span>
           </h2>
-          <p style={{ color: '#B5A99A', fontSize: 'clamp(1rem, 1.3vw, 1.15rem)', lineHeight: 1.65, maxWidth: 580 }}>
-            Über das normale Training hinaus — 1-zu-1 Personal Training, Präventionskurse, Gaming Exercube und Box-Kurs.
+          <p style={{ color: '#3F2C2C', fontSize: 'clamp(1rem, 1.3vw, 1.15rem)', lineHeight: 1.65, maxWidth: 580 }}>
+            Über das normale Training hinaus — 1-zu-1 Personal Training, Präventionskurse und Box-Kurs.
           </p>
         </div>
 
         {/* Grid */}
-        <div className="programs-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 'clamp(16px, 2.5vw, 32px)' }}>
+        <div className="programs-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'clamp(16px, 2.5vw, 28px)' }}>
           {programs.map((p, i) => (
             <motion.article
               key={p.label}
@@ -68,7 +60,7 @@ export default function SpecialPrograms() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, delay: (i % 2) * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              style={{ position: 'relative', background: '#0A0505', border: '1px solid rgba(184, 146, 74, 0.15)', overflow: 'hidden' }}
+              style={{ position: 'relative', background: '#FFFFFF', border: '1px solid rgba(26, 15, 15, 0.08)', overflow: 'hidden', boxShadow: '0 1px 2px rgba(26,15,15,0.04)' }}
             >
               <div style={{ position: 'relative', aspectRatio: '16/10', overflow: 'hidden' }}>
                 <img
@@ -83,21 +75,16 @@ export default function SpecialPrograms() {
                   onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
                 />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 50%, rgba(8,4,4,0.8) 100%)' }} />
-                {p.tag && (
-                  <div style={{ position: 'absolute', top: 16, right: 16, padding: '6px 10px', background: 'var(--accent-bright)' }}>
-                    <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.3em', color: '#0A0505', fontWeight: 700 }}>{p.tag}</span>
-                  </div>
-                )}
-                <div style={{ position: 'absolute', top: 16, left: 16, padding: '6px 12px', background: 'rgba(8,4,4,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.4)' }}>
+<div style={{ position: 'absolute', top: 16, left: 16, padding: '6px 12px', background: 'rgba(8,4,4,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.4)' }}>
                   <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.4em', color: '#B8924A', fontWeight: 700 }}>{p.price}</span>
                 </div>
               </div>
               <div style={{ padding: 'clamp(24px, 3vw, 36px)' }}>
                 <div className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.4em', textTransform: 'uppercase', color: '#B8924A', marginBottom: 8, fontWeight: 600 }}>{p.label}</div>
-                <h3 className="font-display" style={{ fontSize: 'clamp(1.4rem, 2.2vw, 1.8rem)', fontWeight: 700, color: '#F5F0E8', textTransform: 'uppercase', letterSpacing: '-0.01em', marginBottom: 12, lineHeight: 1.1 }}>
+                <h3 className="font-display" style={{ fontSize: 'clamp(1.4rem, 2.2vw, 1.8rem)', fontWeight: 700, color: '#1A0F0F', textTransform: 'uppercase', letterSpacing: '-0.01em', marginBottom: 12, lineHeight: 1.1 }}>
                   {p.headline}
                 </h3>
-                <p style={{ color: '#B5A99A', fontSize: 14.5, lineHeight: 1.65 }}>{p.text}</p>
+                <p style={{ color: '#5A4040', fontSize: 14.5, lineHeight: 1.65 }}>{p.text}</p>
               </div>
             </motion.article>
           ))}
