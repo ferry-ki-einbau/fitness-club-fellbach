@@ -53,12 +53,12 @@ export default function LiveTicker() {
           width: 8,
           height: 8,
           borderRadius: '50%',
-          background: s.open ? '#E15464' : '#5A3030',
+          background: s.open ? '#22C55E' : '#DC2626',
           animation: s.open ? 'pulse 1.6s ease-in-out infinite' : 'none',
-          boxShadow: s.open ? '0 0 12px rgba(225, 84, 100, 0.7)' : 'none',
+          boxShadow: s.open ? '0 0 12px rgba(34, 197, 94, 0.7)' : '0 0 8px rgba(220, 38, 38, 0.5)',
         }}
       />
-      <span style={{ color: s.open ? '#E15464' : '#888', fontWeight: 600 }}>{s.label}</span>
+      <span style={{ color: s.open ? '#22C55E' : '#DC2626', fontWeight: 600 }}>{s.label}</span>
       <span style={{ color: '#3A2020' }}>·</span>
       <span style={{ color: '#B8924A' }}>{s.sub}</span>
     </div>

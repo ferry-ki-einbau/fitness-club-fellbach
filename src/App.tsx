@@ -85,7 +85,7 @@ function Nav() {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'nav-glass' : ''}`}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72 }}>
         <a href="#" style={{ color: 'var(--text)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 12 }}>
-          <SpartanMark size={40} />
+          <SpartanMark size={56} />
           <span className="font-display" style={{ fontSize: 14, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', lineHeight: 1.15 }}>
             FITNESS CLUB
             <span style={{ display: 'block', fontSize: 9, letterSpacing: '0.4em', fontWeight: 300, color: 'var(--text-muted)', fontFamily: 'Barlow Condensed, sans-serif' }}>FELLBACH</span>
@@ -639,7 +639,7 @@ function Footer() {
     <footer style={{ background: 'var(--black)', borderTop: '1px solid var(--gray-border)', padding: '32px 0' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <SpartanMark size={28} />
+          <SpartanMark size={44} />
           <span className="font-display" style={{ fontSize: 13, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text)' }}>
             FITNESS CLUB FELLBACH
           </span>
