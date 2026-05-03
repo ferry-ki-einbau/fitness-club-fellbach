@@ -90,8 +90,10 @@ body {
   .hero-cta-group { flex-direction: column !important; }
 }
 
-/* Platz für Mobile Sticky Bar */
+/* Mobile Sticky Bar — nur auf Mobile */
+.mobile-sticky-bar { display: none; }
 @media (max-width: 767px) {
+  .mobile-sticky-bar { display: flex; }
   footer { padding-bottom: 80px !important; }
 }
 

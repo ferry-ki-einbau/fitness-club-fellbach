@@ -1003,11 +1003,10 @@ export default function App() {
       <Contact />
       <Footer />
 
-      {/* Mobile Sticky Call Bar */}
-      <div className="md:hidden" style={{
+      {/* Mobile Sticky Call Bar — nur Mobile */}
+      <div className="mobile-sticky-bar" style={{
         position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 100,
-        display: 'flex', gap: 1,
-        boxShadow: '0 -4px 24px rgba(0,0,0,0.4)',
+        gap: 1, boxShadow: '0 -4px 24px rgba(0,0,0,0.4)',
       }}>
         <a href="tel:+4971158 8654" style={{
           flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
