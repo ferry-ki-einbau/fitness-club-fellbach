@@ -29,12 +29,12 @@ export default function KurseGrid() {
           <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 'clamp(24px, 5vw, 80px)', alignItems: 'end' }} className="kurse-header-grid">
             <h2 className="font-display" style={{
               fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800,
-              letterSpacing: '-0.025em', color: '#1A0F0F', textTransform: 'uppercase', lineHeight: 0.95, margin: 0,
+              letterSpacing: '-0.025em', color: '#0F1419', textTransform: 'uppercase', lineHeight: 0.95, margin: 0,
             }}>
               <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>Kurse</span> für jede Woche.
             </h2>
             <p style={{ color: '#3F2C2C', fontSize: 'clamp(1rem, 1.3vw, 1.15rem)', lineHeight: 1.65, maxWidth: 420 }}>
-              BodyPump, Yoga, Pilates, Rückenfit & mehr. Buch deinen Platz in 10 Sekunden über die <span style={{ color: '#1A0F0F', fontWeight: 500 }}>MySports App</span>.
+              BodyPump, Yoga, Pilates, Rückenfit & mehr. Buch deinen Platz in 10 Sekunden über die <span style={{ color: '#0F1419', fontWeight: 500 }}>MySports App</span>.
             </p>
           </div>
         </div>
@@ -68,7 +68,7 @@ export default function KurseGrid() {
               <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: k.color }} />
               <div>
                 <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: k.color, marginBottom: 12, fontWeight: 600 }}>{k.cat}</div>
-                <div className="font-display" style={{ fontSize: 26, fontWeight: 700, color: '#1A0F0F', textTransform: 'uppercase', letterSpacing: '-0.01em', lineHeight: 1 }}>{k.name}</div>
+                <div className="font-display" style={{ fontSize: 26, fontWeight: 700, color: '#0F1419', textTransform: 'uppercase', letterSpacing: '-0.01em', lineHeight: 1 }}>{k.name}</div>
               </div>
               <div style={{ fontSize: 13, color: '#5A4040', lineHeight: 1.5, marginTop: 16 }}>{k.desc}</div>
             </motion.div>

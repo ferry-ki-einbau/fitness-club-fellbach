@@ -30,7 +30,7 @@ export default function WelcomeIntro() {
             fontWeight: 700,
             lineHeight: 1.05,
             letterSpacing: '-0.025em',
-            color: '#1A0F0F',
+            color: '#0F1419',
             margin: '0 0 36px',
             maxWidth: 18 + 'ch',
             marginInline: 'auto',
@@ -50,8 +50,8 @@ export default function WelcomeIntro() {
           }}>
             Familiäre Atmosphäre. Trainer, die deinen Namen kennen. Saubere Geräte, Sauna und Whirlpool.
             <br /><br />
-            Über <span style={{ color: '#1A0F0F', fontWeight: 600 }}>200 Mitglieder</span> vertrauen uns — viele schon seit Jahren.
-            <span style={{ color: '#1A0F0F', fontWeight: 600 }}> Komm vorbei, wann du willst</span> — wir freuen uns auf dich.
+            Über <span style={{ color: '#0F1419', fontWeight: 600 }}>200 Mitglieder</span> vertrauen uns — viele schon seit Jahren.
+            <span style={{ color: '#0F1419', fontWeight: 600 }}> Komm vorbei, wann du willst</span> — wir freuen uns auf dich.
           </p>
 
           {/* Three quick value props */}
@@ -63,7 +63,7 @@ export default function WelcomeIntro() {
             ].map((v) => (
               <div key={v.label} style={{ textAlign: 'center' }}>
                 <div style={{ fontSize: 32, marginBottom: 12 }}>{v.icon}</div>
-                <div className="font-display" style={{ fontSize: 15, fontWeight: 700, color: '#1A0F0F', textTransform: 'uppercase', letterSpacing: '0.02em', marginBottom: 6 }}>{v.label}</div>
+                <div className="font-display" style={{ fontSize: 15, fontWeight: 700, color: '#0F1419', textTransform: 'uppercase', letterSpacing: '0.02em', marginBottom: 6 }}>{v.label}</div>
                 <div className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#8A7060' }}>{v.sub}</div>
               </div>
             ))}

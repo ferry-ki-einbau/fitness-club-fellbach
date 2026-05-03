@@ -8,7 +8,7 @@ export default function BoxRingSpotlight() {
   return (
     <section style={{
       position: 'relative',
-      background: '#0A0505',
+      background: '#0F1419',
       padding: 'clamp(80px, 12vh, 160px) 24px',
       overflow: 'hidden',
     }}>
@@ -46,9 +46,9 @@ export default function BoxRingSpotlight() {
               loading="lazy"
               style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.05) saturate(0.95)' }}
             />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(45deg, rgba(8,4,4,0.5) 0%, transparent 50%)' }} />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(45deg, rgba(15,20,25,0.5) 0%, transparent 50%)' }} />
             {/* Bottom badge */}
-            <div style={{ position: 'absolute', bottom: 24, left: 24, padding: '8px 14px', background: 'rgba(8,4,4,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.4)' }}>
+            <div style={{ position: 'absolute', bottom: 24, left: 24, padding: '8px 14px', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.4)' }}>
               <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>Echter Boxring</div>
             </div>
           </div>

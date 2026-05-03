@@ -26,7 +26,7 @@ export default function AddonsBand() {
           </div>
           <h2 className="font-display" style={{
             fontSize: 'clamp(2rem, 4.5vw, 4rem)', fontWeight: 800,
-            letterSpacing: '-0.025em', color: '#1A0F0F', textTransform: 'uppercase', lineHeight: 0.95,
+            letterSpacing: '-0.025em', color: '#0F1419', textTransform: 'uppercase', lineHeight: 0.95,
           }}>
             Bau dir <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>deinen Plan.</span>
           </h2>
@@ -54,7 +54,7 @@ export default function AddonsBand() {
             >
               <div style={{ position: 'absolute', top: 0, left: 0, width: 32, height: 1, background: 'var(--accent)' }} />
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 8 }}>
-                <div className="font-display" style={{ fontSize: 17, fontWeight: 700, color: '#1A0F0F', textTransform: 'uppercase', letterSpacing: '-0.005em' }}>
+                <div className="font-display" style={{ fontSize: 17, fontWeight: 700, color: '#0F1419', textTransform: 'uppercase', letterSpacing: '-0.005em' }}>
                   {a.name}
                 </div>
                 <div className="font-condensed" style={{ fontSize: 11, color: 'var(--accent)', fontWeight: 600, letterSpacing: '0.05em' }}>{a.price}</div>
@@ -70,7 +70,7 @@ export default function AddonsBand() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          style={{ marginTop: 56, padding: '28px 32px', background: '#1A0F0F', border: '1px solid rgba(184, 146, 74, 0.4)', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: 24 }}
+          style={{ marginTop: 56, padding: '28px 32px', background: '#0F1419', border: '1px solid rgba(184, 146, 74, 0.4)', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: 24 }}
         >
           <div>
             <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#B8924A', marginBottom: 6 }}>App · Kurs-Buchung</div>

@@ -38,7 +38,7 @@ export default function LiveTicker() {
         alignItems: 'center',
         gap: 12,
         padding: '12px 18px',
-        background: 'rgba(8,4,4,0.92)',
+        background: 'rgba(15,20,25,0.92)',
         backdropFilter: 'blur(12px)',
         border: '1px solid rgba(184, 146, 74, 0.25)',
         fontSize: 10,

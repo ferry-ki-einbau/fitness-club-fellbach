@@ -57,7 +57,7 @@ export default function StudioTour() {
   const z = zones[active]
 
   return (
-    <section id="tour" style={{ background: '#0A0505', padding: 'clamp(80px, 12vh, 160px) 24px', overflow: 'hidden' }}>
+    <section id="tour" style={{ background: '#0F1419', padding: 'clamp(80px, 12vh, 160px) 24px', overflow: 'hidden' }}>
       <div style={{ maxWidth: 1440, margin: '0 auto' }}>
         {/* Header */}
         <div style={{ marginBottom: 56, maxWidth: 720 }}>
@@ -87,7 +87,7 @@ export default function StudioTour() {
                 flexShrink: 0,
                 padding: '14px 22px',
                 background: active === i ? '#B8924A' : 'rgba(245, 240, 232, 0.04)',
-                color: active === i ? '#0A0505' : '#B5A99A',
+                color: active === i ? '#0F1419' : '#B5A99A',
                 border: `1px solid ${active === i ? '#B8924A' : 'rgba(184, 146, 74, 0.2)'}`,
                 cursor: 'pointer',
                 fontSize: 11,
@@ -122,7 +122,7 @@ export default function StudioTour() {
                 decoding="async"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.02) brightness(1.05) saturate(1.05)' }}
               />
-              <div style={{ position: 'absolute', top: 24, left: 24, padding: '8px 14px', background: 'rgba(8,4,4,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.4)' }}>
+              <div style={{ position: 'absolute', top: 24, left: 24, padding: '8px 14px', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.4)' }}>
                 <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 700 }}>{String(active + 1).padStart(2, '0')} / {String(zones.length).padStart(2, '0')}</span>
               </div>
             </div>
@@ -150,7 +150,7 @@ export default function StudioTour() {
               {/* Navigation */}
               <div style={{ display: 'flex', gap: 12 }}>
                 <button onClick={() => setActive((active - 1 + zones.length) % zones.length)} className="font-condensed" style={{ padding: '12px 18px', background: 'transparent', border: '1px solid rgba(184, 146, 74, 0.3)', color: '#F5F0E8', cursor: 'pointer', fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase' }}>← Vorher</button>
-                <button onClick={() => setActive((active + 1) % zones.length)} className="font-condensed" style={{ padding: '12px 18px', background: '#B8924A', border: '1px solid #B8924A', color: '#0A0505', cursor: 'pointer', fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', fontWeight: 700 }}>Nächste →</button>
+                <button onClick={() => setActive((active + 1) % zones.length)} className="font-condensed" style={{ padding: '12px 18px', background: '#B8924A', border: '1px solid #B8924A', color: '#0F1419', cursor: 'pointer', fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', fontWeight: 700 }}>Nächste →</button>
               </div>
             </div>
           </motion.div>

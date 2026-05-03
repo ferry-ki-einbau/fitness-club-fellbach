@@ -3,15 +3,18 @@
 @import "tailwindcss";
 
 :root {
-  /* Original brand: Greek / Spartan, deep wine-black + burgundy red */
-  --accent: #C44552;
+  /* Brand-Familie zur Physio Zentrum Fellbach (Bruckstraße 61):
+     Gemeinsame Navy-Basis, eigene Burgund/Gold Akzente */
+  --accent: #C44552;          /* Burgund — Fitness Energy (Primary) */
   --accent-deep: #8E2A35;
   --accent-bright: #E15464;
-  --gold: #B8924A;
-  --black: #150A0A;
-  --gray-dark: #1F1010;
-  --gray-mid: #2A1717;
-  --gray-border: #3A2020;
+  --gold: #B8924A;            /* Gold — Premium Hint */
+  --teal: #0d9488;            /* Teal — Bridge zu Physio */
+  --teal-deep: #0a6e64;
+  --black: #0F1419;           /* Deep Navy — Familie Physio */
+  --gray-dark: #1A2128;
+  --gray-mid: #252E37;
+  --gray-border: #34404B;
   --text: #F8F4ED;
   --text-soft: #E8DCCB;
   --text-muted: #C4B7A4;
@@ -55,6 +58,7 @@ body {
   .kurse-header-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
   .tour-content { grid-template-columns: 1fr !important; }
   .tour-tabs { gap: 6px !important; }
+  .physio-bridge-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

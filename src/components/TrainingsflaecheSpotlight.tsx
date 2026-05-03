@@ -42,8 +42,8 @@ export default function TrainingsflaecheSpotlight() {
               loading="lazy"
               style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.02) brightness(1.05) saturate(1.05)' }}
             />
-            <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%', background: 'linear-gradient(180deg, transparent 0%, rgba(8,4,4,0.8) 100%)' }} />
-            <div style={{ position: 'absolute', bottom: 24, left: 24, padding: '8px 14px', background: 'rgba(8,4,4,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.4)' }}>
+            <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%', background: 'linear-gradient(180deg, transparent 0%, rgba(15,20,25,0.8) 100%)' }} />
+            <div style={{ position: 'absolute', bottom: 24, left: 24, padding: '8px 14px', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.4)' }}>
               <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>1.500m² Trainingsfläche</div>
             </div>
           </div>
@@ -64,7 +64,7 @@ export default function TrainingsflaecheSpotlight() {
           <h2 className="font-display" style={{
             fontSize: 'clamp(2.5rem, 5.5vw, 5rem)',
             fontWeight: 800, lineHeight: 0.92, letterSpacing: '-0.03em',
-            margin: '0 0 28px', textTransform: 'uppercase', color: '#1A0F0F',
+            margin: '0 0 28px', textTransform: 'uppercase', color: '#0F1419',
           }}>
             Dein Raum für <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>Fortschritt.</span>
           </h2>
@@ -75,7 +75,7 @@ export default function TrainingsflaecheSpotlight() {
             lineHeight: 1.65, marginBottom: 36, maxWidth: '54ch',
           }}>
             Großzügige Trainingsfläche mit allem was du brauchst — Ausdauer, Kraft, funktionelles Training.
-            <span style={{ color: '#1A0F0F', fontWeight: 500 }}> Modernste Geräte</span>, viel Platz, kein Drängeln.
+            <span style={{ color: '#0F1419', fontWeight: 500 }}> Modernste Geräte</span>, viel Platz, kein Drängeln.
             Egal ob 5 Uhr morgens oder 23 Uhr abends — wir sind offen.
           </p>
 

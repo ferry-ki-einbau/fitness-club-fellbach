@@ -20,6 +20,7 @@ import WelcomeIntro from './components/WelcomeIntro'
 import PlanFinder from './components/PlanFinder'
 import TrainerSection from './components/TrainerSection'
 import StudioTour from './components/StudioTour'
+import PhysioBridge from './components/PhysioBridge'
 
 
 const GALLERY = [
@@ -148,7 +149,7 @@ function Hero() {
     hour < 22 ? { label: 'After-Work · gut besucht', color: '#F4B400' } :
                 { label: 'Ruhige Spätstunde', color: '#22C55E' }
   return (
-    <section data-hero style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden', background: '#0A0505' }}>
+    <section data-hero style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden', background: '#0F1419' }}>
       {/* Full-bleed photo */}
       <motion.div
         initial={{ scale: 1.06, opacity: 0 }}
@@ -167,8 +168,8 @@ function Hero() {
       </motion.div>
 
       {/* Smoother gradient — readable text but image bright */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(180deg, rgba(8,4,4,0.55) 0%, rgba(8,4,4,0.25) 30%, rgba(8,4,4,0.55) 75%, rgba(8,4,4,0.95) 100%)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(95deg, rgba(8,4,4,0.85) 0%, rgba(8,4,4,0.4) 50%, rgba(8,4,4,0.15) 100%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(180deg, rgba(15,20,25,0.55) 0%, rgba(15,20,25,0.25) 30%, rgba(15,20,25,0.55) 75%, rgba(15,20,25,0.95) 100%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(95deg, rgba(15,20,25,0.85) 0%, rgba(15,20,25,0.4) 50%, rgba(15,20,25,0.15) 100%)', pointerEvents: 'none' }} />
 
       {/* Greek meander */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 3, pointerEvents: 'none', opacity: 0.6 }}>
@@ -182,7 +183,7 @@ function Hero() {
         transition={{ duration: 0.6, delay: 2.0 }}
         style={{ position: 'absolute', top: 100, left: '50%', transform: 'translateX(-50%)', zIndex: 11, display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center' }}
       >
-        <div style={{ padding: '8px 16px', background: 'rgba(8,4,4,0.85)', backdropFilter: 'blur(12px)', border: `1px solid ${usage.color}66`, display: 'flex', alignItems: 'center', gap: 10, borderRadius: 999 }}>
+        <div style={{ padding: '8px 16px', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(12px)', border: `1px solid ${usage.color}66`, display: 'flex', alignItems: 'center', gap: 10, borderRadius: 999 }}>
           <span style={{ width: 8, height: 8, borderRadius: '50%', background: usage.color, animation: 'pulse 1.8s ease-in-out infinite', boxShadow: `0 0 10px ${usage.color}99` }} />
           <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#F5F0E8', fontWeight: 500 }}>
             <span style={{ color: usage.color, fontWeight: 700 }}>Jetzt: {usage.label}</span>
@@ -190,7 +191,7 @@ function Hero() {
             <span>geöffnet bis 24:00</span>
           </span>
         </div>
-        <div style={{ padding: '8px 16px', background: 'rgba(8,4,4,0.85)', backdropFilter: 'blur(12px)', border: '1px solid rgba(184, 146, 74, 0.4)', display: 'flex', alignItems: 'center', gap: 8, borderRadius: 999 }}>
+        <div style={{ padding: '8px 16px', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(12px)', border: '1px solid rgba(184, 146, 74, 0.4)', display: 'flex', alignItems: 'center', gap: 8, borderRadius: 999 }}>
           <svg width="14" height="14" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
             <path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.9z"/>
             <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16 19 13 24 13c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
@@ -281,7 +282,7 @@ function Hero() {
               style={{ position: 'relative', aspectRatio: '1/1', overflow: 'hidden', cursor: 'pointer', textDecoration: 'none', display: 'block', boxShadow: '0 12px 32px -8px rgba(0,0,0,0.5)' }}
             >
               <img src={t.src} alt={t.label} decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.02) brightness(1.05) saturate(1.05)' }} />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 50%, rgba(8,4,4,0.85) 100%)' }} />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 50%, rgba(15,20,25,0.85) 100%)' }} />
               <div style={{ position: 'absolute', bottom: 12, left: 14, right: 14 }}>
                 <div className="font-display" style={{ fontSize: 14, fontWeight: 700, color: '#F5F0E8', textTransform: 'uppercase', letterSpacing: '0.02em' }}>{t.label}</div>
               </div>
@@ -340,7 +341,7 @@ function Stats() {
 
 function Gallery() {
   return (
-    <section id="galerie" style={{ background: '#0A0505', padding: 'clamp(80px, 12vh, 140px) 0' }}>
+    <section id="galerie" style={{ background: '#0F1419', padding: 'clamp(80px, 12vh, 140px) 0' }}>
       <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 24px 56px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
           <span style={{ width: 32, height: 1, background: '#B8924A' }} />
@@ -378,8 +379,8 @@ function Gallery() {
               onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
               onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
             />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 50%, rgba(8,4,4,0.85) 100%)', pointerEvents: 'none' }} />
-            <div style={{ position: 'absolute', top: 16, left: 16, padding: '6px 10px', background: 'rgba(8,4,4,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.3)' }}>
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 50%, rgba(15,20,25,0.85) 100%)', pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', top: 16, left: 16, padding: '6px 10px', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.3)' }}>
               <span className="font-condensed" style={{ fontSize: 9, letterSpacing: '0.4em', color: '#B8924A', fontWeight: 700 }}>{item.tag}</span>
             </div>
             <div style={{ position: 'absolute', bottom: 16, left: 16, right: 16, pointerEvents: 'none' }}>
@@ -434,7 +435,7 @@ function Pricing() {
   ]
 
   return (
-    <section id="preise" style={{ background: '#0A0505', padding: 'clamp(80px, 12vh, 160px) 0' }}>
+    <section id="preise" style={{ background: '#0F1419', padding: 'clamp(80px, 12vh, 160px) 0' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
           <span style={{ width: 32, height: 1, background: '#B8924A' }} />
@@ -461,7 +462,7 @@ function Pricing() {
                 textTransform: 'uppercase',
                 fontWeight: 600,
                 background: term === t ? '#B8924A' : 'transparent',
-                color: term === t ? '#0A0505' : '#9A8470',
+                color: term === t ? '#0F1419' : '#9A8470',
                 border: 'none',
                 cursor: 'pointer',
                 transition: 'all 0.2s',
@@ -485,7 +486,7 @@ function Pricing() {
                 style={{
                   position: 'relative',
                   padding: 36,
-                  background: plan.featured ? 'linear-gradient(180deg, #1F1010 0%, #150A0A 100%)' : '#150A0A',
+                  background: plan.featured ? 'linear-gradient(180deg, #1A2128 0%, #1A2128 100%)' : '#1A2128',
                   border: plan.featured ? '1px solid #B8924A' : '1px solid rgba(184, 146, 74, 0.15)',
                   display: 'flex',
                   flexDirection: 'column',
@@ -493,7 +494,7 @@ function Pricing() {
               >
                 {/* Top corner — Bonus badge */}
                 {p.bonus && plan.featured && (
-                  <div style={{ position: 'absolute', top: -1, right: -1, padding: '8px 14px', background: '#B8924A', color: '#0A0505' }}>
+                  <div style={{ position: 'absolute', top: -1, right: -1, padding: '8px 14px', background: '#B8924A', color: '#0F1419' }}>
                     <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', fontWeight: 700 }}>{p.bonus}</span>
                   </div>
                 )}
@@ -574,7 +575,7 @@ function Testimonials() {
               <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
               <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Was Mitglieder sagen</span>
             </div>
-            <h2 className="font-display" style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800, letterSpacing: '-0.025em', color: '#1A0F0F', textTransform: 'uppercase', lineHeight: 0.95, margin: 0 }}>
+            <h2 className="font-display" style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800, letterSpacing: '-0.025em', color: '#0F1419', textTransform: 'uppercase', lineHeight: 0.95, margin: 0 }}>
               200+ Bewertungen.<br /><span style={{ color: 'var(--accent)', fontStyle: 'italic' }}>Eine Sache.</span>
             </h2>
           </div>
@@ -590,13 +591,13 @@ function Testimonials() {
               </svg>
               <div>
                 <div style={{ fontSize: 11, color: '#5A4040', letterSpacing: '0.05em' }}>Google Bewertungen</div>
-                <div className="font-display" style={{ fontSize: 22, fontWeight: 700, color: '#1A0F0F', lineHeight: 1 }}>4,7 / 5,0</div>
+                <div className="font-display" style={{ fontSize: 22, fontWeight: 700, color: '#0F1419', lineHeight: 1 }}>4,7 / 5,0</div>
               </div>
             </div>
             <div style={{ display: 'flex', gap: 3, marginBottom: 8 }}>
               {[1,2,3,4,5].map(i => <span key={i} style={{ color: '#F4B400', fontSize: 16 }}>★</span>)}
             </div>
-            <div style={{ fontSize: 12, color: '#5A4040' }}>Aus über <span style={{ fontWeight: 600, color: '#1A0F0F' }}>200+ echten Mitglieder-Bewertungen</span></div>
+            <div style={{ fontSize: 12, color: '#5A4040' }}>Aus über <span style={{ fontWeight: 600, color: '#0F1419' }}>200+ echten Mitglieder-Bewertungen</span></div>
           </div>
         </div>
 
@@ -617,7 +618,7 @@ function Testimonials() {
               </div>
               <p style={{ color: '#3F2C2C', fontSize: 14, lineHeight: 1.7, marginBottom: 20, flex: 1 }}>"{r.text}"</p>
               <div style={{ borderTop: '1px solid rgba(26,15,15,0.08)', paddingTop: 14, display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                <div className="font-display" style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#1A0F0F' }}>{r.name}</div>
+                <div className="font-display" style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#0F1419' }}>{r.name}</div>
                 <div style={{ fontSize: 11, color: '#8A7060' }}>{r.when}</div>
               </div>
             </div>
@@ -625,7 +626,7 @@ function Testimonials() {
         </div>
 
         <div style={{ marginTop: 32, textAlign: 'center' }}>
-          <a href="https://www.google.com/search?q=fitness+club+fellbach" target="_blank" rel="noopener noreferrer" className="font-condensed" style={{ display: 'inline-block', padding: '12px 28px', border: '1px solid rgba(26,15,15,0.2)', color: '#1A0F0F', textDecoration: 'none', fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', background: '#FFFFFF' }}>
+          <a href="https://www.google.com/search?q=fitness+club+fellbach" target="_blank" rel="noopener noreferrer" className="font-condensed" style={{ display: 'inline-block', padding: '12px 28px', border: '1px solid rgba(26,15,15,0.2)', color: '#0F1419', textDecoration: 'none', fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', background: '#FFFFFF' }}>
             Alle Bewertungen auf Google ansehen →
           </a>
         </div>
@@ -651,13 +652,13 @@ function FAQ() {
           <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
           <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>FAQ</span>
         </div>
-        <h2 className="font-display" style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800, letterSpacing: '-0.025em', marginBottom: 48, color: '#1A0F0F', textTransform: 'uppercase', lineHeight: 0.95 }}>
+        <h2 className="font-display" style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800, letterSpacing: '-0.025em', marginBottom: 48, color: '#0F1419', textTransform: 'uppercase', lineHeight: 0.95 }}>
           Noch <span style={{ color: 'var(--accent)', fontStyle: 'italic' }}>Fragen?</span>
         </h2>
         {items.map((item, i) => (
           <div key={i} style={{ borderBottom: '1px solid rgba(26,15,15,0.12)' }}>
             <button onClick={() => setOpen(open === i ? null : i)}
-                    style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '22px 0', background: 'none', border: 'none', color: '#1A0F0F', cursor: 'pointer', gap: 16, textAlign: 'left' }}>
+                    style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '22px 0', background: 'none', border: 'none', color: '#0F1419', cursor: 'pointer', gap: 16, textAlign: 'left' }}>
               <span className="font-display" style={{ fontSize: 'clamp(0.95rem, 2vw, 1.1rem)', fontWeight: 500, letterSpacing: '0.02em' }}>{item.q}</span>
               <span style={{ color: 'var(--accent)', flexShrink: 0, fontSize: 22, lineHeight: 1, transition: 'transform 0.3s', transform: open === i ? 'rotate(45deg)' : 'none', display: 'block' }}>+</span>
             </button>
@@ -726,20 +727,38 @@ function Contact() {
 
 function Footer() {
   return (
-    <footer style={{ background: 'var(--black)', borderTop: '1px solid var(--gray-border)', padding: '32px 0' }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
-        <div>
-          <Logo size="md" variant="light" />
+    <footer style={{ background: 'var(--black)', borderTop: '1px solid var(--gray-border)', padding: '40px 0 24px' }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px' }}>
+        {/* Family Badge — Bruckstraße 61 */}
+        <div style={{
+          display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: 14,
+          padding: '14px 24px', marginBottom: 32,
+          background: 'rgba(13, 148, 136, 0.08)',
+          border: '1px solid rgba(13, 148, 136, 0.25)',
+        }}>
+          <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#9A8470', fontWeight: 500 }}>Bruckstraße 61 · Familie</span>
+          <span style={{ color: '#34404B' }}>·</span>
+          <span className="font-display" style={{ fontSize: 12, fontWeight: 700, color: '#F5F0E8', letterSpacing: '0.1em', textTransform: 'uppercase' }}>Fitness Club Fellbach</span>
+          <span style={{ color: '#34404B' }}>·</span>
+          <a href="https://www.physio-zentrum-fellbach.de" target="_blank" rel="noopener noreferrer" className="font-display" style={{ fontSize: 12, fontWeight: 700, color: '#5EEAD4', letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none' }}>
+            Physio Zentrum Fellbach →
+          </a>
         </div>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24 }}>
-          {[['Datenschutz', 'https://www.fitness-club-fellbach.de/datenschutz'], ['Impressum', 'https://www.fitness-club-fellbach.de/impressum'], ['Kündigung', 'https://www.fitness-club-fellbach.de/kundigung'], ['Karriere', 'https://www.fitness-club-fellbach.de/karriere']].map(([l, h]) => (
-            <a key={l} href={h} target="_blank" rel="noopener noreferrer"
-               style={{ fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#9A8470', textDecoration: 'none' }}>
-              {l}
-            </a>
-          ))}
+
+        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
+          <div>
+            <Logo size="md" variant="light" />
+          </div>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24 }}>
+            {[['Datenschutz', 'https://www.fitness-club-fellbach.de/datenschutz'], ['Impressum', 'https://www.fitness-club-fellbach.de/impressum'], ['Kündigung', 'https://www.fitness-club-fellbach.de/kundigung'], ['Karriere', 'https://www.fitness-club-fellbach.de/karriere']].map(([l, h]) => (
+              <a key={l} href={h} target="_blank" rel="noopener noreferrer"
+                 style={{ fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#9A8470', textDecoration: 'none' }}>
+                {l}
+              </a>
+            ))}
+          </div>
+          <div style={{ fontSize: 11, color: '#5A6770', letterSpacing: '0.1em' }}>© 2026 Fitness Club GmbH</div>
         </div>
-        <div style={{ fontSize: 11, color: '#2a2a2a', letterSpacing: '0.1em' }}>© 2025 Fitness Club GmbH</div>
       </div>
     </footer>
   )
@@ -777,6 +796,7 @@ export default function App() {
       </div>
       <Pricing />
       <Testimonials />
+      <PhysioBridge />
       <FAQ />
       <Contact />
       <Footer />

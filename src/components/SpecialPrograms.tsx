@@ -41,7 +41,7 @@ export default function SpecialPrograms() {
           </div>
           <h2 className="font-display" style={{
             fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800,
-            letterSpacing: '-0.025em', color: '#1A0F0F', textTransform: 'uppercase',
+            letterSpacing: '-0.025em', color: '#0F1419', textTransform: 'uppercase',
             lineHeight: 0.95, marginBottom: 20,
           }}>
             Mehr als nur <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>Geräte.</span>
@@ -74,14 +74,14 @@ export default function SpecialPrograms() {
                   onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
                   onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
                 />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 50%, rgba(8,4,4,0.8) 100%)' }} />
-<div style={{ position: 'absolute', top: 16, left: 16, padding: '6px 12px', background: 'rgba(8,4,4,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.4)' }}>
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 50%, rgba(15,20,25,0.8) 100%)' }} />
+<div style={{ position: 'absolute', top: 16, left: 16, padding: '6px 12px', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.4)' }}>
                   <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.4em', color: '#B8924A', fontWeight: 700 }}>{p.price}</span>
                 </div>
               </div>
               <div style={{ padding: 'clamp(24px, 3vw, 36px)' }}>
                 <div className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.4em', textTransform: 'uppercase', color: '#B8924A', marginBottom: 8, fontWeight: 600 }}>{p.label}</div>
-                <h3 className="font-display" style={{ fontSize: 'clamp(1.4rem, 2.2vw, 1.8rem)', fontWeight: 700, color: '#1A0F0F', textTransform: 'uppercase', letterSpacing: '-0.01em', marginBottom: 12, lineHeight: 1.1 }}>
+                <h3 className="font-display" style={{ fontSize: 'clamp(1.4rem, 2.2vw, 1.8rem)', fontWeight: 700, color: '#0F1419', textTransform: 'uppercase', letterSpacing: '-0.01em', marginBottom: 12, lineHeight: 1.1 }}>
                   {p.headline}
                 </h3>
                 <p style={{ color: '#5A4040', fontSize: 14.5, lineHeight: 1.65 }}>{p.text}</p>

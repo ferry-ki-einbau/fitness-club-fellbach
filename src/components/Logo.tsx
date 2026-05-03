@@ -19,12 +19,12 @@ const SIZES = {
 export default function Logo({ size = 'md', variant = 'light' }: LogoProps) {
   const s = SIZES[size]
   const isLight = variant === 'light'
-  const fillColor = isLight ? '#F5F0E8' : '#1A0F0F'
+  const fillColor = isLight ? '#F5F0E8' : '#0F1419'
   const accent = '#B8924A'
   // Filter to color the white SVG appropriately
   const svgFilter = isLight
     ? 'none'  // SVG ist schon weiß, passt für dark mode
-    : 'brightness(0) saturate(100%) invert(8%) sepia(13%) saturate(900%) hue-rotate(330deg) brightness(96%) contrast(98%)'  // → #1A0F0F dunkel
+    : 'brightness(0) saturate(100%) invert(8%) sepia(13%) saturate(900%) hue-rotate(330deg) brightness(96%) contrast(98%)'  // → #0F1419 dunkel
 
   return (
     <span style={{ display: 'inline-flex', alignItems: 'center', gap: s.gap }}>
@@ -43,7 +43,7 @@ export default function Logo({ size = 'md', variant = 'light' }: LogoProps) {
             <stop offset="100%" stopColor="#9B7838" />
           </linearGradient>
         </defs>
-        <circle cx="32" cy="32" r="29" fill={isLight ? '#1A0F0F' : '#FFFFFF'} stroke="url(#goldGrad2)" strokeWidth="2.2" />
+        <circle cx="32" cy="32" r="29" fill={isLight ? '#0F1419' : '#FFFFFF'} stroke="url(#goldGrad2)" strokeWidth="2.2" />
         <circle cx="32" cy="32" r="24" fill="none" stroke={accent} strokeOpacity="0.35" strokeWidth="0.8" />
         <g stroke={accent} strokeWidth="1.5" fill="none" strokeLinecap="square">
           <path d="M22 13 L22 16 L26 16 L26 13 M30 13 L30 16 L34 16 L34 13 M38 13 L38 16 L42 16 L42 13" />

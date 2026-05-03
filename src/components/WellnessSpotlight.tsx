@@ -8,7 +8,7 @@ export default function WellnessSpotlight() {
   return (
     <section style={{
       position: 'relative',
-      background: 'linear-gradient(180deg, #150A0A 0%, #0A0505 100%)',
+      background: 'linear-gradient(180deg, #1A2128 0%, #0F1419 100%)',
       padding: 'clamp(80px, 12vh, 160px) 24px',
       overflow: 'hidden',
     }}>
@@ -55,9 +55,9 @@ export default function WellnessSpotlight() {
                 decoding="async"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.02) brightness(1.05) saturate(1.05)' }}
               />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(8,4,4,0.3) 0%, transparent 35%, transparent 55%, rgba(8,4,4,0.92) 100%)' }} />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(15,20,25,0.3) 0%, transparent 35%, transparent 55%, rgba(15,20,25,0.92) 100%)' }} />
               {/* Number tag top-left */}
-              <div style={{ position: 'absolute', top: 24, left: 24, padding: '8px 12px', background: 'rgba(8,4,4,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.4)' }}>
+              <div style={{ position: 'absolute', top: 24, left: 24, padding: '8px 12px', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.4)' }}>
                 <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.4em', color: '#B8924A', fontWeight: 700 }}>{it.tag}</span>
               </div>
               {/* Content bottom */}

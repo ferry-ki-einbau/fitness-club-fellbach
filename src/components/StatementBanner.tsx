@@ -15,7 +15,7 @@ export default function StatementBanner() {
   return (
     <section ref={ref} style={{
       position: 'relative',
-      background: 'linear-gradient(180deg, #0A0505 0%, #150A0A 50%, #0A0505 100%)',
+      background: 'linear-gradient(180deg, #0F1419 0%, #1A2128 50%, #0F1419 100%)',
       padding: 'clamp(96px, 16vh, 200px) 24px',
       overflow: 'hidden',
       borderTop: '1px solid rgba(184, 146, 74, 0.2)',
@@ -31,7 +31,7 @@ export default function StatementBanner() {
         backgroundPosition: 'center 20%',
         filter: 'blur(2px)',
       }} />
-      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(8,4,4,0.9) 0%, rgba(8,4,4,0.7) 30%, rgba(8,4,4,0.7) 70%, rgba(8,4,4,0.95) 100%)' }} />
+      <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(15,20,25,0.9) 0%, rgba(15,20,25,0.7) 30%, rgba(15,20,25,0.7) 70%, rgba(15,20,25,0.95) 100%)' }} />
       {/* Background meander pattern (subtle) */}
       <div style={{
         position: 'absolute',

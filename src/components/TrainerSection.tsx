@@ -25,7 +25,7 @@ export default function TrainerSection() {
           </div>
           <h2 className="font-display" style={{
             fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800,
-            letterSpacing: '-0.025em', color: '#1A0F0F', textTransform: 'uppercase', lineHeight: 0.95, marginBottom: 20,
+            letterSpacing: '-0.025em', color: '#0F1419', textTransform: 'uppercase', lineHeight: 0.95, marginBottom: 20,
           }}>
             Trainer die <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>deinen Namen kennen.</span>
           </h2>
@@ -65,7 +65,7 @@ export default function TrainerSection() {
                 <span className="font-display" style={{ fontSize: 26, fontWeight: 700, color: colors[i], letterSpacing: '-0.02em' }}>{t.initials}</span>
               </div>
 
-              <div className="font-display" style={{ fontSize: 22, fontWeight: 700, color: '#1A0F0F', textTransform: 'uppercase', letterSpacing: '-0.005em', marginBottom: 6 }}>{t.name}</div>
+              <div className="font-display" style={{ fontSize: 22, fontWeight: 700, color: '#0F1419', textTransform: 'uppercase', letterSpacing: '-0.005em', marginBottom: 6 }}>{t.name}</div>
               <div className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: colors[i], marginBottom: 16, fontWeight: 600 }}>{t.role}</div>
               <p style={{ color: '#5A4040', fontSize: 13.5, lineHeight: 1.65, fontStyle: 'italic' }}>"{t.quote}"</p>
             </motion.div>
