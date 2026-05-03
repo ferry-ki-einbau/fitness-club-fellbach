@@ -25,6 +25,9 @@ import MagneticNavLink from './components/MagneticNav'
 import ZielRechner from './components/ZielRechner'
 import TrainingsplanSection from './components/TrainingsplanSection'
 import TageszeitenSection from './components/TageszeitenSection'
+import ScrambleHeadline from './components/ScrambleHeadline'
+import TiltCard from './components/TiltCard'
+import CommunityWall from './components/CommunityWall'
 
 
 const GALLERY = [
@@ -251,8 +254,9 @@ function Hero() {
             transition={{ duration: 1, delay: 1.35, ease: [0.16, 1, 0.3, 1] }}
             className="font-display"
             style={{ fontSize: 'clamp(2.8rem, 9vw, 7.5rem)', fontWeight: 800, lineHeight: 0.95, letterSpacing: '-0.03em', margin: '0 0 28px', color: '#F5F0E8', textTransform: 'uppercase' }}>
-            Kein Discounter.<br />
-            <span style={{ color: 'var(--accent-bright)', fontStyle: 'italic' }}>Dein</span> Studio.
+            <ScrambleHeadline text="KEIN DISCOUNTER." delay={1600} style={{ display: 'block' }} className="font-display" /><br />
+            <span style={{ color: 'var(--accent-bright)', fontStyle: 'italic' }}>Dein</span>{' '}
+            <ScrambleHeadline text="STUDIO." delay={1900} style={{ display: 'inline' }} className="font-display" />
           </motion.h1>
 
           <motion.p
@@ -549,8 +553,8 @@ function Pricing() {
           {plans.map((plan, i) => {
             const hasPromo = plan.price.promo !== plan.price.reg
             return (
+              <TiltCard key={plan.key} intensity={6} style={{ display: 'flex' }}>
               <motion.div
-                key={plan.key}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -562,6 +566,7 @@ function Pricing() {
                   border: plan.featured ? '1px solid #B8924A' : '1px solid rgba(184, 146, 74, 0.15)',
                   display: 'flex',
                   flexDirection: 'column',
+                  flex: 1,
                 }}
               >
                 {/* Top corner — Bonus badge */}
@@ -612,6 +617,7 @@ function Pricing() {
                   <span>14 Tage testen</span><span>→</span>
                 </MagneticButton>
               </motion.div>
+              </TiltCard>
             )
           })}
         </div>
@@ -984,6 +990,7 @@ export default function App() {
       <Pricing />
       <TrainingsplanSection />
       <Testimonials />
+      <CommunityWall />
       <PullQuote
         before="Bruckstraße 61"
         text="Eine Tür weiter — eine ganze Welt weiter."
