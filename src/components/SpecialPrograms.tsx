@@ -19,8 +19,8 @@ const programs = [
     img: 'real-exercube',
     label: 'Gaming Exercube',
     price: '5,99€ / Woche',
-    headline: 'VR-Fitness im Studio',
-    text: 'Tauche in virtuelle Abenteuer ein, während du trainierst. Effizientestes Training unserer Zeit — Kalorien verbrennen während du spielst.',
+    headline: 'Fitness & Gaming in einem',
+    text: 'Interaktiver Trainingswürfel — du bewegst dich, der Würfel spielt. Effizientestes Training unserer Zeit, das richtig Spaß macht. Anfänger bis Profis.',
     tag: 'NEU',
   },
   {
@@ -55,7 +55,7 @@ export default function SpecialPrograms() {
             Mehr als nur <span style={{ fontStyle: 'italic', color: 'var(--accent-bright)' }}>Geräte.</span>
           </h2>
           <p style={{ color: '#B5A99A', fontSize: 'clamp(1rem, 1.3vw, 1.15rem)', lineHeight: 1.65, maxWidth: 580 }}>
-            Über das normale Training hinaus — 1-zu-1 Personal Training, Präventionskurse, VR-Fitness und Box-Kurs.
+            Über das normale Training hinaus — 1-zu-1 Personal Training, Präventionskurse, Gaming Exercube und Box-Kurs.
           </p>
         </div>
 
