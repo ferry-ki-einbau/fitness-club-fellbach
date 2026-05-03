@@ -50,7 +50,7 @@ export default function KurseGrid() {
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5, delay: i * 0.04 }}
               whileHover={{ y: -4 }}
-              style={{ aspectRatio: '5/4' }}
+              style={{ minHeight: 160 }}
             >
               <SpotlightCard
                 glowColor={k.color.replace('#', '').match(/.{2}/g)?.map(h => parseInt(h, 16)).join(', ') || '184, 146, 74'}

@@ -38,9 +38,9 @@ export default function MagneticNavLink({ href, children, strength = 0.4 }: Prop
       className="font-condensed nav-link"
       style={{
         x: springX, y: springY,
-        fontSize: 12, letterSpacing: '0.25em', textTransform: 'uppercase',
-        color: '#B5A99A', textDecoration: 'none',
-        padding: '8px 14px', position: 'relative',
+        fontSize: 14, letterSpacing: '0.18em', textTransform: 'uppercase',
+        color: '#C9BFB3', textDecoration: 'none',
+        padding: '8px 16px', position: 'relative',
         display: 'inline-block',
       }}
     >

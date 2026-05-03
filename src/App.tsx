@@ -91,7 +91,7 @@ function Nav() {
           <Logo size="lg" variant="light" />
           <span style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '3px 9px', borderRadius: 999, background: isOpen ? 'rgba(34,197,94,0.1)' : 'rgba(196,69,82,0.1)', border: `1px solid ${isOpen ? 'rgba(34,197,94,0.25)' : 'rgba(196,69,82,0.25)'}` }}>
             <span style={{ width: 5, height: 5, borderRadius: '50%', background: isOpen ? '#22c55e' : '#C44552', animation: 'pulse 2s ease-in-out infinite' }} />
-            <span className="font-condensed hidden md:inline" style={{ fontSize: 9, letterSpacing: '0.3em', textTransform: 'uppercase', color: isOpen ? '#22c55e' : '#C44552', fontWeight: 700 }}>
+            <span className="font-condensed hidden md:inline" style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: isOpen ? '#22c55e' : '#C44552', fontWeight: 700 }}>
               {isOpen ? 'Geöffnet' : 'Geschlossen'}
             </span>
           </span>
@@ -106,7 +106,7 @@ function Nav() {
 
         {/* CTA */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <a href="tel:+4971158 8654" className="hidden md:flex font-condensed" style={{ alignItems: 'center', gap: 6, fontSize: 11, letterSpacing: '0.15em', color: '#B5A99A', textDecoration: 'none', transition: 'color 0.2s' }}
+          <a href="tel:+4971158 8654" className="hidden md:flex font-condensed" style={{ alignItems: 'center', gap: 6, fontSize: 13, letterSpacing: '0.1em', color: '#B5A99A', textDecoration: 'none', transition: 'color 0.2s' }}
             onMouseEnter={e => (e.currentTarget.style.color = '#F5F0E8')}
             onMouseLeave={e => (e.currentTarget.style.color = '#B5A99A')}>
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
@@ -117,7 +117,7 @@ function Nav() {
           </a>
 
           {/* Mobile Burger */}
-          <button className="md:hidden" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 8, display: 'flex', flexDirection: 'column', gap: 5 }} onClick={() => setOpen(!open)}>
+          <button className="md:hidden" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 8, flexDirection: 'column', gap: 5 }} onClick={() => setOpen(!open)}>
             <span style={{ width: 22, height: 1.5, background: '#F5F0E8', display: 'block', transition: 'all 0.25s', transform: open ? 'rotate(45deg) translate(4.5px, 4.5px)' : 'none' }} />
             <span style={{ width: 22, height: 1.5, background: '#F5F0E8', display: 'block', transition: 'opacity 0.25s', opacity: open ? 0 : 1 }} />
             <span style={{ width: 22, height: 1.5, background: '#F5F0E8', display: 'block', transition: 'all 0.25s', transform: open ? 'rotate(-45deg) translate(4.5px, -4.5px)' : 'none' }} />

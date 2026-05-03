@@ -98,10 +98,16 @@ body {
 
 html { scroll-behavior: smooth; }
 
-/* Global readability defaults — angenehm fürs Auge */
-p { line-height: 1.65; max-width: 70ch; }
+/* Global readability */
+p { line-height: 1.7; max-width: 70ch; }
 h1, h2, h3, h4 { line-height: 1.1; letter-spacing: -0.01em; }
 button, a { transition: all 0.2s ease; }
+
+/* Eyebrow labels — nie unter 11px, immer lesbar */
+.font-condensed { font-size: max(11px, 1em); }
+
+/* Body text minimum */
+body { font-size: 16px; }
 
 /* Smooth section transitions */
 section { position: relative; }
