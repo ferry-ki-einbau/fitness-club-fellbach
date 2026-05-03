@@ -82,13 +82,13 @@ export default function EgymSpotlight() {
           <div style={{ position: 'absolute', bottom: -12, left: -12, width: 1, height: 64, background: '#B8924A', zIndex: 3 }} />
           <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', boxShadow: '0 40px 80px -20px rgba(0,0,0,0.8)' }}>
             <img
-              src="/images/egym-smart-md.webp"
-              srcSet="/images/egym-smart-sm.webp 800w, /images/egym-smart-md.webp 1600w"
+              src="/images/real-trainingsbereich-md.webp"
+              srcSet="/images/real-trainingsbereich-sm.webp 800w, /images/real-trainingsbereich-md.webp 1600w"
               sizes="(max-width: 900px) 100vw, 50vw"
-              alt="EGYM Smart Strength Geräte"
+              alt="EGYM Smart Strength Geräte im Trainingsbereich"
               loading="lazy"
               decoding="async"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.05)' }}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.05) saturate(0.95)' }}
             />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(225deg, rgba(8,4,4,0.5) 0%, transparent 50%)' }} />
             <div style={{ position: 'absolute', top: 24, right: 24, padding: '8px 14px', background: 'rgba(8,4,4,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.4)' }}>

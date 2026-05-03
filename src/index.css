@@ -43,6 +43,7 @@ body {
   .boxring-grid { grid-template-columns: 1fr !important; }
   .wellness-grid { grid-template-columns: 1fr !important; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .programs-grid { grid-template-columns: 1fr !important; }
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

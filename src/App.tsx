@@ -14,17 +14,19 @@ import StatementBanner from './components/StatementBanner'
 import BoxRingSpotlight from './components/BoxRingSpotlight'
 import EgymSpotlight from './components/EgymSpotlight'
 import WellnessSpotlight from './components/WellnessSpotlight'
+import SpecialPrograms from './components/SpecialPrograms'
+import AddonsBand from './components/AddonsBand'
 
 
 const GALLERY = [
-  { src: '/images/hero-boxring-md.webp', srcSm: '/images/hero-boxring-sm.webp', label: 'Boxring', tag: '01' },
-  { src: '/images/cardio-cinematic-md.webp', srcSm: '/images/cardio-cinematic-sm.webp', label: 'Cardio', tag: '02' },
-  { src: '/images/dumbbells-md.webp', srcSm: '/images/dumbbells-sm.webp', label: 'Free Weights', tag: '03' },
-  { src: '/images/kursraum-md.webp', srcSm: '/images/kursraum-sm.webp', label: 'Kursraum', tag: '04' },
-  { src: '/images/sauna-mood-md.webp', srcSm: '/images/sauna-mood-sm.webp', label: 'Sauna', tag: '05' },
-  { src: '/images/pool-night-md.webp', srcSm: '/images/pool-night-sm.webp', label: 'Pool', tag: '06' },
-  { src: '/images/reception-md.webp', srcSm: '/images/reception-sm.webp', label: 'Eingang', tag: '07' },
-  { src: '/images/barbell-chalk-md.webp', srcSm: '/images/barbell-chalk-sm.webp', label: 'Strength Detail', tag: '08' },
+  { src: '/images/real-boxring-1-md.webp', srcSm: '/images/real-boxring-1-sm.webp', label: 'Boxring', tag: '01' },
+  { src: '/images/real-trainingsbereich-md.webp', srcSm: '/images/real-trainingsbereich-sm.webp', label: 'Trainingsbereich', tag: '02' },
+  { src: '/images/real-cardio-md.webp', srcSm: '/images/real-cardio-sm.webp', label: 'Cardio', tag: '03' },
+  { src: '/images/real-geraete-md.webp', srcSm: '/images/real-geraete-sm.webp', label: 'Krafttraining', tag: '04' },
+  { src: '/images/real-kursraum-1-md.webp', srcSm: '/images/real-kursraum-1-sm.webp', label: 'Kursraum', tag: '05' },
+  { src: '/images/real-pool-area-md.webp', srcSm: '/images/real-pool-area-sm.webp', label: 'Pool', tag: '06' },
+  { src: '/images/real-wellness-area-md.webp', srcSm: '/images/real-wellness-area-sm.webp', label: 'Sauna & Wellness', tag: '07' },
+  { src: '/images/real-eingang-md.webp', srcSm: '/images/real-eingang-sm.webp', label: 'Eingang', tag: '08' },
 ]
 
 function useReveal() {
@@ -127,9 +129,9 @@ function Nav() {
 }
 
 function Hero() {
-  const heroImg = '/images/hero-boxring-md.webp'
-  const heroImgSm = '/images/hero-boxring-sm.webp'
-  const sideImg = '/images/athlete-silhouette-md.webp'
+  const heroImg = '/images/real-boxring-1-md.webp'
+  const heroImgSm = '/images/real-boxring-1-sm.webp'
+  const sideImg = '/images/real-trainingsbereich-md.webp'
   return (
     <section data-hero style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden', background: '#0A0505' }}>
       {/* Full-bleed gym photograph — sharp, no filters */}
@@ -667,9 +669,11 @@ export default function App() {
       </div>
       <BoxRingSpotlight />
       <EgymSpotlight />
+      <SpecialPrograms />
       <WellnessSpotlight />
       <Stats />
       <Gallery />
+      <AddonsBand />
       <PromoBand />
       <div id="konfigurator">
         <Konfigurator />
