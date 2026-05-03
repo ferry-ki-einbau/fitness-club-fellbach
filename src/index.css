@@ -90,6 +90,11 @@ body {
   .hero-cta-group { flex-direction: column !important; }
 }
 
+/* Platz für Mobile Sticky Bar */
+@media (max-width: 767px) {
+  footer { padding-bottom: 80px !important; }
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html { scroll-behavior: smooth; }

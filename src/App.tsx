@@ -24,6 +24,8 @@ import BigStats from './components/BigStats'
 import MagneticNavLink from './components/MagneticNav'
 import ZielRechner from './components/ZielRechner'
 import TrainingsplanSection from './components/TrainingsplanSection'
+import TageszeitenSection from './components/TageszeitenSection'
+import StickyCTA from './components/StickyCTA'
 
 
 const GALLERY = [
@@ -85,13 +87,17 @@ function Nav() {
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 clamp(20px, 4vw, 48px)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 68 }}>
 
         {/* Logo + Status */}
-        <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 14 }}>
+        <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 10 }}>
           <Logo size="lg" variant="light" />
-          <span style={{ display: 'flex', alignItems: 'center', gap: 5, padding: '3px 9px', borderRadius: 999, background: isOpen ? 'rgba(34,197,94,0.1)' : 'rgba(196,69,82,0.1)', border: `1px solid ${isOpen ? 'rgba(34,197,94,0.25)' : 'rgba(196,69,82,0.25)'}` }}>
+          <span className="hidden sm:flex" style={{ alignItems: 'center', gap: 5, padding: '3px 9px', borderRadius: 999, background: isOpen ? 'rgba(34,197,94,0.1)' : 'rgba(196,69,82,0.1)', border: `1px solid ${isOpen ? 'rgba(34,197,94,0.25)' : 'rgba(196,69,82,0.25)'}` }}>
             <span style={{ width: 5, height: 5, borderRadius: '50%', background: isOpen ? '#22c55e' : '#C44552', animation: 'pulse 2s ease-in-out infinite' }} />
-            <span className="font-condensed hidden md:inline" style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: isOpen ? '#22c55e' : '#C44552', fontWeight: 700 }}>
+            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: isOpen ? '#22c55e' : '#C44552', fontWeight: 700 }}>
               {isOpen ? 'Geöffnet' : 'Geschlossen'}
             </span>
+          </span>
+          {/* Mobile — nur Dot */}
+          <span className="flex sm:hidden" style={{ alignItems: 'center', justifyContent: 'center', width: 20, height: 20 }}>
+            <span style={{ width: 7, height: 7, borderRadius: '50%', background: isOpen ? '#22c55e' : '#C44552', boxShadow: `0 0 6px ${isOpen ? '#22c55e' : '#C44552'}` }} />
           </span>
         </a>
 
@@ -150,6 +156,7 @@ function Hero() {
   const heroImg = '/images/real-trainingsbereich-md.webp'
   const heroImgSm = '/images/real-trainingsbereich-sm.webp'
   const [parallax, setParallax] = useState({ x: 0, y: 0 })
+  const [activeTile, setActiveTile] = useState(0)
   useEffect(() => {
     if (window.matchMedia('(hover: none)').matches) return
     const onMove = (e: MouseEvent) => {
@@ -159,6 +166,12 @@ function Hero() {
     }
     window.addEventListener('mousemove', onMove)
     return () => window.removeEventListener('mousemove', onMove)
+  }, [])
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveTile(prev => (prev + 1) % 4)
+    }, 3000)
+    return () => clearInterval(interval)
   }, [])
   const tiles = [
     { src: '/images/real-cardio-sm.webp', label: 'Cardio' },
@@ -288,23 +301,85 @@ function Hero() {
           className="hero-mosaic"
           style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12, alignSelf: 'center' }}
         >
-          {tiles.map((t, i) => (
-            <motion.a
-              key={t.label}
-              href="#tour"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.7, delay: 1.7 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ scale: 1.03 }}
-              style={{ position: 'relative', aspectRatio: '1/1', overflow: 'hidden', cursor: 'pointer', textDecoration: 'none', display: 'block', boxShadow: '0 12px 32px -8px rgba(0,0,0,0.5)' }}
-            >
-              <img src={t.src} alt={t.label} decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.02) brightness(1.05) saturate(1.05)' }} />
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 50%, rgba(15,20,25,0.85) 100%)' }} />
-              <div style={{ position: 'absolute', bottom: 12, left: 14, right: 14 }}>
-                <div className="font-display" style={{ fontSize: 14, fontWeight: 700, color: '#F5F0E8', textTransform: 'uppercase', letterSpacing: '0.02em' }}>{t.label}</div>
-              </div>
-            </motion.a>
-          ))}
+          {tiles.map((t, i) => {
+            const isActive = i === activeTile
+            return (
+              <motion.a
+                key={t.label}
+                href="#tour"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.7, delay: 1.7 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ scale: 1.03 }}
+                style={{
+                  position: 'relative', aspectRatio: '1/1', overflow: 'hidden', cursor: 'pointer',
+                  textDecoration: 'none', display: 'block',
+                  boxShadow: isActive ? '0 16px 40px -8px rgba(196,69,82,0.35)' : '0 12px 32px -8px rgba(0,0,0,0.5)',
+                  transform: isActive ? 'scale(1.04)' : 'scale(1)',
+                  transition: 'transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s ease',
+                  zIndex: isActive ? 2 : 1,
+                }}
+              >
+                <img
+                  src={t.src}
+                  alt={t.label}
+                  decoding="async"
+                  style={{
+                    width: '100%', height: '100%', objectFit: 'cover',
+                    filter: isActive
+                      ? 'contrast(1.05) brightness(1.15) saturate(1.1)'
+                      : 'contrast(1.02) brightness(1.05) saturate(1.05)',
+                    transition: 'filter 0.5s ease',
+                  }}
+                />
+                <div style={{
+                  position: 'absolute', inset: 0,
+                  background: isActive
+                    ? 'linear-gradient(180deg, transparent 35%, rgba(15,20,25,0.75) 100%)'
+                    : 'linear-gradient(180deg, transparent 50%, rgba(15,20,25,0.85) 100%)',
+                  transition: 'background 0.5s ease',
+                }} />
+                {/* Active indicator: thin burgund border */}
+                {isActive && (
+                  <div style={{
+                    position: 'absolute', inset: 0,
+                    border: '2px solid rgba(196,69,82,0.7)',
+                    pointerEvents: 'none',
+                  }} />
+                )}
+                <div style={{ position: 'absolute', bottom: 12, left: 14, right: 14 }}>
+                  <div
+                    className="font-display"
+                    style={{
+                      fontSize: isActive ? 16 : 14,
+                      fontWeight: 700,
+                      color: isActive ? '#FFFFFF' : '#F5F0E8',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.02em',
+                      transition: 'font-size 0.4s ease, color 0.4s ease',
+                    }}
+                  >
+                    {t.label}
+                  </div>
+                  {isActive && (
+                    <div
+                      className="font-condensed"
+                      style={{
+                        fontSize: 9,
+                        letterSpacing: '0.3em',
+                        textTransform: 'uppercase',
+                        color: '#C44552',
+                        marginTop: 3,
+                        fontWeight: 700,
+                      }}
+                    >
+                      ●
+                    </div>
+                  )}
+                </div>
+              </motion.a>
+            )
+          })}
         </motion.div>
       </div>
 
@@ -891,6 +966,7 @@ export default function App() {
         highlight="kein Mensch"
         variant="dark"
       />
+      <TageszeitenSection />
       <BigStats />
       <ZielRechner />
       <Gallery />
@@ -920,6 +996,32 @@ export default function App() {
       <FAQ />
       <Contact />
       <Footer />
+
+      <StickyCTA />
+
+      {/* Mobile Sticky Call Bar */}
+      <div className="md:hidden" style={{
+        position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 100,
+        display: 'flex', gap: 1,
+        boxShadow: '0 -4px 24px rgba(0,0,0,0.4)',
+      }}>
+        <a href="tel:+4971158 8654" style={{
+          flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+          background: '#C44552', color: '#fff', padding: '16px 12px', textDecoration: 'none',
+        }}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
+          </svg>
+          <span className="font-display" style={{ fontSize: 14, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Anrufen</span>
+        </a>
+        <a href="#preise" style={{
+          flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+          background: '#0F1419', color: '#F5F0E8', padding: '16px 12px', textDecoration: 'none',
+          borderTop: '1px solid rgba(245,240,232,0.1)',
+        }}>
+          <span className="font-display" style={{ fontSize: 14, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Mitglied werden</span>
+        </a>
+      </div>
 
     </>
   )
