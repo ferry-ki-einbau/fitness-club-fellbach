@@ -8,7 +8,6 @@ import LiveTicker from './components/LiveTicker'
 import Konfigurator from './components/Konfigurator'
 import GreekMeander from './components/GreekMeander'
 import Logo from './components/Logo'
-import WhatsAppFab from './components/WhatsAppFab'
 import StatementBanner from './components/StatementBanner'
 import EgymSpotlight from './components/EgymSpotlight'
 import WellnessSpotlight from './components/WellnessSpotlight'
@@ -771,7 +770,6 @@ export default function App() {
       <Preloader />
       <CustomCursor />
       <LiveTicker />
-      <WhatsAppFab />
       <Nav />
       <Hero />
       <Marquee />
