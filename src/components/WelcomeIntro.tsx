@@ -1,11 +1,15 @@
-import { motion } from 'framer-motion'
+import { motion, useScroll, useTransform } from 'framer-motion'
+import { useRef } from 'react'
 
-/**
- * Friendly welcome — bricht die Spartanische Härte mit einer warmen Begrüßung.
- * Liegt zwischen Hero und Trainingsfläche.
- */
 export default function WelcomeIntro() {
+  const ref = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'start start'] })
+  const leftX = useTransform(scrollYProgress, [0, 1], ['-50%', '0%'])
+  const rightX = useTransform(scrollYProgress, [0, 1], ['50%', '0%'])
+  const opacity = useTransform(scrollYProgress, [0, 0.4], [0, 1])
+
   return (
+    <div ref={ref} style={{ overflow: 'hidden' }}>
     <section style={{
       position: 'relative',
       background: '#FFFBF4',
@@ -81,6 +85,13 @@ export default function WelcomeIntro() {
           </div>
         </motion.div>
       </div>
+
+      {/* Split-screen reveal bars */}
+      <motion.div style={{ opacity }} aria-hidden="true">
+        <motion.div style={{ x: leftX, position: 'absolute', top: 0, left: 0, width: '50%', height: '100%', background: 'rgba(196,69,82,0.04)', pointerEvents: 'none', transformOrigin: 'left' }} />
+        <motion.div style={{ x: rightX, position: 'absolute', top: 0, right: 0, width: '50%', height: '100%', background: 'rgba(196,69,82,0.04)', pointerEvents: 'none', transformOrigin: 'right' }} />
+      </motion.div>
     </section>
+    </div>
   )
 }

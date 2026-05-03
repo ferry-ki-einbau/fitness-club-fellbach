@@ -24,6 +24,9 @@ import PullQuote from './components/PullQuote'
 import MouseSpotlight from './components/MouseSpotlight'
 import BigStats from './components/BigStats'
 import MagneticNavLink from './components/MagneticNav'
+import ZielRechner from './components/ZielRechner'
+import BeforeAfter from './components/BeforeAfter'
+import KursplanKalender from './components/KursplanKalender'
 
 
 const GALLERY = [
@@ -54,10 +57,20 @@ function useReveal() {
 function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 60)
     window.addEventListener('scroll', fn, { passive: true })
     return () => window.removeEventListener('scroll', fn)
+  }, [])
+  useEffect(() => {
+    const check = () => {
+      const h = new Date().getHours()
+      setIsOpen(h >= 5 && h < 24)
+    }
+    check()
+    const t = setInterval(check, 60000)
+    return () => clearInterval(t)
   }, [])
   const links = [
     { label: 'Studio Tour', href: '#tour' },
@@ -69,8 +82,14 @@ function Nav() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'nav-glass' : ''}`}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72 }}>
-        <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+        <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 12 }}>
           <Logo size="lg" variant="light" />
+          <span style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '4px 10px', borderRadius: 999, background: isOpen ? 'rgba(34,197,94,0.12)' : 'rgba(196,69,82,0.12)', border: `1px solid ${isOpen ? 'rgba(34,197,94,0.3)' : 'rgba(196,69,82,0.3)'}` }}>
+            <span style={{ width: 6, height: 6, borderRadius: '50%', background: isOpen ? '#22c55e' : '#C44552', boxShadow: `0 0 6px ${isOpen ? '#22c55e' : '#C44552'}`, animation: 'pulse 1.8s ease-in-out infinite' }} />
+            <span className="font-condensed hidden md:inline" style={{ fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: isOpen ? '#22c55e' : '#C44552', fontWeight: 600 }}>
+              {isOpen ? 'Jetzt geöffnet' : 'Geschlossen'}
+            </span>
+          </span>
         </a>
         <div className="hidden md:flex" style={{ gap: 8, alignItems: 'center' }}>
           {links.map(l => (
@@ -126,16 +145,6 @@ function Hero() {
     { src: '/images/real-pool-area-sm.webp', label: 'Whirlpool' },
     { src: '/images/real-kursraum-1-sm.webp', label: 'Kurse' },
   ]
-  // Typische Auslastung nach Tageszeit (kein Live-Tracking)
-  const hour = new Date().getHours()
-  const usage =
-    hour < 6 ? { label: 'Wenig los', color: '#22C55E' } :
-    hour < 9 ? { label: 'Frühsport-Zeit', color: '#22C55E' } :
-    hour < 11 ? { label: 'Mittel besucht', color: '#F4B400' } :
-    hour < 16 ? { label: 'Entspannt', color: '#22C55E' } :
-    hour < 19 ? { label: 'Stoßzeit · etwas voller', color: '#F4B400' } :
-    hour < 22 ? { label: 'After-Work · gut besucht', color: '#F4B400' } :
-                { label: 'Ruhige Spätstunde', color: '#22C55E' }
   return (
     <section data-hero style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden', background: '#0F1419' }}>
       {/* Full-bleed photo with cursor parallax */}
@@ -176,14 +185,6 @@ function Hero() {
         transition={{ duration: 0.6, delay: 2.0 }}
         style={{ position: 'absolute', top: 100, left: '50%', transform: 'translateX(-50%)', zIndex: 11, display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center' }}
       >
-        <div style={{ padding: '8px 16px', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(12px)', border: `1px solid ${usage.color}66`, display: 'flex', alignItems: 'center', gap: 10, borderRadius: 999 }}>
-          <span style={{ width: 8, height: 8, borderRadius: '50%', background: usage.color, animation: 'pulse 1.8s ease-in-out infinite', boxShadow: `0 0 10px ${usage.color}99` }} />
-          <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#F5F0E8', fontWeight: 500 }}>
-            <span style={{ color: usage.color, fontWeight: 700 }}>Jetzt: {usage.label}</span>
-            <span style={{ color: '#6E5050', margin: '0 8px' }}>·</span>
-            <span>geöffnet bis 24:00</span>
-          </span>
-        </div>
         <div style={{ padding: '8px 16px', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(12px)', border: '1px solid rgba(184, 146, 74, 0.4)', display: 'flex', alignItems: 'center', gap: 8, borderRadius: 999 }}>
           <svg width="14" height="14" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
             <path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.9z"/>
@@ -758,7 +759,10 @@ export default function App() {
         variant="dark"
       />
       <BigStats />
+      <BeforeAfter />
+      <ZielRechner />
       <Gallery />
+      <KursplanKalender />
       <TrainerSection />
       <SpecialPrograms />
       <AddonsBand />
