@@ -44,7 +44,7 @@ export default function WellnessSpotlight() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.9, delay: i * 0.15, ease: [0.16, 1, 0.3, 1] }}
-              style={{ position: 'relative', aspectRatio: '4/5', overflow: 'hidden' }}
+              style={{ position: 'relative', aspectRatio: '3/2', overflow: 'hidden' }}
             >
               <img
                 src={`/images/${it.src}-md.webp`}

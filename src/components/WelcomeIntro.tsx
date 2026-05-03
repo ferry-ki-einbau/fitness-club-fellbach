@@ -39,8 +39,8 @@ export default function WelcomeIntro() {
             maxWidth: 18 + 'ch',
             marginInline: 'auto',
           }}>
-            Wir sind kein Discounter.<br />
-            <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>Wir sind dein Studio.</span>
+            Familiär. Modern.<br />
+            <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>Für alle, die es ernst meinen.</span>
           </h2>
 
           <p style={{

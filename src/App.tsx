@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import './index.css'
 import Preloader from './components/Preloader'
-import CustomCursor from './components/CustomCursor'
 import MagneticButton from './components/MagneticButton'
 import LiveTicker from './components/LiveTicker'
 import GreekMeander from './components/GreekMeander'
@@ -249,10 +248,9 @@ function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 2.4 }}
-            style={{ color: '#F0E5D5', fontSize: 'clamp(1.05rem, 1.4vw, 1.3rem)', lineHeight: 1.75, marginBottom: 44, maxWidth: 540, fontWeight: 400, textShadow: '0 1px 2px rgba(0,0,0,0.4)' }}>
-            1.500m² · EGYM · Box-Ring · Sauna · Whirlpool · 30+ Kurse.<br />
-            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>24 Stunden offen. 7 Tage. 365 Tage.</span><br />
-            Ab <span style={{ color: '#FFFFFF', fontWeight: 600 }}>13,99€/Woche</span> — inkl. persönlichem Trainingsplan.
+            style={{ color: '#F0E5D5', fontSize: 'clamp(1rem, 1.3vw, 1.2rem)', lineHeight: 1.8, marginBottom: 44, maxWidth: 520, fontWeight: 400, textShadow: '0 1px 2px rgba(0,0,0,0.4)' }}>
+            1.500m² · EGYM · Box-Ring · Sauna · Whirlpool · 30+ Kurse pro Woche.<br />
+            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>24h offen. 7 Tage. 365 Tage.</span> Ab <span style={{ color: '#FFFFFF', fontWeight: 600 }}>13,99€/Woche</span> — inkl. persönlichem Trainingsplan.
           </motion.p>
 
           <motion.div
@@ -782,7 +780,6 @@ export default function App() {
       <Preloader />
       <ScrollProgress />
       <MouseSpotlight />
-      <CustomCursor />
       <LiveTicker />
       <Nav />
       <Hero />

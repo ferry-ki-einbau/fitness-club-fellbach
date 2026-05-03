@@ -69,11 +69,7 @@ body {
 .font-condensed { font-family: 'Barlow Condensed', sans-serif !important; }
 .font-sans { font-family: 'DM Sans Variable', sans-serif !important; }
 
-/* Hide cursor on hero when custom is active */
-[data-hero] * { cursor: none !important; }
-[data-hero] a, [data-hero] button { cursor: none !important; }
 @media (max-width: 768px) {
-  [data-hero] *, [data-hero] a, [data-hero] button { cursor: pointer !important; }
   .hero-content-grid { grid-template-columns: 1fr !important; }
   [data-hero] > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; padding-left: 20px !important; padding-right: 20px !important; }
   .hero-side-card { display: none !important; }
