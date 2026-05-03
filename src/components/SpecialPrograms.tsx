@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import SpotlightCard from './SpotlightCard'
 
 const programs = [
   {
@@ -60,7 +61,11 @@ export default function SpecialPrograms() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-80px' }}
               transition={{ duration: 0.7, delay: (i % 2) * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              style={{ position: 'relative', background: '#FFFFFF', border: '1px solid rgba(26, 15, 15, 0.08)', overflow: 'hidden', boxShadow: '0 1px 2px rgba(26,15,15,0.04)' }}
+              style={{ position: 'relative' }}
+            >
+            <SpotlightCard
+              glowColor="196, 69, 82"
+              style={{ background: '#FFFFFF', border: '1px solid rgba(26, 15, 15, 0.08)', boxShadow: '0 1px 2px rgba(26,15,15,0.04)' }}
             >
               <div style={{ position: 'relative', aspectRatio: '16/10', overflow: 'hidden' }}>
                 <img
@@ -86,6 +91,7 @@ export default function SpecialPrograms() {
                 </h3>
                 <p style={{ color: '#5A4040', fontSize: 14.5, lineHeight: 1.65 }}>{p.text}</p>
               </div>
+            </SpotlightCard>
             </motion.article>
           ))}
         </div>

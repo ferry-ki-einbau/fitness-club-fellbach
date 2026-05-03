@@ -1,11 +1,22 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
+/**
+ * Premium Preloader — Cinematic 3-stage Reveal.
+ * 0–800ms: Address line draws + fades in
+ * 800–1700ms: Logo wordmark fades in
+ * 1700–2400ms: Tagline appears
+ * 2400ms: Curtain reveals up
+ */
 export default function Preloader() {
   const [visible, setVisible] = useState(true)
+  const [stage, setStage] = useState(0)
+
   useEffect(() => {
-    const t = setTimeout(() => setVisible(false), 1900)
-    return () => clearTimeout(t)
+    const t1 = setTimeout(() => setStage(1), 800)
+    const t2 = setTimeout(() => setStage(2), 1700)
+    const t3 = setTimeout(() => setVisible(false), 2700)
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3) }
   }, [])
 
   return (
@@ -13,48 +24,77 @@ export default function Preloader() {
       {visible && (
         <motion.div
           exit={{ y: '-100%' }}
-          transition={{ duration: 0.9, ease: [0.65, 0, 0.35, 1] }}
+          transition={{ duration: 1.0, ease: [0.65, 0, 0.35, 1] }}
           className="fixed inset-0 z-[9998] flex items-center justify-center"
-          style={{ background: 'var(--black)' }}>
-          <div className="relative" style={{ width: 'min(560px, 80vw)' }}>
-            {/* Burgundy line */}
+          style={{ background: '#0F1419', overflow: 'hidden' }}>
+
+          {/* Top + bottom thin gold rules animating in */}
+          <motion.div
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 1.4, ease: [0.65, 0, 0.35, 1], delay: 0.2 }}
+            style={{ position: 'absolute', top: '50%', left: 0, right: 0, height: 1, background: 'linear-gradient(90deg, transparent, #B8924A 50%, transparent)', transformOrigin: 'left' }}
+          />
+
+          <div style={{ textAlign: 'center', position: 'relative', maxWidth: 'min(680px, 90vw)' }}>
+            {/* Stage 0 — address eyebrow */}
             <motion.div
-              initial={{ scaleX: 0 }}
-              animate={{ scaleX: 1 }}
-              transition={{ duration: 1.0, ease: [0.65, 0, 0.35, 1], delay: 0.1 }}
-              style={{ height: 2, background: 'linear-gradient(90deg, var(--accent-deep), var(--accent-bright))', transformOrigin: 'left', marginBottom: 24 }}
-            />
-            {/* Wordmark mask reveal */}
-            <motion.div
-              className="overflow-hidden"
-              initial={{ clipPath: 'inset(0 100% 0 0)' }}
-              animate={{ clipPath: 'inset(0 0% 0 0)' }}
-              transition={{ duration: 0.9, ease: [0.65, 0, 0.35, 1], delay: 0.4 }}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: stage >= 0 ? 1 : 0, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: 'easeOut' }}
+              style={{ marginBottom: 36 }}
             >
-              <div className="font-display" style={{
-                fontSize: 'clamp(2rem, 6vw, 4rem)',
-                fontWeight: 700, color: 'var(--text)',
-                letterSpacing: '0.05em', lineHeight: 0.95, textTransform: 'uppercase',
-              }}>
-                FITNESS CLUB
-                <div className="font-condensed" style={{
-                  fontSize: 11, letterSpacing: '0.5em', fontWeight: 500,
-                  color: 'var(--accent-bright)', marginTop: 12,
-                }}>FELLBACH · 24 / 7</div>
+              <div className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.55em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>
+                Bruckstraße 61 · Fellbach
               </div>
             </motion.div>
-            {/* Loading dot */}
+
+            {/* Stage 1 — logo wordmark */}
+            <motion.div
+              initial={{ opacity: 0, y: 30, scale: 0.96 }}
+              animate={{
+                opacity: stage >= 1 ? 1 : 0,
+                y: stage >= 1 ? 0 : 30,
+                scale: stage >= 1 ? 1 : 0.96,
+              }}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+              style={{ marginBottom: 36, paddingBottom: 36, borderBottom: '1px solid rgba(184, 146, 74, 0.3)' }}
+            >
+              <img
+                src="/images/logo-original.svg"
+                alt="Fitness Club Fellbach"
+                style={{
+                  width: 'min(360px, 70vw)',
+                  height: 'auto',
+                  display: 'block',
+                  margin: '0 auto',
+                  filter: 'drop-shadow(0 4px 12px rgba(184, 146, 74, 0.2))',
+                }}
+              />
+            </motion.div>
+
+            {/* Stage 2 — tagline + loading dot */}
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.0 }}
-              className="absolute -bottom-8 right-0 flex items-center gap-2"
-              style={{ fontSize: 10, letterSpacing: '0.35em', color: 'var(--text-muted)', fontFamily: 'Barlow Condensed' }}
+              animate={{ opacity: stage >= 2 ? 1 : 0 }}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
             >
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--accent-bright)', display: 'inline-block', animation: 'pulse 1s ease-in-out infinite' }} />
-              ΜΟΛΩΝ ΛΑΒΕ
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14 }}>
+                <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#22C55E', boxShadow: '0 0 12px rgba(34,197,94,0.7)', animation: 'pulse 1.4s ease-in-out infinite' }} />
+                <span className="font-condensed" style={{ fontSize: 12, letterSpacing: '0.4em', textTransform: 'uppercase', color: '#F5F0E8', fontWeight: 500 }}>
+                  24 Stunden geöffnet
+                </span>
+              </div>
             </motion.div>
           </div>
+
+          {/* Burgund accent on left edge */}
+          <motion.div
+            initial={{ scaleY: 0 }}
+            animate={{ scaleY: 1 }}
+            transition={{ duration: 1.2, delay: 0.4, ease: [0.65, 0, 0.35, 1] }}
+            style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 3, background: 'linear-gradient(180deg, transparent, #C44552 50%, transparent)', transformOrigin: 'top' }}
+          />
         </motion.div>
       )}
     </AnimatePresence>

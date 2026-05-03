@@ -23,6 +23,7 @@ import ScrollProgress from './components/ScrollProgress'
 import PullQuote from './components/PullQuote'
 import MouseSpotlight from './components/MouseSpotlight'
 import BigStats from './components/BigStats'
+import MagneticNavLink from './components/MagneticNav'
 
 
 const GALLERY = [
@@ -73,10 +74,9 @@ function Nav() {
         </a>
         <div className="hidden md:flex" style={{ gap: 8, alignItems: 'center' }}>
           {links.map(l => (
-            <a key={l.href} href={l.href} className="font-condensed nav-link"
-               style={{ fontSize: 12, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#B5A99A', textDecoration: 'none', padding: '8px 14px', position: 'relative' }}>
+            <MagneticNavLink key={l.href} href={l.href}>
               {l.label}
-            </a>
+            </MagneticNavLink>
           ))}
         </div>
         <a href="#preise" className="btn-lime hidden md:inline-flex" style={{ padding: '12px 24px', fontSize: 12 }}>
@@ -773,6 +773,13 @@ export default function App() {
       <PromoBand />
       <Pricing />
       <Testimonials />
+      <PullQuote
+        before="Bruckstraße 61"
+        text="Eine Tür weiter — eine ganze Welt weiter."
+        highlight="eine ganze Welt weiter."
+        after="Physio Zentrum Fellbach · vom selben Inhaber"
+        variant="dark"
+      />
       <PhysioBridge />
       <FAQ />
       <Contact />

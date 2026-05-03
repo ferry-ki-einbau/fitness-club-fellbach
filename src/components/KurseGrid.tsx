@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import SpotlightCard from './SpotlightCard'
 
 const kurse = [
   { name: 'BodyPump', desc: 'Ganzkörper-Krafttraining mit Hantelstange', cat: 'Les Mills', color: '#E15464' },
@@ -48,29 +49,31 @@ export default function KurseGrid() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-40px' }}
               transition={{ duration: 0.5, delay: i * 0.04 }}
-              style={{
-                position: 'relative',
-                padding: '28px 24px',
-                background: '#FFFFFF',
-                border: '1px solid rgba(26, 15, 15, 0.08)',
-                aspectRatio: '5/4',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                overflow: 'hidden',
-                cursor: 'default',
-                transition: 'border-color 0.3s, transform 0.3s, box-shadow 0.3s',
-                boxShadow: '0 1px 2px rgba(26,15,15,0.04)',
-              }}
-              whileHover={{ y: -4, boxShadow: '0 12px 32px rgba(26,15,15,0.12)' }}
+              whileHover={{ y: -4 }}
+              style={{ aspectRatio: '5/4' }}
             >
-              {/* Color stripe top */}
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: k.color }} />
-              <div>
-                <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: k.color, marginBottom: 12, fontWeight: 600 }}>{k.cat}</div>
-                <div className="font-display" style={{ fontSize: 26, fontWeight: 700, color: '#0F1419', textTransform: 'uppercase', letterSpacing: '-0.01em', lineHeight: 1 }}>{k.name}</div>
-              </div>
-              <div style={{ fontSize: 13, color: '#5A4040', lineHeight: 1.5, marginTop: 16 }}>{k.desc}</div>
+              <SpotlightCard
+                glowColor={k.color.replace('#', '').match(/.{2}/g)?.map(h => parseInt(h, 16)).join(', ') || '184, 146, 74'}
+                style={{
+                  padding: '28px 24px',
+                  background: '#FFFFFF',
+                  border: '1px solid rgba(26, 15, 15, 0.08)',
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  cursor: 'default',
+                  transition: 'box-shadow 0.3s',
+                  boxShadow: '0 1px 2px rgba(26,15,15,0.04)',
+                }}
+              >
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: k.color, zIndex: 3 }} />
+                <div>
+                  <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: k.color, marginBottom: 12, fontWeight: 600 }}>{k.cat}</div>
+                  <div className="font-display" style={{ fontSize: 26, fontWeight: 700, color: '#0F1419', textTransform: 'uppercase', letterSpacing: '-0.01em', lineHeight: 1 }}>{k.name}</div>
+                </div>
+                <div style={{ fontSize: 13, color: '#5A4040', lineHeight: 1.5, marginTop: 16 }}>{k.desc}</div>
+              </SpotlightCard>
             </motion.div>
           ))}
         </div>
