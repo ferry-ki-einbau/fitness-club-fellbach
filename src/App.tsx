@@ -241,16 +241,18 @@ function Hero() {
             transition={{ duration: 1, delay: 2.25, ease: [0.16, 1, 0.3, 1] }}
             className="font-display"
             style={{ fontSize: 'clamp(2.8rem, 9vw, 7.5rem)', fontWeight: 800, lineHeight: 0.95, letterSpacing: '-0.03em', margin: '0 0 28px', color: '#F5F0E8', textTransform: 'uppercase' }}>
-            Trainieren,<br />
-            wann <span style={{ color: 'var(--accent-bright)', fontStyle: 'italic' }}>du</span> willst.
+            Kein McFit.<br />
+            <span style={{ color: 'var(--accent-bright)', fontStyle: 'italic' }}>Dein</span> Studio.
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 2.4 }}
-            style={{ color: '#F0E5D5', fontSize: 'clamp(1.15rem, 1.5vw, 1.4rem)', lineHeight: 1.7, marginBottom: 44, maxWidth: 600, fontWeight: 400, textShadow: '0 1px 2px rgba(0,0,0,0.4)' }}>
-            Modernes Fitnessstudio in Fellbach. <span style={{ color: '#FFFFFF', fontWeight: 600 }}>24 Stunden täglich offen.</span> Trainingsfläche, EGYM, Sauna, Whirlpool und über 30 Kurse — alles inklusive ab <span style={{ color: '#FFFFFF', fontWeight: 600 }}>13,99€/Woche</span>.
+            style={{ color: '#F0E5D5', fontSize: 'clamp(1.05rem, 1.4vw, 1.3rem)', lineHeight: 1.75, marginBottom: 44, maxWidth: 540, fontWeight: 400, textShadow: '0 1px 2px rgba(0,0,0,0.4)' }}>
+            1.500m² · EGYM · Box-Ring · Sauna · Whirlpool · 30+ Kurse.<br />
+            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>24 Stunden offen. 7 Tage. 365 Tage.</span><br />
+            Ab <span style={{ color: '#FFFFFF', fontWeight: 600 }}>13,99€/Woche</span> — inkl. persönlichem Trainingsplan.
           </motion.p>
 
           <motion.div
@@ -386,21 +388,29 @@ function Gallery() {
 
 function PromoBand() {
   return (
-    <section style={{ background: 'var(--lime)', padding: '80px 0' }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 32 }}>
+    <section style={{ position: 'relative', background: '#0A0E12', overflow: 'hidden', padding: 'clamp(56px, 8vh, 96px) clamp(16px, 4vw, 80px)' }}>
+      {/* Burgund glow */}
+      <div style={{ position: 'absolute', top: '50%', left: '30%', transform: 'translate(-50%,-50%)', width: 700, height: 400, borderRadius: '50%', background: 'radial-gradient(ellipse, rgba(196,69,82,0.12) 0%, transparent 70%)', pointerEvents: 'none' }} />
+      {/* Top border accent */}
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: 'linear-gradient(90deg, transparent, #C44552 30%, #C44552 70%, transparent)' }} />
+
+      <div style={{ maxWidth: 1280, margin: '0 auto', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 'clamp(32px, 5vw, 64px)', position: 'relative' }}>
         <div>
-          <div className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.5)', marginBottom: 12 }}>Jubiläums-Aktion</div>
-          <h2 className="font-display" style={{ fontSize: 'clamp(2.5rem, 7vw, 5rem)', fontWeight: 700, color: '#000', lineHeight: 1, letterSpacing: '-0.02em' }}>
-            2 MONATE<br />GRATIS.
+          <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#C44552', marginBottom: 16, fontWeight: 700 }}>— Jubiläums-Aktion</div>
+          <h2 className="font-display" style={{ fontSize: 'clamp(3.5rem, 8vw, 7rem)', fontWeight: 800, color: '#F5F0E8', lineHeight: 0.9, letterSpacing: '-0.035em', margin: 0 }}>
+            2 MONATE<br /><span style={{ color: '#C44552' }}>GRATIS.</span>
           </h2>
         </div>
-        <div style={{ maxWidth: 440 }}>
-          <p style={{ color: 'rgba(0,0,0,0.65)', fontSize: 14, lineHeight: 1.7, marginBottom: 28 }}>
-            Bei einer Basic- oder All-In-Mitgliedschaft mit 12 oder 24 Monaten Laufzeit bekommst du am Ende 2 Monate geschenkt. Jetzt sichern.
+        <div style={{ maxWidth: 400 }}>
+          <p style={{ color: '#9A8878', fontSize: 15, lineHeight: 1.75, marginBottom: 32 }}>
+            Bei 12 oder 24 Monaten Laufzeit bekommst du 2 Monate komplett geschenkt. Kein Haken. Kein Kleingedrucktes.
           </p>
-          <a href="#preise" className="font-display"
-             style={{ display: 'inline-flex', background: '#000', color: '#fff', padding: '16px 36px', fontSize: 13, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', textDecoration: 'none' }}>
-            Jetzt sichern →
+          <a href="#preise"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 12, background: '#C44552', color: '#fff', padding: '16px 36px', textDecoration: 'none', transition: 'background 0.2s' }}
+            onMouseEnter={e => (e.currentTarget.style.background = '#E15464')}
+            onMouseLeave={e => (e.currentTarget.style.background = '#C44552')}>
+            <span className="font-display" style={{ fontSize: 13, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase' }}>Jetzt sichern</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
         </div>
       </div>
@@ -678,13 +688,17 @@ function Contact() {
           <h2 className="font-display reveal delay-1" style={{ fontSize: 'var(--heading-lg)', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 32 }}>
             KOMM VORBEI.<br /><span style={{ color: 'var(--lime)' }}>JEDERZEIT.</span>
           </h2>
-          <div className="reveal delay-2" style={{ display: 'flex', flexDirection: 'column', gap: 14, marginBottom: 32 }}>
-            {[['📍', 'Bruckstraße 61, 70734 Fellbach', '#'], ['📞', '+49 711 58 8654', 'tel:+4971158 8654'], ['✉', 'info@fitnessclubfellbach.de', 'mailto:info@fitnessclubfellbach.de']].map(([icon, text, href]) => (
-              <div key={text} style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 14, color: '#B5A99A' }}>
-                <span style={{ color: 'var(--lime)' }}>{icon}</span>
-                <a href={href} style={{ color: '#B5A99A', textDecoration: 'none' }}
-                   onMouseEnter={e => (e.target as HTMLElement).style.color = '#fff'}
-                   onMouseLeave={e => (e.target as HTMLElement).style.color = '#666'}>{text}</a>
+          <div className="reveal delay-2" style={{ display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 32 }}>
+            {[
+              { icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C44552" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>, text: 'Bruckstraße 61, 70736 Fellbach', href: 'https://maps.google.com/?q=Bruckstraße+61+Fellbach' },
+              { icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C44552" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>, text: '+49 711 58 8654', href: 'tel:+4971158 8654' },
+              { icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C44552" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>, text: 'info@fitnessclubfellbach.de', href: 'mailto:info@fitnessclubfellbach.de' },
+            ].map(({ icon, text, href }) => (
+              <div key={text} style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 14 }}>
+                <span style={{ flexShrink: 0, display: 'flex' }}>{icon}</span>
+                <a href={href} style={{ color: '#B5A99A', textDecoration: 'none', transition: 'color 0.2s' }}
+                   onMouseEnter={e => (e.currentTarget.style.color = '#F5F0E8')}
+                   onMouseLeave={e => (e.currentTarget.style.color = '#B5A99A')}>{text}</a>
               </div>
             ))}
           </div>
@@ -783,9 +797,9 @@ export default function App() {
       <KurseGrid />
       <WellnessSpotlight />
       <PullQuote
-        before="Disziplin · 24/7"
-        text="Keine Ausreden. Nur dein nächster Satz."
-        highlight="Keine Ausreden."
+        before="05:00 — 24:00 · Täglich"
+        text="Kein Mensch der dir sagt wann du trainieren kannst."
+        highlight="kein Mensch"
         variant="dark"
       />
       <BigStats />
@@ -796,9 +810,9 @@ export default function App() {
       <SpecialPrograms />
       <AddonsBand />
       <PullQuote
-        before="500+ Mitglieder"
-        text="Manche kommen zum Schwitzen. Die meisten bleiben für die Familie."
-        highlight="bleiben für die Familie."
+        before="500+ Mitglieder · Fellbach"
+        text="Manche kommen für die Geräte. Alle bleiben wegen der Menschen."
+        highlight="Alle bleiben"
         variant="light"
         bg="#F5F0E8"
       />
