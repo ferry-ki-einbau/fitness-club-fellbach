@@ -5,7 +5,6 @@ import Preloader from './components/Preloader'
 import CustomCursor from './components/CustomCursor'
 import MagneticButton from './components/MagneticButton'
 import LiveTicker from './components/LiveTicker'
-import Konfigurator from './components/Konfigurator'
 import GreekMeander from './components/GreekMeander'
 import Logo from './components/Logo'
 import StatementBanner from './components/StatementBanner'
@@ -22,6 +21,7 @@ import StudioTour from './components/StudioTour'
 import PhysioBridge from './components/PhysioBridge'
 import ScrollProgress from './components/ScrollProgress'
 import PullQuote from './components/PullQuote'
+import MouseSpotlight from './components/MouseSpotlight'
 
 
 const GALLERY = [
@@ -81,9 +81,9 @@ function Nav() {
     return () => window.removeEventListener('scroll', fn)
   }, [])
   const links = [
+    { label: 'Studio Tour', href: '#tour' },
     { label: 'Bereiche', href: '#bereiche' },
     { label: 'Galerie', href: '#galerie' },
-    { label: 'Konfigurator', href: '#konfigurator' },
     { label: 'Preise', href: '#preise' },
     { label: 'Kontakt', href: '#kontakt' },
   ]
@@ -771,6 +771,7 @@ export default function App() {
     <>
       <Preloader />
       <ScrollProgress />
+      <MouseSpotlight />
       <CustomCursor />
       <LiveTicker />
       <Nav />
@@ -805,9 +806,6 @@ export default function App() {
       />
       <PlanFinder />
       <PromoBand />
-      <div id="konfigurator">
-        <Konfigurator />
-      </div>
       <Pricing />
       <Testimonials />
       <PhysioBridge />

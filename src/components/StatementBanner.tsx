@@ -11,6 +11,8 @@ export default function StatementBanner() {
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
   const y1 = useTransform(scrollYProgress, [0, 1], [60, -60])
   const y2 = useTransform(scrollYProgress, [0, 1], [40, -40])
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '40%'])
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.15])
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.2, 1, 1, 0.2])
 
   return (
@@ -22,8 +24,8 @@ export default function StatementBanner() {
       borderTop: '1px solid rgba(184, 146, 74, 0.2)',
       borderBottom: '1px solid rgba(184, 146, 74, 0.2)',
     }}>
-      {/* Background athlete silhouette */}
-      <div style={{
+      {/* Background athlete silhouette mit Parallax */}
+      <motion.div style={{
         position: 'absolute',
         inset: 0,
         opacity: 0.18,
@@ -31,6 +33,8 @@ export default function StatementBanner() {
         backgroundSize: 'cover',
         backgroundPosition: 'center 20%',
         filter: 'blur(2px)',
+        y: bgY,
+        scale: bgScale,
       }} />
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(15,20,25,0.9) 0%, rgba(15,20,25,0.7) 30%, rgba(15,20,25,0.7) 70%, rgba(15,20,25,0.95) 100%)' }} />
       <Particles count={40} color="#B8924A" opacity={0.45} />
