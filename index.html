@@ -2,20 +2,156 @@
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fitness Club Fellbach — 24/7 Training, Wellness & Kurse</title>
-    <meta name="description" content="Fitness Club Fellbach: 24 Stunden geöffnet, 7 Tage die Woche. Training, Sauna, Pool & über 30 Kurse pro Woche. 14 Tage kostenlos testen." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <!-- FAVICON & ICONS -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- THEME -->
+    <meta name="theme-color" content="#C44552" />
+    <meta name="msapplication-TileColor" content="#0F1419" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="FC Fellbach" />
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- PRIMARY SEO -->
+    <title>Fitness Club Fellbach — 24/7 Training, Wellness &amp; Kurse | Bruckstraße 61</title>
+    <meta name="description" content="Fitness Club Fellbach: 24h geöffnet, 1.500m² Fläche, Sauna, Whirlpool &amp; 30+ Kurse/Woche. 14 Tage kostenlos testen. Bruckstraße 61 Fellbach." />
+    <meta name="keywords" content="Fitness Club Fellbach, Fitnessstudio Fellbach, Gym Fellbach, 24h Fitnessstudio, Sauna Fellbach, Kurse Fellbach, Personal Training Fellbach" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="author" content="Fitness Club Fellbach" />
+    <link rel="canonical" href="https://fitness-club-fellbach.de/" />
+
+    <!-- OPEN GRAPH -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Fitness Club Fellbach" />
+    <meta property="og:title" content="Fitness Club Fellbach — Stärke. Disziplin. Gemeinschaft." />
+    <meta property="og:description" content="24/7 geöffnet. 1.500m² Fläche. Box-Ring · EGYM · Sauna · Pool · 30+ Kurse. 14 Tage gratis testen — risikofrei." />
+    <meta property="og:image" content="https://fitness-club-fellbach.de/images/og-social.jpg" />
+    <meta property="og:image:width" content="1376" />
+    <meta property="og:image:height" content="768" />
+    <meta property="og:image:alt" content="Fitness Club Fellbach — Premium Fitnessstudio" />
+    <meta property="og:url" content="https://fitness-club-fellbach.de/" />
+    <meta property="og:locale" content="de_DE" />
+
+    <!-- TWITTER / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Fitness Club Fellbach — 24/7 Training &amp; Wellness" />
+    <meta name="twitter:description" content="1.500m² Training. Sauna. Pool. 30+ Kurse/Woche. 14 Tage gratis testen." />
+    <meta name="twitter:image" content="https://fitness-club-fellbach.de/images/og-social.jpg" />
+
+    <!-- GEO -->
+    <meta name="geo.region" content="DE-BW" />
+    <meta name="geo.placename" content="Fellbach" />
+    <meta name="geo.position" content="48.8088;9.2767" />
+    <meta name="ICBM" content="48.8088, 9.2767" />
+
+    <!-- PERFORMANCE -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="image" href="/images/real-boxring-1-md.webp"
-      imagesrcset="/images/real-boxring-1-sm.webp 800w, /images/real-boxring-1-md.webp 1600w"
-      imagesizes="100vw" fetchpriority="high" />
-    <meta property="og:title" content="Fitness Club Fellbach — Stärke. Disziplin. Gemeinschaft." />
-    <meta property="og:description" content="Box-Ring · EGYM · Sauna · Pool · 30+ Kurse. 24/7 geöffnet. 14 Tage gratis testen." />
-    <meta property="og:image" content="/images/real-boxring-1-md.webp" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="preload" as="image"
+      href="/images/real-trainingsbereich-md.webp"
+      imagesrcset="/images/real-trainingsbereich-sm.webp 800w, /images/real-trainingsbereich-md.webp 1600w"
+      imagesizes="100vw"
+      fetchpriority="high" />
+
+    <!-- SCHEMA.ORG JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": ["LocalBusiness", "SportsActivityLocation", "HealthClub"],
+          "@id": "https://fitness-club-fellbach.de/#business",
+          "name": "Fitness Club Fellbach",
+          "description": "Modernes Fitnessstudio in Fellbach mit 1.500m² Trainingsfläche, Box-Ring, EGYM, Sauna, Whirlpool und über 30 Kursen pro Woche. 24 Stunden geöffnet.",
+          "url": "https://fitness-club-fellbach.de",
+          "telephone": "+4971158 8654",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Bruckstraße 61",
+            "addressLocality": "Fellbach",
+            "postalCode": "70736",
+            "addressRegion": "Baden-Württemberg",
+            "addressCountry": "DE"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 48.8088,
+            "longitude": 9.2767
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+              "opens": "05:00",
+              "closes": "24:00"
+            }
+          ],
+          "priceRange": "€€",
+          "image": "https://fitness-club-fellbach.de/images/og-social.jpg",
+          "logo": "https://fitness-club-fellbach.de/images/logo-original.svg",
+          "hasMap": "https://maps.google.com/?q=Bruckstraße+61+Fellbach",
+          "amenityFeature": [
+            {"@type": "LocationFeatureSpecification", "name": "Sauna", "value": true},
+            {"@type": "LocationFeatureSpecification", "name": "Whirlpool", "value": true},
+            {"@type": "LocationFeatureSpecification", "name": "Boxring", "value": true},
+            {"@type": "LocationFeatureSpecification", "name": "EGYM", "value": true},
+            {"@type": "LocationFeatureSpecification", "name": "24h Zugang", "value": true},
+            {"@type": "LocationFeatureSpecification", "name": "Parkplatz", "value": true}
+          ],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.7",
+            "reviewCount": "200",
+            "bestRating": "5"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://fitness-club-fellbach.de/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Wann ist der Fitness Club Fellbach geöffnet?",
+              "acceptedAnswer": {"@type": "Answer", "text": "Der Fitness Club Fellbach ist täglich von 05:00 bis 24:00 Uhr geöffnet — 7 Tage die Woche."}
+            },
+            {
+              "@type": "Question",
+              "name": "Gibt es eine Probetraining-Möglichkeit?",
+              "acceptedAnswer": {"@type": "Answer", "text": "Ja — 14 Tage kostenloses Probetraining, vollständig risikofrei mit Geld-zurück-Garantie."}
+            },
+            {
+              "@type": "Question",
+              "name": "Was kostet eine Mitgliedschaft?",
+              "acceptedAnswer": {"@type": "Answer", "text": "Mitgliedschaften ab unter 10€ pro Woche. Basis-, Pro- und All-In-Tarife je nach Wunsch."}
+            },
+            {
+              "@type": "Question",
+              "name": "Welche Kurse werden angeboten?",
+              "acceptedAnswer": {"@type": "Answer", "text": "Über 30 Kurse/Woche: BodyPump, Yoga, Pilates, Spinning, Rückenfit, BoxFit, Zirkel, Stretching — alles im Beitrag inklusive."}
+            },
+            {
+              "@type": "Question",
+              "name": "Wo befindet sich der Fitness Club Fellbach?",
+              "acceptedAnswer": {"@type": "Answer", "text": "Bruckstraße 61, 70736 Fellbach — neben dem Physio Zentrum Fellbach, kostenloser Parkplatz."}
+            }
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://fitness-club-fellbach.de/#website",
+          "url": "https://fitness-club-fellbach.de",
+          "name": "Fitness Club Fellbach",
+          "inLanguage": "de-DE"
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
