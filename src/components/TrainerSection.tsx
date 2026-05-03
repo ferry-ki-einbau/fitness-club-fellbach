@@ -48,7 +48,7 @@ export default function TrainerSection() {
               }}
             >
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0.5, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}

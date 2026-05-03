@@ -22,7 +22,7 @@ export default function TrainingsflaecheSpotlight() {
       }}>
         {/* Left: image with corner gold accents */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
+          initial={{ opacity: 0.5, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
@@ -51,7 +51,7 @@ export default function TrainingsflaecheSpotlight() {
 
         {/* Right: text */}
         <motion.div
-          initial={{ opacity: 0, x: 40 }}
+          initial={{ opacity: 0.5, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
