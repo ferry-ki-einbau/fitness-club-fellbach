@@ -25,7 +25,6 @@ import MouseSpotlight from './components/MouseSpotlight'
 import BigStats from './components/BigStats'
 import MagneticNavLink from './components/MagneticNav'
 import ZielRechner from './components/ZielRechner'
-import BeforeAfter from './components/BeforeAfter'
 import KursplanKalender from './components/KursplanKalender'
 
 
@@ -568,31 +567,42 @@ function Testimonials() {
           </div>
         </div>
 
-        <div style={{ display: 'flex', gap: 16, overflowX: 'auto', paddingBottom: 8, scrollbarWidth: 'none' }}>
-          {reviews.map((r, i) => (
-            <div key={r.name} className={`reveal delay-${Math.min(i + 1, 5)}`}
-                 style={{ flexShrink: 0, width: 340, background: '#FFFFFF', border: '1px solid rgba(26,15,15,0.08)', padding: 28, boxShadow: '0 1px 2px rgba(26,15,15,0.04)', display: 'flex', flexDirection: 'column' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
-                <div style={{ display: 'flex', gap: 2 }}>
-                  {[1,2,3,4,5].map(j => <span key={j} style={{ color: '#F4B400', fontSize: 14 }}>★</span>)}
+        {/* Auto-scroll marquee — zwei Reihen, entgegengesetzte Richtung */}
+        <div style={{ overflow: 'hidden', position: 'relative' }}>
+          {/* Fade-Masken links/rechts */}
+          <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(to right, #F5F0E8, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 80, background: 'linear-gradient(to left, #F5F0E8, transparent)', zIndex: 2, pointerEvents: 'none' }} />
+
+          {[0, 1].map(row => (
+            <div key={row} style={{ display: 'flex', gap: 16, marginBottom: row === 0 ? 16 : 0, animation: `${row === 0 ? 'marquee-left' : 'marquee-right'} 40s linear infinite` }}
+              onMouseEnter={e => (e.currentTarget.style.animationPlayState = 'paused')}
+              onMouseLeave={e => (e.currentTarget.style.animationPlayState = 'running')}>
+              {[...reviews, ...reviews].map((r, i) => (
+                <div key={`${row}-${i}`}
+                  style={{ flexShrink: 0, width: 320, background: '#FFFFFF', border: '1px solid rgba(26,15,15,0.07)', padding: '24px 28px', boxShadow: '0 2px 12px rgba(26,15,15,0.05)', display: 'flex', flexDirection: 'column' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+                    <div style={{ display: 'flex', gap: 2 }}>
+                      {[1,2,3,4,5].map(j => <span key={j} style={{ color: '#F4B400', fontSize: 13 }}>★</span>)}
+                    </div>
+                    <svg width="13" height="13" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.5 }}>
+                      <path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.9z"/>
+                      <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16 19 13 24 13c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+                      <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/>
+                      <path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.1 5.6l6.2 5.2C41 35.2 44 30 44 24c0-1.3-.1-2.6-.4-3.9z"/>
+                    </svg>
+                  </div>
+                  <p style={{ color: '#3F2C2C', fontSize: 13, lineHeight: 1.7, marginBottom: 18, flex: 1 }}>"{r.text}"</p>
+                  <div style={{ borderTop: '1px solid rgba(26,15,15,0.07)', paddingTop: 12, display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                    <div className="font-display" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#0F1419' }}>{r.name}</div>
+                    <div style={{ fontSize: 10, color: '#8A7060' }}>{r.when}</div>
+                  </div>
                 </div>
-                <svg width="14" height="14" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" style={{ opacity: 0.6 }}>
-                  <path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.9z"/>
-                  <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16 19 13 24 13c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
-                  <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/>
-                  <path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.1 5.6l6.2 5.2C41 35.2 44 30 44 24c0-1.3-.1-2.6-.4-3.9z"/>
-                </svg>
-              </div>
-              <p style={{ color: '#3F2C2C', fontSize: 14, lineHeight: 1.7, marginBottom: 20, flex: 1 }}>"{r.text}"</p>
-              <div style={{ borderTop: '1px solid rgba(26,15,15,0.08)', paddingTop: 14, display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                <div className="font-display" style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#0F1419' }}>{r.name}</div>
-                <div style={{ fontSize: 11, color: '#8A7060' }}>{r.when}</div>
-              </div>
+              ))}
             </div>
           ))}
         </div>
 
-        <div style={{ marginTop: 32, textAlign: 'center' }}>
+        <div style={{ marginTop: 40, textAlign: 'center' }}>
           <a href="https://www.google.com/search?q=fitness+club+fellbach" target="_blank" rel="noopener noreferrer" className="font-condensed" style={{ display: 'inline-block', padding: '12px 28px', border: '1px solid rgba(26,15,15,0.2)', color: '#0F1419', textDecoration: 'none', fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', background: '#FFFFFF' }}>
             Alle Bewertungen auf Google ansehen →
           </a>
@@ -759,7 +769,6 @@ export default function App() {
         variant="dark"
       />
       <BigStats />
-      <BeforeAfter />
       <ZielRechner />
       <Gallery />
       <KursplanKalender />
@@ -788,6 +797,13 @@ export default function App() {
       <FAQ />
       <Contact />
       <Footer />
+
+      {/* WhatsApp Float */}
+      <a href="https://wa.me/4971158 8654" target="_blank" rel="noopener noreferrer" className="whatsapp-float" aria-label="WhatsApp">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </a>
     </>
   )
 }
