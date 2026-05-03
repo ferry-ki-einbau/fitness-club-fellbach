@@ -148,18 +148,6 @@ function Nav() {
 
 function Hero() {
   const heroImg = '/images/real-trainingsbereich-md.webp'
-  const heroImgSm = '/images/real-trainingsbereich-sm.webp'
-  const [parallax, setParallax] = useState({ x: 0, y: 0 })
-  useEffect(() => {
-    if (window.matchMedia('(hover: none)').matches) return
-    const onMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 12
-      const y = (e.clientY / window.innerHeight - 0.5) * 8
-      setParallax({ x, y })
-    }
-    window.addEventListener('mousemove', onMove)
-    return () => window.removeEventListener('mousemove', onMove)
-  }, [])
   const tiles = [
     { src: '/images/real-cardio-sm.webp', label: 'Cardio' },
     { src: '/images/real-wellness-area-sm.webp', label: 'Sauna' },
