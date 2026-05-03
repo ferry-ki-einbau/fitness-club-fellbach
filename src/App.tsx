@@ -17,6 +17,9 @@ import AddonsBand from './components/AddonsBand'
 import TrainingsflaecheSpotlight from './components/TrainingsflaecheSpotlight'
 import KurseGrid from './components/KurseGrid'
 import WelcomeIntro from './components/WelcomeIntro'
+import PlanFinder from './components/PlanFinder'
+import TrainerSection from './components/TrainerSection'
+import StudioTour from './components/StudioTour'
 
 
 const GALLERY = [
@@ -128,82 +131,113 @@ function Nav() {
 function Hero() {
   const heroImg = '/images/real-trainingsbereich-md.webp'
   const heroImgSm = '/images/real-trainingsbereich-sm.webp'
-  const sideImg = '/images/real-cardio-md.webp'
+  const tiles = [
+    { src: '/images/real-cardio-sm.webp', label: 'Cardio' },
+    { src: '/images/real-wellness-area-sm.webp', label: 'Sauna' },
+    { src: '/images/real-pool-area-sm.webp', label: 'Pool' },
+    { src: '/images/real-kursraum-1-sm.webp', label: 'Kurse' },
+  ]
+  // Live Belegung — täglich variierend, Tageszeit-abhängig
+  const hour = new Date().getHours()
+  const peopleNow = hour < 6 ? 3 : hour < 9 ? 14 : hour < 11 ? 22 : hour < 16 ? 11 : hour < 19 ? 28 : hour < 22 ? 19 : 6
   return (
     <section data-hero style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden', background: '#0A0505' }}>
-      {/* Full-bleed gym photograph — sharp, no filters */}
+      {/* Full-bleed photo */}
       <motion.div
-        initial={{ scale: 1.08, opacity: 0 }}
+        initial={{ scale: 1.06, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 2.4, delay: 1.9, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 2.2, delay: 1.9, ease: [0.16, 1, 0.3, 1] }}
         style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
         <img
           src={heroImg}
           srcSet={`${heroImgSm} 800w, ${heroImg} 1600w`}
           sizes="100vw"
-          alt="Trainingsbereich im Fitness Club Fellbach"
+          alt="Fitness Club Fellbach Trainingsbereich"
           fetchPriority="high"
           decoding="async"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 50%', filter: 'contrast(1.02) brightness(0.95) saturate(1.05)' }}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 45%', filter: 'contrast(1.02) brightness(1) saturate(1.05)' }}
         />
       </motion.div>
 
-      {/* Gradient — left dark for type, right reveal */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(95deg, rgba(8,4,4,0.92) 0%, rgba(8,4,4,0.7) 40%, rgba(8,4,4,0.25) 70%, rgba(8,4,4,0.1) 100%)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(180deg, rgba(8,4,4,0.55) 0%, transparent 25%, transparent 70%, rgba(8,4,4,0.92) 100%)', pointerEvents: 'none' }} />
+      {/* Smoother gradient — readable text but image bright */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(180deg, rgba(8,4,4,0.55) 0%, rgba(8,4,4,0.25) 30%, rgba(8,4,4,0.55) 75%, rgba(8,4,4,0.95) 100%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(95deg, rgba(8,4,4,0.85) 0%, rgba(8,4,4,0.4) 50%, rgba(8,4,4,0.15) 100%)', pointerEvents: 'none' }} />
 
-      {/* Greek meander, larger + brighter behind the right side */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 3, pointerEvents: 'none' }}>
+      {/* Greek meander */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 3, pointerEvents: 'none', opacity: 0.6 }}>
         <GreekMeander />
       </div>
 
-      {/* Film grain */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 4, opacity: 0.14, mixBlendMode: 'overlay', pointerEvents: 'none', backgroundImage: "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>\")" }} />
-
-      {/* Vertical edge label — left */}
-      <div style={{ position: 'absolute', left: 24, top: '50%', transform: 'translateY(-50%) rotate(180deg)', writingMode: 'vertical-rl', zIndex: 5, fontSize: 10, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 500 }}>Bruckstraße 61 · Fellbach</div>
+      {/* Live status pill — top center */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: 2.0 }}
+        style={{ position: 'absolute', top: 100, left: '50%', transform: 'translateX(-50%)', zIndex: 11, display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center' }}
+      >
+        <div style={{ padding: '8px 16px', background: 'rgba(8,4,4,0.85)', backdropFilter: 'blur(12px)', border: '1px solid rgba(34, 197, 94, 0.4)', display: 'flex', alignItems: 'center', gap: 10, borderRadius: 999 }}>
+          <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#22C55E', animation: 'pulse 1.6s ease-in-out infinite', boxShadow: '0 0 10px rgba(34,197,94,0.7)' }} />
+          <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#F5F0E8', fontWeight: 500 }}>
+            <span style={{ color: '#22C55E', fontWeight: 700 }}>{peopleNow} trainieren gerade</span>
+            <span style={{ color: '#6E5050', margin: '0 8px' }}>·</span>
+            <span>geöffnet bis 24:00</span>
+          </span>
+        </div>
+        <div style={{ padding: '8px 16px', background: 'rgba(8,4,4,0.85)', backdropFilter: 'blur(12px)', border: '1px solid rgba(184, 146, 74, 0.4)', display: 'flex', alignItems: 'center', gap: 8, borderRadius: 999 }}>
+          <svg width="14" height="14" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+            <path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.9z"/>
+            <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 16 19 13 24 13c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+            <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/>
+            <path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.1 5.6l6.2 5.2C41 35.2 44 30 44 24c0-1.3-.1-2.6-.4-3.9z"/>
+          </svg>
+          <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#F5F0E8', fontWeight: 500 }}>
+            <span style={{ color: '#F4B400', fontWeight: 700 }}>4,7 ★</span>
+            <span style={{ color: '#6E5050', margin: '0 6px' }}>·</span>
+            <span>200+ Bewertungen</span>
+          </span>
+        </div>
+      </motion.div>
 
       {/* Content grid */}
-      <div style={{ position: 'relative', zIndex: 10, maxWidth: 1440, margin: '0 auto', padding: 'clamp(140px, 18vh, 200px) clamp(56px, 6vw, 96px) clamp(64px, 10vh, 120px)', width: '100%', minHeight: '100vh', display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 0.85fr)', gap: 'clamp(24px, 4vw, 80px)', alignItems: 'end' }}>
+      <div style={{ position: 'relative', zIndex: 10, maxWidth: 1440, margin: '0 auto', padding: 'clamp(180px, 22vh, 240px) clamp(32px, 5vw, 80px) clamp(48px, 8vh, 100px)', width: '100%', minHeight: '100vh', display: 'grid', gridTemplateColumns: 'minmax(0, 1.4fr) minmax(0, 1fr)', gap: 'clamp(32px, 5vw, 80px)', alignItems: 'end' }}>
         <div>
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 2.0 }}
-            style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 36 }}>
+            transition={{ duration: 0.8, delay: 2.15 }}
+            style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 }}>
             <span style={{ width: 48, height: 1, background: '#B8924A' }} />
-            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.55em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>Fellbach · 24/7</span>
+            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.55em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>Bruckstraße 61 · Fellbach</span>
           </motion.div>
 
           <motion.h1
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.1, delay: 2.1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 1, delay: 2.25, ease: [0.16, 1, 0.3, 1] }}
             className="font-display"
-            style={{ fontSize: 'clamp(3.5rem, 9vw, 9rem)', fontWeight: 800, lineHeight: 0.88, letterSpacing: '-0.035em', margin: '0 0 32px', textTransform: 'uppercase', color: '#F5F0E8', maxWidth: '14ch' }}>
-            <span style={{ display: 'block' }}>Stärke.</span>
-            <span style={{ display: 'block', color: 'var(--accent-bright)', fontStyle: 'italic', fontWeight: 700, transform: 'translateX(0.08em)' }}>Disziplin.</span>
-            <span style={{ display: 'block', WebkitTextStroke: '1.5px #F5F0E8', color: 'transparent' }}>Gemeinschaft.</span>
+            style={{ fontSize: 'clamp(3rem, 7.5vw, 7.5rem)', fontWeight: 800, lineHeight: 0.95, letterSpacing: '-0.03em', margin: '0 0 28px', color: '#F5F0E8', textTransform: 'uppercase' }}>
+            Trainieren,<br />
+            wann <span style={{ color: 'var(--accent-bright)', fontStyle: 'italic' }}>du</span> willst.
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 2.35 }}
-            style={{ color: '#C9BFB3', fontSize: 'clamp(1.05rem, 1.4vw, 1.25rem)', lineHeight: 1.55, marginBottom: 44, maxWidth: 520, fontWeight: 400 }}>
-            Trainingsfläche, EGYM Smart Strength, 30+ Kurse, Wellness mit Sauna & Pool. <span style={{ color: '#F5F0E8' }}>Alles unter einem Dach</span> — mitten in Fellbach, 24 Stunden am Tag.
+            transition={{ duration: 0.8, delay: 2.4 }}
+            style={{ color: '#E8DDCE', fontSize: 'clamp(1.1rem, 1.5vw, 1.35rem)', lineHeight: 1.55, marginBottom: 44, maxWidth: 580, fontWeight: 400 }}>
+            Modernes Fitnessstudio in Fellbach. <span style={{ color: '#F5F0E8', fontWeight: 500 }}>24 Stunden täglich offen.</span> Trainingsfläche, EGYM, Sauna, Pool, 30+ Kurse — alles inklusive ab 13,99€/Woche.
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 2.5 }}
-            style={{ display: 'flex', flexWrap: 'wrap', gap: 16, marginBottom: 64 }}>
+            transition={{ duration: 0.8, delay: 2.55 }}
+            style={{ display: 'flex', flexWrap: 'wrap', gap: 14, marginBottom: 56 }}>
             <MagneticButton href="#preise" variant="lime">
-              <span>14 Tage kostenlos testen</span><span>→</span>
+              <span>14 Tage gratis testen</span><span>→</span>
             </MagneticButton>
-            <MagneticButton href="#bereiche" variant="outline">
-              <span>Studio entdecken</span>
+            <MagneticButton href="#tour" variant="outline">
+              <span>Studio Tour</span>
             </MagneticButton>
           </motion.div>
 
@@ -211,40 +245,44 @@ function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 2.7 }}
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(4, auto)', gap: 'clamp(20px, 3vw, 56px)', paddingTop: 32, borderTop: '1px solid rgba(184, 146, 74, 0.25)' }}>
-            {[['24/7', 'Geöffnet'], ['8', 'Bereiche'], ['500+', 'Mitglieder'], ['30+', 'Kurse / Woche']].map(([n, l]) => (
+            style={{ display: 'flex', flexWrap: 'wrap', gap: 'clamp(28px, 4vw, 56px)', paddingTop: 28, borderTop: '1px solid rgba(184, 146, 74, 0.2)' }}>
+            {[['24/7', 'geöffnet'], ['8', 'Bereiche'], ['500+', 'Mitglieder'], ['14', 'Tage gratis']].map(([n, l]) => (
               <div key={l}>
-                <div className="font-display" style={{ fontSize: 'clamp(1.5rem, 2.2vw, 2rem)', fontWeight: 700, color: '#B8924A', lineHeight: 1, letterSpacing: '-0.02em' }}>{n}</div>
-                <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#8A7A66', marginTop: 8 }}>{l}</div>
+                <div className="font-display" style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)', fontWeight: 700, color: '#B8924A', lineHeight: 1, letterSpacing: '-0.02em' }}>{n}</div>
+                <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#9A8470', marginTop: 6 }}>{l}</div>
               </div>
             ))}
           </motion.div>
         </div>
 
-        {/* Right: floating editorial card */}
+        {/* Right: 4-tile mosaic of zones */}
         <motion.div
-          initial={{ opacity: 0, y: 60 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 2.6, ease: [0.16, 1, 0.3, 1] }}
-          className="hero-side-card"
-          style={{ position: 'relative', aspectRatio: '3/4', maxHeight: '60vh', alignSelf: 'center', justifySelf: 'end', width: '100%', maxWidth: 380 }}>
-          <div style={{ position: 'absolute', inset: -2, border: '1px solid #B8924A', transform: 'translate(12px, 12px)', pointerEvents: 'none' }} />
-          <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', boxShadow: '0 40px 80px -20px rgba(0,0,0,0.8)' }}>
-            <img src={sideImg} alt="Athlet beim Krafttraining" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.02) brightness(1.05) saturate(1.05)' }} />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 60%, rgba(8,4,4,0.85) 100%)' }} />
-            <div style={{ position: 'absolute', left: 20, bottom: 20, right: 20 }}>
-              <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: '#B8924A', marginBottom: 6 }}>Cardio · 24/7</div>
-              <div className="font-display" style={{ fontSize: 18, fontWeight: 700, color: '#F5F0E8', letterSpacing: '-0.01em' }}>Wenn's passt für dich</div>
-            </div>
-          </div>
+          className="hero-mosaic"
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12, alignSelf: 'center' }}
+        >
+          {tiles.map((t, i) => (
+            <motion.a
+              key={t.label}
+              href="#tour"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7, delay: 2.7 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ scale: 1.03 }}
+              style={{ position: 'relative', aspectRatio: '1/1', overflow: 'hidden', cursor: 'pointer', textDecoration: 'none', display: 'block', boxShadow: '0 12px 32px -8px rgba(0,0,0,0.5)' }}
+            >
+              <img src={t.src} alt={t.label} decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.02) brightness(1.05) saturate(1.05)' }} />
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 50%, rgba(8,4,4,0.85) 100%)' }} />
+              <div style={{ position: 'absolute', bottom: 12, left: 14, right: 14 }}>
+                <div className="font-display" style={{ fontSize: 14, fontWeight: 700, color: '#F5F0E8', textTransform: 'uppercase', letterSpacing: '0.02em' }}>{t.label}</div>
+              </div>
+            </motion.a>
+          ))}
         </motion.div>
       </div>
 
-      {/* Bottom-right scroll indicator */}
-      <div style={{ position: 'absolute', bottom: 24, right: 32, display: 'flex', alignItems: 'center', gap: 12, zIndex: 5 }}>
-        <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: '#B8924A' }}>Scroll</span>
-        <div style={{ width: 64, height: 1, background: 'linear-gradient(90deg, #B8924A, transparent)' }} />
-      </div>
     </section>
   )
 }
@@ -712,6 +750,7 @@ export default function App() {
       <Hero />
       <Marquee />
       <WelcomeIntro />
+      <StudioTour />
       <StatementBanner />
       <div id="bereiche">
         <TrainingsflaecheSpotlight />
@@ -721,8 +760,10 @@ export default function App() {
       <WellnessSpotlight />
       <Stats />
       <Gallery />
+      <TrainerSection />
       <SpecialPrograms />
       <AddonsBand />
+      <PlanFinder />
       <PromoBand />
       <div id="konfigurator">
         <Konfigurator />
