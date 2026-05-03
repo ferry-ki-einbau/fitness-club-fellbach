@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import TiltCard from './TiltCard'
 
 /**
  * Trainer Section — Familie & Gesichter.
@@ -37,19 +38,20 @@ export default function TrainerSection() {
         {/* Trainer cards */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 20 }}>
           {trainers.map((t, i) => (
-            <motion.div
+            <TiltCard
               key={t.name}
+              intensity={6}
+              style={{
+                background: '#FFFFFF', border: '1px solid rgba(26,15,15,0.08)',
+                padding: 32, position: 'relative', overflow: 'hidden',
+                boxShadow: '0 4px 16px rgba(26,15,15,0.06)',
+              }}
+            >
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              style={{
-                background: '#FFFFFF', border: '1px solid rgba(26,15,15,0.08)',
-                padding: 32, position: 'relative', overflow: 'hidden',
-                boxShadow: '0 1px 2px rgba(26,15,15,0.04)',
-                transition: 'transform 0.3s, box-shadow 0.3s',
-              }}
-              whileHover={{ y: -6, boxShadow: '0 16px 40px rgba(26,15,15,0.15)' }}
             >
               {/* Color bar top */}
               <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: colors[i] }} />
@@ -69,6 +71,7 @@ export default function TrainerSection() {
               <div className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: colors[i], marginBottom: 16, fontWeight: 600 }}>{t.role}</div>
               <p style={{ color: '#5A4040', fontSize: 13.5, lineHeight: 1.65, fontStyle: 'italic' }}>"{t.quote}"</p>
             </motion.div>
+            </TiltCard>
           ))}
         </div>
 

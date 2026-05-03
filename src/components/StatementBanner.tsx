@@ -1,5 +1,6 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import Particles from './Particles'
 
 /**
  * Killer-Tagline vom Original-Studio. Massive editorial type, parallax.
@@ -32,6 +33,7 @@ export default function StatementBanner() {
         filter: 'blur(2px)',
       }} />
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(15,20,25,0.9) 0%, rgba(15,20,25,0.7) 30%, rgba(15,20,25,0.7) 70%, rgba(15,20,25,0.95) 100%)' }} />
+      <Particles count={40} color="#B8924A" opacity={0.45} />
       {/* Background meander pattern (subtle) */}
       <div style={{
         position: 'absolute',

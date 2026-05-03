@@ -20,6 +20,8 @@ import PlanFinder from './components/PlanFinder'
 import TrainerSection from './components/TrainerSection'
 import StudioTour from './components/StudioTour'
 import PhysioBridge from './components/PhysioBridge'
+import ScrollProgress from './components/ScrollProgress'
+import PullQuote from './components/PullQuote'
 
 
 const GALLERY = [
@@ -768,6 +770,7 @@ export default function App() {
   return (
     <>
       <Preloader />
+      <ScrollProgress />
       <CustomCursor />
       <LiveTicker />
       <Nav />
@@ -782,11 +785,24 @@ export default function App() {
       <EgymSpotlight />
       <KurseGrid />
       <WellnessSpotlight />
+      <PullQuote
+        before="Disziplin · 24/7"
+        text="Keine Ausreden. Nur dein nächster Satz."
+        highlight="Keine Ausreden."
+        variant="dark"
+      />
       <Stats />
       <Gallery />
       <TrainerSection />
       <SpecialPrograms />
       <AddonsBand />
+      <PullQuote
+        before="500+ Mitglieder"
+        text="Manche kommen zum Schwitzen. Die meisten bleiben für die Familie."
+        highlight="bleiben für die Familie."
+        variant="light"
+        bg="#F5F0E8"
+      />
       <PlanFinder />
       <PromoBand />
       <div id="konfigurator">
