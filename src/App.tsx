@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import './index.css'
 import Preloader from './components/Preloader'
@@ -22,6 +22,7 @@ import PhysioBridge from './components/PhysioBridge'
 import ScrollProgress from './components/ScrollProgress'
 import PullQuote from './components/PullQuote'
 import MouseSpotlight from './components/MouseSpotlight'
+import BigStats from './components/BigStats'
 
 
 const GALLERY = [
@@ -48,29 +49,6 @@ function useReveal() {
   }, [])
 }
 
-function useCounter(target: number, duration = 1800) {
-  const [count, setCount] = useState(0)
-  const ref = useRef<HTMLSpanElement>(null)
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const io = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting) return
-      io.disconnect()
-      const start = performance.now()
-      const tick = (now: number) => {
-        const p = Math.min((now - start) / duration, 1)
-        const ease = 1 - Math.pow(1 - p, 3)
-        setCount(Math.round(ease * target))
-        if (p < 1) requestAnimationFrame(tick)
-      }
-      requestAnimationFrame(tick)
-    }, { threshold: 0.5 })
-    io.observe(el)
-    return () => io.disconnect()
-  }, [target, duration])
-  return { count, ref }
-}
 
 function Nav() {
   const [scrolled, setScrolled] = useState(false)
@@ -93,12 +71,10 @@ function Nav() {
         <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
           <Logo size="lg" variant="light" />
         </a>
-        <div className="hidden md:flex" style={{ gap: 32, alignItems: 'center' }}>
+        <div className="hidden md:flex" style={{ gap: 8, alignItems: 'center' }}>
           {links.map(l => (
-            <a key={l.href} href={l.href} className="font-condensed"
-               style={{ fontSize: 12, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#B5A99A', textDecoration: 'none', transition: 'color 0.2s' }}
-               onMouseEnter={e => (e.target as HTMLElement).style.color = '#fff'}
-               onMouseLeave={e => (e.target as HTMLElement).style.color = '#666'}>
+            <a key={l.href} href={l.href} className="font-condensed nav-link"
+               style={{ fontSize: 12, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#B5A99A', textDecoration: 'none', padding: '8px 14px', position: 'relative' }}>
               {l.label}
             </a>
           ))}
@@ -133,6 +109,17 @@ function Nav() {
 function Hero() {
   const heroImg = '/images/real-trainingsbereich-md.webp'
   const heroImgSm = '/images/real-trainingsbereich-sm.webp'
+  const [parallax, setParallax] = useState({ x: 0, y: 0 })
+  useEffect(() => {
+    if (window.matchMedia('(hover: none)').matches) return
+    const onMove = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 12
+      const y = (e.clientY / window.innerHeight - 0.5) * 8
+      setParallax({ x, y })
+    }
+    window.addEventListener('mousemove', onMove)
+    return () => window.removeEventListener('mousemove', onMove)
+  }, [])
   const tiles = [
     { src: '/images/real-cardio-sm.webp', label: 'Cardio' },
     { src: '/images/real-wellness-area-sm.webp', label: 'Sauna' },
@@ -151,12 +138,12 @@ function Hero() {
                 { label: 'Ruhige Spätstunde', color: '#22C55E' }
   return (
     <section data-hero style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden', background: '#0F1419' }}>
-      {/* Full-bleed photo */}
+      {/* Full-bleed photo with cursor parallax */}
       <motion.div
         initial={{ scale: 1.06, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 2.2, delay: 1.9, ease: [0.16, 1, 0.3, 1] }}
-        style={{ position: 'absolute', inset: 0, zIndex: 1 }}>
+        style={{ position: 'absolute', inset: -20, zIndex: 1 }}>
         <img
           src={heroImg}
           srcSet={`${heroImgSm} 800w, ${heroImg} 1600w`}
@@ -164,7 +151,12 @@ function Hero() {
           alt="Fitness Club Fellbach Trainingsbereich"
           fetchPriority="high"
           decoding="async"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 45%', filter: 'contrast(1.02) brightness(1) saturate(1.05)' }}
+          style={{
+            width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 45%',
+            filter: 'contrast(1.02) brightness(1) saturate(1.05)',
+            transform: `translate(${parallax.x}px, ${parallax.y}px) scale(1.04)`,
+            transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+          }}
         />
       </motion.div>
 
@@ -310,33 +302,6 @@ function Marquee() {
         ))}
       </div>
     </div>
-  )
-}
-
-function Stat({ target, suffix, label }: { target: number; suffix?: string; label: string }) {
-  const { count, ref } = useCounter(target)
-  return (
-    <div style={{ textAlign: 'center' }}>
-      <div className="font-display" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 700, color: 'var(--lime)', lineHeight: 1 }}>
-        <span ref={ref}>{count}</span>{suffix}
-      </div>
-      <div className="label" style={{ color: 'var(--text-muted)', marginTop: 10 }}>{label}</div>
-    </div>
-  )
-}
-
-function Stats() {
-  return (
-    <section style={{ background: 'var(--black)', padding: 'var(--section-spacing) 0', borderBottom: '1px solid var(--gray-border)' }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 var(--container-padding)' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 32 }} className="md:grid-cols-4">
-          <Stat target={24} suffix="h" label="Täglich geöffnet" />
-          <Stat target={3} label="Bereiche" />
-          <Stat target={30} suffix="+" label="Kurse / Woche" />
-          <Stat target={14} label="Tage gratis testen" />
-        </div>
-      </div>
-    </section>
   )
 }
 
@@ -792,7 +757,7 @@ export default function App() {
         highlight="Keine Ausreden."
         variant="dark"
       />
-      <Stats />
+      <BigStats />
       <Gallery />
       <TrainerSection />
       <SpecialPrograms />

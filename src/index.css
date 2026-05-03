@@ -59,6 +59,7 @@ body {
   .tour-content { grid-template-columns: 1fr !important; }
   .tour-tabs { gap: 6px !important; }
   .physio-bridge-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+  .big-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -72,6 +73,27 @@ button, a { transition: all 0.2s ease; }
 
 /* Smooth section transitions */
 section { position: relative; }
+
+/* Nav link animated underline */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 4px;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-link:hover {
+  color: #fff !important;
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
 
 body {
   background: var(--black);
