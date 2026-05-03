@@ -653,19 +653,48 @@ function KursplanWidget() {
         <p style={{ color: '#9A8878', fontSize: 14, marginBottom: 40, maxWidth: 'none' }}>
           Alle Kurse inkl. im Mitgliedsbeitrag — Platz reservieren über die <span style={{ color: '#F5F0E8', fontWeight: 600 }}>MySports App</span>.
         </p>
-        <div style={{ background: '#fff', borderRadius: 4, overflow: 'hidden', minHeight: 500 }}>
+        {/* iframe wrapper — auf echter Domain lädt Widget, Fallback darunter immer sichtbar wenn blocked */}
+        <div style={{ position: 'relative', borderRadius: 4, overflow: 'hidden', minHeight: 420 }}>
+          {/* Fallback — sichtbar wenn iframe geblockt */}
+          <div style={{ position: 'absolute', inset: 0, background: '#1A2128', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 24, padding: 40 }}>
+            <div style={{ textAlign: 'center' }}>
+              <div className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.4em', textTransform: 'uppercase', color: '#C44552', marginBottom: 12, fontWeight: 600 }}>Live · Immer aktuell</div>
+              <div className="font-display" style={{ fontSize: 'clamp(1.6rem, 3vw, 2.5rem)', fontWeight: 700, textTransform: 'uppercase', color: '#F5F0E8', lineHeight: 1.1, marginBottom: 12 }}>
+                30+ Kurse pro Woche.
+              </div>
+              <p style={{ color: '#9A8878', fontSize: 14, marginBottom: 28, maxWidth: 'none', marginInline: 'auto' }}>
+                BodyPump · Yoga · Pilates · Rückenfit · Zumba · Spinning · Zirkeltraining und viele mehr — alle im Mitgliedsbeitrag inklusive.
+              </p>
+              <a
+                href="https://www.fitness-club-fellbach.de/kurse"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-lime"
+                style={{ padding: '14px 32px', fontSize: 12, display: 'inline-flex', alignItems: 'center', gap: 10 }}
+              >
+                <span>Kompletten Kursplan ansehen</span>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', maxWidth: 600 }}>
+              {['BodyPump','Yoga','Pilates','Rückenfit','Zumba','Spinning','Bauch Beine Po','Bodytoning','Vinyasa Yoga','Zirkeltraining','Step','Bodycross'].map(k => (
+                <span key={k} className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', padding: '5px 10px', border: '1px solid rgba(245,240,232,0.1)', color: '#9A8878' }}>{k}</span>
+              ))}
+            </div>
+          </div>
+          {/* Live iframe — überlagert Fallback wenn geladen */}
           <iframe
             src="https://courseplan.noexcuse.io/?origin=https%3A%2F%2Fwww.fitness-club-fellbach.de&id=Zml0bmVzcy1jbHViLWZlbGxiYWNoOjEyMTAwMTEzOTA%253D&disableEmployeeExpertises=true&height=auto&baseHost=mysports.com"
             width="100%"
             height="700"
             frameBorder="0"
             title="Kursplan Fitness Club Fellbach"
-            style={{ display: 'block', border: 'none' }}
+            style={{ display: 'block', border: 'none', position: 'relative', zIndex: 1, background: 'transparent' }}
             loading="lazy"
           />
         </div>
-        <p style={{ fontSize: 11, color: '#5A6770', marginTop: 16, letterSpacing: '0.05em', maxWidth: 'none' }}>
-          Kursplan wird live vom Buchungssystem geladen — immer aktuell.
+        <p style={{ fontSize: 11, color: '#5A6770', marginTop: 12, letterSpacing: '0.05em', maxWidth: 'none' }}>
+          Kursplan wird live geladen — immer aktuell, keine Pflege nötig.
         </p>
       </div>
     </section>
