@@ -117,7 +117,7 @@ function Nav() {
           </a>
 
           {/* Mobile Burger */}
-          <button className="md:hidden" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 8, flexDirection: 'column', gap: 5 }} onClick={() => setOpen(!open)}>
+          <button className="md:hidden nav-burger" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 8, flexDirection: 'column', gap: 5 }} onClick={() => setOpen(!open)}>
             <span style={{ width: 22, height: 1.5, background: '#F5F0E8', display: 'block', transition: 'all 0.25s', transform: open ? 'rotate(45deg) translate(4.5px, 4.5px)' : 'none' }} />
             <span style={{ width: 22, height: 1.5, background: '#F5F0E8', display: 'block', transition: 'opacity 0.25s', opacity: open ? 0 : 1 }} />
             <span style={{ width: 22, height: 1.5, background: '#F5F0E8', display: 'block', transition: 'all 0.25s', transform: open ? 'rotate(-45deg) translate(4.5px, -4.5px)' : 'none' }} />

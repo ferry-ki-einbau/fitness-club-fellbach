@@ -112,6 +112,11 @@ body { font-size: 16px; }
 /* Smooth section transitions */
 section { position: relative; }
 
+/* Nav burger — nur auf Mobile sichtbar */
+@media (min-width: 768px) {
+  .nav-burger { display: none !important; }
+}
+
 /* Nav link animated underline */
 .nav-link::after {
   content: '';
