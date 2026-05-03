@@ -7,7 +7,7 @@ import MagneticButton from './components/MagneticButton'
 import LiveTicker from './components/LiveTicker'
 import Konfigurator from './components/Konfigurator'
 import GreekMeander from './components/GreekMeander'
-import SpartanMark from './components/SpartanMark'
+import Logo from './components/Logo'
 import WhatsAppFab from './components/WhatsAppFab'
 import StatementBanner from './components/StatementBanner'
 import EgymSpotlight from './components/EgymSpotlight'
@@ -16,6 +16,7 @@ import SpecialPrograms from './components/SpecialPrograms'
 import AddonsBand from './components/AddonsBand'
 import TrainingsflaecheSpotlight from './components/TrainingsflaecheSpotlight'
 import KurseGrid from './components/KurseGrid'
+import WelcomeIntro from './components/WelcomeIntro'
 
 
 const GALLERY = [
@@ -84,12 +85,8 @@ function Nav() {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'nav-glass' : ''}`}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 72 }}>
-        <a href="#" style={{ color: 'var(--text)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 12 }}>
-          <SpartanMark size={56} />
-          <span className="font-display" style={{ fontSize: 14, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', lineHeight: 1.15 }}>
-            FITNESS CLUB
-            <span style={{ display: 'block', fontSize: 9, letterSpacing: '0.4em', fontWeight: 300, color: 'var(--text-muted)', fontFamily: 'Barlow Condensed, sans-serif' }}>FELLBACH</span>
-          </span>
+        <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+          <Logo size="lg" variant="light" />
         </a>
         <div className="hidden md:flex" style={{ gap: 32, alignItems: 'center' }}>
           {links.map(l => (
@@ -175,7 +172,7 @@ function Hero() {
             transition={{ duration: 0.8, delay: 2.0 }}
             style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 36 }}>
             <span style={{ width: 48, height: 1, background: '#B8924A' }} />
-            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.55em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>ΜΟΛΩΝ ΛΑΒΕ</span>
+            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.55em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>Fellbach · 24/7</span>
           </motion.div>
 
           <motion.h1
@@ -686,11 +683,8 @@ function Footer() {
   return (
     <footer style={{ background: 'var(--black)', borderTop: '1px solid var(--gray-border)', padding: '32px 0' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 24px', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-          <SpartanMark size={44} />
-          <span className="font-display" style={{ fontSize: 13, fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--text)' }}>
-            FITNESS CLUB FELLBACH
-          </span>
+        <div>
+          <Logo size="md" variant="light" />
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24 }}>
           {[['Datenschutz', 'https://www.fitness-club-fellbach.de/datenschutz'], ['Impressum', 'https://www.fitness-club-fellbach.de/impressum'], ['Kündigung', 'https://www.fitness-club-fellbach.de/kundigung'], ['Karriere', 'https://www.fitness-club-fellbach.de/karriere']].map(([l, h]) => (
@@ -717,6 +711,7 @@ export default function App() {
       <Nav />
       <Hero />
       <Marquee />
+      <WelcomeIntro />
       <StatementBanner />
       <div id="bereiche">
         <TrainingsflaecheSpotlight />
