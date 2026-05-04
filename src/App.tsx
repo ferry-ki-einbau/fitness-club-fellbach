@@ -770,7 +770,7 @@ function KursplanWidget() {
               src="https://courseplan.noexcuse.io/?origin=https%3A%2F%2Fwww.fitness-club-fellbach.de&id=Zml0bmVzcy1jbHViLWZlbGxiYWNoOjEyMTAwMTEzOTA%253D&disableEmployeeExpertises=true&height=auto&baseHost=mysports.com"
               width="100%"
               height="750"
-              frameBorder="0"
+              
               title="Kursplan Fitness Club Fellbach"
               style={{ display: 'block', border: 'none', marginTop: -52 }}
               loading="lazy"
