@@ -337,6 +337,27 @@ body {
 .hero-animate-delay2 { animation: heroFadeUp 0.9s 0.4s cubic-bezier(0.16,1,0.3,1) both; }
 .hero-animate-delay3 { animation: heroFadeUp 0.9s 0.6s cubic-bezier(0.16,1,0.3,1) both; }
 
+/* Mobile Hero Carousel */
+@media (max-width: 767px) {
+  .hero-mobile-carousel { display: flex !important; }
+}
+
+/* Pricing Card Gold Shimmer */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.pricing-shimmer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(184,146,74,0.12) 50%, transparent 60%);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

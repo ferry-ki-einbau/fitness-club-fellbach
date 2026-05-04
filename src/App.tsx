@@ -22,6 +22,7 @@ import BigStats from './components/BigStats'
 import MagneticNavLink from './components/MagneticNav'
 import ScrambleHeadline from './components/ScrambleHeadline'
 import TiltCard from './components/TiltCard'
+import useLenis from './hooks/useLenis'
 
 // Lazy-loaded — erst laden wenn gebraucht
 const ZielRechner = lazy(() => import('./components/ZielRechner'))
@@ -269,6 +270,24 @@ function Hero() {
             1.500m² · EGYM · Box-Ring · Sauna · Whirlpool · 30+ Kurse/Woche.<br />
             <span style={{ color: '#FFFFFF', fontWeight: 600 }}>24h offen. 7 Tage. 365 Tage.</span> Ab <span style={{ color: '#FFFFFF', fontWeight: 600 }}>13,99€/Woche</span> — inkl. persönlichem Trainingsplan.
           </motion.p>
+
+          {/* Mobile Swipe Carousel — nur auf Mobile sichtbar */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.45 }}
+            className="hero-mobile-carousel"
+            style={{ display: 'none', overflowX: 'auto', gap: 10, marginBottom: 24, marginLeft: -20, marginRight: -20, paddingLeft: 20, paddingRight: 20, scrollbarWidth: 'none' }}
+          >
+            {tiles.map((t, i) => (
+              <a key={t.label} href="#tour" style={{ flexShrink: 0, width: 140, aspectRatio: '4/3', display: 'block', position: 'relative', overflow: 'hidden', borderRadius: 2, textDecoration: 'none' }}>
+                <img src={t.src} alt={t.label} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 50%, rgba(15,20,25,0.85) 100%)' }} />
+                <span className="font-display" style={{ position: 'absolute', bottom: 8, left: 10, fontSize: 11, fontWeight: 700, color: '#F5F0E8', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{t.label}</span>
+                {i === activeTile && <div style={{ position: 'absolute', inset: 0, border: '2px solid #C44552', pointerEvents: 'none' }} />}
+              </a>
+            ))}
+          </motion.div>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -561,6 +580,7 @@ function Pricing() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className={plan.featured ? 'pricing-shimmer' : ''}
                 style={{
                   position: 'relative',
                   padding: 36,
@@ -949,6 +969,7 @@ function Footer() {
 
 export default function App() {
   useReveal()
+  useLenis()
   const [pastHero, setPastHero] = useState(false)
   useEffect(() => {
     const fn = () => setPastHero(window.scrollY > window.innerHeight * 0.8)
