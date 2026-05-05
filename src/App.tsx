@@ -1,8 +1,9 @@
 import { useEffect, useState, lazy, Suspense } from 'react'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import './index.css'
 import Preloader from './components/Preloader'
 import MagneticButton from './components/MagneticButton'
+import MitgliedForm, { MitgliedButton } from './components/MitgliedForm'
 import LiveTicker from './components/LiveTicker'
 import GreekMeander from './components/GreekMeander'
 import Logo from './components/Logo'
@@ -121,9 +122,9 @@ function Nav() {
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
             07115 8 8654
           </a>
-          <a href="#preise" className="btn-lime hidden md:inline-flex" style={{ padding: '10px 22px', fontSize: 11 }}>
+          <MitgliedButton className="btn-lime hidden md:inline-flex" style={{ padding: '10px 22px', fontSize: 11 }}>
             <span>Jetzt Mitglied</span>
-          </a>
+          </MitgliedButton>
 
           {/* Mobile Burger */}
           <button className="md:hidden nav-burger" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 8, flexDirection: 'column', gap: 5 }} onClick={() => setOpen(!open)}>
@@ -144,9 +145,9 @@ function Nav() {
               <span className="font-display" style={{ fontSize: 22, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.02em', color: '#F5F0E8' }}>{l.label}</span>
             </a>
           ))}
-          <a href="#preise" className="btn-lime" style={{ justifyContent: 'center', marginTop: 24 }} onClick={() => setOpen(false)}>
+          <MitgliedButton className="btn-lime" style={{ justifyContent: 'center', marginTop: 24 }}>
             <span>Jetzt Mitglied werden</span>
-          </a>
+          </MitgliedButton>
           <a href="tel:+4971158 8654" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginTop: 16, color: '#8A7A6A', fontSize: 13, textDecoration: 'none' }}>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
             07115 8 8654
@@ -295,7 +296,10 @@ function Hero() {
             transition={{ duration: 0.8, delay: 1.55 }}
             className="hero-cta-group"
             style={{ display: 'flex', flexWrap: 'wrap', gap: 14, marginBottom: 56 }}>
-            <MagneticButton href="#preise" variant="lime">
+            <MagneticButton onClick={() => {
+              // open MitgliedForm via global event
+              window.dispatchEvent(new CustomEvent('open-mitglied-form'))
+            }} variant="lime">
               <span>14 Tage gratis testen</span><span>→</span>
             </MagneticButton>
             <MagneticButton href="#tour" variant="outline">
@@ -631,8 +635,7 @@ function Pricing() {
                 </ul>
 
                 <MagneticButton
-                  href="https://www.fitness-club-fellbach.de/membership/memberships"
-                  target="_blank" rel="noopener noreferrer"
+                  onClick={() => window.dispatchEvent(new CustomEvent('open-mitglied-form'))}
                   variant={plan.featured ? 'lime' : 'outline'}
                   className="w-full"
                 >
@@ -893,8 +896,7 @@ function Contact() {
             Starte noch heute mit 14 Tagen komplett kostenlos. Kein Risiko — voller Zugang ab Tag 1.
           </p>
           <MagneticButton
-            href="https://www.fitness-club-fellbach.de/membership/memberships"
-            target="_blank" rel="noopener noreferrer"
+            onClick={() => window.dispatchEvent(new CustomEvent('open-mitglied-form'))}
             variant="lime" className="w-full"
           >
             <span>14 Tage gratis starten</span><span>→</span>
@@ -971,10 +973,18 @@ export default function App() {
   useReveal()
   useLenis()
   const [pastHero, setPastHero] = useState(false)
+  const [mitgliedOpen, setMitgliedOpen] = useState(false)
+
   useEffect(() => {
     const fn = () => setPastHero(window.scrollY > window.innerHeight * 0.8)
     window.addEventListener('scroll', fn, { passive: true })
     return () => window.removeEventListener('scroll', fn)
+  }, [])
+
+  useEffect(() => {
+    const fn = () => setMitgliedOpen(true)
+    window.addEventListener('open-mitglied-form', fn)
+    return () => window.removeEventListener('open-mitglied-form', fn)
   }, [])
   return (
     <>
@@ -1060,14 +1070,19 @@ export default function App() {
           </svg>
           <span className="font-display" style={{ fontSize: 14, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Anrufen</span>
         </a>
-        <a href="#preise" style={{
+        <button onClick={() => window.dispatchEvent(new CustomEvent('open-mitglied-form'))} style={{
           flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-          background: '#0F1419', color: '#F5F0E8', padding: '16px 12px', textDecoration: 'none',
-          borderTop: '1px solid rgba(245,240,232,0.1)',
+          background: '#0F1419', color: '#F5F0E8', padding: '16px 12px',
+          border: 'none', borderTop: '1px solid rgba(245,240,232,0.1)', cursor: 'pointer',
         }}>
           <span className="font-display" style={{ fontSize: 14, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Mitglied werden</span>
-        </a>
+        </button>
       </div>
+
+      {/* Mitglied Form Overlay */}
+      <AnimatePresence>
+        {mitgliedOpen && <MitgliedForm onClose={() => setMitgliedOpen(false)} />}
+      </AnimatePresence>
 
     </>
   )
