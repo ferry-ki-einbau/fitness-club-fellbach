@@ -159,71 +159,71 @@ function Nav() {
 }
 
 function Hero() {
-  const heroImg = '/images/real-trainingsbereich-md.webp'
-  const heroImgSm = '/images/real-trainingsbereich-sm.webp'
-  const [parallax, setParallax] = useState({ x: 0, y: 0 })
-  const [activeTile, setActiveTile] = useState(0)
-  useEffect(() => {
-    if (window.matchMedia('(hover: none)').matches) return
-    const onMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth - 0.5) * 12
-      const y = (e.clientY / window.innerHeight - 0.5) * 8
-      setParallax({ x, y })
-    }
-    window.addEventListener('mousemove', onMove)
-    return () => window.removeEventListener('mousemove', onMove)
-  }, [])
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveTile(prev => (prev + 1) % 4)
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [])
-  const tiles = [
-    { src: '/images/real-cardio-sm.webp', label: 'Cardio' },
-    { src: '/images/real-wellness-area-sm.webp', label: 'Sauna' },
-    { src: '/images/real-pool-area-sm.webp', label: 'Whirlpool' },
-    { src: '/images/real-kursraum-1-sm.webp', label: 'Kurse' },
+  const SLIDES = [
+    { src: '/images/real-trainingsbereich-md.webp', srcSm: '/images/real-trainingsbereich-sm.webp', label: 'Training' },
+    { src: '/images/real-boxring-1-md.webp', srcSm: '/images/real-boxring-1-sm.webp', label: 'Box-Ring' },
+    { src: '/images/real-cardio-md.webp', srcSm: '/images/real-cardio-sm.webp', label: 'Cardio' },
+    { src: '/images/real-wellness-area-md.webp', srcSm: '/images/real-wellness-area-sm.webp', label: 'Wellness' },
+    { src: '/images/real-kursraum-1-md.webp', srcSm: '/images/real-kursraum-1-sm.webp', label: 'Kurse' },
   ]
+  const [current, setCurrent] = useState(0)
+  const [prev, setPrev] = useState<number | null>(null)
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setCurrent(c => {
+        setPrev(c)
+        return (c + 1) % SLIDES.length
+      })
+    }, 5000)
+    return () => clearInterval(id)
+  }, [])
+
+  const goTo = (i: number) => {
+    setPrev(current)
+    setCurrent(i)
+  }
+
   return (
     <section data-hero style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden', background: '#0F1419' }}>
-      {/* Full-bleed photo with cursor parallax */}
-      <motion.div
-        initial={{ scale: 1.06, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 2.2, delay: 1.1, ease: [0.16, 1, 0.3, 1] }}
-        style={{ position: 'absolute', inset: -20, zIndex: 1 }}>
-        <img
-          src={heroImg}
-          srcSet={`${heroImgSm} 800w, ${heroImg} 1600w`}
-          sizes="100vw"
-          alt="Fitness Club Fellbach Trainingsbereich"
-          fetchPriority="high"
-          decoding="async"
+      {/* Slideshow images */}
+      {SLIDES.map((s, i) => (
+        <div
+          key={s.src}
           style={{
-            width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 45%',
-            filter: 'contrast(1.02) brightness(1) saturate(1.05)',
-            transform: `translate(${parallax.x}px, ${parallax.y}px) scale(1.04)`,
-            transition: 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)',
+            position: 'absolute', inset: 0, zIndex: 1,
+            opacity: i === current ? 1 : i === prev ? 0 : 0,
+            transition: 'opacity 1.2s cubic-bezier(0.4,0,0.2,1)',
           }}
-        />
-      </motion.div>
+        >
+          <img
+            src={s.src}
+            srcSet={`${s.srcSm} 800w, ${s.src} 1600w`}
+            sizes="100vw"
+            alt={s.label}
+            fetchPriority={i === 0 ? 'high' : 'low'}
+            decoding="async"
+            loading={i === 0 ? 'eager' : 'lazy'}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', filter: 'contrast(1.02) brightness(0.95) saturate(1.05)' }}
+          />
+        </div>
+      ))}
 
-      {/* Smoother gradient — readable text but image bright */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(180deg, rgba(15,20,25,0.55) 0%, rgba(15,20,25,0.25) 30%, rgba(15,20,25,0.55) 75%, rgba(15,20,25,0.95) 100%)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(95deg, rgba(15,20,25,0.85) 0%, rgba(15,20,25,0.4) 50%, rgba(15,20,25,0.15) 100%)', pointerEvents: 'none' }} />
+      {/* Gradients */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(180deg, rgba(15,20,25,0.5) 0%, rgba(15,20,25,0.2) 40%, rgba(15,20,25,0.6) 80%, rgba(15,20,25,0.97) 100%)', pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(90deg, rgba(15,20,25,0.8) 0%, rgba(15,20,25,0.3) 60%, transparent 100%)', pointerEvents: 'none' }} />
 
       {/* Greek meander */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 3, pointerEvents: 'none', opacity: 0.6 }}>
+      <div style={{ position: 'absolute', inset: 0, zIndex: 3, pointerEvents: 'none', opacity: 0.5 }}>
         <GreekMeander />
       </div>
 
-      {/* Live status pill — top center */}
+      {/* Google Badge */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 1.2 }}
-        style={{ position: 'absolute', top: 100, left: '50%', transform: 'translateX(-50%)', zIndex: 11, display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center' }}
+        style={{ position: 'absolute', top: 90, right: 'clamp(20px,5vw,80px)', zIndex: 11 }}
       >
         <div style={{ padding: '8px 16px', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(12px)', border: '1px solid rgba(184, 146, 74, 0.4)', display: 'flex', alignItems: 'center', gap: 8, borderRadius: 999 }}>
           <svg width="14" height="14" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
@@ -240,9 +240,9 @@ function Hero() {
         </div>
       </motion.div>
 
-      {/* Content grid */}
-      <div className="hero-content-grid" style={{ position: 'relative', zIndex: 10, maxWidth: 1440, margin: '0 auto', padding: 'clamp(100px, 14vh, 160px) clamp(20px, 5vw, 80px) clamp(32px, 5vh, 64px)', width: '100%', minHeight: '100vh', display: 'grid', gridTemplateColumns: 'minmax(0, 1.4fr) minmax(0, 1fr)', gap: 'clamp(32px, 5vw, 80px)', alignItems: 'center' }}>
-        <div>
+      {/* Content */}
+      <div style={{ position: 'relative', zIndex: 10, maxWidth: 1440, margin: '0 auto', padding: 'clamp(100px,14vh,160px) clamp(20px,5vw,80px) clamp(80px,10vh,120px)', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        <div style={{ maxWidth: 700 }}>
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -272,36 +272,15 @@ function Hero() {
             <span style={{ color: '#FFFFFF', fontWeight: 600 }}>24h offen. 7 Tage. 365 Tage.</span> Ab <span style={{ color: '#FFFFFF', fontWeight: 600 }}>13,99€/Woche</span> — inkl. persönlichem Trainingsplan.
           </motion.p>
 
-          {/* Mobile Swipe Carousel — nur auf Mobile sichtbar */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.45 }}
-            className="hero-mobile-carousel"
-            style={{ display: 'none', overflowX: 'auto', gap: 10, marginBottom: 24, marginLeft: -20, marginRight: -20, paddingLeft: 20, paddingRight: 20, scrollbarWidth: 'none' }}
-          >
-            {tiles.map((t, i) => (
-              <a key={t.label} href="#tour" style={{ flexShrink: 0, width: 140, aspectRatio: '4/3', display: 'block', position: 'relative', overflow: 'hidden', borderRadius: 2, textDecoration: 'none' }}>
-                <img src={t.src} alt={t.label} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 50%, rgba(15,20,25,0.85) 100%)' }} />
-                <span className="font-display" style={{ position: 'absolute', bottom: 8, left: 10, fontSize: 11, fontWeight: 700, color: '#F5F0E8', textTransform: 'uppercase', letterSpacing: '0.06em' }}>{t.label}</span>
-                {i === activeTile && <div style={{ position: 'absolute', inset: 0, border: '2px solid #C44552', pointerEvents: 'none' }} />}
-              </a>
-            ))}
-          </motion.div>
-
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.55 }}
             className="hero-cta-group"
             style={{ display: 'flex', flexWrap: 'wrap', gap: 14, marginBottom: 56 }}>
-            <MagneticButton onClick={() => {
-              // open MitgliedForm via global event
-              window.dispatchEvent(new CustomEvent('open-mitglied-form'))
-            }} variant="lime">
+            <MitgliedButton variant="lime">
               <span>14 Tage gratis testen</span><span>→</span>
-            </MagneticButton>
+            </MitgliedButton>
             <MagneticButton href="#tour" variant="outline">
               <span>Studio Tour</span>
             </MagneticButton>
@@ -310,8 +289,8 @@ function Hero() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 2.7 }}
-            style={{ display: 'flex', flexWrap: 'wrap', gap: 'clamp(28px, 4vw, 56px)', paddingTop: 28, borderTop: '1px solid rgba(184, 146, 74, 0.2)' }}>
+            transition={{ duration: 1, delay: 1.7 }}
+            style={{ display: 'flex', flexWrap: 'wrap', gap: 'clamp(28px,4vw,56px)', paddingTop: 28, borderTop: '1px solid rgba(184, 146, 74, 0.2)' }}>
             {[['24/7', 'geöffnet'], ['8', 'Bereiche'], ['500+', 'Mitglieder'], ['14', 'Tage gratis']].map(([n, l]) => (
               <div key={l}>
                 <div className="font-display" style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)', fontWeight: 700, color: '#B8924A', lineHeight: 1, letterSpacing: '-0.02em' }}>{n}</div>
@@ -321,94 +300,25 @@ function Hero() {
           </motion.div>
         </div>
 
-        {/* Right: 4-tile mosaic of zones */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 1.6, ease: [0.16, 1, 0.3, 1] }}
-          className="hero-mosaic"
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12, alignSelf: 'center' }}
-        >
-          {tiles.map((t, i) => {
-            const isActive = i === activeTile
-            return (
-              <motion.a
-                key={t.label}
-                href="#tour"
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.7, delay: 1.7 + i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                whileHover={{ scale: 1.03 }}
-                style={{
-                  position: 'relative', aspectRatio: '1/1', overflow: 'hidden', cursor: 'pointer',
-                  textDecoration: 'none', display: 'block',
-                  boxShadow: isActive ? '0 16px 40px -8px rgba(196,69,82,0.35)' : '0 12px 32px -8px rgba(0,0,0,0.5)',
-                  transform: isActive ? 'scale(1.04)' : 'scale(1)',
-                  transition: 'transform 0.5s cubic-bezier(0.16,1,0.3,1), box-shadow 0.5s ease',
-                  zIndex: isActive ? 2 : 1,
-                }}
-              >
-                <img
-                  src={t.src}
-                  alt={t.label}
-                  decoding="async"
-                  style={{
-                    width: '100%', height: '100%', objectFit: 'cover',
-                    filter: isActive
-                      ? 'contrast(1.05) brightness(1.15) saturate(1.1)'
-                      : 'contrast(1.02) brightness(1.05) saturate(1.05)',
-                    transition: 'filter 0.5s ease',
-                  }}
-                />
-                <div style={{
-                  position: 'absolute', inset: 0,
-                  background: isActive
-                    ? 'linear-gradient(180deg, transparent 35%, rgba(15,20,25,0.75) 100%)'
-                    : 'linear-gradient(180deg, transparent 50%, rgba(15,20,25,0.85) 100%)',
-                  transition: 'background 0.5s ease',
-                }} />
-                {/* Active indicator: thin burgund border */}
-                {isActive && (
-                  <div style={{
-                    position: 'absolute', inset: 0,
-                    border: '2px solid rgba(196,69,82,0.7)',
-                    pointerEvents: 'none',
-                  }} />
-                )}
-                <div style={{ position: 'absolute', bottom: 12, left: 14, right: 14 }}>
-                  <div
-                    className="font-display"
-                    style={{
-                      fontSize: isActive ? 16 : 14,
-                      fontWeight: 700,
-                      color: isActive ? '#FFFFFF' : '#F5F0E8',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.02em',
-                      transition: 'font-size 0.4s ease, color 0.4s ease',
-                    }}
-                  >
-                    {t.label}
-                  </div>
-                  {isActive && (
-                    <div
-                      className="font-condensed"
-                      style={{
-                        fontSize: 9,
-                        letterSpacing: '0.3em',
-                        textTransform: 'uppercase',
-                        color: '#C44552',
-                        marginTop: 3,
-                        fontWeight: 700,
-                      }}
-                    >
-                      ●
-                    </div>
-                  )}
-                </div>
-              </motion.a>
-            )
-          })}
-        </motion.div>
+        {/* Slide indicators */}
+        <div style={{ position: 'absolute', bottom: 'clamp(32px,5vh,60px)', right: 'clamp(20px,5vw,80px)', display: 'flex', gap: 8, alignItems: 'center' }}>
+          {SLIDES.map((s, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              style={{
+                width: i === current ? 28 : 8, height: 8, borderRadius: 4,
+                background: i === current ? '#C44552' : 'rgba(245,240,232,0.3)',
+                border: 'none', cursor: 'pointer', padding: 0,
+                transition: 'all 0.4s cubic-bezier(0.16,1,0.3,1)',
+              }}
+              aria-label={s.label}
+            />
+          ))}
+          <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.3em', color: 'rgba(245,240,232,0.4)', marginLeft: 4, textTransform: 'uppercase' }}>
+            {SLIDES[current].label}
+          </span>
+        </div>
       </div>
 
     </section>
