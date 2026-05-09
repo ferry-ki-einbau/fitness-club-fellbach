@@ -23,7 +23,6 @@ import BigStats from './components/BigStats'
 import MagneticNavLink from './components/MagneticNav'
 import ScrambleHeadline from './components/ScrambleHeadline'
 import TiltCard from './components/TiltCard'
-import useLenis from './hooks/useLenis'
 
 // Lazy-loaded — erst laden wenn gebraucht
 const ZielRechner = lazy(() => import('./components/ZielRechner'))
@@ -971,7 +970,6 @@ function Footer() {
 
 export default function App() {
   useReveal()
-  useLenis()
   const [pastHero, setPastHero] = useState(false)
   const [mitgliedOpen, setMitgliedOpen] = useState(false)
 
