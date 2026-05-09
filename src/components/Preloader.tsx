@@ -8,10 +8,21 @@ import { motion, AnimatePresence } from 'framer-motion'
  * 1700–2400ms: Tagline appears
  * 2400ms: Curtain reveals up
  */
+const QUOTES = [
+  '24 Stunden geöffnet',
+  'Die einzige schlechte Einheit ist die, die nicht stattfand.',
+  'Stärke beginnt im Kopf.',
+  'Kein Aufzug zum Erfolg — du musst die Treppe nehmen.',
+  'Dein Körper kann es. Dein Kopf muss es glauben.',
+  'Heute. Nicht morgen.',
+  'Schweiß ist Fett das weint.',
+]
+
 export default function Preloader() {
   const [visible, setVisible] = useState(true)
   const [stage, setStage] = useState(0)
   const [showSkip, setShowSkip] = useState(false)
+  const quote = QUOTES[new Date().getDay() % QUOTES.length]
 
   const skip = () => setVisible(false)
 
@@ -84,9 +95,9 @@ export default function Preloader() {
               transition={{ duration: 0.7, ease: 'easeOut' }}
             >
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14 }}>
-                <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#22C55E', boxShadow: '0 0 12px rgba(34,197,94,0.7)', animation: 'pulse 1.4s ease-in-out infinite' }} />
-                <span className="font-condensed" style={{ fontSize: 12, letterSpacing: '0.4em', textTransform: 'uppercase', color: '#F5F0E8', fontWeight: 500 }}>
-                  24 Stunden geöffnet
+                <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#22C55E', boxShadow: '0 0 12px rgba(34,197,94,0.7)', animation: 'pulse 1.4s ease-in-out infinite', flexShrink: 0 }} />
+                <span className="font-condensed" style={{ fontSize: quote.length > 20 ? 11 : 12, letterSpacing: quote.length > 20 ? '0.08em' : '0.4em', textTransform: 'uppercase', color: '#F5F0E8', fontWeight: 500, fontStyle: quote.length > 20 ? 'italic' : 'normal', maxWidth: 320, textAlign: 'center' }}>
+                  {quote}
                 </span>
               </div>
             </motion.div>
