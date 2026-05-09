@@ -98,7 +98,11 @@ body {
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+/* Lenis übernimmt smooth scroll — kein natives smooth */
+html { scroll-behavior: auto; }
+html.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 
 /* Global readability */
 p { line-height: 1.7; max-width: 70ch; }
