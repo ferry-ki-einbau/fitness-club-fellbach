@@ -80,6 +80,7 @@ function Nav() {
   const links = [
     { label: 'Kurse', href: '#kurse' },
     { label: 'Preise', href: '#preise' },
+    { label: 'Blog', href: '/blog/' },
     { label: 'Kontakt', href: '#kontakt' },
   ]
   return (
@@ -116,11 +117,11 @@ function Nav() {
 
         {/* CTA */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <a href="tel:+4971158 8654" className="hidden md:flex font-condensed" style={{ alignItems: 'center', gap: 6, fontSize: 13, letterSpacing: '0.1em', color: '#B5A99A', textDecoration: 'none', transition: 'color 0.2s' }}
+          <a href="tel:+49711588654" className="hidden md:flex font-condensed" style={{ alignItems: 'center', gap: 6, fontSize: 13, letterSpacing: '0.1em', color: '#B5A99A', textDecoration: 'none', transition: 'color 0.2s' }}
             onMouseEnter={e => (e.currentTarget.style.color = '#F5F0E8')}
             onMouseLeave={e => (e.currentTarget.style.color = '#B5A99A')}>
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
-            07115 8 8654
+            0711 588 654
           </a>
           <MitgliedButton className="btn-lime hidden md:inline-flex" style={{ padding: '10px 22px', fontSize: 11 }}>
             <span>Jetzt Mitglied</span>
@@ -148,9 +149,9 @@ function Nav() {
           <MitgliedButton className="btn-lime" style={{ justifyContent: 'center', marginTop: 24 }}>
             <span>Jetzt Mitglied werden</span>
           </MitgliedButton>
-          <a href="tel:+4971158 8654" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginTop: 16, color: '#8A7A6A', fontSize: 13, textDecoration: 'none' }}>
+          <a href="tel:+49711588654" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginTop: 16, color: '#8A7A6A', fontSize: 13, textDecoration: 'none' }}>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
-            07115 8 8654
+            0711 588 654
           </a>
         </div>
       )}
@@ -223,6 +224,7 @@ function Hero() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 1.2 }}
+        className="hero-google-badge"
         style={{ position: 'absolute', top: 90, right: 'clamp(20px,5vw,80px)', zIndex: 11 }}
       >
         <div style={{ padding: '8px 16px', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(12px)', border: '1px solid rgba(184, 146, 74, 0.4)', display: 'flex', alignItems: 'center', gap: 8, borderRadius: 999 }}>
@@ -232,7 +234,7 @@ function Hero() {
             <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/>
             <path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.3-2.3 4.3-4.1 5.6l6.2 5.2C41 35.2 44 30 44 24c0-1.3-.1-2.6-.4-3.9z"/>
           </svg>
-          <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#F5F0E8', fontWeight: 500 }}>
+          <span className="font-condensed badge-text" style={{ fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#F5F0E8', fontWeight: 500 }}>
             <span style={{ color: '#F4B400', fontWeight: 700 }}>4,7 ★</span>
             <span style={{ color: '#6E5050', margin: '0 6px' }}>·</span>
             <span>200+ Bewertungen</span>
@@ -407,7 +409,7 @@ function PromoBand() {
       <div style={{ maxWidth: 1280, margin: '0 auto', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 'clamp(32px, 5vw, 64px)', position: 'relative' }}>
         <div>
           <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#C44552', marginBottom: 16, fontWeight: 700 }}>— Jubiläums-Aktion</div>
-          <h2 className="font-display" style={{ fontSize: 'clamp(3.5rem, 8vw, 7rem)', fontWeight: 800, color: '#F5F0E8', lineHeight: 0.9, letterSpacing: '-0.035em', margin: 0 }}>
+          <h2 className="font-display promo-headline" style={{ fontSize: 'clamp(3.5rem, 8vw, 7rem)', fontWeight: 800, color: '#F5F0E8', lineHeight: 0.9, letterSpacing: '-0.035em', margin: 0 }}>
             2 MONATE<br /><span style={{ color: '#C44552' }}>GRATIS.</span>
           </h2>
         </div>
@@ -460,7 +462,7 @@ function Pricing() {
         </p>
 
         {/* Term tabs */}
-        <div style={{ display: 'inline-flex', gap: 4, padding: 4, background: 'rgba(58, 32, 32, 0.4)', border: '1px solid rgba(184, 146, 74, 0.2)', marginBottom: 48 }}>
+        <div className="pricing-tabs" style={{ display: 'inline-flex', gap: 4, padding: 4, background: 'rgba(58, 32, 32, 0.4)', border: '1px solid rgba(184, 146, 74, 0.2)', marginBottom: 48 }}>
           {(['3', '12', '24'] as const).map(t => (
             <button
               key={t}
@@ -618,7 +620,7 @@ function Testimonials() {
         <div style={{ overflow: 'hidden', position: 'relative' }}>
           <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: 60, background: 'linear-gradient(to right, #F5F0E8, transparent)', zIndex: 2, pointerEvents: 'none' }} />
           <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 60, background: 'linear-gradient(to left, #F5F0E8, transparent)', zIndex: 2, pointerEvents: 'none' }} />
-          <div style={{ display: 'flex', gap: 16, animation: 'marquee-left 45s linear infinite' }}
+          <div className="testimonials-scroll" style={{ display: 'flex', gap: 16, animation: 'marquee-left 45s linear infinite' }}
             onMouseEnter={e => (e.currentTarget.style.animationPlayState = 'paused')}
             onMouseLeave={e => (e.currentTarget.style.animationPlayState = 'running')}>
             {[...reviews, ...reviews].map((r, i) => (
@@ -703,7 +705,7 @@ function KursplanWidget() {
               src="https://courseplan.noexcuse.io/?origin=https%3A%2F%2Fwww.fitness-club-fellbach.de&id=Zml0bmVzcy1jbHViLWZlbGxiYWNoOjEyMTAwMTEzOTA%253D&disableEmployeeExpertises=true&height=auto&baseHost=mysports.com"
               width="100%"
               height="750"
-              
+              className="kursplan-iframe"
               title="Kursplan Fitness Club Fellbach"
               style={{ display: 'block', border: 'none', marginTop: -52 }}
               loading="lazy"
@@ -768,7 +770,7 @@ function FAQ() {
 function Contact() {
   return (
     <section id="kontakt" style={{ background: 'var(--gray-mid)', borderTop: '1px solid var(--gray-border)' }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(64px, 10vh, 96px) clamp(16px, 4vw, 48px)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'clamp(32px, 6vw, 64px)', alignItems: 'center' }}>
+      <div className="contact-grid" style={{ maxWidth: 1280, margin: '0 auto', padding: 'clamp(64px, 10vh, 96px) clamp(16px, 4vw, 48px)', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 'clamp(32px, 6vw, 64px)', alignItems: 'center' }}>
         <div>
           <div className="label reveal" style={{ marginBottom: 16 }}>Kontakt</div>
           <h2 className="font-display reveal delay-1" style={{ fontSize: 'var(--heading-lg)', fontWeight: 700, letterSpacing: '-0.02em', marginBottom: 32 }}>
@@ -777,7 +779,7 @@ function Contact() {
           <div className="reveal delay-2" style={{ display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 32 }}>
             {[
               { icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C44552" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>, text: 'Bruckstraße 61, 70736 Fellbach', href: 'https://maps.google.com/?q=Bruckstraße+61+Fellbach' },
-              { icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C44552" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>, text: '+49 711 58 8654', href: 'tel:+4971158 8654' },
+              { icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C44552" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>, text: '+49 711 58 8654', href: 'tel:+49711588654' },
               { icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C44552" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>, text: 'info@fitnessclubfellbach.de', href: 'mailto:info@fitnessclubfellbach.de' },
             ].map(({ icon, text, href }) => (
               <div key={text} style={{ display: 'flex', alignItems: 'center', gap: 14, fontSize: 14 }}>
@@ -798,7 +800,7 @@ function Contact() {
             ))}
           </div>
         </div>
-        <div className="reveal delay-2" style={{ background: 'var(--black)', border: '1px solid var(--gray-border)', padding: '48px 40px' }}>
+        <div className="reveal delay-2 contact-cta-box" style={{ background: 'var(--black)', border: '1px solid var(--gray-border)', padding: '48px 40px' }}>
           <div className="font-display" style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', fontWeight: 700, letterSpacing: '-0.01em', marginBottom: 16 }}>
             BEREIT ZUM<br /><span style={{ color: 'var(--lime)' }}>TRAINING?</span>
           </div>
@@ -812,7 +814,7 @@ function Contact() {
             <span>14 Tage gratis starten</span><span>→</span>
           </MagneticButton>
           <div style={{ height: 12 }} />
-          <MagneticButton href="tel:+4971158 8654" variant="outline" className="w-full">
+          <MagneticButton href="tel:+49711588654" variant="outline" className="w-full">
             <span>Anrufen</span>
           </MagneticButton>
         </div>
@@ -845,7 +847,7 @@ function Footer() {
     <footer style={{ background: 'var(--black)', borderTop: '1px solid var(--gray-border)', padding: '40px 0 24px' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 clamp(16px, 4vw, 48px)' }}>
         {/* Family Badge — Bruckstraße 61 */}
-        <div style={{
+        <div className="family-badge" style={{
           display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', gap: 14,
           padding: '14px 24px', marginBottom: 32,
           background: 'rgba(13, 148, 136, 0.08)',
@@ -860,12 +862,12 @@ function Footer() {
           </a>
         </div>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
+        <div className="footer-inner" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
           <div>
             <Logo size="md" variant="light" />
           </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24 }}>
-            {[['Datenschutz', '/datenschutz'], ['Impressum', '/impressum'], ['Kündigung', '/kuendigung'], ['Karriere', '/karriere']].map(([l, h]) => (
+          <div className="footer-links" style={{ display: 'flex', flexWrap: 'wrap', gap: 24 }}>
+            {[['Blog', '/blog/'], ['Datenschutz', '/datenschutz'], ['Impressum', '/impressum'], ['Kündigung', '/kuendigung'], ['Karriere', '/karriere']].map(([l, h]) => (
               <a key={l} href={h}
                  style={{ fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#9A8470', textDecoration: 'none' }}>
                 {l}
@@ -971,7 +973,7 @@ export default function App() {
         transform: pastHero ? 'translateY(0)' : 'translateY(100%)',
         transition: 'transform 0.35s cubic-bezier(0.16,1,0.3,1)',
       }}>
-        <a href="tel:+4971158 8654" style={{
+        <a href="tel:+49711588654" style={{
           flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
           background: '#C44552', color: '#fff', padding: '16px 12px', textDecoration: 'none',
         }}>

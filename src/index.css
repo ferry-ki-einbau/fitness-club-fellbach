@@ -76,6 +76,7 @@ body {
   .boxring-grid { grid-template-columns: 1fr !important; }
   .wellness-grid { grid-template-columns: 1fr !important; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .gallery-grid > * { grid-column: span 1 !important; aspect-ratio: 1/1 !important; }
   .programs-grid { grid-template-columns: 1fr !important; }
   .testimonials-header { grid-template-columns: 1fr !important; gap: 32px !important; }
   .kurse-header-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
@@ -83,17 +84,24 @@ body {
   .tour-tabs { gap: 6px !important; }
   .physio-bridge-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
   .big-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  /* Kursplan iframe kleiner auf Mobile */
+  .kursplan-iframe { height: 500px !important; }
+  /* Hero Google Badge auf Mobile dezenter */
+  .hero-google-badge { top: 76px !important; right: 16px !important; }
+  .hero-google-badge .badge-text { display: none !important; }
+  /* PromoBand responsive */
+  .promo-headline { font-size: clamp(2.5rem, 10vw, 4rem) !important; }
 }
 
 @media (max-width: 400px) {
   .hero-cta-group { flex-direction: column !important; }
 }
 
-/* Mobile Sticky Bar — nur auf Mobile */
+/* Mobile Sticky Bar — nur auf Mobile, mit safe-area für iPhone */
 .mobile-sticky-bar { display: none; }
 @media (max-width: 767px) {
-  .mobile-sticky-bar { display: flex; }
-  footer { padding-bottom: 80px !important; }
+  .mobile-sticky-bar { display: flex; padding-bottom: env(safe-area-inset-bottom, 0px); }
+  footer { padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important; }
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -360,6 +368,42 @@ body {
   animation: shimmer 3s ease-in-out infinite;
   pointer-events: none;
   z-index: 0;
+}
+
+/* Pricing tabs touch-friendly auf Mobile */
+@media (max-width: 480px) {
+  .pricing-tabs { width: 100% !important; }
+  .pricing-tabs button { flex: 1; padding: 14px 12px !important; }
+}
+
+/* Testimonials touch scroll auf Mobile */
+@media (max-width: 767px) {
+  .testimonials-scroll {
+    animation: none !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 12px;
+  }
+  .testimonials-scroll > div {
+    scroll-snap-align: start;
+    min-width: 280px !important;
+    width: 85vw !important;
+    max-width: 320px !important;
+  }
+}
+
+/* Kontakt-Section auf Mobile */
+@media (max-width: 640px) {
+  .contact-grid { grid-template-columns: 1fr !important; }
+  .contact-cta-box { padding: 32px 24px !important; }
+}
+
+/* Footer auf Mobile */
+@media (max-width: 640px) {
+  .footer-inner { flex-direction: column !important; align-items: flex-start !important; gap: 24px !important; }
+  .footer-links { flex-wrap: wrap; gap: 16px !important; }
+  .family-badge { flex-direction: column !important; text-align: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
