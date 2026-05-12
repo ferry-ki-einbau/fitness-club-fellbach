@@ -260,9 +260,9 @@ function Hero() {
             transition={{ duration: 1, delay: 1.35, ease: [0.16, 1, 0.3, 1] }}
             className="font-display"
             style={{ fontSize: 'clamp(2.8rem, 9vw, 7.5rem)', fontWeight: 800, lineHeight: 0.95, letterSpacing: '-0.03em', margin: '0 0 28px', color: '#F5F0E8', textTransform: 'uppercase' }}>
-            <ScrambleHeadline text="KEIN DISCOUNTER." delay={1600} style={{ display: 'block' }} className="font-display" /><br />
-            <span style={{ color: 'var(--accent-bright)', fontStyle: 'italic' }}>Dein</span>{' '}
-            <ScrambleHeadline text="STUDIO." delay={1900} style={{ display: 'inline' }} className="font-display" />
+            <ScrambleHeadline text="HIER KENNT MAN" delay={1600} style={{ display: 'block' }} className="font-display" /><br />
+            <span style={{ color: 'var(--accent-bright)', fontStyle: 'italic' }}>deinen</span>{' '}
+            <ScrambleHeadline text="NAMEN." delay={1900} style={{ display: 'inline' }} className="font-display" />
           </motion.h1>
 
           <motion.p
@@ -270,8 +270,8 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.45 }}
             style={{ color: '#F0E5D5', fontSize: 'clamp(1rem, 1.3vw, 1.2rem)', lineHeight: 1.8, marginBottom: 44, maxWidth: 520, fontWeight: 400, textShadow: '0 1px 2px rgba(0,0,0,0.4)' }}>
-            1.500m² · EGYM · Box-Ring · Sauna · Whirlpool · 30+ Kurse/Woche.<br />
-            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>24h offen. 7 Tage. 365 Tage.</span> Ab <span style={{ color: '#FFFFFF', fontWeight: 600 }}>13,99€/Woche</span> — inkl. persönlichem Trainingsplan.
+            Familienstudio seit über 25 Jahren. 1.500m², Sauna, Box-Ring, 30+ Kurse pro Woche — und ein Team, das dich beim Namen kennt.<br />
+            <span style={{ color: '#FFFFFF', fontWeight: 600 }}>Täglich 05–24 Uhr.</span> Ab <span style={{ color: '#FFFFFF', fontWeight: 600 }}>13,99€/Woche.</span>
           </motion.p>
 
           <motion.div
