@@ -163,11 +163,12 @@ function Nav() {
 
 function Hero() {
   const SLIDES = [
-    { src: '/images/real-cardio-hero-md.webp', srcSm: '/images/real-cardio-hero-sm.webp', label: 'Cardio' },
+    { src: '/images/real-kraftbereich-hero-md.webp', srcSm: '/images/real-kraftbereich-hero-sm.webp', label: 'Freihantel' },
     { src: '/images/real-egym-hero-md.webp', srcSm: '/images/real-egym-hero-sm.webp', label: 'EGYM' },
-    { src: '/images/real-kraftbereich-hero-md.webp', srcSm: '/images/real-kraftbereich-hero-sm.webp', label: 'Kraftbereich' },
+    { src: '/images/real-kursraum-1-hero-md.webp', srcSm: '/images/real-kursraum-1-hero-sm.webp', label: 'Kursraum' },
+    { src: '/images/real-cardio-hero-md.webp', srcSm: '/images/real-cardio-hero-sm.webp', label: 'Cardio' },
+    { src: '/images/real-eingang-hero-md.webp', srcSm: '/images/real-eingang-hero-sm.webp', label: 'Theke' },
     { src: '/images/real-spinning-hero-md.webp', srcSm: '/images/real-spinning-hero-sm.webp', label: 'Spinning' },
-    { src: '/images/real-kursraum-1-hero-md.webp', srcSm: '/images/real-kursraum-1-hero-sm.webp', label: 'Kurse' },
   ]
   const [current, setCurrent] = useState(0)
   const [prev, setPrev] = useState<number | null>(null)
@@ -378,6 +379,23 @@ function Gallery() {
 }
 
 function PromoBand() {
+  // Countdown bis Ende der Aktion (30.06.2026)
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, mins: 0 })
+  useEffect(() => {
+    const end = new Date('2026-06-30T23:59:59').getTime()
+    const calc = () => {
+      const diff = Math.max(0, end - Date.now())
+      setTimeLeft({
+        days: Math.floor(diff / 86400000),
+        hours: Math.floor((diff % 86400000) / 3600000),
+        mins: Math.floor((diff % 3600000) / 60000),
+      })
+    }
+    calc()
+    const id = setInterval(calc, 60000)
+    return () => clearInterval(id)
+  }, [])
+
   return (
     <section style={{ position: 'relative', background: '#0A0E12', overflow: 'hidden', padding: 'clamp(56px, 8vh, 96px) clamp(16px, 4vw, 80px)' }}>
       {/* Burgund glow */}
@@ -387,14 +405,30 @@ function PromoBand() {
 
       <div style={{ maxWidth: 1280, margin: '0 auto', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 'clamp(32px, 5vw, 64px)', position: 'relative' }}>
         <div>
-          <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#C44552', marginBottom: 16, fontWeight: 700 }}>— Jubiläums-Aktion</div>
+          <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#C44552', marginBottom: 16, fontWeight: 700 }}>— Jubiläums-Aktion · Nur bis 30.06.</div>
           <h2 className="font-display promo-headline" style={{ fontSize: 'clamp(3.5rem, 8vw, 7rem)', fontWeight: 800, color: '#F5F0E8', lineHeight: 0.9, letterSpacing: '-0.035em', margin: 0 }}>
             2 MONATE<br /><span style={{ color: '#C44552' }}>GRATIS.</span>
           </h2>
+          {/* Countdown */}
+          <div style={{ display: 'flex', gap: 16, marginTop: 24 }}>
+            {[
+              { val: timeLeft.days, label: 'Tage' },
+              { val: timeLeft.hours, label: 'Std' },
+              { val: timeLeft.mins, label: 'Min' },
+            ].map(t => (
+              <div key={t.label} style={{ textAlign: 'center' }}>
+                <div className="font-display" style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', fontWeight: 800, color: '#F5F0E8', lineHeight: 1, letterSpacing: '-0.02em', fontFeatureSettings: '"tnum"' }}>
+                  {String(t.val).padStart(2, '0')}
+                </div>
+                <div className="font-condensed" style={{ fontSize: 9, letterSpacing: '0.4em', textTransform: 'uppercase', color: '#6E5A48', marginTop: 4 }}>{t.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
         <div style={{ maxWidth: 400 }}>
           <p style={{ color: '#9A8878', fontSize: 15, lineHeight: 1.75, marginBottom: 32 }}>
-            Bei 12 oder 24 Monaten Laufzeit bekommst du 2 Monate komplett geschenkt. Kein Haken. Kein Kleingedrucktes.
+            Bei 12 oder 24 Monaten Laufzeit bekommst du 2 Monate komplett geschenkt. Kein Haken. Kein Kleingedrucktes.<br />
+            <span style={{ color: '#C44552', fontWeight: 600 }}>Nur noch {timeLeft.days} Tage.</span>
           </p>
           <a href="#preise"
             style={{ display: 'inline-flex', alignItems: 'center', gap: 12, background: '#C44552', color: '#fff', padding: '16px 36px', textDecoration: 'none', transition: 'background 0.2s' }}
