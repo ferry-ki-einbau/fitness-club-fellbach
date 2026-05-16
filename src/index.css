@@ -254,24 +254,24 @@ body {
 .btn-lime > * { position: relative; z-index: 1; }
 
 .btn-outline {
-  border: 1px solid rgba(255,255,255,0.35);
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(8px);
-  color: #fff;
+  border: none;
+  background: #fff;
+  color: #0F1419;
   font-family: 'Oswald', sans-serif;
-  font-weight: 500;
-  font-size: 13px;
+  font-weight: 600;
+  font-size: 14px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   padding: 18px 40px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  transition: background 0.2s, transform 0.2s;
   cursor: pointer;
   text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
 }
-.btn-outline:hover { border-color: var(--accent); color: var(--accent-bright); background: rgba(196, 69, 82, 0.12); }
+.btn-outline:hover { background: #F5F0E8; transform: translateY(-1px); }
 
 /* Section label */
 .label {
