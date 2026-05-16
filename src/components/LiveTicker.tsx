@@ -28,13 +28,12 @@ export default function LiveTicker() {
 
   return (
     <div
-      className="font-condensed"
+      className="font-condensed hidden md:flex"
       style={{
         position: 'fixed',
         bottom: 24,
         left: 24,
         zIndex: 40,
-        display: 'flex',
         alignItems: 'center',
         gap: 12,
         padding: '12px 18px',
