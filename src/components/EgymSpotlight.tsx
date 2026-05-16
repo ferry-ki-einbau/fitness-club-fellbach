@@ -46,8 +46,8 @@ export default function EgymSpotlight() {
             fontSize: 'clamp(1rem, 1.3vw, 1.15rem)',
             lineHeight: 1.65, marginBottom: 36, maxWidth: '52ch',
           }}>
-            Smart-Strength Geräte tracken jeden Satz, jede Wiederholung,
-            jeden Newton. Du loggst dich ein — die Maschine kennt deinen Plan.
+            Smart-Strength Geräte tracken jeden Satz und jede Wiederholung.
+            Du loggst dich ein — die Maschine kennt deinen Plan und passt sich an.
             <span style={{ color: '#F5F0E8' }}> Im All-In Plan inklusive.</span>
           </p>
 
