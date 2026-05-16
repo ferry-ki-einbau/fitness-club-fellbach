@@ -443,20 +443,18 @@ function PromoBand() {
 }
 
 function Pricing() {
-  const [term, setTerm] = useState<'3' | '12' | '24'>('24')
+  const [term, setTerm] = useState<'12' | '24'>('24')
 
-  // Echte Preise vom Original (Stand 2026)
-  const pricing: Record<string, { basic: { promo: string; reg: string }; premium: { promo: string; reg: string }; allin: { promo: string; reg: string }; bonus?: string }> = {
-    '3': { basic: { promo: '15,99', reg: '15,99' }, premium: { promo: '16,99', reg: '16,99' }, allin: { promo: '17,99', reg: '17,99' } },
-    '12': { basic: { promo: '15,99', reg: '13,99' }, premium: { promo: '6,99', reg: '13,99' }, allin: { promo: '18,99', reg: '15,99' }, bonus: '2 Monate gratis' },
-    '24': { basic: { promo: '13,99', reg: '12,99' }, premium: { promo: '6,49', reg: '12,99' }, allin: { promo: '16,99', reg: '14,99' }, bonus: '2 Monate gratis' },
+  // Echte Preise 1:1 von fitness-club-fellbach.de/membership/memberships
+  const pricing = {
+    '12': { basic: '15,99', allin: '18,99' },
+    '24': { basic: '13,99', allin: '16,99' },
   }
   const p = pricing[term]
 
   const plans = [
-    { key: 'basic', name: 'Basic', tag: 'Best Value', featured: false, price: p.basic, features: ['Volle Trainingsfläche', 'Duschen inklusive', '24/7 Zugang (05 – 24 Uhr)', 'Add-Ons ab 2,99€/Woche zubuchbar'] },
-    { key: 'premium', name: 'Premium', tag: 'Bestseller', featured: false, price: p.premium, features: ['Volle Trainingsfläche', 'Duschen inklusive', '1 Add-On für 2,99€ inkl.', 'Weitere Add-Ons ab 2,99€/Woche'] },
-    { key: 'allin', name: 'All-In', tag: 'Komplett', featured: true, price: p.allin, features: ['Trainingsfläche & Duschen', 'Getränke-Flatrate', 'Sauna-Oase', 'Alle Gruppenkurse', 'EGYM Training', 'Betreutes Zirkeltraining'] },
+    { key: 'basic', name: 'Basic', tag: 'Einstieg', featured: false, price: p.basic, features: ['Fitnessfläche', 'Duschen', 'Zubuchbare Add-Ons ab 2,99€/Woche'] },
+    { key: 'allin', name: 'All-In', tag: 'Komplett', featured: true, price: p.allin, features: ['Fitnessfläche', 'Duschen', 'Getränkeflatrate', 'Sauna-Oase', 'Vielfältige Kurse', 'EGYM Training', 'Betreutes Zirkeltraining', 'Weitere Add-Ons ab 3,49€'] },
   ]
 
   return (
@@ -475,7 +473,7 @@ function Pricing() {
 
         {/* Term tabs */}
         <div className="pricing-tabs" style={{ display: 'inline-flex', gap: 4, padding: 4, background: 'rgba(58, 32, 32, 0.4)', border: '1px solid rgba(184, 146, 74, 0.2)', marginBottom: 48 }}>
-          {(['3', '12', '24'] as const).map(t => (
+          {(['12', '24'] as const).map(t => (
             <button
               key={t}
               onClick={() => setTerm(t)}
@@ -498,9 +496,8 @@ function Pricing() {
           ))}
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 20 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 20, maxWidth: 800 }}>
           {plans.map((plan, i) => {
-            const hasPromo = plan.price.promo !== plan.price.reg
             return (
               <TiltCard key={plan.key} intensity={6} style={{ display: 'flex' }}>
               <motion.div
@@ -519,12 +516,10 @@ function Pricing() {
                   flex: 1,
                 }}
               >
-                {/* Top corner — Bonus badge */}
-                {p.bonus && plan.featured && (
-                  <div style={{ position: 'absolute', top: -1, right: -1, padding: '8px 14px', background: '#B8924A', color: '#0F1419' }}>
-                    <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', fontWeight: 700 }}>{p.bonus}</span>
-                  </div>
-                )}
+                {/* Top corner — 2 Monate gratis Badge */}
+                <div style={{ position: 'absolute', top: -1, right: -1, padding: '8px 14px', background: '#B8924A', color: '#0F1419' }}>
+                  <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', fontWeight: 700 }}>2 Monate gratis</span>
+                </div>
 
                 {/* Tag */}
                 <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: plan.featured ? '#B8924A' : '#5A4030', marginBottom: 8, fontWeight: 600 }}>{plan.tag}</div>
@@ -536,16 +531,12 @@ function Pricing() {
                 <div style={{ marginBottom: 32 }}>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
                     <span className="font-display" style={{ fontSize: 'clamp(2.5rem, 4vw, 3.5rem)', fontWeight: 800, color: plan.featured ? 'var(--accent-bright)' : '#F5F0E8', lineHeight: 1, letterSpacing: '-0.03em' }}>
-                      {plan.price.promo}€
+                      {plan.price}€
                     </span>
                     <span className="font-condensed" style={{ fontSize: 12, color: '#9A8470', letterSpacing: '0.15em', textTransform: 'uppercase' }}>/ Woche</span>
                   </div>
                   <div style={{ fontSize: 12, color: '#6E5A48', marginTop: 8, lineHeight: 1.5 }}>
-                    {hasPromo ? (
-                      <>Erste 4 Monate · danach <span style={{ color: '#9A8470' }}>{plan.price.reg}€/Woche</span></>
-                    ) : (
-                      <>Konstanter Preis über {term} Monate</>
-                    )}
+                    Laufzeit {term} Monate · 2 Monate gratis sichern
                   </div>
                 </div>
 
