@@ -35,7 +35,7 @@ export default function WellnessSpotlight() {
         {/* Two-image grid */}
         <div className="wellness-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(16px, 2.5vw, 36px)' }}>
           {[
-            { src: 'real-damen-sauna', label: 'Damen-Sauna', sub: 'Privat · Rotlicht-Ambiente', tag: '01' },
+            { src: 'real-damen-sauna', label: 'Damen-Sauna', sub: 'Privat · Nur für Frauen', tag: '01' },
             { src: 'real-sauna', label: 'Gemischte Sauna', sub: '05:00 – 24:00 · Frei wählbar', tag: '02' },
           ].map((it, i) => (
             <motion.div
