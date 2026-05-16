@@ -73,7 +73,7 @@ export default function Datenschutz() {
         transition={{ duration: 0.5, ease: 'easeOut' }}
         style={{ maxWidth: 800, margin: '0 auto', padding: 'clamp(48px, 8vw, 80px) clamp(20px, 4vw, 48px)' }}
       >
-        <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.4em', textTransform: 'uppercase', color: '#B8924A', marginBottom: 12, display: 'block' }}>Rechtliches</span>
+        <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 12, display: 'block' }}>Rechtliches</span>
         <h1 className="font-display" style={{ fontSize: 'clamp(32px, 5vw, 48px)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.02em', color: '#F5F0E8', marginBottom: 16 }}>
           Datenschutz&shy;erkl&auml;rung
         </h1>
@@ -91,7 +91,7 @@ export default function Datenschutz() {
             Bruckstra&szlig;e 61<br />
             70734 Fellbach<br />
             Telefon: 0711 &ndash; 588 654<br />
-            E-Mail: <a href="mailto:info@fitnessclubfellbach.de" style={{ color: '#B8924A', textDecoration: 'none' }}>info@fitnessclubfellbach.de</a>
+            E-Mail: <a href="mailto:info@fitnessclubfellbach.de" style={{ color: 'var(--accent)', textDecoration: 'none' }}>info@fitnessclubfellbach.de</a>
           </p>
         </div>
 
@@ -130,7 +130,7 @@ export default function Datenschutz() {
           </p>
           <p style={pStyle}>
             Details entnehmen Sie der Datenschutzerkl&auml;rung von Vercel:{' '}
-            <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" style={{ color: '#B8924A', textDecoration: 'none' }}>https://vercel.com/legal/privacy-policy</a>.
+            <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none' }}>https://vercel.com/legal/privacy-policy</a>.
           </p>
           <p style={pStyle}>
             Die Nutzung von Vercel erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer zuverl&auml;ssigen und schnellen Bereitstellung unserer Website.
@@ -194,7 +194,7 @@ export default function Datenschutz() {
           </p>
           <p style={pStyle}>
             Mehr Informationen zum Umgang mit Nutzerdaten finden Sie in der Datenschutzerkl&auml;rung von Google:{' '}
-            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={{ color: '#B8924A', textDecoration: 'none' }}>https://policies.google.com/privacy</a>.
+            <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none' }}>https://policies.google.com/privacy</a>.
           </p>
         </div>
 

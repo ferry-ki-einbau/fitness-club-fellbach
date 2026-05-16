@@ -1,17 +1,17 @@
 import { motion } from 'framer-motion'
 
 const MEMBERS = [
-  { initials: 'MA', color: '#C44552' }, { initials: 'SK', color: '#B8924A' },
+  { initials: 'MA', color: '#C44552' }, { initials: 'SK', color: 'var(--accent)' },
   { initials: 'LW', color: '#0d9488' }, { initials: 'EH', color: '#6366f1' },
-  { initials: 'MV', color: '#C44552' }, { initials: 'PK', color: '#B8924A' },
+  { initials: 'MV', color: '#C44552' }, { initials: 'PK', color: 'var(--accent)' },
   { initials: 'JD', color: '#0d9488' }, { initials: 'AS', color: '#C44552' },
-  { initials: 'RF', color: '#6366f1' }, { initials: 'TM', color: '#B8924A' },
+  { initials: 'RF', color: '#6366f1' }, { initials: 'TM', color: 'var(--accent)' },
   { initials: 'CL', color: '#C44552' }, { initials: 'BN', color: '#0d9488' },
   { initials: 'HK', color: '#6366f1' }, { initials: 'VB', color: '#C44552' },
-  { initials: 'DW', color: '#B8924A' }, { initials: 'GR', color: '#0d9488' },
+  { initials: 'DW', color: 'var(--accent)' }, { initials: 'GR', color: '#0d9488' },
   { initials: 'NK', color: '#C44552' }, { initials: 'FM', color: '#6366f1' },
-  { initials: 'SZ', color: '#B8924A' }, { initials: 'AL', color: '#C44552' },
-  { initials: 'PW', color: '#0d9488' }, { initials: 'MH', color: '#B8924A' },
+  { initials: 'SZ', color: 'var(--accent)' }, { initials: 'AL', color: '#C44552' },
+  { initials: 'PW', color: '#0d9488' }, { initials: 'MH', color: 'var(--accent)' },
   { initials: 'TB', color: '#C44552' }, { initials: 'KS', color: '#6366f1' },
 ]
 
@@ -70,7 +70,7 @@ export default function CommunityWall() {
               display: 'flex', alignItems: 'center', justifyContent: 'center',
             }}
           >
-            <span className="font-condensed" style={{ fontSize: 10, color: '#B8924A', letterSpacing: '0.1em', fontWeight: 700 }}>+476</span>
+            <span className="font-condensed" style={{ fontSize: 10, color: 'var(--accent)', letterSpacing: '0.1em', fontWeight: 700 }}>+476</span>
           </motion.div>
         </div>
 

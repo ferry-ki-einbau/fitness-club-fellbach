@@ -31,11 +31,11 @@ export default function BoxRingSpotlight() {
           style={{ position: 'relative', aspectRatio: '4/3' }}
         >
           {/* Corner gold rule top-left */}
-          <div style={{ position: 'absolute', top: -12, left: -12, width: 64, height: 1, background: '#B8924A', zIndex: 3 }} />
-          <div style={{ position: 'absolute', top: -12, left: -12, width: 1, height: 64, background: '#B8924A', zIndex: 3 }} />
+          <div style={{ position: 'absolute', top: -12, left: -12, width: 64, height: 1, background: 'var(--accent)', zIndex: 3 }} />
+          <div style={{ position: 'absolute', top: -12, left: -12, width: 1, height: 64, background: 'var(--accent)', zIndex: 3 }} />
           {/* Corner gold rule bottom-right */}
-          <div style={{ position: 'absolute', bottom: -12, right: -12, width: 64, height: 1, background: '#B8924A', zIndex: 3 }} />
-          <div style={{ position: 'absolute', bottom: -12, right: -12, width: 1, height: 64, background: '#B8924A', zIndex: 3 }} />
+          <div style={{ position: 'absolute', bottom: -12, right: -12, width: 64, height: 1, background: 'var(--accent)', zIndex: 3 }} />
+          <div style={{ position: 'absolute', bottom: -12, right: -12, width: 1, height: 64, background: 'var(--accent)', zIndex: 3 }} />
           <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', boxShadow: '0 40px 80px -20px rgba(0,0,0,0.8)' }}>
             <img
               src="/images/real-boxring-1-md.webp"
@@ -49,7 +49,7 @@ export default function BoxRingSpotlight() {
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(45deg, rgba(15,20,25,0.5) 0%, transparent 50%)' }} />
             {/* Bottom badge */}
             <div style={{ position: 'absolute', bottom: 24, left: 24, padding: '8px 14px', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.4)' }}>
-              <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>Echter Boxring</div>
+              <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Echter Boxring</div>
             </div>
           </div>
         </motion.div>
@@ -62,8 +62,8 @@ export default function BoxRingSpotlight() {
           transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 }}>
-            <span style={{ width: 48, height: 1, background: '#B8924A' }} />
-            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>Selten · Spartan</span>
+            <span style={{ width: 48, height: 1, background: 'var(--accent)' }} />
+            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Selten · Spartan</span>
           </div>
 
           <h2 className="font-display" style={{
@@ -98,7 +98,7 @@ export default function BoxRingSpotlight() {
               ['Free Weights', 'Hanteln & Racks'],
             ].map(([n, l]) => (
               <div key={l}>
-                <div className="font-display" style={{ fontSize: 18, fontWeight: 700, color: '#B8924A', lineHeight: 1, letterSpacing: '-0.01em', marginBottom: 8 }}>{n}</div>
+                <div className="font-display" style={{ fontSize: 18, fontWeight: 700, color: 'var(--accent)', lineHeight: 1, letterSpacing: '-0.01em', marginBottom: 8 }}>{n}</div>
                 <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#8A7A66' }}>{l}</div>
               </div>
             ))}

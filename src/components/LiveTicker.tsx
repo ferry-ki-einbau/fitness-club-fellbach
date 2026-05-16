@@ -60,7 +60,7 @@ export default function LiveTicker() {
       />
       <span style={{ color: s.open ? '#22C55E' : '#DC2626', fontWeight: 600 }}>{s.label}</span>
       <span style={{ color: '#3A2020' }}>·</span>
-      <span style={{ color: '#B8924A' }}>{s.sub}</span>
+      <span style={{ color: 'var(--accent)' }}>{s.sub}</span>
     </div>
   )
 }

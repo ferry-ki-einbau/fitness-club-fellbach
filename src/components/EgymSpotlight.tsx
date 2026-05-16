@@ -28,8 +28,8 @@ export default function EgymSpotlight() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 }}>
-            <span style={{ width: 48, height: 1, background: '#B8924A' }} />
-            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>Smart Training</span>
+            <span style={{ width: 48, height: 1, background: 'var(--accent)' }} />
+            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Smart Training</span>
           </div>
 
           <h2 className="font-display" style={{
@@ -58,7 +58,7 @@ export default function EgymSpotlight() {
               ['Persönlicher Plan', 'Synced über App'],
             ].map(([t, s]) => (
               <li key={t} style={{ display: 'flex', alignItems: 'flex-start', gap: 16, fontSize: 14, color: '#C9BFB3' }}>
-                <span style={{ color: '#B8924A', fontWeight: 700, fontSize: 13, marginTop: 2 }}>+</span>
+                <span style={{ color: 'var(--accent)', fontWeight: 700, fontSize: 13, marginTop: 2 }}>+</span>
                 <div>
                   <div style={{ color: '#F5F0E8', fontWeight: 500, marginBottom: 2 }}>{t}</div>
                   <div className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.15em', color: '#8A7A66', textTransform: 'uppercase' }}>{s}</div>
@@ -76,10 +76,10 @@ export default function EgymSpotlight() {
           transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           style={{ position: 'relative', aspectRatio: '4/3' }}
         >
-          <div style={{ position: 'absolute', top: -12, right: -12, width: 64, height: 1, background: '#B8924A', zIndex: 3 }} />
-          <div style={{ position: 'absolute', top: -12, right: -12, width: 1, height: 64, background: '#B8924A', zIndex: 3 }} />
-          <div style={{ position: 'absolute', bottom: -12, left: -12, width: 64, height: 1, background: '#B8924A', zIndex: 3 }} />
-          <div style={{ position: 'absolute', bottom: -12, left: -12, width: 1, height: 64, background: '#B8924A', zIndex: 3 }} />
+          <div style={{ position: 'absolute', top: -12, right: -12, width: 64, height: 1, background: 'var(--accent)', zIndex: 3 }} />
+          <div style={{ position: 'absolute', top: -12, right: -12, width: 1, height: 64, background: 'var(--accent)', zIndex: 3 }} />
+          <div style={{ position: 'absolute', bottom: -12, left: -12, width: 64, height: 1, background: 'var(--accent)', zIndex: 3 }} />
+          <div style={{ position: 'absolute', bottom: -12, left: -12, width: 1, height: 64, background: 'var(--accent)', zIndex: 3 }} />
           <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', boxShadow: '0 40px 80px -20px rgba(0,0,0,0.8)' }}>
             <img
               src="/images/real-trainingsbereich-md.webp"
@@ -92,7 +92,7 @@ export default function EgymSpotlight() {
             />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(225deg, rgba(15,20,25,0.5) 0%, transparent 50%)' }} />
             <div style={{ position: 'absolute', top: 24, right: 24, padding: '8px 14px', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.4)' }}>
-              <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>Im All-In Inklusive</div>
+              <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Im All-In Inklusive</div>
             </div>
           </div>
         </motion.div>

@@ -141,7 +141,7 @@ export default function TageszeitenSection() {
                   <div style={{
                     height: 1,
                     background: isActive
-                      ? 'linear-gradient(90deg, #B8924A, rgba(184,146,74,0.3))'
+                      ? 'linear-gradient(90deg, var(--accent), rgba(184,146,74,0.3))'
                       : 'linear-gradient(90deg, rgba(184,146,74,0.35), rgba(184,146,74,0.08))',
                     alignSelf: 'center',
                     transition: 'opacity 0.3s',

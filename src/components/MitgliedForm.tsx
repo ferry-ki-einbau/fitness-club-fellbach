@@ -68,7 +68,7 @@ function totalPrice(data: FormData): number {
 const C = {
   bg: '#0F1419',
   burgund: '#C44552',
-  gold: '#B8924A',
+  gold: 'var(--accent)',
   cream: '#F5F0E8',
   muted: '#9A8470',
   border: 'rgba(245,240,232,0.1)',

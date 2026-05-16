@@ -59,7 +59,7 @@ export default function Impressum() {
         transition={{ duration: 0.5, ease: 'easeOut' }}
         style={{ maxWidth: 800, margin: '0 auto', padding: 'clamp(48px, 8vw, 80px) clamp(20px, 4vw, 48px)' }}
       >
-        <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.4em', textTransform: 'uppercase', color: '#B8924A', marginBottom: 12, display: 'block' }}>Rechtliches</span>
+        <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 12, display: 'block' }}>Rechtliches</span>
         <h1 className="font-display" style={{ fontSize: 'clamp(32px, 5vw, 48px)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.02em', color: '#F5F0E8', marginBottom: 48 }}>
           Impressum
         </h1>
@@ -83,8 +83,8 @@ export default function Impressum() {
         <div style={sectionStyle}>
           <h2 className="font-display" style={h2Style}>Kontakt</h2>
           <p style={pStyle}>
-            Telefon: <a href="tel:+49711588654" style={{ color: '#B8924A', textDecoration: 'none' }}>0711 &ndash; 588 654</a><br />
-            E-Mail: <a href="mailto:info@fitnessclubfellbach.de" style={{ color: '#B8924A', textDecoration: 'none' }}>info@fitnessclubfellbach.de</a>
+            Telefon: <a href="tel:+49711588654" style={{ color: 'var(--accent)', textDecoration: 'none' }}>0711 &ndash; 588 654</a><br />
+            E-Mail: <a href="mailto:info@fitnessclubfellbach.de" style={{ color: 'var(--accent)', textDecoration: 'none' }}>info@fitnessclubfellbach.de</a>
           </p>
         </div>
 
@@ -122,7 +122,7 @@ export default function Impressum() {
           <h2 className="font-display" style={h2Style}>EU-Streitschlichtung</h2>
           <p style={pStyle}>
             Die Europ&auml;ische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
-            {' '}<a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" style={{ color: '#B8924A', textDecoration: 'none' }}>https://ec.europa.eu/consumers/odr/</a>.
+            {' '}<a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none' }}>https://ec.europa.eu/consumers/odr/</a>.
           </p>
           <p style={pStyle}>
             Unsere E-Mail-Adresse finden Sie oben im Impressum. Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.

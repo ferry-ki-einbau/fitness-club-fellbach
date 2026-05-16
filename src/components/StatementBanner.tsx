@@ -37,7 +37,7 @@ export default function StatementBanner() {
         scale: bgScale,
       }} />
       <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(15,20,25,0.9) 0%, rgba(15,20,25,0.7) 30%, rgba(15,20,25,0.7) 70%, rgba(15,20,25,0.95) 100%)' }} />
-      <Particles count={40} color="#B8924A" opacity={0.45} />
+      <Particles count={40} color="var(--accent)" opacity={0.45} />
       {/* Background meander pattern (subtle) */}
       <div style={{
         position: 'absolute',
@@ -48,9 +48,9 @@ export default function StatementBanner() {
 
       {/* Top gold rule */}
       <div style={{ maxWidth: 1280, margin: '0 auto 64px', display: 'flex', alignItems: 'center', gap: 24, position: 'relative' }}>
-        <div style={{ flex: 1, height: 1, background: 'linear-gradient(90deg, transparent, #B8924A 50%, transparent)' }} />
-        <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.55em', textTransform: 'uppercase', color: '#B8924A' }}>Manifest</span>
-        <div style={{ flex: 1, height: 1, background: 'linear-gradient(90deg, transparent, #B8924A 50%, transparent)' }} />
+        <div style={{ flex: 1, height: 1, background: 'linear-gradient(90deg, transparent, var(--accent) 50%, transparent)' }} />
+        <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.55em', textTransform: 'uppercase', color: 'var(--accent)' }}>Manifest</span>
+        <div style={{ flex: 1, height: 1, background: 'linear-gradient(90deg, transparent, var(--accent) 50%, transparent)' }} />
       </div>
 
       <motion.div
@@ -72,7 +72,7 @@ export default function StatementBanner() {
           Was dir heute<br />
           <span style={{ fontStyle: 'italic', color: 'var(--accent-bright)', fontWeight: 700 }}>schwer vorkommt,</span><br />
           ist bald nur<br />
-          noch ein <span style={{ WebkitTextStroke: '2px #B8924A', color: 'transparent' }}>Warm-Up.</span>
+          noch ein <span style={{ WebkitTextStroke: '2px var(--accent)', color: 'transparent' }}>Warm-Up.</span>
         </h2>
       </motion.div>
 
@@ -82,9 +82,9 @@ export default function StatementBanner() {
       >
         <div style={{ maxWidth: 800, margin: '64px auto 0', textAlign: 'center', position: 'relative', zIndex: 2 }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 16 }}>
-            <div style={{ width: 48, height: 1, background: '#B8924A' }} />
-            <span className="font-condensed" style={{ fontSize: 12, letterSpacing: '0.4em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>Fitness Club Fellbach</span>
-            <div style={{ width: 48, height: 1, background: '#B8924A' }} />
+            <div style={{ width: 48, height: 1, background: 'var(--accent)' }} />
+            <span className="font-condensed" style={{ fontSize: 12, letterSpacing: '0.4em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Fitness Club Fellbach</span>
+            <div style={{ width: 48, height: 1, background: 'var(--accent)' }} />
           </div>
         </div>
       </motion.div>

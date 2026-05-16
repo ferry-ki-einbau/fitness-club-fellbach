@@ -28,10 +28,10 @@ export default function TrainingsflaecheSpotlight() {
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
           style={{ position: 'relative', aspectRatio: '4/3' }}
         >
-          <div style={{ position: 'absolute', top: -12, left: -12, width: 64, height: 1, background: '#B8924A', zIndex: 3 }} />
-          <div style={{ position: 'absolute', top: -12, left: -12, width: 1, height: 64, background: '#B8924A', zIndex: 3 }} />
-          <div style={{ position: 'absolute', bottom: -12, right: -12, width: 64, height: 1, background: '#B8924A', zIndex: 3 }} />
-          <div style={{ position: 'absolute', bottom: -12, right: -12, width: 1, height: 64, background: '#B8924A', zIndex: 3 }} />
+          <div style={{ position: 'absolute', top: -12, left: -12, width: 64, height: 1, background: 'var(--accent)', zIndex: 3 }} />
+          <div style={{ position: 'absolute', top: -12, left: -12, width: 1, height: 64, background: 'var(--accent)', zIndex: 3 }} />
+          <div style={{ position: 'absolute', bottom: -12, right: -12, width: 64, height: 1, background: 'var(--accent)', zIndex: 3 }} />
+          <div style={{ position: 'absolute', bottom: -12, right: -12, width: 1, height: 64, background: 'var(--accent)', zIndex: 3 }} />
           <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', boxShadow: '0 40px 80px -20px rgba(0,0,0,0.7)' }}>
             <img
               src="/images/real-geraete-md.webp"
@@ -44,7 +44,7 @@ export default function TrainingsflaecheSpotlight() {
             />
             <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%', background: 'linear-gradient(180deg, transparent 0%, rgba(15,20,25,0.8) 100%)' }} />
             <div style={{ position: 'absolute', bottom: 24, left: 24, padding: '8px 14px', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.4)' }}>
-              <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>1.500m² Trainingsfläche</div>
+              <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>1.500m² Trainingsfläche</div>
             </div>
           </div>
         </motion.div>
@@ -57,8 +57,8 @@ export default function TrainingsflaecheSpotlight() {
           transition={{ duration: 1, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 }}>
-            <span style={{ width: 48, height: 1, background: '#B8924A' }} />
-            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>Hauptangebot</span>
+            <span style={{ width: 48, height: 1, background: 'var(--accent)' }} />
+            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Hauptangebot</span>
           </div>
 
           <h2 className="font-display" style={{

@@ -3,8 +3,8 @@ import SpotlightCard from './SpotlightCard'
 
 const kurse = [
   { name: 'BodyPump', desc: 'Ganzkörper-Krafttraining mit Hantelstange', cat: 'Les Mills', color: '#E15464' },
-  { name: 'Yoga', desc: 'Flexibilität, Atmung, mentale Ruhe', cat: 'Mind & Body', color: '#B8924A' },
-  { name: 'Pilates', desc: 'Core-Stärke, Haltung, Beweglichkeit', cat: 'Mind & Body', color: '#B8924A' },
+  { name: 'Yoga', desc: 'Flexibilität, Atmung, mentale Ruhe', cat: 'Mind & Body', color: 'var(--accent)' },
+  { name: 'Pilates', desc: 'Core-Stärke, Haltung, Beweglichkeit', cat: 'Mind & Body', color: 'var(--accent)' },
   { name: 'Rückenfit', desc: 'Rückenmuskulatur stärken, Schmerzen lindern', cat: 'Prävention', color: '#9A8470' },
   { name: 'BodyCombat', desc: 'Kampfsport-inspiriertes Cardio-Training', cat: 'Les Mills', color: '#E15464' },
   { name: 'Spinning', desc: 'Indoor-Cycling mit Musik & Trainer', cat: 'Cardio', color: '#C44552' },
@@ -24,8 +24,8 @@ export default function KurseGrid() {
         {/* Header with hero image as backdrop */}
         <div style={{ position: 'relative', marginBottom: 56 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
-            <span style={{ width: 32, height: 1, background: '#B8924A' }} />
-            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>30+ Kurse pro Woche</span>
+            <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
+            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>30+ Kurse pro Woche</span>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 'clamp(24px, 5vw, 80px)', alignItems: 'end' }} className="kurse-header-grid">
             <h2 className="font-display" style={{

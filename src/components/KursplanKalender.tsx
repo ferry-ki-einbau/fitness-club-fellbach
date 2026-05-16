@@ -25,7 +25,7 @@ const DAY_LABELS: { [key: string]: string } = {
 const COURSE_COLORS: { [key: string]: string } = {
   BodyPump: '#C44552',
   Yoga: '#0d9488',
-  Pilates: '#B8924A',
+  Pilates: 'var(--accent)',
   Spinning: '#6366f1',
   Rückenfit: '#22c55e',
   BoxFit: '#f97316',
@@ -513,14 +513,14 @@ export default function KursplanKalender() {
               padding: '8px 16px',
             }}
           >
-            <span style={{ fontSize: '14px', color: '#B8924A' }}>✓</span>
+            <span style={{ fontSize: '14px', color: 'var(--accent)' }}>✓</span>
             <span
               style={{
                 fontFamily: 'var(--font-condensed, "Barlow Condensed", sans-serif)',
                 fontSize: '13px',
                 fontWeight: 600,
                 letterSpacing: '0.08em',
-                color: '#B8924A',
+                color: 'var(--accent)',
               }}
             >
               Alle Kurse inkl. im Mitgliedsbeitrag

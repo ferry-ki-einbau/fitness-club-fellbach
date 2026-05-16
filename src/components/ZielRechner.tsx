@@ -363,7 +363,7 @@ export default function ZielRechner() {
                 style={{
                   fontFamily: 'Barlow Condensed, sans-serif',
                   fontSize: '14px',
-                  color: '#B8924A',
+                  color: 'var(--accent)',
                   letterSpacing: '1px',
                   textTransform: 'uppercase',
                   marginBottom: '28px',

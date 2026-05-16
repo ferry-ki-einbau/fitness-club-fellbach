@@ -21,8 +21,8 @@ export default function AddonsBand() {
       <div style={{ maxWidth: 1440, margin: '0 auto' }}>
         <div style={{ marginBottom: 48, maxWidth: 720 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
-            <span style={{ width: 32, height: 1, background: '#B8924A' }} />
-            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>Module · Add-Ons</span>
+            <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
+            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Module · Add-Ons</span>
           </div>
           <h2 className="font-display" style={{
             fontSize: 'clamp(2rem, 4.5vw, 4rem)', fontWeight: 800,
@@ -73,7 +73,7 @@ export default function AddonsBand() {
           style={{ marginTop: 56, padding: '28px 32px', background: '#0F1419', border: '1px solid rgba(184, 146, 74, 0.4)', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: 24 }}
         >
           <div>
-            <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: '#B8924A', marginBottom: 6 }}>App · Kurs-Buchung</div>
+            <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 6 }}>App · Kurs-Buchung</div>
             <div className="font-display" style={{ fontSize: 22, fontWeight: 700, color: '#F5F0E8', textTransform: 'uppercase', letterSpacing: '-0.005em' }}>MySports App</div>
             <div style={{ fontSize: 13, color: '#B5A99A', marginTop: 6 }}>Kurse buchen, Plätze reservieren, Trainings tracken.</div>
           </div>

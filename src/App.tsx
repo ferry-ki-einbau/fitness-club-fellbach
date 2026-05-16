@@ -243,8 +243,8 @@ function Hero() {
       <div style={{ position: 'relative', zIndex: 10, maxWidth: 1440, margin: '0 auto', paddingLeft: 'clamp(20px,5vw,80px)', paddingRight: 'clamp(20px,5vw,80px)', paddingTop: 110, paddingBottom: 48, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={{ maxWidth: 700 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 }}>
-            <span style={{ width: 48, height: 1, background: '#B8924A' }} />
-            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.55em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>Bruckstraße 61 · Fellbach</span>
+            <span style={{ width: 48, height: 1, background: 'var(--accent)' }} />
+            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.55em', textTransform: 'uppercase', color: 'var(--accent-bright)', fontWeight: 600 }}>Bruckstraße 61 · Fellbach</span>
           </div>
 
           <h1
@@ -274,7 +274,7 @@ function Hero() {
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'clamp(28px,4vw,56px)', paddingTop: 28, borderTop: '1px solid rgba(184, 146, 74, 0.2)' }}>
             {[['24/7', 'geöffnet'], ['8', 'Bereiche'], ['500+', 'Mitglieder'], ['14', 'Tage gratis']].map(([n, l]) => (
               <div key={l}>
-                <div className="font-display" style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)', fontWeight: 700, color: '#B8924A', lineHeight: 1, letterSpacing: '-0.02em' }}>{n}</div>
+                <div className="font-display" style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)', fontWeight: 700, color: 'var(--accent-bright)', lineHeight: 1, letterSpacing: '-0.02em' }}>{n}</div>
                 <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#9A8470', marginTop: 6 }}>{l}</div>
               </div>
             ))}
@@ -328,8 +328,8 @@ function Gallery() {
     <section id="galerie" style={{ background: '#0F1419', padding: 'clamp(80px, 12vh, 140px) 0' }}>
       <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 clamp(16px, 4vw, 56px) 56px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
-          <span style={{ width: 32, height: 1, background: '#B8924A' }} />
-          <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>Einblick</span>
+          <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
+          <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Einblick</span>
         </div>
         <h2 className="font-display" style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800, letterSpacing: '-0.025em', textTransform: 'uppercase', color: '#F5F0E8', lineHeight: 0.95 }}>
           In den <span style={{ color: 'var(--accent-bright)', fontStyle: 'italic' }}>Club.</span>
@@ -461,8 +461,8 @@ function Pricing() {
     <section id="preise" style={{ background: '#0F1419', padding: 'clamp(80px, 12vh, 160px) 0' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(16px, 4vw, 48px)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
-          <span style={{ width: 32, height: 1, background: '#B8924A' }} />
-          <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>Mitgliedschaft</span>
+          <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
+          <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Mitgliedschaft</span>
         </div>
         <h2 className="font-display" style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800, letterSpacing: '-0.025em', marginBottom: 16, textTransform: 'uppercase', color: '#F5F0E8', lineHeight: 0.95 }}>
           Dein Plan. <span style={{ color: 'var(--accent-bright)', fontStyle: 'italic' }}>Dein Preis.</span>
@@ -484,7 +484,7 @@ function Pricing() {
                 letterSpacing: '0.35em',
                 textTransform: 'uppercase',
                 fontWeight: 600,
-                background: term === t ? '#B8924A' : 'transparent',
+                background: term === t ? 'var(--accent)' : 'transparent',
                 color: term === t ? '#0F1419' : '#9A8470',
                 border: 'none',
                 cursor: 'pointer',
@@ -510,19 +510,19 @@ function Pricing() {
                   position: 'relative',
                   padding: 36,
                   background: plan.featured ? 'linear-gradient(180deg, #1A2128 0%, #1A2128 100%)' : '#1A2128',
-                  border: plan.featured ? '1px solid #B8924A' : '1px solid rgba(184, 146, 74, 0.15)',
+                  border: plan.featured ? '1px solid var(--accent)' : '1px solid rgba(196, 69, 82, 0.2)',
                   display: 'flex',
                   flexDirection: 'column',
                   flex: 1,
                 }}
               >
                 {/* Top corner — 2 Monate gratis Badge */}
-                <div style={{ position: 'absolute', top: -1, right: -1, padding: '8px 14px', background: '#B8924A', color: '#0F1419' }}>
+                <div style={{ position: 'absolute', top: -1, right: -1, padding: '8px 14px', background: 'var(--accent)', color: '#fff' }}>
                   <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', fontWeight: 700 }}>2 Monate gratis</span>
                 </div>
 
                 {/* Tag */}
-                <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: plan.featured ? '#B8924A' : '#5A4030', marginBottom: 8, fontWeight: 600 }}>{plan.tag}</div>
+                <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: plan.featured ? 'var(--accent-bright)' : '#5A4030', marginBottom: 8, fontWeight: 600 }}>{plan.tag}</div>
 
                 {/* Plan name */}
                 <div className="font-display" style={{ fontSize: 28, fontWeight: 700, color: '#F5F0E8', textTransform: 'uppercase', marginBottom: 24, letterSpacing: '-0.01em' }}>{plan.name}</div>
@@ -544,7 +544,7 @@ function Pricing() {
                 <ul style={{ listStyle: 'none', padding: 0, marginBottom: 36, display: 'flex', flexDirection: 'column', gap: 14, flex: 1 }}>
                   {plan.features.map(f => (
                     <li key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 12, fontSize: 13, color: '#C9BFB3', lineHeight: 1.5 }}>
-                      <span style={{ color: '#B8924A', flexShrink: 0, marginTop: 1, fontWeight: 700 }}>+</span>{f}
+                      <span style={{ color: 'var(--accent)', flexShrink: 0, marginTop: 1, fontWeight: 700 }}>+</span>{f}
                     </li>
                   ))}
                 </ul>

@@ -24,9 +24,9 @@ export default function WelcomeIntro() {
           transition={{ duration: 0.7 }}
         >
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: 14, marginBottom: 32 }}>
-            <span style={{ width: 32, height: 1, background: '#B8924A' }} />
-            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>Schön, dass du da bist</span>
-            <span style={{ width: 32, height: 1, background: '#B8924A' }} />
+            <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
+            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Schön, dass du da bist</span>
+            <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
           </div>
 
           <h2 className="font-display" style={{
@@ -66,7 +66,7 @@ export default function WelcomeIntro() {
                 label: 'Persönliche Betreuung', sub: 'Trainer die zuhören'
               },
               {
-                svg: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#B8924A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
+                svg: <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>,
                 label: '24 / 7 für dich offen', sub: '05:00 – 24:00 täglich'
               },
               {

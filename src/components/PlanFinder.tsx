@@ -43,7 +43,7 @@ const steps: Step[] = [
 ]
 
 const plans = {
-  basic: { name: 'Basic', price: '13,99€', sub: '/Woche · 24 Monate', text: 'Trainingsfläche, Duschen, 24/7 Zugang. Add-Ons jederzeit dazubuchbar.', accent: '#B8924A' },
+  basic: { name: 'Basic', price: '13,99€', sub: '/Woche · 24 Monate', text: 'Trainingsfläche, Duschen, 24/7 Zugang. Add-Ons jederzeit dazubuchbar.', accent: 'var(--accent)' },
   premium: { name: 'Premium', price: '12,99€', sub: '/Woche · 24 Monate', text: 'Alles aus Basic + 1 Add-On nach Wahl inklusive (Kurse oder Wellness).', accent: 'var(--accent-bright)' },
   allin: { name: 'All-In', price: '14,99€', sub: '/Woche · 24 Monate · 2 Mo. gratis', text: 'Komplett-Paket: Trainingsfläche, alle Kurse, Sauna, EGYM, Getränke.', accent: 'var(--accent)' },
 }
@@ -75,9 +75,9 @@ export default function PlanFinder() {
 
       <div style={{ maxWidth: 900, margin: '0 auto', position: 'relative', textAlign: 'center' }}>
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
-          <span style={{ width: 32, height: 1, background: '#B8924A' }} />
-          <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>Plan-Finder</span>
-          <span style={{ width: 32, height: 1, background: '#B8924A' }} />
+          <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
+          <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Plan-Finder</span>
+          <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
         </div>
 
         <h2 className="font-display" style={{

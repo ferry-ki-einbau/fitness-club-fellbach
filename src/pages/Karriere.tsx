@@ -127,7 +127,7 @@ function PositionCard({ position, index }: { position: Position; index: number }
           <h3 className="font-display" style={{ fontSize: 'clamp(18px, 2.5vw, 22px)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.03em', color: '#F5F0E8', marginBottom: 6 }}>
             {position.title}
           </h3>
-          <span className="font-condensed" style={{ fontSize: 12, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#B8924A' }}>
+          <span className="font-condensed" style={{ fontSize: 12, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)' }}>
             {position.type}
           </span>
         </div>
@@ -140,7 +140,7 @@ function PositionCard({ position, index }: { position: Position; index: number }
           transform: expanded ? 'rotate(45deg)' : 'none',
           background: expanded ? 'rgba(184,146,74,0.1)' : 'transparent',
         }}>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B8924A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
           </svg>
         </div>
@@ -161,7 +161,7 @@ function PositionCard({ position, index }: { position: Position; index: number }
           <ul style={{ listStyle: 'none', padding: 0, marginBottom: 24 }}>
             {position.tasks.map((t, i) => (
               <li key={i} style={{ fontSize: 14, lineHeight: 1.7, color: '#B5A99A', paddingLeft: 16, position: 'relative', marginBottom: 6 }}>
-                <span style={{ position: 'absolute', left: 0, top: 8, width: 4, height: 4, borderRadius: '50%', background: '#B8924A' }} />
+                <span style={{ position: 'absolute', left: 0, top: 8, width: 4, height: 4, borderRadius: '50%', background: 'var(--accent)' }} />
                 {t}
               </li>
             ))}
@@ -227,12 +227,12 @@ export default function Karriere() {
           transition={{ duration: 0.6 }}
           style={{ position: 'relative', maxWidth: 900, margin: '0 auto', padding: '0 clamp(20px, 4vw, 48px)', textAlign: 'center' }}
         >
-          <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#B8924A', marginBottom: 20, display: 'block' }}>
+          <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: 20, display: 'block' }}>
             Werde Teil der Familie
           </span>
           <h1 className="font-display" style={{ fontSize: 'clamp(36px, 6vw, 64px)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.02em', lineHeight: 1.1, marginBottom: 24 }}>
             Arbeiten, wo andere<br />
-            <span style={{ color: '#B8924A' }}>trainieren</span>
+            <span style={{ color: 'var(--accent)' }}>trainieren</span>
           </h1>
           <p style={{ fontSize: 'clamp(15px, 2vw, 18px)', lineHeight: 1.7, color: '#B5A99A', maxWidth: 600, margin: '0 auto' }}>
             Seit über 30 Jahren ist der Fitness Club Fellbach mehr als ein Studio — er ist eine Familie. Wir suchen Menschen, die Fitness leben und andere inspirieren wollen.
@@ -264,7 +264,7 @@ export default function Karriere() {
                 borderRadius: 2,
               }}
             >
-              <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.3em', color: '#B8924A', marginBottom: 12, display: 'block' }}>
+              <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.3em', color: 'var(--accent)', marginBottom: 12, display: 'block' }}>
                 {b.icon}
               </span>
               <h3 className="font-display" style={{ fontSize: 16, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#F5F0E8', marginBottom: 8 }}>
@@ -339,7 +339,7 @@ export default function Karriere() {
               fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase',
               transition: 'border-color 0.2s, transform 0.2s',
             }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = '#B8924A'; e.currentTarget.style.transform = 'translateY(-2px)' }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.transform = 'translateY(-2px)' }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = 'rgba(245,240,232,0.2)'; e.currentTarget.style.transform = 'translateY(0)' }}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

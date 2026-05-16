@@ -16,8 +16,8 @@ export default function WellnessSpotlight() {
         {/* Header */}
         <div style={{ marginBottom: 56, maxWidth: 720 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
-            <span style={{ width: 32, height: 1, background: '#B8924A' }} />
-            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>Wellness · Erholung</span>
+            <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
+            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Wellness · Erholung</span>
           </div>
           <h2 className="font-display" style={{
             fontSize: 'clamp(2.5rem, 5.5vw, 5rem)',
@@ -58,14 +58,14 @@ export default function WellnessSpotlight() {
               <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(15,20,25,0.3) 0%, transparent 35%, transparent 55%, rgba(15,20,25,0.92) 100%)' }} />
               {/* Number tag top-left */}
               <div style={{ position: 'absolute', top: 24, left: 24, padding: '8px 12px', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.4)' }}>
-                <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.4em', color: '#B8924A', fontWeight: 700 }}>{it.tag}</span>
+                <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.4em', color: 'var(--accent)', fontWeight: 700 }}>{it.tag}</span>
               </div>
               {/* Content bottom */}
               <div style={{ position: 'absolute', bottom: 28, left: 28, right: 28 }}>
                 <div className="font-display" style={{ fontSize: 'clamp(1.5rem, 2.5vw, 2.2rem)', fontWeight: 700, color: '#F5F0E8', textTransform: 'uppercase', letterSpacing: '-0.01em', marginBottom: 6 }}>
                   {it.label}
                 </div>
-                <div className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 500 }}>
+                <div className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 500 }}>
                   {it.sub}
                 </div>
               </div>

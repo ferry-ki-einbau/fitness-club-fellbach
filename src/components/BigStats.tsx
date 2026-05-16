@@ -55,8 +55,8 @@ export default function BigStats() {
       <div style={{ maxWidth: 1280, margin: '0 auto', position: 'relative' }}>
         <div style={{ marginBottom: 64, maxWidth: 720 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
-            <span style={{ width: 32, height: 1, background: '#B8924A' }} />
-            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>Zahlen die zählen</span>
+            <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
+            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Zahlen die zählen</span>
           </div>
           <h2 className="font-display" style={{
             fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800,
@@ -87,7 +87,7 @@ export default function BigStats() {
                 fontFeatureSettings: '"tnum"',
               }}>
                 <Counter target={s.num} />
-                <span style={{ color: '#B8924A' }}>{s.suffix}</span>
+                <span style={{ color: 'var(--accent)' }}>{s.suffix}</span>
               </div>
               <div className="font-display" style={{ fontSize: 18, fontWeight: 700, color: '#F5F0E8', textTransform: 'uppercase', letterSpacing: '-0.005em', marginBottom: 4 }}>
                 {s.label}

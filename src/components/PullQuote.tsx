@@ -45,14 +45,14 @@ export default function PullQuote({ before, text, highlight, after, variant = 'd
       overflow: 'hidden',
     }}>
       {/* Subtle gold rule top */}
-      <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: 60, height: 1, background: '#B8924A', opacity: 0.4 }} />
-      <div style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: 60, height: 1, background: '#B8924A', opacity: 0.4 }} />
+      <div style={{ position: 'absolute', top: 0, left: '50%', transform: 'translateX(-50%)', width: 60, height: 1, background: 'var(--accent)', opacity: 0.4 }} />
+      <div style={{ position: 'absolute', bottom: 0, left: '50%', transform: 'translateX(-50%)', width: 60, height: 1, background: 'var(--accent)', opacity: 0.4 }} />
 
       <motion.div style={{ y, opacity, maxWidth: 1100, margin: '0 auto', textAlign: 'center', position: 'relative' }}>
         {before && (
           <div className="font-condensed" style={{
             fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase',
-            color: '#B8924A', fontWeight: 600, marginBottom: 32,
+            color: 'var(--accent)', fontWeight: 600, marginBottom: 32,
           }}>
             {before}
           </div>
