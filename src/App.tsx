@@ -222,7 +222,7 @@ function Hero() {
       {/* Google Badge */}
       <div
         className="hero-google-badge"
-        style={{ position: 'absolute', top: 90, right: 'clamp(20px,5vw,80px)', zIndex: 11 }}
+        style={{ position: 'absolute', top: 84, right: 'clamp(20px,5vw,80px)', zIndex: 11 }}
       >
         <div style={{ padding: '8px 16px', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(12px)', border: '1px solid rgba(184, 146, 74, 0.4)', display: 'flex', alignItems: 'center', gap: 8, borderRadius: 999 }}>
           <svg width="14" height="14" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
@@ -240,7 +240,7 @@ function Hero() {
       </div>
 
       {/* Content */}
-      <div style={{ position: 'relative', zIndex: 10, maxWidth: 1440, margin: '0 auto', padding: 'clamp(80px,10vh,120px) clamp(20px,5vw,80px) clamp(60px,8vh,100px)', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+      <div style={{ position: 'relative', zIndex: 10, maxWidth: 1440, margin: '0 auto', padding: 'clamp(100px,12vh,140px) clamp(20px,5vw,80px) clamp(48px,6vh,80px)', paddingTop: 'max(100px, calc(68px + 3vh))', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={{ maxWidth: 700 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 }}>
             <span style={{ width: 48, height: 1, background: '#B8924A' }} />
