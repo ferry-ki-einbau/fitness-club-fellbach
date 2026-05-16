@@ -188,7 +188,7 @@ function Hero() {
   }
 
   return (
-    <section data-hero style={{ position: 'relative', height: 'clamp(600px, 85vh, 900px)', overflow: 'hidden', background: '#0F1419' }}>
+    <section data-hero style={{ position: 'relative', height: 'clamp(640px, 90vh, 960px)', overflow: 'hidden', background: '#0F1419' }}>
       {/* Slideshow images */}
       {SLIDES.map((s, i) => (
         <div
@@ -240,7 +240,7 @@ function Hero() {
       </div>
 
       {/* Content */}
-      <div style={{ position: 'relative', zIndex: 10, maxWidth: 1440, margin: '0 auto', padding: 'clamp(100px,12vh,140px) clamp(20px,5vw,80px) clamp(48px,6vh,80px)', paddingTop: 'max(100px, calc(68px + 3vh))', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+      <div style={{ position: 'relative', zIndex: 10, maxWidth: 1440, margin: '0 auto', paddingLeft: 'clamp(20px,5vw,80px)', paddingRight: 'clamp(20px,5vw,80px)', paddingTop: 110, paddingBottom: 48, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={{ maxWidth: 700 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 }}>
             <span style={{ width: 48, height: 1, background: '#B8924A' }} />
@@ -249,20 +249,20 @@ function Hero() {
 
           <h1
             className="font-display"
-            style={{ fontSize: 'clamp(2.8rem, 9vw, 7.5rem)', fontWeight: 800, lineHeight: 0.95, letterSpacing: '-0.03em', margin: '0 0 28px', color: '#F5F0E8', textTransform: 'uppercase' }}>
+            style={{ fontSize: 'clamp(2.8rem, 7vw, 6rem)', fontWeight: 800, lineHeight: 0.95, letterSpacing: '-0.03em', margin: '0 0 24px', color: '#F5F0E8', textTransform: 'uppercase' }}>
             HIER KENNT MAN<br />
             <span style={{ color: 'var(--accent-bright)', fontStyle: 'italic' }}>deinen</span>{' '}
             NAMEN.
           </h1>
 
-          <p style={{ color: '#F0E5D5', fontSize: 'clamp(1rem, 1.3vw, 1.2rem)', lineHeight: 1.8, marginBottom: 44, maxWidth: 520, fontWeight: 400, textShadow: '0 1px 2px rgba(0,0,0,0.4)' }}>
+          <p style={{ color: '#F0E5D5', fontSize: 'clamp(1rem, 1.3vw, 1.2rem)', lineHeight: 1.8, marginBottom: 32, maxWidth: 520, fontWeight: 400, textShadow: '0 1px 2px rgba(0,0,0,0.4)' }}>
             Familienstudio seit über 25 Jahren. 1.500m², Wellness, Sauna, 30+ Kurse pro Woche — und ein Team, das dich beim Namen kennt.<br />
             <span style={{ color: '#FFFFFF', fontWeight: 600 }}>Täglich 05–24 Uhr.</span> Ab <span style={{ color: '#FFFFFF', fontWeight: 600 }}>13,99€/Woche.</span>
           </p>
 
           <div
             className="hero-cta-group"
-            style={{ display: 'flex', flexWrap: 'wrap', gap: 14, marginBottom: 56 }}>
+            style={{ display: 'flex', flexWrap: 'wrap', gap: 14, marginBottom: 40 }}>
             <MitgliedButton variant="lime">
               <span>14 Tage gratis testen</span><span>→</span>
             </MitgliedButton>
