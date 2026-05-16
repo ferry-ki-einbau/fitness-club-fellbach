@@ -84,7 +84,7 @@ export default function StickyCTA() {
             {/* Right */}
             <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
               <a
-                href="tel:+4971195459988"
+                href="tel:+49711588654"
                 style={{
                   fontFamily: 'Oswald, sans-serif',
                   fontWeight: 600,
@@ -114,9 +114,8 @@ export default function StickyCTA() {
                 Anrufen
               </a>
 
-              <a
-                href="#mitglied"
-                className="btn-lime"
+              <button
+                onClick={() => window.dispatchEvent(new CustomEvent('open-mitglied-form'))}
                 style={{
                   fontFamily: 'Oswald, sans-serif',
                   fontWeight: 700,
@@ -128,23 +127,21 @@ export default function StickyCTA() {
                   border: 'none',
                   borderRadius: 4,
                   padding: '8px 24px',
-                  textDecoration: 'none',
                   cursor: 'pointer',
                   whiteSpace: 'nowrap',
                   transition: 'background 0.2s',
-                  display: 'inline-block',
                 }}
                 onMouseEnter={e => {
-                  ;(e.currentTarget as HTMLAnchorElement).style.background =
+                  ;(e.currentTarget as HTMLButtonElement).style.background =
                     '#a8323e'
                 }}
                 onMouseLeave={e => {
-                  ;(e.currentTarget as HTMLAnchorElement).style.background =
+                  ;(e.currentTarget as HTMLButtonElement).style.background =
                     '#C44552'
                 }}
               >
-                Jetzt Mitglied
-              </a>
+                14 Tage gratis
+              </button>
             </div>
           </div>
         </motion.div>

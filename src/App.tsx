@@ -281,6 +281,14 @@ function Hero() {
           </div>
         </div>
 
+        {/* Scroll indicator */}
+        <div className="hidden md:flex" style={{ position: 'absolute', bottom: 'clamp(32px,5vh,48px)', left: '50%', transform: 'translateX(-50%)', zIndex: 11, flexDirection: 'column', alignItems: 'center', gap: 6, opacity: 0.5 }}>
+          <span className="font-condensed" style={{ fontSize: 9, letterSpacing: '0.4em', textTransform: 'uppercase', color: '#F5F0E8' }}>Scroll</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ animation: 'bounce 2s ease-in-out infinite' }}>
+            <path d="M4 6L8 10L12 6" stroke="#F5F0E8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </div>
+
         {/* Slide indicators */}
         <div style={{ position: 'absolute', bottom: 'clamp(32px,5vh,60px)', right: 'clamp(20px,5vw,80px)', display: 'flex', gap: 8, alignItems: 'center' }}>
           {SLIDES.map((s, i) => (
@@ -315,7 +323,7 @@ function Marquee() {
         {doubled.map((item, i) => (
           <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 20, padding: '0 20px', whiteSpace: 'nowrap' }}>
             <span className="font-condensed" style={{ fontSize: 12, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#9A8470' }}>{item}</span>
-            <span style={{ color: 'var(--lime)', fontSize: 5 }}>◆</span>
+            <span style={{ color: 'var(--accent)', fontSize: 5 }}>◆</span>
           </div>
         ))}
       </div>

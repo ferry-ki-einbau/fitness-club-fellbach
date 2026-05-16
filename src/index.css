@@ -95,6 +95,14 @@ body {
 
 @media (max-width: 400px) {
   .hero-cta-group { flex-direction: column !important; }
+  .hero-cta-group .btn-lime,
+  .hero-cta-group .btn-outline { width: 100%; justify-content: center; }
+}
+
+/* Mobile Touch-Targets — min 44px Höhe */
+@media (max-width: 767px) {
+  .btn-lime, .btn-outline { min-height: 48px; padding: 14px 28px; }
+  .nav-link { min-height: 44px; display: flex; align-items: center; }
 }
 
 /* Mobile Sticky Bar — nur auf Mobile, mit safe-area für iPhone */
@@ -342,6 +350,11 @@ body {
 
 /* Image tint overlay */
 .tint { position: absolute; inset: 0; background: rgba(8,8,8,0.55); }
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
 
 @keyframes heroFadeUp {
   from { opacity: 0; transform: translateY(30px); }
