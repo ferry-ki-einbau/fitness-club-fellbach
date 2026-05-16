@@ -8,6 +8,7 @@ const Impressum = lazy(() => import('./pages/Impressum.tsx'))
 const Datenschutz = lazy(() => import('./pages/Datenschutz.tsx'))
 const Karriere = lazy(() => import('./pages/Karriere.tsx'))
 const Kuendigung = lazy(() => import('./pages/Kuendigung.tsx'))
+const Kurse = lazy(() => import('./pages/Kurse.tsx'))
 
 const rootEl = document.getElementById('root')!
 
@@ -20,6 +21,7 @@ const app = (
         <Route path="/datenschutz" element={<Suspense fallback={null}><Datenschutz /></Suspense>} />
         <Route path="/karriere" element={<Suspense fallback={null}><Karriere /></Suspense>} />
         <Route path="/kuendigung" element={<Suspense fallback={null}><Kuendigung /></Suspense>} />
+        <Route path="/kurse" element={<Suspense fallback={null}><Kurse /></Suspense>} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

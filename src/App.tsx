@@ -39,7 +39,7 @@ const GALLERY = [
   { src: '/images/real-wellness-area-md.webp', srcSm: '/images/real-wellness-area-sm.webp', label: 'Sauna-Lounge', tag: '11' },
   // Lounge & Eingang
   { src: '/images/real-damen-umkleide-md.webp', srcSm: '/images/real-damen-umkleide-sm.webp', label: 'Empfangsbereich', tag: '12' },
-  { src: '/images/real-eingang-md.webp', srcSm: '/images/real-eingang-sm.webp', label: 'Theke & Bar', tag: '13' },
+  { src: '/images/real-theke-md.webp', srcSm: '/images/real-theke-sm.webp', label: 'Theke & Bar', tag: '13' },
 ]
 
 function useReveal() {
@@ -81,7 +81,7 @@ function Nav() {
   }, [open])
   const links = [
     { label: 'Training', href: '#training' },
-    { label: 'Kurse', href: '#kurse' },
+    { label: 'Kurse', href: '/kurse/' },
     { label: 'Preise', href: '#preise' },
     { label: 'Blog', href: '/blog/' },
     { label: 'Kontakt', href: '#kontakt' },
@@ -196,9 +196,9 @@ function Hero() {
     { src: '/images/real-freihantel-hero-md.webp', srcSm: '/images/real-freihantel-hero-sm.webp', label: 'Freihantel' },
     { src: '/images/real-egym-hero-md.webp', srcSm: '/images/real-egym-hero-sm.webp', label: 'EGYM' },
     { src: '/images/real-cardio-hero-md.webp', srcSm: '/images/real-cardio-hero-sm.webp', label: 'Cardio' },
-    { src: '/images/real-eingang-hero-md.webp', srcSm: '/images/real-eingang-hero-sm.webp', label: 'Theke' },
     { src: '/images/real-spinning-hero-md.webp', srcSm: '/images/real-spinning-hero-sm.webp', label: 'Spinning' },
     { src: '/images/real-kursraum-1-hero-md.webp', srcSm: '/images/real-kursraum-1-hero-sm.webp', label: 'Kursraum' },
+    { src: '/images/real-theke-hero-md.webp', srcSm: '/images/real-theke-hero-sm.webp', label: 'Theke & Bar' },
   ]
   const [current, setCurrent] = useState(0)
   const [prev, setPrev] = useState<number | null>(null)
@@ -633,75 +633,31 @@ function Testimonials() {
   )
 }
 
-function KursplanWidget() {
+function KursplanTeaser() {
+  const kurse = ['BodyPump','Yoga','Pilates','Rückenfit','Zumba','Spinning','Bauch Beine Po','Bodytoning','Vinyasa Yoga','Zirkeltraining','Step','Bodycross']
   return (
-    <section style={{ background: 'linear-gradient(180deg, #0F1419 0%, #111820 100%)', padding: 'clamp(64px, 10vh, 100px) clamp(16px, 4vw, 80px)' }}>
-      <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
+    <section id="kurse" style={{ background: 'linear-gradient(180deg, #0F1419 0%, #111820 100%)', padding: 'clamp(64px, 10vh, 100px) clamp(16px, 4vw, 80px)' }}>
+      <div style={{ maxWidth: 900, margin: '0 auto', textAlign: 'center' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, justifyContent: 'center', marginBottom: 20 }}>
           <span style={{ width: 32, height: 1, background: '#C44552' }} />
           <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#C44552', fontWeight: 600 }}>Kursprogramm</span>
+          <span style={{ width: 32, height: 1, background: '#C44552' }} />
         </div>
-        <h2 className="font-display" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 800, textTransform: 'uppercase', color: '#F5F0E8', lineHeight: 1, marginBottom: 8, letterSpacing: '-0.025em' }}>
-          Dein Wochenplan.
+        <h2 className="font-display" style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 800, textTransform: 'uppercase', color: '#F5F0E8', lineHeight: 1, marginBottom: 12, letterSpacing: '-0.025em' }}>
+          30+ Kurse pro Woche.
         </h2>
-        <p style={{ color: '#9A8878', fontSize: 14, marginBottom: 40, maxWidth: 'none' }}>
-          Alle Kurse inkl. im Mitgliedsbeitrag — Platz reservieren über die <span style={{ color: '#F5F0E8', fontWeight: 600 }}>MySports App</span>.
+        <p style={{ color: '#9A8878', fontSize: 15, marginBottom: 32, maxWidth: 520, marginInline: 'auto' }}>
+          Alle Kurse im Mitgliedsbeitrag inklusive — Platz reservieren über die <span style={{ color: '#F5F0E8', fontWeight: 600 }}>MySports App</span>.
         </p>
-        {/* iframe wrapper — auf echter Domain lädt Widget, Fallback darunter immer sichtbar wenn blocked */}
-        <div style={{ position: 'relative', borderRadius: 4, overflow: 'hidden', minHeight: 420 }}>
-          {/* Fallback — sichtbar wenn iframe geblockt */}
-          <div style={{ position: 'absolute', inset: 0, background: '#1A2128', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 24, padding: 40 }}>
-            <div style={{ textAlign: 'center' }}>
-              <div className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.4em', textTransform: 'uppercase', color: '#C44552', marginBottom: 12, fontWeight: 600 }}>Live · Immer aktuell</div>
-              <div className="font-display" style={{ fontSize: 'clamp(1.6rem, 3vw, 2.5rem)', fontWeight: 700, textTransform: 'uppercase', color: '#F5F0E8', lineHeight: 1.1, marginBottom: 12 }}>
-                30+ Kurse pro Woche.
-              </div>
-              <p style={{ color: '#9A8878', fontSize: 14, marginBottom: 28, maxWidth: 'none', marginInline: 'auto' }}>
-                BodyPump · Yoga · Pilates · Rückenfit · Zumba · Spinning · Zirkeltraining und viele mehr — alle im Mitgliedsbeitrag inklusive.
-              </p>
-              <a
-                href="https://www.fitness-club-fellbach.de/kurse"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-lime"
-                style={{ padding: '14px 32px', fontSize: 12, display: 'inline-flex', alignItems: 'center', gap: 10 }}
-              >
-                <span>Kompletten Kursplan ansehen</span>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-              </a>
-            </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', maxWidth: 600 }}>
-              {['BodyPump','Yoga','Pilates','Rückenfit','Zumba','Spinning','Bauch Beine Po','Bodytoning','Vinyasa Yoga','Zirkeltraining','Step','Bodycross'].map(k => (
-                <span key={k} className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', padding: '5px 10px', border: '1px solid rgba(245,240,232,0.1)', color: '#9A8878' }}>{k}</span>
-              ))}
-            </div>
-          </div>
-          {/* Live iframe — überlagert Fallback wenn geladen */}
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <iframe
-              src="https://courseplan.noexcuse.io/?origin=https%3A%2F%2Fwww.fitness-club-fellbach.de&id=Zml0bmVzcy1jbHViLWZlbGxiYWNoOjEyMTAwMTEzOTA%253D&disableEmployeeExpertises=true&height=auto&baseHost=mysports.com"
-              width="100%"
-              height="2200"
-              className="kursplan-iframe"
-              title="Kursplan Fitness Club Fellbach"
-              style={{ display: 'block', border: 'none', marginTop: -52 }}
-              loading="lazy"
-            />
-            {/* Dropdown-Maske — blendet Standort-Auswahl aus */}
-            <div style={{
-              position: 'absolute', top: 0, left: 0, right: 0, height: 52,
-              background: '#ffffff', zIndex: 2, pointerEvents: 'none',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-            }}>
-              <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#9A8878', fontWeight: 600 }}>
-                Fitness Club Fellbach
-              </span>
-            </div>
-          </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginBottom: 40 }}>
+          {kurse.map(k => (
+            <span key={k} className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', padding: '6px 12px', border: '1px solid rgba(245,240,232,0.1)', color: '#9A8878', transition: 'all 0.2s' }}>{k}</span>
+          ))}
         </div>
-        <p style={{ fontSize: 11, color: '#5A6770', marginTop: 12, letterSpacing: '0.05em', maxWidth: 'none' }}>
-          Kursplan wird live geladen — immer aktuell, keine Pflege nötig.
-        </p>
+        <a href="/kurse/" className="btn-lime" style={{ padding: '16px 40px', fontSize: 13, display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+          <span>Kursplan & Zeiten ansehen</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
     </section>
   )
@@ -931,7 +887,7 @@ export default function App() {
 
       {/* 6. KURSE & PROGRAMME */}
       <KurseGrid />
-      <KursplanWidget />
+      <KursplanTeaser />
       <Suspense fallback={null}>
         <SpecialPrograms />
       </Suspense>
