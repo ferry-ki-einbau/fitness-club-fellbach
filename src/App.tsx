@@ -163,7 +163,7 @@ function Nav() {
 
 function Hero() {
   const SLIDES = [
-    { src: '/images/real-kraftbereich-hero-md.webp', srcSm: '/images/real-kraftbereich-hero-sm.webp', label: 'Freihantel' },
+    { src: '/images/real-freihantel-hero-md.webp', srcSm: '/images/real-freihantel-hero-sm.webp', label: 'Freihantel' },
     { src: '/images/real-egym-hero-md.webp', srcSm: '/images/real-egym-hero-sm.webp', label: 'EGYM' },
     { src: '/images/real-kursraum-1-hero-md.webp', srcSm: '/images/real-kursraum-1-hero-sm.webp', label: 'Kursraum' },
     { src: '/images/real-cardio-hero-md.webp', srcSm: '/images/real-cardio-hero-sm.webp', label: 'Cardio' },
