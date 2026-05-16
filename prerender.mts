@@ -10,7 +10,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const distDir = path.resolve(__dirname, 'dist')
 
 // Routes to prerender
-const routes = ['/', '/impressum', '/datenschutz', '/karriere']
+const routes = ['/', '/impressum', '/datenschutz', '/karriere', '/kuendigung']
 
 async function prerender() {
   // Read the built index.html as template

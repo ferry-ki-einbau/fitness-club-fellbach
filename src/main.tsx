@@ -7,6 +7,7 @@ import App from './App.tsx'
 const Impressum = lazy(() => import('./pages/Impressum.tsx'))
 const Datenschutz = lazy(() => import('./pages/Datenschutz.tsx'))
 const Karriere = lazy(() => import('./pages/Karriere.tsx'))
+const Kuendigung = lazy(() => import('./pages/Kuendigung.tsx'))
 
 const rootEl = document.getElementById('root')!
 
@@ -18,6 +19,7 @@ const app = (
         <Route path="/impressum" element={<Suspense fallback={null}><Impressum /></Suspense>} />
         <Route path="/datenschutz" element={<Suspense fallback={null}><Datenschutz /></Suspense>} />
         <Route path="/karriere" element={<Suspense fallback={null}><Karriere /></Suspense>} />
+        <Route path="/kuendigung" element={<Suspense fallback={null}><Kuendigung /></Suspense>} />
       </Routes>
     </BrowserRouter>
   </StrictMode>

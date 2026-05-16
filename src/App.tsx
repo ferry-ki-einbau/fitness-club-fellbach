@@ -808,7 +808,7 @@ function Footer() {
             <Logo size="md" variant="light" />
           </div>
           <div className="footer-links" style={{ display: 'flex', flexWrap: 'wrap', gap: 24 }}>
-            {[['Blog', '/blog/'], ['Datenschutz', '/datenschutz'], ['Impressum', '/impressum'], ['Karriere', '/karriere']].map(([l, h]) => (
+            {[['Blog', '/blog/'], ['Datenschutz', '/datenschutz'], ['Impressum', '/impressum'], ['Kündigung', '/kuendigung'], ['Karriere', '/karriere']].map(([l, h]) => (
               <a key={l} href={h}
                  style={{ fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#9A8470', textDecoration: 'none' }}>
                 {l}
