@@ -7,7 +7,7 @@ import MitgliedForm, { MitgliedButton } from './components/MitgliedForm'
 import LiveTicker from './components/LiveTicker'
 import GreekMeander from './components/GreekMeander'
 import Logo from './components/Logo'
-import StatementBanner from './components/StatementBanner'
+// import StatementBanner from './components/StatementBanner'
 import EgymSpotlight from './components/EgymSpotlight'
 import WellnessSpotlight from './components/WellnessSpotlight'
 import AddonsBand from './components/AddonsBand'
@@ -15,7 +15,7 @@ import TrainingsflaecheSpotlight from './components/TrainingsflaecheSpotlight'
 import KurseGrid from './components/KurseGrid'
 import WelcomeIntro from './components/WelcomeIntro'
 import TrainerSection from './components/TrainerSection'
-import StudioTour from './components/StudioTour'
+// import StudioTour from './components/StudioTour'
 import ScrollProgress from './components/ScrollProgress'
 import PullQuote from './components/PullQuote'
 import MouseSpotlight from './components/MouseSpotlight'
@@ -26,9 +26,9 @@ import TiltCard from './components/TiltCard'
 import useLenis from './hooks/useLenis'
 
 // Lazy-loaded — erst laden wenn gebraucht
-const ZielRechner = lazy(() => import('./components/ZielRechner'))
+// const ZielRechner = lazy(() => import('./components/ZielRechner'))
 const TrainingsplanSection = lazy(() => import('./components/TrainingsplanSection'))
-const TageszeitenSection = lazy(() => import('./components/TageszeitenSection'))
+// const TageszeitenSection = lazy(() => import('./components/TageszeitenSection'))
 const CommunityWall = lazy(() => import('./components/CommunityWall'))
 const SpecialPrograms = lazy(() => import('./components/SpecialPrograms'))
 const PhysioBridge = lazy(() => import('./components/PhysioBridge'))
@@ -168,9 +168,9 @@ function Nav() {
 function Hero() {
   const SLIDES = [
     { src: '/images/real-trainingsbereich-md.webp', srcSm: '/images/real-trainingsbereich-sm.webp', label: 'Training' },
-    { src: '/images/real-boxring-1-md.webp', srcSm: '/images/real-boxring-1-sm.webp', label: 'Box-Ring' },
+    { src: '/images/real-damen-umkleide-md.webp', srcSm: '/images/real-damen-umkleide-sm.webp', label: 'Damen-Lounge' },
     { src: '/images/real-cardio-md.webp', srcSm: '/images/real-cardio-sm.webp', label: 'Cardio' },
-    { src: '/images/real-wellness-area-md.webp', srcSm: '/images/real-wellness-area-sm.webp', label: 'Wellness' },
+    { src: '/images/real-damen-sauna-md.webp', srcSm: '/images/real-damen-sauna-sm.webp', label: 'Sauna' },
     { src: '/images/real-kursraum-1-md.webp', srcSm: '/images/real-kursraum-1-sm.webp', label: 'Kurse' },
   ]
   const [current, setCurrent] = useState(0)
@@ -276,7 +276,7 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.45 }}
             style={{ color: '#F0E5D5', fontSize: 'clamp(1rem, 1.3vw, 1.2rem)', lineHeight: 1.8, marginBottom: 44, maxWidth: 520, fontWeight: 400, textShadow: '0 1px 2px rgba(0,0,0,0.4)' }}>
-            Familienstudio seit über 25 Jahren. 1.500m², Sauna, Box-Ring, 30+ Kurse pro Woche — und ein Team, das dich beim Namen kennt.<br />
+            Familienstudio seit über 25 Jahren. 1.500m², Wellness, Sauna, 30+ Kurse pro Woche — und ein Team, das dich beim Namen kennt.<br />
             <span style={{ color: '#FFFFFF', fontWeight: 600 }}>Täglich 05–24 Uhr.</span> Ab <span style={{ color: '#FFFFFF', fontWeight: 600 }}>13,99€/Woche.</span>
           </motion.p>
 
@@ -334,7 +334,7 @@ function Hero() {
 }
 
 function Marquee() {
-  const items = ['Training', 'Wellness', 'Sauna', 'Kurse', 'BodyPump', 'Yoga', 'Cardio', 'Box-Ring', 'Pilates', 'EGYM', '24/7', 'Zirkeltraining', 'Fitness', 'Familienstudio', ]
+  const items = ['Training', 'Wellness', 'Sauna', 'Kurse', 'BodyPump', 'Yoga', 'Cardio', 'Spinning', 'Pilates', 'EGYM', '24/7', 'Zirkeltraining', 'Fitness', 'Familienstudio',]
   const doubled = [...items, ...items]
   return (
     <div style={{ overflow: 'hidden', borderTop: '1px solid var(--gray-border)', borderBottom: '1px solid var(--gray-border)', background: 'var(--gray-mid)', padding: '16px 0' }}>
@@ -784,7 +784,7 @@ function Contact() {
           </h2>
           <div className="reveal delay-2" style={{ display: 'flex', flexDirection: 'column', gap: 16, marginBottom: 32 }}>
             {[
-              { icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C44552" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>, text: 'Bruckstraße 61, 70736 Fellbach', href: 'https://maps.google.com/?q=Bruckstraße+61+Fellbach' },
+              { icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C44552" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>, text: 'Bruckstraße 61, 70734 Fellbach', href: 'https://maps.google.com/?q=Bruckstraße+61+Fellbach' },
               { icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C44552" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>, text: '+49 711 58 8654', href: 'tel:+49711588654' },
               { icon: <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C44552" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>, text: 'info@fitnessclubfellbach.de', href: 'mailto:info@fitnessclubfellbach.de' },
             ].map(({ icon, text, href }) => (
@@ -829,7 +829,7 @@ function Contact() {
       {/* Google Maps */}
       <div style={{ position: 'relative', height: 300, overflow: 'hidden', borderTop: '1px solid var(--gray-border)' }}>
         <iframe
-          src="https://maps.google.com/maps?q=Fitness+Club+Fellbach,+Bruckstraße+61,+70736+Fellbach&z=16&output=embed&hl=de"
+          src="https://maps.google.com/maps?q=Fitness+Club+Fellbach,+Bruckstraße+61,+70734+Fellbach&z=16&output=embed&hl=de"
           width="100%" height="100%"
           style={{ border: 'none', display: 'block', filter: 'invert(90%) hue-rotate(180deg) contrast(0.85) brightness(0.9)' }}
           loading="lazy"
@@ -880,7 +880,7 @@ function Footer() {
               </a>
             ))}
           </div>
-          <div style={{ fontSize: 11, color: '#5A6770', letterSpacing: '0.1em' }}>© 2026 Fitness Club GmbH</div>
+          <div style={{ fontSize: 11, color: '#5A6770', letterSpacing: '0.1em' }}>© 2026 Fitness & Sport GmbH</div>
         </div>
       </div>
     </footer>
@@ -913,14 +913,15 @@ export default function App() {
       <Nav />
       <Hero />
       <Marquee />
+      {/* 1. TRUST — Sofort Social Proof nach Hero */}
+      <Testimonials />
+      {/* 2. INTRO — Was ist der Club? */}
       <WelcomeIntro />
-      <StudioTour />
-      <StatementBanner />
+      {/* 3. BEREICHE — Was bekommt man? */}
       <div id="bereiche">
         <TrainingsflaecheSpotlight />
       </div>
       <EgymSpotlight />
-      <KurseGrid />
       <WellnessSpotlight />
       <PullQuote
         before="05:00 — 24:00 · Täglich"
@@ -928,20 +929,28 @@ export default function App() {
         highlight="kein Mensch"
         variant="dark"
       />
-      <Suspense fallback={null}>
-        <TageszeitenSection />
-      </Suspense>
-      <BigStats />
-      <Suspense fallback={null}>
-        <ZielRechner />
-      </Suspense>
+      {/* 4. GALERIE — Visueller Beweis */}
       <Gallery />
+      {/* 5. PREIS — Conversion-Zone */}
+      <PromoBand />
+      <Pricing />
+      <AddonsBand />
+      {/* 6. KURSE — Wöchentliches Angebot */}
+      <KurseGrid />
       <KursplanWidget />
+      {/* 7. TEAM & PROGRAMME */}
       <TrainerSection />
       <Suspense fallback={null}>
         <SpecialPrograms />
       </Suspense>
-      <AddonsBand />
+      <Suspense fallback={null}>
+        <TrainingsplanSection />
+      </Suspense>
+      {/* 8. STATS & COMMUNITY */}
+      <BigStats />
+      <Suspense fallback={null}>
+        <CommunityWall />
+      </Suspense>
       <PullQuote
         before="500+ Mitglieder · Fellbach"
         text="Manche kommen für die Geräte. Alle bleiben wegen der Menschen."
@@ -949,15 +958,7 @@ export default function App() {
         variant="light"
         bg="#F5F0E8"
       />
-      <PromoBand />
-      <Pricing />
-      <Suspense fallback={null}>
-        <TrainingsplanSection />
-      </Suspense>
-      <Testimonials />
-      <Suspense fallback={null}>
-        <CommunityWall />
-      </Suspense>
+      {/* 9. PHYSIO-BRIDGE */}
       <PullQuote
         before="Bruckstraße 61"
         text="Eine Tür weiter — eine ganze Welt weiter."
@@ -968,6 +969,7 @@ export default function App() {
       <Suspense fallback={null}>
         <PhysioBridge />
       </Suspense>
+      {/* 10. FAQ & KONTAKT */}
       <FAQ />
       <Contact />
       <Footer />

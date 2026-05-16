@@ -91,10 +91,10 @@ export default function TrainingsplanSection() {
 
           <div style={{ position: 'relative', overflow: 'hidden', zIndex: 1 }}>
             <motion.img
-              src="/images/real-personal-training-md.webp"
-              srcSet="/images/real-personal-training-sm.webp 600w, /images/real-personal-training-md.webp 1000w"
+              src="/images/real-trainingsbereich-md.webp"
+              srcSet="/images/real-trainingsbereich-sm.webp 600w, /images/real-trainingsbereich-md.webp 1000w"
               sizes="(max-width: 768px) 100vw, 50vw"
-              alt="Persönliches Training im Fitness Club Fellbach"
+              alt="Trainingsfläche im Fitness Club Fellbach"
               loading="lazy"
               style={{ width: '100%', display: 'block' }}
             />

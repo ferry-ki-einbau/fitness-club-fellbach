@@ -3,21 +3,21 @@ import SpotlightCard from './SpotlightCard'
 
 const programs = [
   {
-    img: 'real-personal-training',
+    img: 'real-egym',
     label: 'Personal Training',
     price: 'Auf Anfrage',
     headline: 'Plan auf dein Ziel',
     text: 'Zertifizierte Personaltrainer. Maßgeschneiderter Plan basierend auf wissenschaftlichen Methoden. Individuelle Betreuung, kontinuierliches Feedback.',
   },
   {
-    img: 'real-praevention',
+    img: 'real-functional',
     label: 'Präventionskurs',
     price: 'Add-On',
     headline: 'Beweglichkeit & Rücken',
     text: 'Verletzungen vorbeugen, Rückenbeschwerden lindern, Wohlbefinden steigern. Erfahrene Experten betreuen dich Schritt für Schritt.',
   },
   {
-    img: 'real-boxen-kurs',
+    img: 'real-boxring-1',
     label: 'Boxen',
     price: '69€ / Monat',
     headline: 'Box-Kurs mit Experten',
