@@ -266,8 +266,8 @@ function Hero() {
             <MitgliedButton variant="lime">
               <span>14 Tage gratis testen</span><span>→</span>
             </MitgliedButton>
-            <MagneticButton href="#tour" variant="outline">
-              <span>Studio Tour</span>
+            <MagneticButton href="tel:+49711588654" variant="outline">
+              <span>☎ Jetzt anrufen</span>
             </MagneticButton>
           </div>
 
