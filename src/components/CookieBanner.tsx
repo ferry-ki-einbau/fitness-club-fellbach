@@ -37,7 +37,7 @@ function grantConsent() {
 }
 
 // GTM ID — noch kein echtes GTM eingerichtet, Platzhalter
-const GTM_ID = 'GTM-XXXXXXX'
+const GTM_ID = 'GTM-K63PZNC'
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false)
