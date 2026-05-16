@@ -11,6 +11,7 @@ import TrainingsflaecheSpotlight from './components/TrainingsflaecheSpotlight'
 import KurseGrid from './components/KurseGrid'
 import WelcomeIntro from './components/WelcomeIntro'
 import ScrollProgress from './components/ScrollProgress'
+import CookieBanner from './components/CookieBanner'
 import PullQuote from './components/PullQuote'
 import MouseSpotlight from './components/MouseSpotlight'
 import MagneticNavLink from './components/MagneticNav'
@@ -815,6 +816,21 @@ function Footer() {
               </a>
             ))}
           </div>
+          {/* Social Icons */}
+          <div style={{ display: 'flex', gap: 16, alignItems: 'center' }}>
+            <a href="https://www.instagram.com/fitnessclubfellbach/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style={{ color: '#9A8470', transition: 'color 0.2s' }} onMouseEnter={e => (e.currentTarget.style.color = '#E15464')} onMouseLeave={e => (e.currentTarget.style.color = '#9A8470')}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="5" />
+                <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+            <a href="https://www.facebook.com/fitnessclubfellbach" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style={{ color: '#9A8470', transition: 'color 0.2s' }} onMouseEnter={e => (e.currentTarget.style.color = '#E15464')} onMouseLeave={e => (e.currentTarget.style.color = '#9A8470')}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+              </svg>
+            </a>
+          </div>
           <div style={{ fontSize: 11, color: '#5A6770', letterSpacing: '0.1em' }}>© 2026 Fitness & Sport GmbH</div>
         </div>
         <div style={{ textAlign: 'center', marginTop: 24, paddingTop: 16, borderTop: '1px solid var(--gray-border)' }}>
@@ -936,6 +952,8 @@ export default function App() {
         {mitgliedOpen && <MitgliedForm onClose={() => setMitgliedOpen(false)} />}
       </AnimatePresence>
 
+      {/* Cookie Consent Banner — DSGVO Pflicht */}
+      <CookieBanner />
     </>
   )
 }
