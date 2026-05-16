@@ -86,7 +86,8 @@ export default function BoxRingSpotlight() {
             marginBottom: 36,
             maxWidth: '52ch',
           }}>
-            Volle Boxring-Ausstattung im Trainingsbereich — selten in deutschen Studios.
+            Volle Boxring-Ausstattung im Trainingsbereich — in Kooperation mit der{' '}
+            <a href="https://boxschule-charlie.de/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'underline', textUnderlineOffset: '3px' }}>Boxschule Charlie</a>.
             Sparring, Boxtraining, Functional Drills. Alles unter einem Dach.
           </p>
 

@@ -6,7 +6,7 @@ const addons = [
   { name: 'Kurse', price: '2,99€/Wo', desc: 'Les Mills + alle Gruppenkurse' },
   { name: 'Wellness', price: '2,99€/Wo', desc: 'Sauna · Ruhebereich' },
   { name: 'EGYM Smart', price: 'Im All-In', desc: 'Daten-getrackte Geräte' },
-  { name: 'Boxen', price: '69€/Mo', desc: 'Kurs mit Boxexperten' },
+  { name: 'Boxen', price: '69€/Mo', desc: 'Boxschule Charlie · Kooperation' },
 ]
 
 export default function AddonsBand() {

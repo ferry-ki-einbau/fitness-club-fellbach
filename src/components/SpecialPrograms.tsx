@@ -11,10 +11,11 @@ const programs = [
   },
   {
     img: 'real-boxring-1',
-    label: 'Boxen',
+    label: 'Partner: Boxschule Charlie',
     price: '69€ / Monat',
-    headline: 'Box-Kurs mit Experten',
-    text: 'Schlagtechnik, Fußarbeit, Verteidigung. Anfänger bis Fortgeschrittene. Jede Trainingseinheit fordert dich neu.',
+    headline: 'Box-Kurs im Studio',
+    text: 'In Kooperation mit der Boxschule Charlie — Schlagtechnik, Fußarbeit, Verteidigung. Anfänger bis Fortgeschrittene.',
+    link: 'https://boxschule-charlie.de/',
   },
 ]
 
@@ -41,7 +42,7 @@ export default function SpecialPrograms() {
             Mehr als nur <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>Geräte.</span>
           </h2>
           <p style={{ color: '#3F2C2C', fontSize: 'clamp(1rem, 1.3vw, 1.15rem)', lineHeight: 1.65, maxWidth: 580 }}>
-            Über das normale Training hinaus — Präventionskurse und Box-Kurs mit erfahrenen Trainern.
+            Über das normale Training hinaus — Präventionskurse und Box-Kurs in Kooperation mit der Boxschule Charlie.
           </p>
         </div>
 
@@ -83,6 +84,13 @@ export default function SpecialPrograms() {
                   {p.headline}
                 </h3>
                 <p style={{ color: '#5A4040', fontSize: 14.5, lineHeight: 1.65 }}>{p.text}</p>
+                {'link' in p && p.link && (
+                  <a href={p.link} target="_blank" rel="noopener noreferrer" className="font-condensed" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, marginTop: 14, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--accent)', textDecoration: 'none', fontWeight: 600, transition: 'opacity 0.2s' }}
+                    onMouseEnter={e => (e.currentTarget.style.opacity = '0.7')}
+                    onMouseLeave={e => (e.currentTarget.style.opacity = '1')}>
+                    boxschule-charlie.de →
+                  </a>
+                )}
               </div>
             </SpotlightCard>
             </motion.article>
