@@ -11,7 +11,6 @@ import AddonsBand from './components/AddonsBand'
 import TrainingsflaecheSpotlight from './components/TrainingsflaecheSpotlight'
 import KurseGrid from './components/KurseGrid'
 import WelcomeIntro from './components/WelcomeIntro'
-import TrainerSection from './components/TrainerSection'
 import ScrollProgress from './components/ScrollProgress'
 import PullQuote from './components/PullQuote'
 import MouseSpotlight from './components/MouseSpotlight'
@@ -43,7 +42,7 @@ const GALLERY = [
   { src: '/images/real-pool-area-md.webp', srcSm: '/images/real-pool-area-sm.webp', label: 'Entspannungsraum', tag: '10' },
   { src: '/images/real-wellness-area-md.webp', srcSm: '/images/real-wellness-area-sm.webp', label: 'Wellness Lounge', tag: '11' },
   // Lounge & Eingang
-  { src: '/images/real-damen-umkleide-md.webp', srcSm: '/images/real-damen-umkleide-sm.webp', label: 'Damen-Lounge', tag: '12' },
+  { src: '/images/real-damen-umkleide-md.webp', srcSm: '/images/real-damen-umkleide-sm.webp', label: 'Empfangsbereich', tag: '12' },
   { src: '/images/real-eingang-md.webp', srcSm: '/images/real-eingang-sm.webp', label: 'Theke & Bar', tag: '13' },
 ]
 
@@ -944,7 +943,6 @@ export default function App() {
       <KurseGrid />
       <KursplanWidget />
       {/* 7. TEAM & PROGRAMME */}
-      <TrainerSection />
       <Suspense fallback={null}>
         <SpecialPrograms />
       </Suspense>

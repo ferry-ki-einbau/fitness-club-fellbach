@@ -93,7 +93,7 @@ const BENEFITS = [
   { icon: '03', title: 'Flexible Zeiten', desc: 'Wir passen Schichten an dein Leben an. Studium, Familie, Hobbys — geht alles.' },
   { icon: '04', title: 'Weiterbildung', desc: 'Wir investieren in dich. Lizenzen, Workshops, Zertifizierungen auf unsere Kosten.' },
   { icon: '05', title: 'Top-Ausstattung', desc: 'EGYM, Precor, Functional Area, Boxring — du arbeitest mit dem Besten.' },
-  { icon: '06', title: 'Fellbach Zentral', desc: 'Bruckstraße 61. Bus und Bahn vor der Tür, Parkplätze vorhanden.' },
+  { icon: '06', title: 'Fellbach Zentral', desc: 'Bruckstraße 61. Bushaltestelle ca. 4 Min. zu Fuß, kostenlose Parkplätze direkt vor der Tür.' },
 ]
 
 function PositionCard({ position, index }: { position: Position; index: number }) {

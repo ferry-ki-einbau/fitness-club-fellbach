@@ -3,13 +3,6 @@ import SpotlightCard from './SpotlightCard'
 
 const programs = [
   {
-    img: 'real-egym',
-    label: 'Personal Training',
-    price: 'Auf Anfrage',
-    headline: 'Plan auf dein Ziel',
-    text: 'Zertifizierte Personaltrainer. Maßgeschneiderter Plan basierend auf wissenschaftlichen Methoden. Individuelle Betreuung, kontinuierliches Feedback.',
-  },
-  {
     img: 'real-functional',
     label: 'Präventionskurs',
     price: 'Add-On',
@@ -48,12 +41,12 @@ export default function SpecialPrograms() {
             Mehr als nur <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>Geräte.</span>
           </h2>
           <p style={{ color: '#3F2C2C', fontSize: 'clamp(1rem, 1.3vw, 1.15rem)', lineHeight: 1.65, maxWidth: 580 }}>
-            Über das normale Training hinaus — 1-zu-1 Personal Training, Präventionskurse und Box-Kurs.
+            Über das normale Training hinaus — Präventionskurse und Box-Kurs mit erfahrenen Trainern.
           </p>
         </div>
 
         {/* Grid */}
-        <div className="programs-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 'clamp(16px, 2.5vw, 28px)' }}>
+        <div className="programs-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 'clamp(16px, 2.5vw, 28px)', maxWidth: 900 }}>
           {programs.map((p, i) => (
             <motion.article
               key={p.label}
