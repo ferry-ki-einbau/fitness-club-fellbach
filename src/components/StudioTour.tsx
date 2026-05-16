@@ -38,17 +38,9 @@ const zones = [
     id: 'sauna',
     label: 'Sauna',
     img: 'real-wellness-area',
-    headline: 'Sauna & Whirlpool',
-    text: 'Finnische Sauna, Whirlpool und Ruheraum. Frei wählbar 05:00 bis 24:00 Uhr.',
-    stats: ['Sauna', 'Whirlpool', 'Ruheraum'],
-  },
-  {
-    id: 'whirlpool',
-    label: 'Whirlpool',
-    img: 'real-pool-area',
-    headline: 'Whirlpool',
-    text: 'Heißer Whirlpool für die müden Muskeln. Direkt im Wellness-Bereich neben der Sauna.',
-    stats: ['Whirlpool', 'Ruheraum'],
+    headline: 'Sauna & Wellness',
+    text: 'Finnische Sauna und Ruhebereich. Frei wählbar 05:00 bis 24:00 Uhr — Erholung nach dem Training.',
+    stats: ['Sauna', 'Ruhebereich', 'Wellness'],
   },
 ]
 

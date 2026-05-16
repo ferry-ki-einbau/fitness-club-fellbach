@@ -1,8 +1,8 @@
 import { motion } from 'framer-motion'
 
 /**
- * Wellness section — Sauna + Pool als editorial Doppel-Layout.
- * Saunazeiten 05–24h, Pool exklusiv.
+ * Wellness section — Sauna als editorial Layout.
+ * Saunazeiten 05–24h.
  */
 export default function WellnessSpotlight() {
   return (
@@ -27,7 +27,7 @@ export default function WellnessSpotlight() {
             Nach dem Schweiß <span style={{ fontStyle: 'italic', color: 'var(--accent-bright)' }}>die Stille.</span>
           </h2>
           <p style={{ color: '#B5A99A', fontSize: 'clamp(1rem, 1.3vw, 1.15rem)', lineHeight: 1.65, maxWidth: 600 }}>
-            Sauna, Whirlpool, 7 Tage die Woche, rund um die Uhr.
+            Sauna, 7 Tage die Woche, von 05:00 bis 24:00 Uhr.
             Das Saunabad aktiviert dein Immunsystem, der Wechsel von Wärme und Kälte trainiert Herz-Kreislauf.
           </p>
         </div>
@@ -36,7 +36,7 @@ export default function WellnessSpotlight() {
         <div className="wellness-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(16px, 2.5vw, 36px)' }}>
           {[
             { src: 'real-wellness-area', label: 'Sauna-Oase', sub: '05:00 – 24:00 · Frei wählbar', tag: '01' },
-            { src: 'real-pool-area', label: 'Whirlpool', sub: 'Entspannung pur', tag: '02' },
+            { src: 'real-wellness-area', label: 'Ruhebereich', sub: 'Entspannung nach dem Training', tag: '02' },
           ].map((it, i) => (
             <motion.div
               key={it.src}

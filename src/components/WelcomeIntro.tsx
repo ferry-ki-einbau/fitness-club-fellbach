@@ -52,7 +52,7 @@ export default function WelcomeIntro() {
             marginBottom: 48,
             fontWeight: 400,
           }}>
-            Familiäre Atmosphäre. Trainer, die deinen Namen kennen. Saubere Geräte, Sauna und Whirlpool.
+            Familiäre Atmosphäre. Trainer, die deinen Namen kennen. Saubere Geräte und Sauna.
             <br /><br />
             Über <span style={{ color: '#0F1419', fontWeight: 600 }}>200 Mitglieder</span> vertrauen uns — viele schon seit Jahren.
             <span style={{ color: '#0F1419', fontWeight: 600 }}> Komm vorbei, wann du willst</span> — wir freuen uns auf dich.

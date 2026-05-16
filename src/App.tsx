@@ -40,7 +40,7 @@ const GALLERY = [
   { src: '/images/real-cardio-md.webp', srcSm: '/images/real-cardio-sm.webp', label: 'Cardio', tag: '03' },
   { src: '/images/real-geraete-md.webp', srcSm: '/images/real-geraete-sm.webp', label: 'Krafttraining', tag: '04' },
   { src: '/images/real-kursraum-1-md.webp', srcSm: '/images/real-kursraum-1-sm.webp', label: 'Kursraum', tag: '05' },
-  { src: '/images/real-pool-area-md.webp', srcSm: '/images/real-pool-area-sm.webp', label: 'Whirlpool', tag: '06' },
+  { src: '/images/real-wellness-area-md.webp', srcSm: '/images/real-wellness-area-sm.webp', label: 'Wellness', tag: '06' },
   { src: '/images/real-wellness-area-md.webp', srcSm: '/images/real-wellness-area-sm.webp', label: 'Sauna & Wellness', tag: '07' },
   { src: '/images/real-eingang-md.webp', srcSm: '/images/real-eingang-sm.webp', label: 'Eingang', tag: '08' },
 ]
@@ -328,7 +328,7 @@ function Hero() {
 }
 
 function Marquee() {
-  const items = ['Training', 'Wellness', 'Sauna', 'Kurse', 'BodyPump', 'Yoga', 'Cardio', 'Box-Ring', 'Pilates', 'EGYM', '24/7', 'Zirkeltraining', 'Fitness', 'Whirlpool', ]
+  const items = ['Training', 'Wellness', 'Sauna', 'Kurse', 'BodyPump', 'Yoga', 'Cardio', 'Box-Ring', 'Pilates', 'EGYM', '24/7', 'Zirkeltraining', 'Fitness', 'Familienstudio', ]
   const doubled = [...items, ...items]
   return (
     <div style={{ overflow: 'hidden', borderTop: '1px solid var(--gray-border)', borderBottom: '1px solid var(--gray-border)', background: 'var(--gray-mid)', padding: '16px 0' }}>
