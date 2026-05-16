@@ -887,6 +887,14 @@ function Footer() {
           </div>
           <div style={{ fontSize: 11, color: '#5A6770', letterSpacing: '0.1em' }}>© 2026 Fitness & Sport GmbH</div>
         </div>
+        <div style={{ textAlign: 'center', marginTop: 24, paddingTop: 16, borderTop: '1px solid var(--gray-border)' }}>
+          <a href="https://ferryemirer.de" target="_blank" rel="noopener noreferrer" style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#4A5568', textDecoration: 'none', transition: 'color 0.2s' }}
+            onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent)')}
+            onMouseLeave={e => (e.currentTarget.style.color = '#4A5568')}
+          >
+            Design & Entwicklung — ferryemirer.de
+          </a>
+        </div>
       </div>
     </footer>
   )
@@ -895,10 +903,14 @@ function Footer() {
 export default function App() {
   useReveal()
   const [pastHero, setPastHero] = useState(false)
+  const [nearFooter, setNearFooter] = useState(false)
   const [mitgliedOpen, setMitgliedOpen] = useState(false)
 
   useEffect(() => {
-    const fn = () => setPastHero(window.scrollY > window.innerHeight * 0.8)
+    const fn = () => {
+      setPastHero(window.scrollY > window.innerHeight * 0.8)
+      setNearFooter(window.scrollY + window.innerHeight > document.body.scrollHeight - 300)
+    }
     window.addEventListener('scroll', fn, { passive: true })
     return () => window.removeEventListener('scroll', fn)
   }, [])
@@ -980,7 +992,7 @@ export default function App() {
       <div className="mobile-sticky-bar" style={{
         position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 100,
         gap: 1, boxShadow: '0 -4px 24px rgba(0,0,0,0.4)',
-        transform: pastHero ? 'translateY(0)' : 'translateY(100%)',
+        transform: pastHero && !nearFooter ? 'translateY(0)' : 'translateY(100%)',
         transition: 'transform 0.35s cubic-bezier(0.16,1,0.3,1)',
       }}>
         <a href="tel:+49711588654" style={{
