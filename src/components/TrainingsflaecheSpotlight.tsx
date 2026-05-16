@@ -75,7 +75,7 @@ export default function TrainingsflaecheSpotlight() {
             lineHeight: 1.65, marginBottom: 36, maxWidth: '54ch',
           }}>
             Großzügige Trainingsfläche mit allem was du brauchst — Ausdauer, Kraft, funktionelles Training.
-            <span style={{ color: '#0F1419', fontWeight: 500 }}> Modernste Geräte</span>, viel Platz, kein Drängeln.
+            <span style={{ color: '#0F1419', fontWeight: 500 }}> Kurzhanteln von 1 bis 70kg</span>, modernste Geräte, viel Platz, kein Drängeln.
             Egal ob 5 Uhr morgens oder 23 Uhr abends — wir sind offen.
           </p>
 
@@ -83,8 +83,8 @@ export default function TrainingsflaecheSpotlight() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24, marginTop: 40, paddingTop: 32, borderTop: '1px solid rgba(26, 15, 15, 0.15)' }}>
             {[
               ['Cardio', 'Laufband · Crosstrainer · Bike'],
-              ['Kraft', 'Maschinen · Free Weights · Racks'],
-              ['Functional', 'Battle Ropes · TRX · Mobility'],
+              ['Kraft', 'Kurzhanteln 1–70kg · Racks · Maschinen'],
+              ['Functional', 'Kettlebells · TRX · Mobility'],
             ].map(([n, l]) => (
               <div key={n}>
                 <div className="font-display" style={{ fontSize: 18, fontWeight: 700, color: 'var(--accent)', lineHeight: 1, letterSpacing: '-0.01em', marginBottom: 8 }}>{n}</div>

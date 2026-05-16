@@ -434,19 +434,23 @@ function Pricing() {
   return (
     <section id="preise" style={{ background: '#0F1419', padding: 'clamp(80px, 12vh, 160px) 0' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 clamp(16px, 4vw, 48px)' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
-          <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
-          <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Mitgliedschaft</span>
+        <div style={{ textAlign: 'center', marginBottom: 48 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14, justifyContent: 'center', marginBottom: 24 }}>
+            <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
+            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Mitgliedschaft</span>
+            <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
+          </div>
+          <h2 className="font-display" style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800, letterSpacing: '-0.025em', marginBottom: 16, textTransform: 'uppercase', color: '#F5F0E8', lineHeight: 0.95 }}>
+            Dein Plan. <span style={{ color: 'var(--accent-bright)', fontStyle: 'italic' }}>Dein Preis.</span>
+          </h2>
+          <p style={{ color: '#9A8470', fontSize: 15, lineHeight: 1.7, maxWidth: 540, marginInline: 'auto' }}>
+            Echte Preise. Keine Tricks. 14 Tage testen — voller Erstattung wenn's nicht passt.
+          </p>
         </div>
-        <h2 className="font-display" style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800, letterSpacing: '-0.025em', marginBottom: 16, textTransform: 'uppercase', color: '#F5F0E8', lineHeight: 0.95 }}>
-          Dein Plan. <span style={{ color: 'var(--accent-bright)', fontStyle: 'italic' }}>Dein Preis.</span>
-        </h2>
-        <p style={{ color: '#9A8470', fontSize: 15, lineHeight: 1.7, marginBottom: 48, maxWidth: 540 }}>
-          Echte Preise. Keine Tricks. 14 Tage testen — voller Erstattung wenn's nicht passt.
-        </p>
 
         {/* Term tabs */}
-        <div className="pricing-tabs" style={{ display: 'inline-flex', gap: 4, padding: 4, background: 'rgba(58, 32, 32, 0.4)', border: '1px solid rgba(184, 146, 74, 0.2)', marginBottom: 48 }}>
+        <div style={{ textAlign: 'center', marginBottom: 48 }}>
+        <div className="pricing-tabs" style={{ display: 'inline-flex', gap: 4, padding: 4, background: 'rgba(58, 32, 32, 0.4)', border: '1px solid rgba(184, 146, 74, 0.2)' }}>
           {(['12', '24'] as const).map(t => (
             <button
               key={t}
@@ -469,8 +473,9 @@ function Pricing() {
             </button>
           ))}
         </div>
+        </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 20, maxWidth: 800 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 20, maxWidth: 760, margin: '0 auto' }}>
           {plans.map((plan, i) => {
             return (
               <TiltCard key={plan.key} intensity={6} style={{ display: 'flex' }}>
