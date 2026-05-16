@@ -2,10 +2,10 @@ import { motion } from 'framer-motion'
 import { useRef } from 'react'
 
 const STEPS = [
-  { no: '01', title: 'Erstgespräch', text: 'Marcel fragt nach deinem Ziel, deiner Ausgangslage, deiner Zeit. 15 Minuten — kein Bullshit.' },
+  { no: '01', title: 'Erstgespräch', text: 'Wir fragen nach deinem Ziel, deiner Ausgangslage, deiner Zeit. 15 Minuten — kein Bullshit.' },
   { no: '02', title: 'Dein Plan', text: 'Übungen, Sets, Gewichte, Reihenfolge. Auf dich zugeschnitten — nicht aus dem Internet kopiert.' },
-  { no: '03', title: 'Erste Einheit', text: 'Gemeinsam. Marcel zeigt dir die Geräte, korrigiert die Form, erklärt das Warum.' },
-  { no: '04', title: 'Du trainierst', text: 'Mit Plan. Mit Ziel. Wann du willst — 05:00 bis 24:00. Wir sind da wenn du uns brauchst.' },
+  { no: '03', title: 'Erste Einheit', text: 'Gemeinsam. Unser Team zeigt dir die Geräte, korrigiert die Form, erklärt das Warum.' },
+  { no: '04', title: 'Du trainierst', text: 'Mit Plan. Mit Ziel. Wann du willst — 05:00 bis 24:00. Unser Team ist da wenn du es brauchst.' },
 ]
 
 export default function TrainingsplanSection() {
@@ -44,7 +44,7 @@ export default function TrainingsplanSection() {
             <p style={{ fontSize: 'clamp(1.1rem, 1.5vw, 1.3rem)', color: '#C9BFB3', lineHeight: 1.75, maxWidth: '48ch', marginBottom: 48 }}>
               Kein Generic-Plan aus dem Internet. Kein 08/15 Anfänger-PDF.
               <br /><br />
-              Marcel sitzt mit dir hin, fragt was dein Ziel ist — und baut dir deinen persönlichen Trainingsplan. <span style={{ color: '#F5F0E8', fontWeight: 600 }}>Ab dem ersten Tag als Mitglied.</span>
+              Wir setzen uns mit dir hin, fragen was dein Ziel ist — und bauen dir deinen persönlichen Trainingsplan. <span style={{ color: '#F5F0E8', fontWeight: 600 }}>Ab dem ersten Tag als Mitglied.</span>
             </p>
 
             {/* Steps */}
@@ -91,10 +91,10 @@ export default function TrainingsplanSection() {
 
           <div style={{ position: 'relative', overflow: 'hidden', zIndex: 1 }}>
             <motion.img
-              src="/images/real-trainingsbereich-md.webp"
-              srcSet="/images/real-trainingsbereich-sm.webp 600w, /images/real-trainingsbereich-md.webp 1000w"
+              src="/images/real-kraftbereich-md.webp"
+              srcSet="/images/real-kraftbereich-sm.webp 600w, /images/real-kraftbereich-md.webp 1000w"
               sizes="(max-width: 768px) 100vw, 50vw"
-              alt="Trainingsfläche im Fitness Club Fellbach"
+              alt="Kraftbereich im Fitness Club Fellbach"
               loading="lazy"
               style={{ width: '100%', display: 'block' }}
             />
@@ -105,7 +105,7 @@ export default function TrainingsplanSection() {
             <div style={{ position: 'absolute', bottom: 24, left: 24, padding: '12px 20px', background: 'rgba(15,20,25,0.9)', backdropFilter: 'blur(12px)', border: '1px solid rgba(196,69,82,0.3)' }}>
               <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: '#C44552', marginBottom: 2 }}>Inklusive</div>
               <div className="font-display" style={{ fontSize: 16, fontWeight: 700, color: '#F5F0E8', textTransform: 'uppercase' }}>Persönlicher Trainingsplan</div>
-              <div style={{ fontSize: 11, color: '#9A8878', marginTop: 2 }}>Von Marcel · Kostenlos ab Tag 1</div>
+              <div style={{ fontSize: 11, color: '#9A8878', marginTop: 2 }}>Vom Team · Kostenlos ab Tag 1</div>
             </div>
           </div>
         </motion.div>

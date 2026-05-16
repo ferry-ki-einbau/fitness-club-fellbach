@@ -1,13 +1,10 @@
 import { useEffect, useState, lazy, Suspense } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import './index.css'
-import Preloader from './components/Preloader'
 import MagneticButton from './components/MagneticButton'
 import MitgliedForm, { MitgliedButton } from './components/MitgliedForm'
 import LiveTicker from './components/LiveTicker'
-import GreekMeander from './components/GreekMeander'
 import Logo from './components/Logo'
-// import StatementBanner from './components/StatementBanner'
 import EgymSpotlight from './components/EgymSpotlight'
 import WellnessSpotlight from './components/WellnessSpotlight'
 import AddonsBand from './components/AddonsBand'
@@ -15,18 +12,14 @@ import TrainingsflaecheSpotlight from './components/TrainingsflaecheSpotlight'
 import KurseGrid from './components/KurseGrid'
 import WelcomeIntro from './components/WelcomeIntro'
 import TrainerSection from './components/TrainerSection'
-// import StudioTour from './components/StudioTour'
 import ScrollProgress from './components/ScrollProgress'
 import PullQuote from './components/PullQuote'
 import MouseSpotlight from './components/MouseSpotlight'
 import BigStats from './components/BigStats'
 import MagneticNavLink from './components/MagneticNav'
-import ScrambleHeadline from './components/ScrambleHeadline'
 import TiltCard from './components/TiltCard'
-import useLenis from './hooks/useLenis'
 
-// Lazy-loaded — erst laden wenn gebraucht
-// const ZielRechner = lazy(() => import('./components/ZielRechner'))
+// Lazy-loaded
 const TrainingsplanSection = lazy(() => import('./components/TrainingsplanSection'))
 // const TageszeitenSection = lazy(() => import('./components/TageszeitenSection'))
 const CommunityWall = lazy(() => import('./components/CommunityWall'))
@@ -35,20 +28,23 @@ const PhysioBridge = lazy(() => import('./components/PhysioBridge'))
 
 
 const GALLERY = [
-  { src: '/images/real-boxring-1-md.webp', srcSm: '/images/real-boxring-1-sm.webp', label: 'Boxring', tag: '01' },
-  { src: '/images/real-trainingsbereich-md.webp', srcSm: '/images/real-trainingsbereich-sm.webp', label: 'EGYM Zirkel', tag: '02' },
-  { src: '/images/real-freihantel-md.webp', srcSm: '/images/real-freihantel-sm.webp', label: 'Freihantelbereich', tag: '03' },
-  { src: '/images/real-cardio-md.webp', srcSm: '/images/real-cardio-sm.webp', label: 'Cardio', tag: '04' },
-  { src: '/images/real-spinning-md.webp', srcSm: '/images/real-spinning-sm.webp', label: 'Spinning', tag: '05' },
+  // Geräte & Training zuerst
+  { src: '/images/real-egym-md.webp', srcSm: '/images/real-egym-sm.webp', label: 'EGYM Zirkel', tag: '01' },
+  { src: '/images/real-kraftbereich-md.webp', srcSm: '/images/real-kraftbereich-sm.webp', label: 'Kraftbereich', tag: '02' },
+  { src: '/images/real-cardio-md.webp', srcSm: '/images/real-cardio-sm.webp', label: 'Cardio', tag: '03' },
+  { src: '/images/real-spinning-md.webp', srcSm: '/images/real-spinning-sm.webp', label: 'Spinning', tag: '04' },
+  // Functional & Kurse
+  { src: '/images/real-functional-md.webp', srcSm: '/images/real-functional-sm.webp', label: 'Functional Area', tag: '05' },
   { src: '/images/real-kursraum-1-md.webp', srcSm: '/images/real-kursraum-1-sm.webp', label: 'Kursraum', tag: '06' },
-  { src: '/images/real-functional-md.webp', srcSm: '/images/real-functional-sm.webp', label: 'Functional Area', tag: '07' },
-  { src: '/images/real-geraete-md.webp', srcSm: '/images/real-geraete-sm.webp', label: 'Krafttraining', tag: '08' },
-  { src: '/images/real-damen-umkleide-md.webp', srcSm: '/images/real-damen-umkleide-sm.webp', label: 'Damen-Lounge', tag: '09' },
-  { src: '/images/real-wellness-area-md.webp', srcSm: '/images/real-wellness-area-sm.webp', label: 'Wellness Lounge', tag: '10' },
-  { src: '/images/real-sauna-md.webp', srcSm: '/images/real-sauna-sm.webp', label: 'Gemischte Sauna', tag: '11' },
-  { src: '/images/real-damen-sauna-md.webp', srcSm: '/images/real-damen-sauna-sm.webp', label: 'Damen-Sauna', tag: '12' },
-  { src: '/images/real-pool-area-md.webp', srcSm: '/images/real-pool-area-sm.webp', label: 'Entspannungsraum', tag: '13' },
-  { src: '/images/real-eingang-md.webp', srcSm: '/images/real-eingang-sm.webp', label: 'Theke & Bar', tag: '14' },
+  { src: '/images/real-boxring-1-md.webp', srcSm: '/images/real-boxring-1-sm.webp', label: 'Boxring', tag: '07' },
+  // Wellness & Sauna
+  { src: '/images/real-damen-sauna-md.webp', srcSm: '/images/real-damen-sauna-sm.webp', label: 'Damen-Sauna', tag: '08' },
+  { src: '/images/real-sauna-md.webp', srcSm: '/images/real-sauna-sm.webp', label: 'Gemischte Sauna', tag: '09' },
+  { src: '/images/real-pool-area-md.webp', srcSm: '/images/real-pool-area-sm.webp', label: 'Entspannungsraum', tag: '10' },
+  { src: '/images/real-wellness-area-md.webp', srcSm: '/images/real-wellness-area-sm.webp', label: 'Wellness Lounge', tag: '11' },
+  // Lounge & Eingang
+  { src: '/images/real-damen-umkleide-md.webp', srcSm: '/images/real-damen-umkleide-sm.webp', label: 'Damen-Lounge', tag: '12' },
+  { src: '/images/real-eingang-md.webp', srcSm: '/images/real-eingang-sm.webp', label: 'Theke & Bar', tag: '13' },
 ]
 
 function useReveal() {
@@ -167,11 +163,11 @@ function Nav() {
 
 function Hero() {
   const SLIDES = [
-    { src: '/images/real-trainingsbereich-md.webp', srcSm: '/images/real-trainingsbereich-sm.webp', label: 'Training' },
-    { src: '/images/real-damen-umkleide-md.webp', srcSm: '/images/real-damen-umkleide-sm.webp', label: 'Damen-Lounge' },
-    { src: '/images/real-cardio-md.webp', srcSm: '/images/real-cardio-sm.webp', label: 'Cardio' },
-    { src: '/images/real-damen-sauna-md.webp', srcSm: '/images/real-damen-sauna-sm.webp', label: 'Sauna' },
-    { src: '/images/real-kursraum-1-md.webp', srcSm: '/images/real-kursraum-1-sm.webp', label: 'Kurse' },
+    { src: '/images/real-cardio-hero-md.webp', srcSm: '/images/real-cardio-hero-sm.webp', label: 'Cardio' },
+    { src: '/images/real-egym-hero-md.webp', srcSm: '/images/real-egym-hero-sm.webp', label: 'EGYM' },
+    { src: '/images/real-kraftbereich-hero-md.webp', srcSm: '/images/real-kraftbereich-hero-sm.webp', label: 'Kraftbereich' },
+    { src: '/images/real-spinning-hero-md.webp', srcSm: '/images/real-spinning-hero-sm.webp', label: 'Spinning' },
+    { src: '/images/real-kursraum-1-hero-md.webp', srcSm: '/images/real-kursraum-1-hero-sm.webp', label: 'Kurse' },
   ]
   const [current, setCurrent] = useState(0)
   const [prev, setPrev] = useState<number | null>(null)
@@ -211,25 +207,20 @@ function Hero() {
             fetchPriority={i === 0 ? 'high' : 'low'}
             decoding="async"
             loading={i === 0 ? 'eager' : 'lazy'}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', filter: 'contrast(1.02) brightness(0.95) saturate(1.05)' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 55%' }}
           />
         </div>
       ))}
 
-      {/* Gradients */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(180deg, rgba(15,20,25,0.5) 0%, rgba(15,20,25,0.2) 40%, rgba(15,20,25,0.6) 80%, rgba(15,20,25,0.97) 100%)', pointerEvents: 'none' }} />
-      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(90deg, rgba(15,20,25,0.8) 0%, rgba(15,20,25,0.3) 60%, transparent 100%)', pointerEvents: 'none' }} />
-
-      {/* Greek meander */}
-      <div style={{ position: 'absolute', inset: 0, zIndex: 3, pointerEvents: 'none', opacity: 0.5 }}>
-        <GreekMeander />
-      </div>
+      {/* Left gradient — text readability on left, image visible on right */}
+      <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(90deg, rgba(15,20,25,0.85) 0%, rgba(15,20,25,0.6) 30%, rgba(15,20,25,0.2) 55%, transparent 75%)', pointerEvents: 'none' }} />
+      {/* Top vignette for nav readability */}
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '15%', zIndex: 2, background: 'linear-gradient(180deg, rgba(15,20,25,0.5) 0%, transparent 100%)', pointerEvents: 'none' }} />
+      {/* Bottom fade into next section */}
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '20%', zIndex: 2, background: 'linear-gradient(180deg, transparent 0%, rgba(15,20,25,0.85) 100%)', pointerEvents: 'none' }} />
 
       {/* Google Badge */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 1.2 }}
+      <div
         className="hero-google-badge"
         style={{ position: 'absolute', top: 90, right: 'clamp(20px,5vw,80px)', zIndex: 11 }}
       >
@@ -246,44 +237,30 @@ function Hero() {
             <span>200+ Bewertungen</span>
           </span>
         </div>
-      </motion.div>
+      </div>
 
       {/* Content */}
       <div style={{ position: 'relative', zIndex: 10, maxWidth: 1440, margin: '0 auto', padding: 'clamp(100px,14vh,160px) clamp(20px,5vw,80px) clamp(80px,10vh,120px)', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={{ maxWidth: 700 }}>
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 1.25 }}
-            style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 }}>
             <span style={{ width: 48, height: 1, background: '#B8924A' }} />
             <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.55em', textTransform: 'uppercase', color: '#B8924A', fontWeight: 600 }}>Bruckstraße 61 · Fellbach</span>
-          </motion.div>
+          </div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.35, ease: [0.16, 1, 0.3, 1] }}
+          <h1
             className="font-display"
             style={{ fontSize: 'clamp(2.8rem, 9vw, 7.5rem)', fontWeight: 800, lineHeight: 0.95, letterSpacing: '-0.03em', margin: '0 0 28px', color: '#F5F0E8', textTransform: 'uppercase' }}>
-            <ScrambleHeadline text="HIER KENNT MAN" delay={1600} style={{ display: 'block' }} className="font-display" /><br />
+            HIER KENNT MAN<br />
             <span style={{ color: 'var(--accent-bright)', fontStyle: 'italic' }}>deinen</span>{' '}
-            <ScrambleHeadline text="NAMEN." delay={1900} style={{ display: 'inline' }} className="font-display" />
-          </motion.h1>
+            NAMEN.
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.45 }}
-            style={{ color: '#F0E5D5', fontSize: 'clamp(1rem, 1.3vw, 1.2rem)', lineHeight: 1.8, marginBottom: 44, maxWidth: 520, fontWeight: 400, textShadow: '0 1px 2px rgba(0,0,0,0.4)' }}>
+          <p style={{ color: '#F0E5D5', fontSize: 'clamp(1rem, 1.3vw, 1.2rem)', lineHeight: 1.8, marginBottom: 44, maxWidth: 520, fontWeight: 400, textShadow: '0 1px 2px rgba(0,0,0,0.4)' }}>
             Familienstudio seit über 25 Jahren. 1.500m², Wellness, Sauna, 30+ Kurse pro Woche — und ein Team, das dich beim Namen kennt.<br />
             <span style={{ color: '#FFFFFF', fontWeight: 600 }}>Täglich 05–24 Uhr.</span> Ab <span style={{ color: '#FFFFFF', fontWeight: 600 }}>13,99€/Woche.</span>
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.55 }}
+          <div
             className="hero-cta-group"
             style={{ display: 'flex', flexWrap: 'wrap', gap: 14, marginBottom: 56 }}>
             <MitgliedButton variant="lime">
@@ -292,20 +269,16 @@ function Hero() {
             <MagneticButton href="#tour" variant="outline">
               <span>Studio Tour</span>
             </MagneticButton>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1.7 }}
-            style={{ display: 'flex', flexWrap: 'wrap', gap: 'clamp(28px,4vw,56px)', paddingTop: 28, borderTop: '1px solid rgba(184, 146, 74, 0.2)' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'clamp(28px,4vw,56px)', paddingTop: 28, borderTop: '1px solid rgba(184, 146, 74, 0.2)' }}>
             {[['24/7', 'geöffnet'], ['8', 'Bereiche'], ['500+', 'Mitglieder'], ['14', 'Tage gratis']].map(([n, l]) => (
               <div key={l}>
                 <div className="font-display" style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)', fontWeight: 700, color: '#B8924A', lineHeight: 1, letterSpacing: '-0.02em' }}>{n}</div>
                 <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#9A8470', marginTop: 6 }}>{l}</div>
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
 
         {/* Slide indicators */}
@@ -889,7 +862,6 @@ function Footer() {
 
 export default function App() {
   useReveal()
-  useLenis()
   const [pastHero, setPastHero] = useState(false)
   const [mitgliedOpen, setMitgliedOpen] = useState(false)
 
@@ -906,7 +878,6 @@ export default function App() {
   }, [])
   return (
     <>
-      <Preloader />
       <ScrollProgress />
       <MouseSpotlight />
       <LiveTicker />

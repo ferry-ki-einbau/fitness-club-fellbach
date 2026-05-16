@@ -882,7 +882,7 @@ function Step4({ data, onClose }: { data: FormData; onClose: () => void }) {
           Willkommen im<br />Fitness Club Fellbach!
         </h2>
         <p style={{ color: C.muted, fontSize: 14, lineHeight: 1.7, maxWidth: 400, margin: '0 auto' }}>
-          Wir haben deine Anmeldung erhalten. Marcel meldet sich innerhalb von <strong style={{ color: C.cream }}>24 Stunden</strong> bei dir.
+          Wir haben deine Anmeldung erhalten. Unser Team meldet sich innerhalb von <strong style={{ color: C.cream }}>24 Stunden</strong> bei dir.
         </p>
       </div>
 
