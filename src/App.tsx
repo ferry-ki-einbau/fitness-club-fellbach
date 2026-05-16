@@ -188,7 +188,7 @@ function Hero() {
   }
 
   return (
-    <section data-hero style={{ position: 'relative', minHeight: '100vh', overflow: 'hidden', background: '#0F1419' }}>
+    <section data-hero style={{ position: 'relative', height: 'clamp(600px, 85vh, 900px)', overflow: 'hidden', background: '#0F1419' }}>
       {/* Slideshow images */}
       {SLIDES.map((s, i) => (
         <div
@@ -240,7 +240,7 @@ function Hero() {
       </div>
 
       {/* Content */}
-      <div style={{ position: 'relative', zIndex: 10, maxWidth: 1440, margin: '0 auto', padding: 'clamp(100px,14vh,160px) clamp(20px,5vw,80px) clamp(80px,10vh,120px)', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+      <div style={{ position: 'relative', zIndex: 10, maxWidth: 1440, margin: '0 auto', padding: 'clamp(80px,10vh,120px) clamp(20px,5vw,80px) clamp(60px,8vh,100px)', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={{ maxWidth: 700 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 28 }}>
             <span style={{ width: 48, height: 1, background: '#B8924A' }} />
