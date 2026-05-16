@@ -36,11 +36,11 @@ const zones = [
   },
   {
     id: 'sauna',
-    label: 'Sauna',
-    img: 'real-wellness-area',
-    headline: 'Sauna & Wellness',
-    text: 'Finnische Sauna und Ruhebereich. Frei wählbar 05:00 bis 24:00 Uhr — Erholung nach dem Training.',
-    stats: ['Sauna', 'Ruhebereich', 'Wellness'],
+    label: 'Wellness',
+    img: 'real-damen-sauna',
+    headline: 'Damen-Sauna, Gemischte Sauna & Entspannung',
+    text: 'Zwei Saunen, Entspannungsraum mit Liegen und eine exklusive Damen-Lounge. Täglich 05:00 bis 24:00 Uhr.',
+    stats: ['Damen-Sauna', 'Gemischte Sauna', 'Entspannungsraum'],
   },
 ]
 

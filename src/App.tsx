@@ -43,10 +43,12 @@ const GALLERY = [
   { src: '/images/real-kursraum-1-md.webp', srcSm: '/images/real-kursraum-1-sm.webp', label: 'Kursraum', tag: '06' },
   { src: '/images/real-functional-md.webp', srcSm: '/images/real-functional-sm.webp', label: 'Functional Area', tag: '07' },
   { src: '/images/real-geraete-md.webp', srcSm: '/images/real-geraete-sm.webp', label: 'Krafttraining', tag: '08' },
-  { src: '/images/real-wellness-area-md.webp', srcSm: '/images/real-wellness-area-sm.webp', label: 'Wellness Lounge', tag: '09' },
-  { src: '/images/real-sauna-md.webp', srcSm: '/images/real-sauna-sm.webp', label: 'Sauna', tag: '10' },
-  { src: '/images/real-pool-area-md.webp', srcSm: '/images/real-pool-area-sm.webp', label: 'Ruhebereich', tag: '11' },
-  { src: '/images/real-eingang-md.webp', srcSm: '/images/real-eingang-sm.webp', label: 'Theke & Bar', tag: '12' },
+  { src: '/images/real-damen-umkleide-md.webp', srcSm: '/images/real-damen-umkleide-sm.webp', label: 'Damen-Lounge', tag: '09' },
+  { src: '/images/real-wellness-area-md.webp', srcSm: '/images/real-wellness-area-sm.webp', label: 'Wellness Lounge', tag: '10' },
+  { src: '/images/real-sauna-md.webp', srcSm: '/images/real-sauna-sm.webp', label: 'Gemischte Sauna', tag: '11' },
+  { src: '/images/real-damen-sauna-md.webp', srcSm: '/images/real-damen-sauna-sm.webp', label: 'Damen-Sauna', tag: '12' },
+  { src: '/images/real-pool-area-md.webp', srcSm: '/images/real-pool-area-sm.webp', label: 'Entspannungsraum', tag: '13' },
+  { src: '/images/real-eingang-md.webp', srcSm: '/images/real-eingang-sm.webp', label: 'Theke & Bar', tag: '14' },
 ]
 
 function useReveal() {

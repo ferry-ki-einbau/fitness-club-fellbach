@@ -20,8 +20,8 @@ const SLIDES = [
     no: '03',
     tag: '05:00 – 24:00 Uhr',
     title: 'WELLNESS',
-    text: 'Sauna und Ruhebereich. Dein verdientes Abschalten — täglich, ohne Aufpreis im All-In.',
-    img: '/images/real-wellness-area-md.webp',
+    text: 'Damen-Sauna, gemischte Sauna und Entspannungsraum. Dein verdientes Abschalten — täglich, ohne Aufpreis im All-In.',
+    img: '/images/real-damen-sauna-md.webp',
   },
 ]
 
