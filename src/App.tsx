@@ -7,21 +7,16 @@ import LiveTicker from './components/LiveTicker'
 import Logo from './components/Logo'
 import EgymSpotlight from './components/EgymSpotlight'
 import WellnessSpotlight from './components/WellnessSpotlight'
-import AddonsBand from './components/AddonsBand'
 import TrainingsflaecheSpotlight from './components/TrainingsflaecheSpotlight'
 import KurseGrid from './components/KurseGrid'
 import WelcomeIntro from './components/WelcomeIntro'
 import ScrollProgress from './components/ScrollProgress'
 import PullQuote from './components/PullQuote'
 import MouseSpotlight from './components/MouseSpotlight'
-import BigStats from './components/BigStats'
 import MagneticNavLink from './components/MagneticNav'
 import TiltCard from './components/TiltCard'
 
 // Lazy-loaded
-const TrainingsplanSection = lazy(() => import('./components/TrainingsplanSection'))
-// const TageszeitenSection = lazy(() => import('./components/TageszeitenSection'))
-const CommunityWall = lazy(() => import('./components/CommunityWall'))
 const SpecialPrograms = lazy(() => import('./components/SpecialPrograms'))
 const PhysioBridge = lazy(() => import('./components/PhysioBridge'))
 
@@ -380,71 +375,6 @@ function Gallery() {
             </div>
           </motion.div>
         ))}
-      </div>
-    </section>
-  )
-}
-
-function PromoBand() {
-  // Countdown bis Ende der Aktion (30.06.2026)
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, mins: 0 })
-  useEffect(() => {
-    const end = new Date('2026-06-30T23:59:59').getTime()
-    const calc = () => {
-      const diff = Math.max(0, end - Date.now())
-      setTimeLeft({
-        days: Math.floor(diff / 86400000),
-        hours: Math.floor((diff % 86400000) / 3600000),
-        mins: Math.floor((diff % 3600000) / 60000),
-      })
-    }
-    calc()
-    const id = setInterval(calc, 60000)
-    return () => clearInterval(id)
-  }, [])
-
-  return (
-    <section style={{ position: 'relative', background: '#0A0E12', overflow: 'hidden', padding: 'clamp(56px, 8vh, 96px) clamp(16px, 4vw, 80px)' }}>
-      {/* Burgund glow */}
-      <div style={{ position: 'absolute', top: '50%', left: '30%', transform: 'translate(-50%,-50%)', width: 700, height: 400, borderRadius: '50%', background: 'radial-gradient(ellipse, rgba(196,69,82,0.12) 0%, transparent 70%)', pointerEvents: 'none' }} />
-      {/* Top border accent */}
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 1, background: 'linear-gradient(90deg, transparent, #C44552 30%, #C44552 70%, transparent)' }} />
-
-      <div style={{ maxWidth: 1280, margin: '0 auto', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 'clamp(32px, 5vw, 64px)', position: 'relative' }}>
-        <div>
-          <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#C44552', marginBottom: 16, fontWeight: 700 }}>— Jubiläums-Aktion · Nur bis 30.06.</div>
-          <h2 className="font-display promo-headline" style={{ fontSize: 'clamp(3.5rem, 8vw, 7rem)', fontWeight: 800, color: '#F5F0E8', lineHeight: 0.9, letterSpacing: '-0.035em', margin: 0 }}>
-            2 MONATE<br /><span style={{ color: '#C44552' }}>GRATIS.</span>
-          </h2>
-          {/* Countdown */}
-          <div style={{ display: 'flex', gap: 16, marginTop: 24 }}>
-            {[
-              { val: timeLeft.days, label: 'Tage' },
-              { val: timeLeft.hours, label: 'Std' },
-              { val: timeLeft.mins, label: 'Min' },
-            ].map(t => (
-              <div key={t.label} style={{ textAlign: 'center' }}>
-                <div className="font-display" style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)', fontWeight: 800, color: '#F5F0E8', lineHeight: 1, letterSpacing: '-0.02em', fontFeatureSettings: '"tnum"' }}>
-                  {String(t.val).padStart(2, '0')}
-                </div>
-                <div className="font-condensed" style={{ fontSize: 9, letterSpacing: '0.4em', textTransform: 'uppercase', color: '#6E5A48', marginTop: 4 }}>{t.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div style={{ maxWidth: 400 }}>
-          <p style={{ color: '#9A8878', fontSize: 15, lineHeight: 1.75, marginBottom: 32 }}>
-            Bei 12 oder 24 Monaten Laufzeit bekommst du 2 Monate komplett geschenkt. Kein Haken. Kein Kleingedrucktes.<br />
-            <span style={{ color: '#C44552', fontWeight: 600 }}>Nur noch {timeLeft.days} Tage.</span>
-          </p>
-          <a href="#preise"
-            style={{ display: 'inline-flex', alignItems: 'center', gap: 12, background: '#C44552', color: '#fff', padding: '16px 36px', textDecoration: 'none', transition: 'background 0.2s' }}
-            onMouseEnter={e => (e.currentTarget.style.background = '#E15464')}
-            onMouseLeave={e => (e.currentTarget.style.background = '#C44552')}>
-            <span className="font-display" style={{ fontSize: 13, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase' }}>Jetzt sichern</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
       </div>
     </section>
   )
@@ -878,7 +808,7 @@ function Footer() {
             <Logo size="md" variant="light" />
           </div>
           <div className="footer-links" style={{ display: 'flex', flexWrap: 'wrap', gap: 24 }}>
-            {[['Blog', '/blog/'], ['Datenschutz', '/datenschutz'], ['Impressum', '/impressum'], ['Kündigung', '/kuendigung'], ['Karriere', '/karriere']].map(([l, h]) => (
+            {[['Blog', '/blog/'], ['Datenschutz', '/datenschutz'], ['Impressum', '/impressum'], ['Karriere', '/karriere']].map(([l, h]) => (
               <a key={l} href={h}
                  style={{ fontSize: 11, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#9A8470', textDecoration: 'none' }}>
                 {l}
@@ -928,64 +858,52 @@ export default function App() {
       <Nav />
       <Hero />
       <Marquee />
-      {/* 1. TRUST — Sofort Social Proof nach Hero */}
+
+      {/* 1. TRUST — Social Proof sofort nach Hero */}
       <Testimonials />
-      {/* 2. INTRO — Was ist der Club? */}
+
+      {/* 2. PREIS — Früh zeigen, kein Geheimnis */}
+      <Pricing />
+
+      {/* 3. INTRO — Was macht den Club besonders */}
       <WelcomeIntro />
-      {/* 3. BEREICHE — Was bekommt man? */}
+
+      {/* 4. BEREICHE — Was bekommt man im Detail */}
       <div id="bereiche">
         <TrainingsflaecheSpotlight />
       </div>
       <EgymSpotlight />
       <WellnessSpotlight />
-      <PullQuote
-        before="05:00 — 24:00 · Täglich"
-        text="Kein Mensch der dir sagt wann du trainieren kannst."
-        highlight="kein Mensch"
-        variant="dark"
-      />
-      {/* 4. GALERIE — Visueller Beweis */}
+
+      {/* 5. GALERIE — Visueller Beweis */}
       <Gallery />
-      {/* 5. PREIS — Conversion-Zone */}
-      <PromoBand />
-      <Pricing />
-      <AddonsBand />
-      {/* 6. KURSE — Wöchentliches Angebot */}
+
+      {/* 6. KURSE & PROGRAMME */}
       <KurseGrid />
       <KursplanWidget />
-      {/* 7. TEAM & PROGRAMME */}
       <Suspense fallback={null}>
         <SpecialPrograms />
       </Suspense>
-      <Suspense fallback={null}>
-        <TrainingsplanSection />
-      </Suspense>
-      {/* 8. STATS & COMMUNITY */}
-      <BigStats />
-      <Suspense fallback={null}>
-        <CommunityWall />
-      </Suspense>
+
+      {/* 7. PULLQUOTE — Eine starke Aussage reicht */}
       <PullQuote
         before="500+ Mitglieder · Fellbach"
         text="Manche kommen für die Geräte. Alle bleiben wegen der Menschen."
         highlight="Alle bleiben"
-        variant="light"
-        bg="#F5F0E8"
-      />
-      {/* 9. PHYSIO-BRIDGE */}
-      <PullQuote
-        before="Bruckstraße 61"
-        text="Eine Tür weiter — eine ganze Welt weiter."
-        highlight="eine ganze Welt weiter."
-        after="Physio Zentrum Fellbach · vom selben Inhaber"
         variant="dark"
       />
+
+      {/* 8. FAQ — Einwände abbauen vor Kontakt */}
+      <FAQ />
+
+      {/* 9. KONTAKT — Abschluss */}
+      <Contact />
+
+      {/* 10. PHYSIO-BRIDGE — Cross-Sell ganz am Ende */}
       <Suspense fallback={null}>
         <PhysioBridge />
       </Suspense>
-      {/* 10. FAQ & KONTAKT */}
-      <FAQ />
-      <Contact />
+
       <Footer />
 
       {/* Mobile Sticky Call Bar — nur Mobile, erst nach Hero */}
