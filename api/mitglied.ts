@@ -125,7 +125,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
       <h2 style="color:#B8924A;font-size:14px;text-transform:uppercase;letter-spacing:0.1em;margin:0 0 12px;">So erreichst du uns</h2>
       <p style="font-size:13px;color:#9A8470;line-height:1.7;">
-        Bruckstraße 61 · 70736 Fellbach<br>
+        Bruckstraße 61 · 70734 Fellbach<br>
         Tel: <a href="tel:+497115888654" style="color:#C44552;">07115 8 8654</a><br>
         E-Mail: <a href="mailto:verwaltung@fitnessclubfellbach.de" style="color:#C44552;">verwaltung@fitnessclubfellbach.de</a><br>
         24/7 geöffnet · 365 Tage im Jahr
@@ -138,7 +138,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       </div>
 
       <p style="font-size:11px;color:#5A4030;text-align:center;margin-top:28px;line-height:1.6;">
-        Fitness Club Fellbach · Bruckstraße 61 · 70736 Fellbach<br>
+        Fitness Club Fellbach · Bruckstraße 61 · 70734 Fellbach<br>
         Du hast dieses E-Mail erhalten, weil du dich für eine Mitgliedschaft angemeldet hast.
       </p>
     </div>

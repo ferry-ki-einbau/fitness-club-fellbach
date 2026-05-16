@@ -74,7 +74,13 @@ function Nav() {
     const t = setInterval(check, 60000)
     return () => clearInterval(t)
   }, [])
+  // Lock body scroll when mobile menu open
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [open])
   const links = [
+    { label: 'Training', href: '#training' },
     { label: 'Kurse', href: '#kurse' },
     { label: 'Preise', href: '#preise' },
     { label: 'Blog', href: '/blog/' },
@@ -83,75 +89,104 @@ function Nav() {
   return (
     <nav style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
-      transition: 'background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease',
-      background: scrolled ? 'rgba(15,20,25,0.92)' : 'transparent',
-      backdropFilter: scrolled ? 'blur(20px)' : 'none',
-      borderBottom: scrolled ? '1px solid rgba(245,240,232,0.06)' : '1px solid transparent',
+      transition: 'background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease',
+      background: scrolled ? 'rgba(15,20,25,0.95)' : 'transparent',
+      backdropFilter: scrolled ? 'blur(24px) saturate(1.2)' : 'none',
+      boxShadow: scrolled ? '0 1px 0 rgba(245,240,232,0.06), 0 4px 20px rgba(0,0,0,0.3)' : 'none',
     }}>
-      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 clamp(20px, 4vw, 48px)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 68 }}>
+      <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 clamp(16px, 4vw, 48px)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 64 }}>
 
         {/* Logo + Status */}
         <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 10 }}>
           <Logo size="lg" variant="light" />
-          <span className="hidden sm:flex" style={{ alignItems: 'center', gap: 5, padding: '3px 9px', borderRadius: 999, background: isOpen ? 'rgba(34,197,94,0.1)' : 'rgba(196,69,82,0.1)', border: `1px solid ${isOpen ? 'rgba(34,197,94,0.25)' : 'rgba(196,69,82,0.25)'}` }}>
+          <span className="hidden sm:flex" style={{ alignItems: 'center', gap: 5, padding: '3px 10px', borderRadius: 999, background: isOpen ? 'rgba(34,197,94,0.08)' : 'rgba(196,69,82,0.08)', border: `1px solid ${isOpen ? 'rgba(34,197,94,0.2)' : 'rgba(196,69,82,0.2)'}` }}>
             <span style={{ width: 5, height: 5, borderRadius: '50%', background: isOpen ? '#22c55e' : '#C44552', animation: 'pulse 2s ease-in-out infinite' }} />
-            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: isOpen ? '#22c55e' : '#C44552', fontWeight: 700 }}>
+            <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: isOpen ? '#22c55e' : '#C44552', fontWeight: 700 }}>
               {isOpen ? 'Geöffnet' : 'Geschlossen'}
             </span>
           </span>
           {/* Mobile — nur Dot */}
           <span className="flex sm:hidden" style={{ alignItems: 'center', justifyContent: 'center', width: 20, height: 20 }}>
-            <span style={{ width: 7, height: 7, borderRadius: '50%', background: isOpen ? '#22c55e' : '#C44552', boxShadow: `0 0 6px ${isOpen ? '#22c55e' : '#C44552'}` }} />
+            <span style={{ width: 6, height: 6, borderRadius: '50%', background: isOpen ? '#22c55e' : '#C44552', boxShadow: `0 0 6px ${isOpen ? '#22c55e' : '#C44552'}` }} />
           </span>
         </a>
 
-        {/* Desktop Links */}
-        <div className="hidden md:flex" style={{ gap: 4, alignItems: 'center' }}>
+        {/* Desktop Links — centered */}
+        <div className="hidden md:flex" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', gap: 2, alignItems: 'center' }}>
           {links.map(l => (
             <MagneticNavLink key={l.href} href={l.href}>{l.label}</MagneticNavLink>
           ))}
         </div>
 
-        {/* CTA */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <a href="tel:+49711588654" className="hidden md:flex font-condensed" style={{ alignItems: 'center', gap: 6, fontSize: 13, letterSpacing: '0.1em', color: '#B5A99A', textDecoration: 'none', transition: 'color 0.2s' }}
+        {/* Right side CTA group */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+          <a href="tel:+49711588654" className="hidden lg:flex font-condensed" style={{ alignItems: 'center', gap: 6, fontSize: 12, letterSpacing: '0.12em', color: '#9A8878', textDecoration: 'none', transition: 'color 0.2s' }}
             onMouseEnter={e => (e.currentTarget.style.color = '#F5F0E8')}
-            onMouseLeave={e => (e.currentTarget.style.color = '#B5A99A')}>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            onMouseLeave={e => (e.currentTarget.style.color = '#9A8878')}>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
             0711 588 654
           </a>
-          <MitgliedButton className="btn-lime hidden md:inline-flex" style={{ padding: '10px 22px', fontSize: 11 }}>
-            <span>Jetzt Mitglied</span>
+          <MitgliedButton className="btn-lime hidden md:inline-flex" style={{ padding: '10px 24px', fontSize: 11, letterSpacing: '0.15em' }}>
+            <span>Mitglied werden</span>
           </MitgliedButton>
 
           {/* Mobile Burger */}
-          <button className="md:hidden nav-burger" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 8, flexDirection: 'column', gap: 5 }} onClick={() => setOpen(!open)}>
-            <span style={{ width: 22, height: 1.5, background: '#F5F0E8', display: 'block', transition: 'all 0.25s', transform: open ? 'rotate(45deg) translate(4.5px, 4.5px)' : 'none' }} />
-            <span style={{ width: 22, height: 1.5, background: '#F5F0E8', display: 'block', transition: 'opacity 0.25s', opacity: open ? 0 : 1 }} />
-            <span style={{ width: 22, height: 1.5, background: '#F5F0E8', display: 'block', transition: 'all 0.25s', transform: open ? 'rotate(-45deg) translate(4.5px, -4.5px)' : 'none' }} />
+          <button className="md:hidden nav-burger" onClick={() => setOpen(!open)} aria-label="Menü" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 10, display: 'flex', flexDirection: 'column', gap: 5, position: 'relative', zIndex: 60 }}>
+            <span style={{ width: 24, height: 2, background: '#F5F0E8', display: 'block', borderRadius: 1, transition: 'all 0.3s cubic-bezier(0.16,1,0.3,1)', transform: open ? 'rotate(45deg) translate(5px, 5px)' : 'none' }} />
+            <span style={{ width: 16, height: 2, background: '#F5F0E8', display: 'block', borderRadius: 1, transition: 'all 0.2s ease', opacity: open ? 0 : 1, marginLeft: 'auto' }} />
+            <span style={{ width: 24, height: 2, background: '#F5F0E8', display: 'block', borderRadius: 1, transition: 'all 0.3s cubic-bezier(0.16,1,0.3,1)', transform: open ? 'rotate(-45deg) translate(5px, -5px)' : 'none' }} />
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {open && (
-        <div style={{ background: 'rgba(15,20,25,0.97)', backdropFilter: 'blur(20px)', borderTop: '1px solid rgba(245,240,232,0.07)', padding: '28px 24px 32px', display: 'flex', flexDirection: 'column', gap: 0 }}>
-          {links.map((l, i) => (
-            <a key={l.href} href={l.href}
-              onClick={() => setOpen(false)}
-              style={{ display: 'block', padding: '16px 0', borderBottom: i < links.length - 1 ? '1px solid rgba(245,240,232,0.06)' : 'none', textDecoration: 'none' }}>
-              <span className="font-display" style={{ fontSize: 22, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.02em', color: '#F5F0E8' }}>{l.label}</span>
-            </a>
-          ))}
-          <MitgliedButton className="btn-lime" style={{ justifyContent: 'center', marginTop: 24 }}>
-            <span>Jetzt Mitglied werden</span>
-          </MitgliedButton>
-          <a href="tel:+49711588654" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, marginTop: 16, color: '#8A7A6A', fontSize: 13, textDecoration: 'none' }}>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
-            0711 588 654
-          </a>
-        </div>
-      )}
+      {/* Mobile Menu — fullscreen overlay */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            style={{
+              position: 'fixed', inset: 0, top: 64,
+              background: 'rgba(15,20,25,0.98)', backdropFilter: 'blur(24px)',
+              display: 'flex', flexDirection: 'column', justifyContent: 'center',
+              padding: '0 32px', gap: 0, zIndex: 49,
+            }}>
+            {links.map((l, i) => (
+              <motion.a
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.06, duration: 0.3 }}
+                style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 0', borderBottom: '1px solid rgba(245,240,232,0.06)', textDecoration: 'none' }}>
+                <span className="font-display" style={{ fontSize: 28, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.02em', color: '#F5F0E8' }}>{l.label}</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(245,240,232,0.3)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </motion.a>
+            ))}
+            <div style={{ marginTop: 40, display: 'flex', flexDirection: 'column', gap: 12 }}>
+              <MitgliedButton className="btn-lime" style={{ justifyContent: 'center', width: '100%' }}>
+                <span>Jetzt Mitglied werden</span>
+              </MitgliedButton>
+              <a href="tel:+49711588654" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '14px 0', color: '#9A8878', fontSize: 14, textDecoration: 'none', letterSpacing: '0.05em' }}>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+                0711 588 654
+              </a>
+            </div>
+            {/* Status badge at bottom */}
+            <div style={{ position: 'absolute', bottom: 'calc(80px + env(safe-area-inset-bottom, 0px))', left: 32, right: 32, display: 'flex', justifyContent: 'center' }}>
+              <span style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '6px 14px', borderRadius: 999, background: isOpen ? 'rgba(34,197,94,0.08)' : 'rgba(196,69,82,0.08)', border: `1px solid ${isOpen ? 'rgba(34,197,94,0.15)' : 'rgba(196,69,82,0.15)'}` }}>
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: isOpen ? '#22c55e' : '#C44552' }} />
+                <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: isOpen ? '#22c55e' : '#C44552', fontWeight: 600 }}>
+                  {isOpen ? '05:00 – 24:00 Uhr geöffnet' : 'Geschlossen'}
+                </span>
+              </span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   )
 }
@@ -160,10 +195,10 @@ function Hero() {
   const SLIDES = [
     { src: '/images/real-freihantel-hero-md.webp', srcSm: '/images/real-freihantel-hero-sm.webp', label: 'Freihantel' },
     { src: '/images/real-egym-hero-md.webp', srcSm: '/images/real-egym-hero-sm.webp', label: 'EGYM' },
-    { src: '/images/real-kursraum-1-hero-md.webp', srcSm: '/images/real-kursraum-1-hero-sm.webp', label: 'Kursraum' },
     { src: '/images/real-cardio-hero-md.webp', srcSm: '/images/real-cardio-hero-sm.webp', label: 'Cardio' },
     { src: '/images/real-eingang-hero-md.webp', srcSm: '/images/real-eingang-hero-sm.webp', label: 'Theke' },
     { src: '/images/real-spinning-hero-md.webp', srcSm: '/images/real-spinning-hero-sm.webp', label: 'Spinning' },
+    { src: '/images/real-kursraum-1-hero-md.webp', srcSm: '/images/real-kursraum-1-hero-sm.webp', label: 'Kursraum' },
   ]
   const [current, setCurrent] = useState(0)
   const [prev, setPrev] = useState<number | null>(null)
@@ -524,9 +559,9 @@ function Testimonials() {
     { name: 'Hannes De', when: 'vor 2 Monaten', text: 'Bombenstudio, Marcel ein Bombentyp — was will man mehr!?' },
   ]
   return (
-    <section style={{ background: '#F5F0E8', padding: 'clamp(80px, 12vh, 140px) 0' }}>
+    <section className="testimonials-section" style={{ background: '#F5F0E8', padding: 'clamp(80px, 12vh, 140px) 0' }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 clamp(16px, 4vw, 48px)' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 'clamp(24px, 5vw, 80px)', alignItems: 'end', marginBottom: 56 }} className="testimonials-header">
+        <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 'clamp(24px, 5vw, 80px)', alignItems: 'end', marginBottom: 'clamp(28px, 5vw, 56px)' }} className="testimonials-header">
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
               <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
@@ -538,7 +573,7 @@ function Testimonials() {
           </div>
 
           {/* Google Reviews badge */}
-          <div style={{ background: '#FFFFFF', border: '1px solid rgba(26,15,15,0.08)', padding: 28, boxShadow: '0 4px 16px rgba(26,15,15,0.06)' }}>
+          <div className="google-badge-box" style={{ background: '#FFFFFF', border: '1px solid rgba(26,15,15,0.08)', padding: 28, boxShadow: '0 4px 16px rgba(26,15,15,0.06)' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
               <svg width="28" height="28" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                 <path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3c-1.6 4.7-6.1 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.9z"/>
@@ -548,7 +583,7 @@ function Testimonials() {
               </svg>
               <div>
                 <div style={{ fontSize: 11, color: '#5A4040', letterSpacing: '0.05em' }}>Google Bewertungen</div>
-                <div className="font-display" style={{ fontSize: 22, fontWeight: 700, color: '#0F1419', lineHeight: 1 }}>4,7 / 5,0</div>
+                <div className="font-display badge-title" style={{ fontSize: 22, fontWeight: 700, color: '#0F1419', lineHeight: 1 }}>4,7 / 5,0</div>
               </div>
             </div>
             <div style={{ display: 'flex', gap: 3, marginBottom: 8 }}>
@@ -588,7 +623,7 @@ function Testimonials() {
           </div>
         </div>
 
-        <div style={{ marginTop: 40, textAlign: 'center' }}>
+        <div className="testimonials-link" style={{ marginTop: 40, textAlign: 'center' }}>
           <a href="https://www.google.com/search?q=fitness+club+fellbach" target="_blank" rel="noopener noreferrer" className="font-condensed" style={{ display: 'inline-block', padding: '12px 28px', border: '1px solid rgba(26,15,15,0.2)', color: '#0F1419', textDecoration: 'none', fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', background: '#FFFFFF' }}>
             Alle Bewertungen auf Google ansehen →
           </a>
@@ -646,7 +681,7 @@ function KursplanWidget() {
             <iframe
               src="https://courseplan.noexcuse.io/?origin=https%3A%2F%2Fwww.fitness-club-fellbach.de&id=Zml0bmVzcy1jbHViLWZlbGxiYWNoOjEyMTAwMTEzOTA%253D&disableEmployeeExpertises=true&height=auto&baseHost=mysports.com"
               width="100%"
-              height="750"
+              height="2200"
               className="kursplan-iframe"
               title="Kursplan Fitness Club Fellbach"
               style={{ display: 'block', border: 'none', marginTop: -52 }}
