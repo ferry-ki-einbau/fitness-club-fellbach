@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import ParallaxImage from './ParallaxImage'
 
 /**
  * Differentiator section — echter Box-Ring im Studio.
@@ -36,22 +37,20 @@ export default function BoxRingSpotlight() {
           {/* Corner gold rule bottom-right */}
           <div style={{ position: 'absolute', bottom: -12, right: -12, width: 64, height: 1, background: 'var(--accent)', zIndex: 3 }} />
           <div style={{ position: 'absolute', bottom: -12, right: -12, width: 1, height: 64, background: 'var(--accent)', zIndex: 3 }} />
-          <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', boxShadow: '0 40px 80px -20px rgba(0,0,0,0.8)' }}>
-            <img
-              src="/images/real-boxring-1-md.webp"
-              srcSet="/images/real-boxring-1-sm.webp 800w, /images/real-boxring-1-md.webp 1600w"
-              sizes="(max-width: 900px) 100vw, 55vw"
-              alt="Boxring im Fitness Club Fellbach"
-              decoding="async"
-              loading="lazy"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.05) saturate(0.95)' }}
-            />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(45deg, rgba(15,20,25,0.5) 0%, transparent 50%)' }} />
-            {/* Bottom badge */}
-            <div style={{ position: 'absolute', bottom: 24, left: 24, padding: '8px 14px', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.4)' }}>
+          <ParallaxImage
+            src="/images/real-boxring-1-md.webp"
+            srcSet="/images/real-boxring-1-sm.webp 800w, /images/real-boxring-1-md.webp 1600w"
+            sizes="(max-width: 900px) 100vw, 55vw"
+            alt="Boxring im Fitness Club Fellbach"
+            speed={0.06}
+            style={{ width: '100%', height: '100%', boxShadow: '0 40px 80px -20px rgba(0,0,0,0.8)' }}
+            imgStyle={{ filter: 'contrast(1.05) saturate(0.95)' }}
+          >
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(45deg, rgba(15,20,25,0.5) 0%, transparent 50%)', zIndex: 1 }} />
+            <div style={{ position: 'absolute', bottom: 24, left: 24, padding: '8px 14px', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.4)', zIndex: 2 }}>
               <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Echter Boxring</div>
             </div>
-          </div>
+          </ParallaxImage>
         </motion.div>
 
         {/* Right: text */}

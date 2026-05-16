@@ -16,6 +16,7 @@ import PullQuote from './components/PullQuote'
 import MouseSpotlight from './components/MouseSpotlight'
 import MagneticNavLink from './components/MagneticNav'
 import TiltCard from './components/TiltCard'
+import AnimatedCounter from './components/AnimatedCounter'
 
 // Lazy-loaded
 const SpecialPrograms = lazy(() => import('./components/SpecialPrograms'))
@@ -303,10 +304,15 @@ function Hero() {
           </div>
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'clamp(28px,4vw,56px)', paddingTop: 28, borderTop: '1px solid rgba(184, 146, 74, 0.2)' }}>
-            {[['24/7', 'geöffnet'], ['8', 'Bereiche'], ['500+', 'Mitglieder'], ['14', 'Tage gratis']].map(([n, l]) => (
-              <div key={l}>
-                <div className="font-display" style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)', fontWeight: 700, color: 'var(--accent-bright)', lineHeight: 1, letterSpacing: '-0.02em' }}>{n}</div>
-                <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#9A8470', marginTop: 6 }}>{l}</div>
+            {[
+              { end: 1500, suffix: 'm²', label: 'Fläche' },
+              { end: 30, suffix: '+', label: 'Kurse/Woche' },
+              { end: 500, suffix: '+', label: 'Mitglieder' },
+              { end: 14, suffix: '', label: 'Tage gratis' },
+            ].map(s => (
+              <div key={s.label}>
+                <AnimatedCounter end={s.end} suffix={s.suffix} duration={2} className="font-display" style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)', fontWeight: 700, color: 'var(--accent-bright)', lineHeight: 1, letterSpacing: '-0.02em' }} />
+                <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#9A8470', marginTop: 6 }}>{s.label}</div>
               </div>
             ))}
           </div>

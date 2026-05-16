@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import ParallaxImage from './ParallaxImage'
 
 /**
  * Hauptangebot — die Trainingsfläche.
@@ -32,21 +33,20 @@ export default function TrainingsflaecheSpotlight() {
           <div style={{ position: 'absolute', top: -12, left: -12, width: 1, height: 64, background: 'var(--accent)', zIndex: 3 }} />
           <div style={{ position: 'absolute', bottom: -12, right: -12, width: 64, height: 1, background: 'var(--accent)', zIndex: 3 }} />
           <div style={{ position: 'absolute', bottom: -12, right: -12, width: 1, height: 64, background: 'var(--accent)', zIndex: 3 }} />
-          <div style={{ position: 'relative', width: '100%', height: '100%', overflow: 'hidden', boxShadow: '0 40px 80px -20px rgba(0,0,0,0.7)' }}>
-            <img
-              src="/images/real-geraete-md.webp"
-              srcSet="/images/real-geraete-sm.webp 800w, /images/real-geraete-md.webp 1600w"
-              sizes="(max-width: 900px) 100vw, 55vw"
-              alt="Krafttraining im Fitness Club Fellbach"
-              decoding="async"
-              loading="lazy"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.02) brightness(1.05) saturate(1.05)' }}
-            />
-            <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%', background: 'linear-gradient(180deg, transparent 0%, rgba(15,20,25,0.8) 100%)' }} />
-            <div style={{ position: 'absolute', bottom: 24, left: 24, padding: '8px 14px', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.4)' }}>
+          <ParallaxImage
+            src="/images/real-geraete-md.webp"
+            srcSet="/images/real-geraete-sm.webp 800w, /images/real-geraete-md.webp 1600w"
+            sizes="(max-width: 900px) 100vw, 55vw"
+            alt="Krafttraining im Fitness Club Fellbach"
+            speed={0.06}
+            style={{ width: '100%', height: '100%', boxShadow: '0 40px 80px -20px rgba(0,0,0,0.7)' }}
+            imgStyle={{ filter: 'contrast(1.02) brightness(1.05) saturate(1.05)' }}
+          >
+            <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%', background: 'linear-gradient(180deg, transparent 0%, rgba(15,20,25,0.8) 100%)', zIndex: 1 }} />
+            <div style={{ position: 'absolute', bottom: 24, left: 24, padding: '8px 14px', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.4)', zIndex: 2 }}>
               <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>1.500m² Trainingsfläche</div>
             </div>
-          </div>
+          </ParallaxImage>
         </motion.div>
 
         {/* Right: text */}
