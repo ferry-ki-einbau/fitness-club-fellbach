@@ -5,7 +5,7 @@ const programs = [
   {
     img: 'real-functional',
     label: 'Präventionskurs',
-    price: 'Add-On',
+    price: 'Inklusive',
     headline: 'Beweglichkeit & Rücken',
     text: 'Verletzungen vorbeugen, Rückenbeschwerden lindern, Wohlbefinden steigern. Erfahrene Experten betreuen dich Schritt für Schritt.',
   },
