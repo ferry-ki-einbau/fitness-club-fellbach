@@ -36,13 +36,17 @@ const PhysioBridge = lazy(() => import('./components/PhysioBridge'))
 
 const GALLERY = [
   { src: '/images/real-boxring-1-md.webp', srcSm: '/images/real-boxring-1-sm.webp', label: 'Boxring', tag: '01' },
-  { src: '/images/real-trainingsbereich-md.webp', srcSm: '/images/real-trainingsbereich-sm.webp', label: 'Trainingsbereich', tag: '02' },
-  { src: '/images/real-cardio-md.webp', srcSm: '/images/real-cardio-sm.webp', label: 'Cardio', tag: '03' },
-  { src: '/images/real-geraete-md.webp', srcSm: '/images/real-geraete-sm.webp', label: 'Krafttraining', tag: '04' },
-  { src: '/images/real-kursraum-1-md.webp', srcSm: '/images/real-kursraum-1-sm.webp', label: 'Kursraum', tag: '05' },
-  { src: '/images/real-wellness-area-md.webp', srcSm: '/images/real-wellness-area-sm.webp', label: 'Wellness', tag: '06' },
-  { src: '/images/real-wellness-area-md.webp', srcSm: '/images/real-wellness-area-sm.webp', label: 'Sauna & Wellness', tag: '07' },
-  { src: '/images/real-eingang-md.webp', srcSm: '/images/real-eingang-sm.webp', label: 'Eingang', tag: '08' },
+  { src: '/images/real-trainingsbereich-md.webp', srcSm: '/images/real-trainingsbereich-sm.webp', label: 'EGYM Zirkel', tag: '02' },
+  { src: '/images/real-freihantel-md.webp', srcSm: '/images/real-freihantel-sm.webp', label: 'Freihantelbereich', tag: '03' },
+  { src: '/images/real-cardio-md.webp', srcSm: '/images/real-cardio-sm.webp', label: 'Cardio', tag: '04' },
+  { src: '/images/real-spinning-md.webp', srcSm: '/images/real-spinning-sm.webp', label: 'Spinning', tag: '05' },
+  { src: '/images/real-kursraum-1-md.webp', srcSm: '/images/real-kursraum-1-sm.webp', label: 'Kursraum', tag: '06' },
+  { src: '/images/real-functional-md.webp', srcSm: '/images/real-functional-sm.webp', label: 'Functional Area', tag: '07' },
+  { src: '/images/real-geraete-md.webp', srcSm: '/images/real-geraete-sm.webp', label: 'Krafttraining', tag: '08' },
+  { src: '/images/real-wellness-area-md.webp', srcSm: '/images/real-wellness-area-sm.webp', label: 'Wellness Lounge', tag: '09' },
+  { src: '/images/real-sauna-md.webp', srcSm: '/images/real-sauna-sm.webp', label: 'Sauna', tag: '10' },
+  { src: '/images/real-pool-area-md.webp', srcSm: '/images/real-pool-area-sm.webp', label: 'Ruhebereich', tag: '11' },
+  { src: '/images/real-eingang-md.webp', srcSm: '/images/real-eingang-sm.webp', label: 'Theke & Bar', tag: '12' },
 ]
 
 function useReveal() {

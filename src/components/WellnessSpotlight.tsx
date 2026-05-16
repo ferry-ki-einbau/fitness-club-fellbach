@@ -35,8 +35,8 @@ export default function WellnessSpotlight() {
         {/* Two-image grid */}
         <div className="wellness-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'clamp(16px, 2.5vw, 36px)' }}>
           {[
-            { src: 'real-wellness-area', label: 'Sauna-Oase', sub: '05:00 – 24:00 · Frei wählbar', tag: '01' },
-            { src: 'real-wellness-area', label: 'Ruhebereich', sub: 'Entspannung nach dem Training', tag: '02' },
+            { src: 'real-sauna', label: 'Sauna-Oase', sub: '05:00 – 24:00 · Frei wählbar', tag: '01' },
+            { src: 'real-wellness-area', label: 'Wellness Lounge', sub: 'Entspannung nach dem Training', tag: '02' },
           ].map((it, i) => (
             <motion.div
               key={it.src}

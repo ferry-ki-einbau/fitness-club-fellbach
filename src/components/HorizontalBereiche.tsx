@@ -1,29 +1,27 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
 
-const CDN = 'https://cdn.prod.website-files.com/64c8b8357249be90e806d8b9'
-
 const SLIDES = [
   {
     no: '01',
     tag: '24/7 verfügbar',
     title: 'TRAINING',
     text: 'Modernste Geräte. Großzügige Fläche. Kraft, Ausdauer, funktional — alles was du brauchst, jederzeit.',
-    img: `${CDN}/64c8ee1414476c15c5c9e632_DSC02147%201.png`,
+    img: '/images/real-kraftbereich-md.webp',
   },
   {
     no: '02',
     tag: '30+ Kurse / Woche',
     title: 'KURSE',
     text: 'Yoga, BodyPump, Pilates, Rückenfit, Zirkel. Geleitet von Experten — abwechslungsreich, motivierend.',
-    img: `${CDN}/64c8ee149b835c3ec80ea6c5_DSC02110%201.png`,
+    img: '/images/real-kursraum-1-md.webp',
   },
   {
     no: '03',
     tag: '05:00 – 24:00 Uhr',
     title: 'WELLNESS',
     text: 'Sauna und Ruhebereich. Dein verdientes Abschalten — täglich, ohne Aufpreis im All-In.',
-    img: `${CDN}/64c8ee144047408110a5798a_DSC02219%201.png`,
+    img: '/images/real-wellness-area-md.webp',
   },
 ]
 
