@@ -40,7 +40,7 @@ const GALLERY = [
   { src: '/images/real-damen-sauna-md.webp', srcSm: '/images/real-damen-sauna-sm.webp', label: 'Damen-Sauna', tag: '08' },
   { src: '/images/real-sauna-md.webp', srcSm: '/images/real-sauna-sm.webp', label: 'Gemischte Sauna', tag: '09' },
   { src: '/images/real-pool-area-md.webp', srcSm: '/images/real-pool-area-sm.webp', label: 'Entspannungsraum', tag: '10' },
-  { src: '/images/real-wellness-area-md.webp', srcSm: '/images/real-wellness-area-sm.webp', label: 'Wellness Lounge', tag: '11' },
+  { src: '/images/real-wellness-area-md.webp', srcSm: '/images/real-wellness-area-sm.webp', label: 'Sauna-Lounge', tag: '11' },
   // Lounge & Eingang
   { src: '/images/real-damen-umkleide-md.webp', srcSm: '/images/real-damen-umkleide-sm.webp', label: 'Empfangsbereich', tag: '12' },
   { src: '/images/real-eingang-md.webp', srcSm: '/images/real-eingang-sm.webp', label: 'Theke & Bar', tag: '13' },
