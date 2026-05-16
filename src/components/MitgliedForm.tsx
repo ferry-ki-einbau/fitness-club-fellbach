@@ -1180,32 +1180,18 @@ interface MitgliedButtonProps {
   variant?: 'lime' | 'outline' | 'burgund'
 }
 
-export function MitgliedButton({ children, style, className }: MitgliedButtonProps) {
+export function MitgliedButton({ children, style, className, variant = 'lime' }: MitgliedButtonProps) {
   const [open, setOpen] = useState(false)
 
-  const baseStyle: React.CSSProperties = {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: 8,
-    border: 'none',
-    cursor: 'pointer',
-    textDecoration: 'none',
-    transition: 'all 0.2s',
-    padding: '12px 24px',
-    fontFamily: "'Barlow Condensed', sans-serif",
-    fontSize: 12,
-    fontWeight: 700,
-    letterSpacing: '0.2em',
-    textTransform: 'uppercase' as const,
-    ...style,
-  }
+  const variantClass = variant === 'outline' ? 'btn-outline' : variant === 'burgund' ? 'btn-lime' : 'btn-lime'
+  const combinedClass = `${variantClass} ${className || ''}`.trim()
 
   return (
     <>
       <button
         onClick={() => setOpen(true)}
-        className={className}
-        style={baseStyle}
+        className={combinedClass}
+        style={style}
       >
         {children}
       </button>
