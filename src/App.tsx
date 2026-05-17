@@ -128,7 +128,12 @@ function Nav() {
             0711 588 654
           </a>
           <MitgliedButton className="btn-lime hidden md:inline-flex" style={{ padding: '10px 24px', fontSize: 11, letterSpacing: '0.15em' }}>
-            <span>Mitglied werden</span>
+            <span>14 Tage gratis</span>
+          </MitgliedButton>
+
+          {/* Mobile CTA — immer sichtbar neben Burger */}
+          <MitgliedButton className="btn-lime md:hidden" style={{ padding: '8px 14px', fontSize: 10, letterSpacing: '0.1em' }}>
+            <span>Gratis testen</span>
           </MitgliedButton>
 
           {/* Mobile Burger */}
@@ -169,7 +174,7 @@ function Nav() {
             ))}
             <div style={{ marginTop: 40, display: 'flex', flexDirection: 'column', gap: 12 }}>
               <MitgliedButton className="btn-lime" style={{ justifyContent: 'center', width: '100%' }}>
-                <span>Jetzt Mitglied werden</span>
+                <span>14 Tage gratis testen</span><span>→</span>
               </MitgliedButton>
               <a href="tel:+49711588654" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '14px 0', color: '#9A8878', fontSize: 14, textDecoration: 'none', letterSpacing: '0.05em' }}>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
