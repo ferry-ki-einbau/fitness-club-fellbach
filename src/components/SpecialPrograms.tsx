@@ -13,8 +13,8 @@ const programs = [
     img: 'real-boxring-1',
     label: 'Partner: Boxschule Charlie',
     price: '69€ / Monat',
-    headline: 'Box-Kurs im Studio',
-    text: 'In Kooperation mit der Boxschule Charlie — Schlagtechnik, Fußarbeit, Verteidigung. Anfänger bis Fortgeschrittene.',
+    headline: 'Boxschule Charlie',
+    text: 'Eigene Boxschule direkt im Fitness Club — Schlagtechnik, Fußarbeit, Verteidigung. Anfänger bis Fortgeschrittene, feste Trainingszeiten.',
     link: 'https://boxschule-charlie.de/',
   },
 ]
@@ -42,7 +42,7 @@ export default function SpecialPrograms() {
             Mehr als nur <span style={{ fontStyle: 'italic', color: 'var(--accent)' }}>Geräte.</span>
           </h2>
           <p style={{ color: '#3F2C2C', fontSize: 'clamp(1rem, 1.3vw, 1.15rem)', lineHeight: 1.65, maxWidth: 580 }}>
-            Über das normale Training hinaus — Präventionskurse und Box-Kurs in Kooperation mit der Boxschule Charlie.
+            Über das normale Training hinaus — Präventionskurse und die Boxschule Charlie, direkt bei uns im Haus.
           </p>
         </div>
 
