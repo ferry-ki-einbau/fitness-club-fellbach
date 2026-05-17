@@ -28,23 +28,24 @@ const GALLERY = [
   { src: '/images/real-egym-md.webp', srcSm: '/images/real-egym-sm.webp', label: 'EGYM Zirkel', tag: '01' },
   { src: '/images/real-kraftbereich-md.webp', srcSm: '/images/real-kraftbereich-sm.webp', label: 'Kraftbereich', tag: '02' },
   { src: '/images/real-zirkel-md.webp', srcSm: '/images/real-zirkel-sm.webp', label: 'Zirkeltraining', tag: '03' },
-  { src: '/images/real-hantelbereich-md.webp', srcSm: '/images/real-hantelbereich-sm.webp', label: 'Hantelbereich', tag: '04' },
-  { src: '/images/real-cardio-md.webp', srcSm: '/images/real-cardio-sm.webp', label: 'Cardio', tag: '05' },
-  { src: '/images/real-crosstrainer-md.webp', srcSm: '/images/real-crosstrainer-sm.webp', label: 'Crosstrainer', tag: '06' },
-  { src: '/images/real-kraftbereich2-md.webp', srcSm: '/images/real-kraftbereich2-sm.webp', label: 'Gewichte & Racks', tag: '07' },
-  { src: '/images/real-spinning-md.webp', srcSm: '/images/real-spinning-sm.webp', label: 'Spinning', tag: '08' },
+  { src: '/images/real-freihantel-md.webp', srcSm: '/images/real-freihantel-sm.webp', label: 'Großer Hantelbereich', tag: '04' },
+  { src: '/images/real-hantelbereich-md.webp', srcSm: '/images/real-hantelbereich-sm.webp', label: 'Kleiner Hantelbereich', tag: '05' },
+  { src: '/images/real-cardio-md.webp', srcSm: '/images/real-cardio-sm.webp', label: 'Cardio', tag: '06' },
+  { src: '/images/real-crosstrainer-md.webp', srcSm: '/images/real-crosstrainer-sm.webp', label: 'Crosstrainer', tag: '07' },
+  { src: '/images/real-kraftbereich2-md.webp', srcSm: '/images/real-kraftbereich2-sm.webp', label: 'Gewichte & Racks', tag: '08' },
+  { src: '/images/real-spinning-md.webp', srcSm: '/images/real-spinning-sm.webp', label: 'Spinning', tag: '09' },
   // Functional & Kurse
-  { src: '/images/real-functional-md.webp', srcSm: '/images/real-functional-sm.webp', label: 'Functional Area', tag: '09' },
-  { src: '/images/real-kursraum-1-md.webp', srcSm: '/images/real-kursraum-1-sm.webp', label: 'Kursraum', tag: '10' },
-  { src: '/images/real-boxring-1-md.webp', srcSm: '/images/real-boxring-1-sm.webp', label: 'Boxring', tag: '11' },
+  { src: '/images/real-functional-md.webp', srcSm: '/images/real-functional-sm.webp', label: 'Functional Area', tag: '10' },
+  { src: '/images/real-kursraum-1-md.webp', srcSm: '/images/real-kursraum-1-sm.webp', label: 'Kursraum', tag: '11' },
+  { src: '/images/real-boxring-1-md.webp', srcSm: '/images/real-boxring-1-sm.webp', label: 'Boxring', tag: '12' },
   // Wellness & Sauna
-  { src: '/images/real-damen-sauna-md.webp', srcSm: '/images/real-damen-sauna-sm.webp', label: 'Damen-Sauna', tag: '12' },
-  { src: '/images/real-sauna-md.webp', srcSm: '/images/real-sauna-sm.webp', label: 'Gemischte Sauna', tag: '13' },
-  { src: '/images/real-pool-area-md.webp', srcSm: '/images/real-pool-area-sm.webp', label: 'Entspannungsraum', tag: '14' },
-  { src: '/images/real-wellness-area-md.webp', srcSm: '/images/real-wellness-area-sm.webp', label: 'Sauna-Lounge', tag: '15' },
+  { src: '/images/real-damen-sauna-md.webp', srcSm: '/images/real-damen-sauna-sm.webp', label: 'Damen-Sauna', tag: '13' },
+  { src: '/images/real-sauna-md.webp', srcSm: '/images/real-sauna-sm.webp', label: 'Gemischte Sauna', tag: '14' },
+  { src: '/images/real-pool-area-md.webp', srcSm: '/images/real-pool-area-sm.webp', label: 'Entspannungsraum', tag: '15' },
+  { src: '/images/real-wellness-area-md.webp', srcSm: '/images/real-wellness-area-sm.webp', label: 'Sauna-Lounge', tag: '16' },
   // Lounge & Eingang
-  { src: '/images/real-damen-umkleide-md.webp', srcSm: '/images/real-damen-umkleide-sm.webp', label: 'Empfangsbereich', tag: '16' },
-  { src: '/images/real-theke-md.webp', srcSm: '/images/real-theke-sm.webp', label: 'Theke & Bar', tag: '17' },
+  { src: '/images/real-damen-umkleide-md.webp', srcSm: '/images/real-damen-umkleide-sm.webp', label: 'Empfangsbereich', tag: '17' },
+  { src: '/images/real-theke-md.webp', srcSm: '/images/real-theke-sm.webp', label: 'Theke & Bar', tag: '18' },
 ]
 
 function useReveal() {
