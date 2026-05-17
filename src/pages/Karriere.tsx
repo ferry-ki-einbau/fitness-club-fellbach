@@ -89,7 +89,7 @@ const POSITIONS: Position[] = [
 
 const BENEFITS = [
   { icon: '01', title: 'Familiäres Team', desc: 'Inhabergeführt seit über 30 Jahren. Hier kennt jeder jeden.' },
-  { icon: '02', title: 'Kostenlos trainieren', desc: 'Voller Zugang zu allen Bereichen, Kursen und Wellness — gratis.' },
+  { icon: '02', title: 'Kostenlos trainieren', desc: 'Voller Zugang zu allen Bereichen, Kursen und Sauna — gratis.' },
   { icon: '03', title: 'Flexible Zeiten', desc: 'Wir passen Schichten an dein Leben an. Studium, Familie, Hobbys — geht alles.' },
   { icon: '04', title: 'Weiterbildung', desc: 'Wir investieren in dich. Lizenzen, Workshops, Zertifizierungen auf unsere Kosten.' },
   { icon: '05', title: 'Top-Ausstattung', desc: 'EGYM, Precor, Functional Area, Boxring — du arbeitest mit dem Besten.' },

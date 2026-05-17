@@ -48,7 +48,7 @@ export default function PhysioBridge() {
             </h2>
             <p style={{ color: '#E8F5F4', fontSize: 'clamp(1.05rem, 1.4vw, 1.25rem)', lineHeight: 1.7, marginBottom: 24, maxWidth: '52ch' }}>
               Tut dir was weh? Brauchst du Reha nach OP oder gegen Rückenschmerzen?
-              Direkt nebenan im selben Haus: das <span style={{ color: '#FFFFFF', fontWeight: 600 }}>Physio Zentrum Fellbach</span> — vom selben Inhaber. Termin innerhalb 48h, alle Kassen.
+              Im selben Haus, im zweiten Stock: das <span style={{ color: '#FFFFFF', fontWeight: 600 }}>Physio Zentrum Fellbach</span> — vom selben Inhaber. Termin innerhalb 48h, alle Kassen.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 14 }}>
               <a

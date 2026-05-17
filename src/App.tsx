@@ -47,7 +47,7 @@ const GALLERY_SECTIONS = [
     ],
   },
   {
-    title: 'Wellness & Sauna',
+    title: 'Sauna & Erholung',
     items: [
       { src: '/images/real-sauna-md.webp', srcSm: '/images/real-sauna-sm.webp', label: 'Gemischte Sauna', featured: true },
       { src: '/images/real-damen-sauna-md.webp', srcSm: '/images/real-damen-sauna-sm.webp', label: 'Damen-Sauna' },
@@ -313,7 +313,7 @@ function Hero() {
           </h1>
 
           <p style={{ color: '#F0E5D5', fontSize: 'clamp(1rem, 1.3vw, 1.2rem)', lineHeight: 1.8, marginBottom: 32, maxWidth: 520, fontWeight: 400, textShadow: '0 1px 2px rgba(0,0,0,0.4)' }}>
-            Familienstudio seit über 25 Jahren. 1.500m², Wellness, Sauna, 30+ Kurse pro Woche — und ein Team, das dich beim Namen kennt.<br />
+            Familienstudio seit über 25 Jahren. 1.500m², Sauna, 30+ Kurse pro Woche — und ein Team, das dich beim Namen kennt.<br />
             <span style={{ color: '#FFFFFF', fontWeight: 600 }}>Täglich 05–24 Uhr.</span> Ab <span style={{ color: '#FFFFFF', fontWeight: 600 }}>13,99€/Woche.</span>
           </p>
 
@@ -377,7 +377,7 @@ function Hero() {
 }
 
 function Marquee() {
-  const items = ['Training', 'Wellness', 'Sauna', 'Kurse', 'BodyPump', 'Yoga', 'Cardio', 'Spinning', 'Pilates', 'EGYM', '24/7', 'Zirkeltraining', 'Fitness', 'Familienstudio',]
+  const items = ['Training', 'Sauna', 'Kurse', 'BodyPump', 'Yoga', 'Cardio', 'Spinning', 'Pilates', 'EGYM', '24/7', 'Zirkeltraining', 'Fitness', 'Familienstudio', 'Boxen',]
   const doubled = [...items, ...items]
   return (
     <div style={{ overflow: 'hidden', borderTop: '1px solid var(--gray-border)', borderBottom: '1px solid var(--gray-border)', background: 'var(--gray-mid)', padding: '16px 0' }}>

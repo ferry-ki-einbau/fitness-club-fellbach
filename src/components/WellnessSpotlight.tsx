@@ -17,7 +17,7 @@ export default function WellnessSpotlight() {
         <div style={{ marginBottom: 56, maxWidth: 720 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
             <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
-            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Wellness · Erholung</span>
+            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Sauna · Erholung</span>
           </div>
           <h2 className="font-display" style={{
             fontSize: 'clamp(2.5rem, 5.5vw, 5rem)',
