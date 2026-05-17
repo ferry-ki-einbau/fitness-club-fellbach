@@ -23,29 +23,45 @@ const SpecialPrograms = lazy(() => import('./components/SpecialPrograms'))
 const PhysioBridge = lazy(() => import('./components/PhysioBridge'))
 
 
-const GALLERY = [
-  // Geräte & Training zuerst
-  { src: '/images/real-egym-md.webp', srcSm: '/images/real-egym-sm.webp', label: 'EGYM Zirkel', tag: '01' },
-  { src: '/images/real-kraftbereich-md.webp', srcSm: '/images/real-kraftbereich-sm.webp', label: 'Kraftbereich', tag: '02' },
-  { src: '/images/real-zirkel-md.webp', srcSm: '/images/real-zirkel-sm.webp', label: 'Zirkeltraining', tag: '03' },
-  { src: '/images/real-freihantel-gross-md.webp', srcSm: '/images/real-freihantel-gross-sm.webp', label: 'Großer Hantelbereich', tag: '04' },
-  { src: '/images/real-hantelbereich-md.webp', srcSm: '/images/real-hantelbereich-sm.webp', label: 'Kleiner Hantelbereich', tag: '05' },
-  { src: '/images/real-cardio-md.webp', srcSm: '/images/real-cardio-sm.webp', label: 'Cardio', tag: '06' },
-  { src: '/images/real-crosstrainer-md.webp', srcSm: '/images/real-crosstrainer-sm.webp', label: 'Crosstrainer', tag: '07' },
-  { src: '/images/real-kraftbereich2-md.webp', srcSm: '/images/real-kraftbereich2-sm.webp', label: 'Gewichte & Racks', tag: '08' },
-  { src: '/images/real-spinning-md.webp', srcSm: '/images/real-spinning-sm.webp', label: 'Spinning', tag: '09' },
-  // Functional & Kurse
-  { src: '/images/real-functional-md.webp', srcSm: '/images/real-functional-sm.webp', label: 'Functional Area', tag: '10' },
-  { src: '/images/real-kursraum-1-md.webp', srcSm: '/images/real-kursraum-1-sm.webp', label: 'Kursraum', tag: '11' },
-  { src: '/images/real-boxring-1-md.webp', srcSm: '/images/real-boxring-1-sm.webp', label: 'Boxring', tag: '12' },
-  // Wellness & Sauna
-  { src: '/images/real-damen-sauna-md.webp', srcSm: '/images/real-damen-sauna-sm.webp', label: 'Damen-Sauna', tag: '13' },
-  { src: '/images/real-sauna-md.webp', srcSm: '/images/real-sauna-sm.webp', label: 'Gemischte Sauna', tag: '14' },
-  { src: '/images/real-pool-area-md.webp', srcSm: '/images/real-pool-area-sm.webp', label: 'Entspannungsraum', tag: '15' },
-  { src: '/images/real-wellness-area-md.webp', srcSm: '/images/real-wellness-area-sm.webp', label: 'Sauna-Lounge', tag: '16' },
-  // Lounge & Eingang
-  { src: '/images/real-damen-umkleide-md.webp', srcSm: '/images/real-damen-umkleide-sm.webp', label: 'Empfangsbereich', tag: '17' },
-  { src: '/images/real-theke-md.webp', srcSm: '/images/real-theke-sm.webp', label: 'Theke & Bar', tag: '18' },
+const GALLERY_SECTIONS = [
+  {
+    title: 'Kraft & Ausdauer',
+    items: [
+      { src: '/images/real-freihantel-gross-md.webp', srcSm: '/images/real-freihantel-gross-sm.webp', label: 'Großer Hantelbereich', featured: true },
+      { src: '/images/real-egym-md.webp', srcSm: '/images/real-egym-sm.webp', label: 'EGYM Zirkel' },
+      { src: '/images/real-kraftbereich-md.webp', srcSm: '/images/real-kraftbereich-sm.webp', label: 'Kraftbereich' },
+      { src: '/images/real-zirkel-md.webp', srcSm: '/images/real-zirkel-sm.webp', label: 'Zirkeltraining' },
+      { src: '/images/real-hantelbereich-md.webp', srcSm: '/images/real-hantelbereich-sm.webp', label: 'Kleiner Hantelbereich' },
+      { src: '/images/real-kraftbereich2-md.webp', srcSm: '/images/real-kraftbereich2-sm.webp', label: 'Gewichte & Racks' },
+      { src: '/images/real-cardio-md.webp', srcSm: '/images/real-cardio-sm.webp', label: 'Cardio' },
+      { src: '/images/real-crosstrainer-md.webp', srcSm: '/images/real-crosstrainer-sm.webp', label: 'Crosstrainer' },
+      { src: '/images/real-spinning-md.webp', srcSm: '/images/real-spinning-sm.webp', label: 'Spinning' },
+    ],
+  },
+  {
+    title: 'Kurse & Kampfsport',
+    items: [
+      { src: '/images/real-boxring-1-md.webp', srcSm: '/images/real-boxring-1-sm.webp', label: 'Boxring', featured: true },
+      { src: '/images/real-functional-md.webp', srcSm: '/images/real-functional-sm.webp', label: 'Functional Area' },
+      { src: '/images/real-kursraum-1-md.webp', srcSm: '/images/real-kursraum-1-sm.webp', label: 'Kursraum' },
+    ],
+  },
+  {
+    title: 'Wellness & Sauna',
+    items: [
+      { src: '/images/real-sauna-md.webp', srcSm: '/images/real-sauna-sm.webp', label: 'Gemischte Sauna', featured: true },
+      { src: '/images/real-damen-sauna-md.webp', srcSm: '/images/real-damen-sauna-sm.webp', label: 'Damen-Sauna' },
+      { src: '/images/real-pool-area-md.webp', srcSm: '/images/real-pool-area-sm.webp', label: 'Entspannungsraum' },
+      { src: '/images/real-wellness-area-md.webp', srcSm: '/images/real-wellness-area-sm.webp', label: 'Sauna-Lounge' },
+    ],
+  },
+  {
+    title: 'Lounge & Eingang',
+    items: [
+      { src: '/images/real-theke-md.webp', srcSm: '/images/real-theke-sm.webp', label: 'Theke & Bar', featured: true },
+      { src: '/images/real-damen-umkleide-md.webp', srcSm: '/images/real-damen-umkleide-sm.webp', label: 'Empfangsbereich' },
+    ],
+  },
 ]
 
 function useReveal() {
@@ -377,54 +393,85 @@ function Marquee() {
   )
 }
 
+function GalleryCard({ item, featured, delay }: { item: { src: string; srcSm: string; label: string }; featured?: boolean; delay: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
+      className={featured ? 'gallery-featured' : 'gallery-item'}
+      style={{
+        gridColumn: featured ? 'span 2' : 'span 1',
+        aspectRatio: featured ? '16/9' : '4/3',
+        position: 'relative',
+        overflow: 'hidden',
+        background: '#0d0d0d',
+        cursor: 'pointer',
+      }}
+    >
+      <img
+        src={item.src}
+        srcSet={`${item.srcSm} 800w, ${item.src} 1600w`}
+        sizes={featured ? '(max-width: 768px) 100vw, 50vw' : '(max-width: 768px) 50vw, 25vw'}
+        alt={item.label}
+        loading="lazy"
+        decoding="async"
+        className="gallery-img"
+        style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.8s cubic-bezier(0.16,1,0.3,1), filter 0.8s ease' }}
+      />
+      {/* Gradient — stärker bei hover via CSS */}
+      <div className="gallery-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 40%, rgba(15,20,25,0.75) 100%)', transition: 'opacity 0.4s ease', pointerEvents: 'none' }} />
+      {/* Label unten */}
+      <div className="gallery-label" style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: featured ? '24px 28px' : '16px 20px', pointerEvents: 'none', transition: 'transform 0.4s cubic-bezier(0.16,1,0.3,1)' }}>
+        <div className="font-display" style={{ fontSize: featured ? 18 : 13, fontWeight: 700, color: '#F5F0E8', textTransform: 'uppercase', letterSpacing: '0.02em' }}>{item.label}</div>
+      </div>
+      {/* Gold corner accent top-left */}
+      <div style={{ position: 'absolute', top: 0, left: 0, width: 28, height: 1, background: 'var(--accent)', opacity: 0.5, transition: 'opacity 0.4s' }} className="gallery-accent" />
+      <div style={{ position: 'absolute', top: 0, left: 0, width: 1, height: 28, background: 'var(--accent)', opacity: 0.5, transition: 'opacity 0.4s' }} className="gallery-accent" />
+    </motion.div>
+  )
+}
+
 function Gallery() {
+  let counter = 0
   return (
     <section id="galerie" style={{ background: '#0F1419', padding: 'clamp(80px, 12vh, 140px) 0' }}>
+      {/* Header */}
       <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 clamp(16px, 4vw, 56px) 56px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
           <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
           <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Einblick</span>
         </div>
-        <h2 className="font-display" style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800, letterSpacing: '-0.025em', textTransform: 'uppercase', color: '#F5F0E8', lineHeight: 0.95 }}>
+        <h2 className="font-display" style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800, letterSpacing: '-0.025em', textTransform: 'uppercase', color: '#F5F0E8', lineHeight: 1.05 }}>
           In den <span style={{ color: 'var(--accent-bright)', fontStyle: 'italic' }}>Club.</span>
         </h2>
       </div>
-      <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 clamp(16px, 4vw, 56px)', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 12 }}
-        className="gallery-grid"
-      >
-        {GALLERY.map((item, i) => (
-          <motion.div
-            key={item.label}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ duration: 0.6, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
-            style={{
-              gridColumn: (i === 0 || i === 3 || i === 5) ? 'span 2' : 'span 1',
-              aspectRatio: (i === 0 || i === 3 || i === 5) ? '16/9' : '1/1',
-              position: 'relative',
-              overflow: 'hidden',
-              background: '#0d0d0d',
-            }}>
-            <img
-              src={item.src}
-              srcSet={`${item.srcSm} 800w, ${item.src} 1600w`}
-              sizes="(max-width: 768px) 50vw, 25vw"
-              alt={item.label}
-              loading="lazy"
-              decoding="async"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.02) brightness(1.05) saturate(1.05)', transition: 'transform 0.6s ease' }}
-              onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.04)')}
-              onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
-            />
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 50%, rgba(15,20,25,0.85) 100%)', pointerEvents: 'none' }} />
-            <div style={{ position: 'absolute', top: 16, left: 16, padding: '6px 10px', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.3)' }}>
-              <span className="font-condensed" style={{ fontSize: 9, letterSpacing: '0.4em', color: '#B8924A', fontWeight: 700 }}>{item.tag}</span>
+
+      {/* Grouped gallery sections */}
+      <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 clamp(16px, 4vw, 56px)' }}>
+        {GALLERY_SECTIONS.map((section, si) => (
+          <div key={section.title} style={{ marginBottom: si < GALLERY_SECTIONS.length - 1 ? 48 : 0 }}>
+            {/* Section divider label */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}
+            >
+              <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#5A6770', fontWeight: 600, whiteSpace: 'nowrap' }}>{section.title}</span>
+              <span style={{ flex: 1, height: 1, background: 'rgba(245,240,232,0.06)' }} />
+              <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.2em', color: '#3A4450' }}>{section.items.length}</span>
+            </motion.div>
+            {/* Grid */}
+            <div className="gallery-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6 }}>
+              {section.items.map((item) => {
+                const d = counter++ * 0.04
+                return <GalleryCard key={item.label} item={item} featured={'featured' in item && item.featured} delay={d} />
+              })}
             </div>
-            <div style={{ position: 'absolute', bottom: 16, left: 16, right: 16, pointerEvents: 'none' }}>
-              <div className="font-display" style={{ fontSize: 14, fontWeight: 700, color: '#F5F0E8', textTransform: 'uppercase', letterSpacing: '0.02em' }}>{item.label}</div>
-            </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>
