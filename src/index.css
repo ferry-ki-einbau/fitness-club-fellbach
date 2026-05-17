@@ -79,6 +79,7 @@ body {
   .gallery-grid > * { grid-column: span 1 !important; grid-row: span 1 !important; aspect-ratio: 4/3 !important; }
   .gallery-featured { grid-column: span 2 !important; grid-row: span 1 !important; aspect-ratio: 16/9 !important; }
   .programs-grid { grid-template-columns: 1fr !important; }
+  .boxschule-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
   .testimonials-header { grid-template-columns: 1fr !important; gap: 20px !important; }
   .testimonials-section { padding-top: 56px !important; padding-bottom: 56px !important; }
   .testimonials-scroll > div { width: 260px !important; padding: 16px 18px !important; }
