@@ -28,7 +28,7 @@ const GALLERY = [
   { src: '/images/real-egym-md.webp', srcSm: '/images/real-egym-sm.webp', label: 'EGYM Zirkel', tag: '01' },
   { src: '/images/real-kraftbereich-md.webp', srcSm: '/images/real-kraftbereich-sm.webp', label: 'Kraftbereich', tag: '02' },
   { src: '/images/real-zirkel-md.webp', srcSm: '/images/real-zirkel-sm.webp', label: 'Zirkeltraining', tag: '03' },
-  { src: '/images/real-freihantel-md.webp', srcSm: '/images/real-freihantel-sm.webp', label: 'Großer Hantelbereich', tag: '04' },
+  { src: '/images/real-freihantel-gross-md.webp', srcSm: '/images/real-freihantel-gross-sm.webp', label: 'Großer Hantelbereich', tag: '04' },
   { src: '/images/real-hantelbereich-md.webp', srcSm: '/images/real-hantelbereich-sm.webp', label: 'Kleiner Hantelbereich', tag: '05' },
   { src: '/images/real-cardio-md.webp', srcSm: '/images/real-cardio-sm.webp', label: 'Cardio', tag: '06' },
   { src: '/images/real-crosstrainer-md.webp', srcSm: '/images/real-crosstrainer-sm.webp', label: 'Crosstrainer', tag: '07' },
