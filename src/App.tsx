@@ -400,8 +400,8 @@ function Gallery() {
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.6, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
             style={{
-              gridColumn: i === 0 ? 'span 2' : i === 5 ? 'span 2' : 'span 1',
-              aspectRatio: i === 0 || i === 5 ? '16/9' : '1/1',
+              gridColumn: (i === 0 || i === 3 || i === 5) ? 'span 2' : 'span 1',
+              aspectRatio: (i === 0 || i === 3 || i === 5) ? '16/9' : '1/1',
               position: 'relative',
               overflow: 'hidden',
               background: '#0d0d0d',
