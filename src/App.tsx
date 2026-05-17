@@ -197,8 +197,8 @@ function Hero() {
     { src: '/images/real-freihantel-hero-md.webp', srcSm: '/images/real-freihantel-hero-sm.webp', label: 'Freihantel' },
     { src: '/images/real-egym-hero-md.webp', srcSm: '/images/real-egym-hero-sm.webp', label: 'EGYM' },
     { src: '/images/real-cardio-hero-md.webp', srcSm: '/images/real-cardio-hero-sm.webp', label: 'Cardio' },
-    { src: '/images/real-spinning-hero-md.webp', srcSm: '/images/real-spinning-hero-sm.webp', label: 'Spinning' },
     { src: '/images/real-kursraum-1-hero-md.webp', srcSm: '/images/real-kursraum-1-hero-sm.webp', label: 'Kursraum' },
+    { src: '/images/real-spinning-hero-md.webp', srcSm: '/images/real-spinning-hero-sm.webp', label: 'Spinning' },
     { src: '/images/real-theke-hero-md.webp', srcSm: '/images/real-theke-hero-sm.webp', label: 'Theke & Bar' },
   ]
   const [current, setCurrent] = useState(0)
