@@ -131,11 +131,6 @@ function Nav() {
             <span>14 Tage gratis</span>
           </MitgliedButton>
 
-          {/* Mobile CTA — immer sichtbar neben Burger */}
-          <MitgliedButton className="btn-lime md:hidden" style={{ padding: '8px 14px', fontSize: 10, letterSpacing: '0.1em' }}>
-            <span>Gratis testen</span>
-          </MitgliedButton>
-
           {/* Mobile Burger */}
           <button className="md:hidden nav-burger" onClick={() => setOpen(!open)} aria-label="Menü" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 10, display: 'flex', flexDirection: 'column', gap: 5, position: 'relative', zIndex: 60 }}>
             <span style={{ width: 24, height: 2, background: '#F5F0E8', display: 'block', borderRadius: 1, transition: 'all 0.3s cubic-bezier(0.16,1,0.3,1)', transform: open ? 'rotate(45deg) translate(5px, 5px)' : 'none' }} />
