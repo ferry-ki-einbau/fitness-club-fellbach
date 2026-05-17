@@ -393,48 +393,105 @@ function Marquee() {
   )
 }
 
-function GalleryCard({ item, featured, delay }: { item: { src: string; srcSm: string; label: string }; featured?: boolean; delay: number }) {
+function GalleryLightbox({ item, onClose, onPrev, onNext, current, total }: {
+  item: { src: string; srcSm: string; label: string }
+  onClose: () => void
+  onPrev: () => void
+  onNext: () => void
+  current: number
+  total: number
+}) {
+  // Swipe support
+  const [touchStart, setTouchStart] = useState<number | null>(null)
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+      if (e.key === 'ArrowLeft') onPrev()
+      if (e.key === 'ArrowRight') onNext()
+    }
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', handleKey)
+    return () => { document.body.style.overflow = ''; window.removeEventListener('keydown', handleKey) }
+  }, [onClose, onPrev, onNext])
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-60px' }}
-      transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
-      className={featured ? 'gallery-featured' : 'gallery-item'}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25 }}
+      onClick={onClose}
+      onTouchStart={e => setTouchStart(e.touches[0].clientX)}
+      onTouchEnd={e => {
+        if (touchStart === null) return
+        const diff = e.changedTouches[0].clientX - touchStart
+        if (diff > 60) onPrev()
+        else if (diff < -60) onNext()
+        setTouchStart(null)
+      }}
       style={{
-        gridColumn: featured ? 'span 2' : 'span 1',
-        aspectRatio: featured ? '16/9' : '4/3',
-        position: 'relative',
-        overflow: 'hidden',
-        background: '#0d0d0d',
-        cursor: 'pointer',
+        position: 'fixed', inset: 0, zIndex: 10000,
+        background: 'rgba(0,0,0,0.92)', backdropFilter: 'blur(20px)',
+        display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
+        cursor: 'zoom-out',
       }}
     >
-      <img
-        src={item.src}
-        srcSet={`${item.srcSm} 800w, ${item.src} 1600w`}
-        sizes={featured ? '(max-width: 768px) 100vw, 50vw' : '(max-width: 768px) 50vw, 25vw'}
-        alt={item.label}
-        loading="lazy"
-        decoding="async"
-        className="gallery-img"
-        style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.8s cubic-bezier(0.16,1,0.3,1), filter 0.8s ease' }}
-      />
-      {/* Gradient — stärker bei hover via CSS */}
-      <div className="gallery-overlay" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent 40%, rgba(15,20,25,0.75) 100%)', transition: 'opacity 0.4s ease', pointerEvents: 'none' }} />
-      {/* Label unten */}
-      <div className="gallery-label" style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: featured ? '24px 28px' : '16px 20px', pointerEvents: 'none', transition: 'transform 0.4s cubic-bezier(0.16,1,0.3,1)' }}>
-        <div className="font-display" style={{ fontSize: featured ? 18 : 13, fontWeight: 700, color: '#F5F0E8', textTransform: 'uppercase', letterSpacing: '0.02em' }}>{item.label}</div>
+      {/* Close */}
+      <button onClick={onClose} style={{ position: 'absolute', top: 20, right: 20, background: 'none', border: 'none', color: '#fff', fontSize: 32, cursor: 'pointer', zIndex: 2, lineHeight: 1, padding: 12 }} aria-label="Schließen">✕</button>
+      {/* Counter */}
+      <div className="font-condensed" style={{ position: 'absolute', top: 24, left: '50%', transform: 'translateX(-50%)', fontSize: 11, letterSpacing: '0.3em', color: 'var(--accent)', fontWeight: 600 }}>
+        {current + 1} / {total}
       </div>
-      {/* Gold corner accent top-left */}
-      <div style={{ position: 'absolute', top: 0, left: 0, width: 28, height: 1, background: 'var(--accent)', opacity: 0.5, transition: 'opacity 0.4s' }} className="gallery-accent" />
-      <div style={{ position: 'absolute', top: 0, left: 0, width: 1, height: 28, background: 'var(--accent)', opacity: 0.5, transition: 'opacity 0.4s' }} className="gallery-accent" />
+      {/* Image */}
+      <motion.img
+        key={item.src}
+        initial={{ opacity: 0, scale: 0.92 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.92 }}
+        transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+        src={item.src}
+        alt={item.label}
+        onClick={e => e.stopPropagation()}
+        style={{
+          maxWidth: '92vw', maxHeight: '80vh', objectFit: 'contain',
+          cursor: 'default',
+          borderRadius: 0,
+        }}
+      />
+      {/* Label */}
+      <div style={{ marginTop: 20, textAlign: 'center' }}>
+        <div className="font-display" style={{ fontSize: 18, fontWeight: 700, color: '#F5F0E8', textTransform: 'uppercase', letterSpacing: '0.02em' }}>{item.label}</div>
+      </div>
+      {/* Nav arrows — desktop */}
+      <button onClick={e => { e.stopPropagation(); onPrev() }} className="lightbox-nav-btn" style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff', width: 48, height: 48, fontSize: 22, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.2s' }} aria-label="Vorheriges Bild">‹</button>
+      <button onClick={e => { e.stopPropagation(); onNext() }} className="lightbox-nav-btn" style={{ position: 'absolute', right: 16, top: '50%', transform: 'translateY(-50%)', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', color: '#fff', width: 48, height: 48, fontSize: 22, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.2s' }} aria-label="Nächstes Bild">›</button>
+      {/* Swipe hint mobile */}
+      <div className="lightbox-swipe-hint font-condensed" style={{ position: 'absolute', bottom: 24, left: '50%', transform: 'translateX(-50%)', fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)' }}>← Wischen →</div>
     </motion.div>
   )
 }
 
 function Gallery() {
-  let counter = 0
+  let globalCounter = 0
+  const [lightboxIdx, setLightboxIdx] = useState<number | null>(null)
+  const allItems = GALLERY_SECTIONS.flatMap(s => s.items)
+
+  // Grid config per section — no empty cells, editorial feel
+  type GridConfig = { cols: number; tallFeatured: boolean; rowHeight: string; lastFill: number }
+  const getGridConfig = (items: typeof allItems): GridConfig => {
+    const hasFeatured = items.some(it => 'featured' in it && it.featured)
+    const count = items.length
+    if (hasFeatured && count >= 5)
+      return { cols: 4, tallFeatured: true, rowHeight: 'clamp(180px, 22vw, 280px)', lastFill: 0 }
+    if (hasFeatured && count === 4)
+      return { cols: 4, tallFeatured: false, rowHeight: 'clamp(200px, 24vw, 320px)', lastFill: 4 }
+    if (hasFeatured && count === 3)
+      return { cols: 4, tallFeatured: false, rowHeight: 'clamp(220px, 26vw, 360px)', lastFill: 0 }
+    if (hasFeatured && count === 2)
+      return { cols: 3, tallFeatured: false, rowHeight: 'clamp(220px, 26vw, 360px)', lastFill: 0 }
+    return { cols: 4, tallFeatured: false, rowHeight: 'clamp(200px, 22vw, 280px)', lastFill: 0 }
+  }
+
   return (
     <section id="galerie" style={{ background: '#0F1419', padding: 'clamp(80px, 12vh, 140px) 0' }}>
       {/* Header */}
@@ -443,37 +500,112 @@ function Gallery() {
           <span style={{ width: 32, height: 1, background: 'var(--accent)' }} />
           <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>Einblick</span>
         </div>
-        <h2 className="font-display" style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800, letterSpacing: '-0.025em', textTransform: 'uppercase', color: '#F5F0E8', lineHeight: 1.05 }}>
-          In den <span style={{ color: 'var(--accent-bright)', fontStyle: 'italic' }}>Club.</span>
-        </h2>
+        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
+          <h2 className="font-display" style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800, letterSpacing: '-0.025em', textTransform: 'uppercase', color: '#F5F0E8', lineHeight: 1.05 }}>
+            In den <span style={{ color: 'var(--accent-bright)', fontStyle: 'italic' }}>Club.</span>
+          </h2>
+          <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#5A6770', fontWeight: 500, paddingBottom: 8 }}>{allItems.length} Bereiche</span>
+        </div>
       </div>
 
-      {/* Grouped gallery sections */}
+      {/* Gallery sections */}
       <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 clamp(16px, 4vw, 56px)' }}>
-        {GALLERY_SECTIONS.map((section, si) => (
-          <div key={section.title} style={{ marginBottom: si < GALLERY_SECTIONS.length - 1 ? 48 : 0 }}>
-            {/* Section divider label */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20 }}
-            >
-              <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#5A6770', fontWeight: 600, whiteSpace: 'nowrap' }}>{section.title}</span>
-              <span style={{ flex: 1, height: 1, background: 'rgba(245,240,232,0.06)' }} />
-              <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.2em', color: '#3A4450' }}>{section.items.length}</span>
-            </motion.div>
-            {/* Grid */}
-            <div className="gallery-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6 }}>
-              {section.items.map((item) => {
-                const d = counter++ * 0.04
-                return <GalleryCard key={item.label} item={item} featured={'featured' in item && item.featured} delay={d} />
-              })}
+        {GALLERY_SECTIONS.map((section, si) => {
+          const sectionStartIdx = GALLERY_SECTIONS.slice(0, si).reduce((acc, s) => acc + s.items.length, 0)
+          const config = getGridConfig(section.items)
+          return (
+            <div key={section.title} style={{ marginBottom: si < GALLERY_SECTIONS.length - 1 ? 64 : 0 }}>
+              {/* Section divider */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 24 }}
+              >
+                <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#5A6770', fontWeight: 600, whiteSpace: 'nowrap' }}>{section.title}</span>
+                <span style={{ flex: 1, height: 1, background: 'rgba(245,240,232,0.06)' }} />
+                <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.2em', color: '#3A4450' }}>{String(si + 1).padStart(2, '0')}</span>
+              </motion.div>
+              {/* Grid */}
+              <div className="gallery-grid" style={{
+                display: 'grid',
+                gridTemplateColumns: `repeat(${config.cols}, 1fr)`,
+                gridAutoRows: config.rowHeight,
+                gap: 'clamp(4px, 0.5vw, 8px)',
+              }}>
+                {section.items.map((item, itemIdx) => {
+                  const d = globalCounter++ * 0.03
+                  const flatIdx = sectionStartIdx + itemIdx
+                  const isFeatured = 'featured' in item && item.featured
+                  const isTall = isFeatured && config.tallFeatured
+                  // Last non-featured item fills remaining cols (e.g. 4-item section: last item spans full width)
+                  const lastFillSpan = config.lastFill > 0 && itemIdx === section.items.length - 1 && !isFeatured ? config.lastFill : 0
+                  return (
+                    <motion.div
+                      key={item.label}
+                      initial={{ opacity: 0, y: 24 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: '-60px' }}
+                      transition={{ duration: 0.7, delay: d, ease: [0.16, 1, 0.3, 1] }}
+                      className={isFeatured ? 'gallery-featured' : 'gallery-item'}
+                      onClick={() => setLightboxIdx(flatIdx)}
+                      style={{
+                        gridColumn: lastFillSpan ? `span ${lastFillSpan}` : isFeatured ? 'span 2' : 'span 1',
+                        gridRow: isTall ? 'span 2' : 'span 1',
+                        position: 'relative',
+                        overflow: 'hidden',
+                        background: '#0d0d0d',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      <img
+                        src={item.src}
+                        srcSet={`${item.srcSm} 800w, ${item.src} 1600w`}
+                        sizes={isFeatured ? '(max-width: 768px) 100vw, 50vw' : '(max-width: 768px) 50vw, 25vw'}
+                        alt={item.label}
+                        loading="lazy"
+                        decoding="async"
+                        className="gallery-img"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 1s cubic-bezier(0.16,1,0.3,1), filter 0.8s ease' }}
+                      />
+                      <div className="gallery-overlay" style={{ position: 'absolute', inset: 0, background: `linear-gradient(180deg, transparent ${isFeatured ? '20%' : '30%'}, rgba(15,20,25,${isFeatured ? '0.9' : '0.85'}) 100%)`, transition: 'opacity 0.5s ease', pointerEvents: 'none' }} />
+                      {/* Number */}
+                      <div style={{ position: 'absolute', top: 16, right: 16, pointerEvents: 'none' }}>
+                        <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.3em', color: 'rgba(245,240,232,0.2)', fontWeight: 600 }}>{String(flatIdx + 1).padStart(2, '0')}</span>
+                      </div>
+                      {/* Label */}
+                      <div className="gallery-label" style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: isFeatured ? '32px 36px' : '16px 20px', pointerEvents: 'none', transition: 'transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.4s' }}>
+                        <div className="font-display" style={{ fontSize: isFeatured ? 22 : 13, fontWeight: 700, color: '#F5F0E8', textTransform: 'uppercase', letterSpacing: '0.02em', lineHeight: 1.2 }}>{item.label}</div>
+                        {isFeatured && <div className="font-condensed gallery-sublabel" style={{ fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600, marginTop: 8, opacity: 0, transition: 'opacity 0.4s 0.1s' }}>Klicken zum Vergrößern</div>}
+                      </div>
+                      {/* Corner accents */}
+                      <div style={{ position: 'absolute', top: 0, left: 0, width: 36, height: 1, background: 'var(--accent)', transition: 'opacity 0.4s, width 0.5s' }} className="gallery-accent" />
+                      <div style={{ position: 'absolute', top: 0, left: 0, width: 1, height: 36, background: 'var(--accent)', transition: 'opacity 0.4s, height 0.5s' }} className="gallery-accent" />
+                      <div style={{ position: 'absolute', bottom: 0, right: 0, width: 36, height: 1, background: 'var(--accent)', transition: 'opacity 0.4s' }} className="gallery-accent" />
+                      <div style={{ position: 'absolute', bottom: 0, right: 0, width: 1, height: 36, background: 'var(--accent)', transition: 'opacity 0.4s' }} className="gallery-accent" />
+                    </motion.div>
+                  )
+                })}
+              </div>
             </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightboxIdx !== null && (
+          <GalleryLightbox
+            item={allItems[lightboxIdx]}
+            current={lightboxIdx}
+            total={allItems.length}
+            onClose={() => setLightboxIdx(null)}
+            onPrev={() => setLightboxIdx(i => i !== null ? (i - 1 + allItems.length) % allItems.length : null)}
+            onNext={() => setLightboxIdx(i => i !== null ? (i + 1) % allItems.length : null)}
+          />
+        )}
+      </AnimatePresence>
     </section>
   )
 }
