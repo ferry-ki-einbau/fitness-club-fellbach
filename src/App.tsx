@@ -771,13 +771,24 @@ function Pricing() {
           })}
         </div>
 
-        <div style={{ textAlign: 'center', marginTop: 36, padding: '20px 16px', background: 'rgba(245,240,232,0.03)', border: '1px solid rgba(245,240,232,0.06)', borderRadius: 8 }}>
-          <p className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#B5A99A', marginBottom: 6, fontWeight: 600 }}>
-            Probetraining &amp; Beratung zu Betreuungszeiten
-          </p>
-          <p style={{ fontSize: 13, color: '#9A8470', lineHeight: 1.6 }}>
-            Mo–Fr 08–12 &amp; 16–21 Uhr · Sa+So 09–14 Uhr
-          </p>
+        <div style={{ marginTop: 40, maxWidth: 560, marginInline: 'auto', padding: '24px 28px', background: 'linear-gradient(135deg, rgba(34,197,94,0.04), rgba(245,240,232,0.02))', border: '1px solid rgba(34,197,94,0.12)', borderRadius: 10 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8, justifyContent: 'center', marginBottom: 14 }}>
+            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 8px rgba(34,197,94,0.4)' }} />
+            <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.25em', textTransform: 'uppercase', color: '#22c55e', fontWeight: 700 }}>Probetraining &amp; Beratung</span>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: 'clamp(16px, 4vw, 32px)', flexWrap: 'wrap' }}>
+            <div style={{ textAlign: 'center' }}>
+              <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9A8470', display: 'block', marginBottom: 4 }}>Mo – Fr</span>
+              <span style={{ fontSize: 14, color: '#F5F0E8', fontWeight: 600 }}>08–12</span>
+              <span style={{ fontSize: 12, color: '#9A8470', margin: '0 4px' }}>&amp;</span>
+              <span style={{ fontSize: 14, color: '#F5F0E8', fontWeight: 600 }}>16–21 Uhr</span>
+            </div>
+            <span style={{ width: 1, height: 32, background: 'rgba(245,240,232,0.08)', alignSelf: 'center' }} />
+            <div style={{ textAlign: 'center' }}>
+              <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#9A8470', display: 'block', marginBottom: 4 }}>Sa + So</span>
+              <span style={{ fontSize: 14, color: '#F5F0E8', fontWeight: 600 }}>09–14 Uhr</span>
+            </div>
+          </div>
         </div>
         <p style={{ textAlign: 'center', color: '#8A7A68', fontSize: 12, marginTop: 16, letterSpacing: '0.08em', lineHeight: 1.6 }}>
           Einmalige Aufnahmegebühr: 20,00€ (Transponder-Armband) · 14 Tage Widerrufsrecht mit voller Erstattung · Kündigungsfrist 13 Wochen zum Laufzeitende
