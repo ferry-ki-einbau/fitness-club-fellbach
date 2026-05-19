@@ -110,12 +110,12 @@ function Nav() {
   ]
   return (
     <nav style={{
-      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
+      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 60,
       transition: 'box-shadow 0.4s ease',
-      background: 'rgba(15,20,25,0.92)',
-      backdropFilter: 'blur(24px) saturate(1.2)',
-      boxShadow: scrolled ? '0 1px 0 rgba(245,240,232,0.06), 0 4px 20px rgba(0,0,0,0.3)' : 'none',
-      borderBottom: '1px solid rgba(245,240,232,0.06)',
+      background: open ? '#0F1419' : 'rgba(15,20,25,0.92)',
+      backdropFilter: open ? 'none' : 'blur(24px) saturate(1.2)',
+      boxShadow: scrolled && !open ? '0 1px 0 rgba(245,240,232,0.06), 0 4px 20px rgba(0,0,0,0.3)' : 'none',
+      borderBottom: open ? 'none' : '1px solid rgba(245,240,232,0.06)',
     }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 clamp(16px, 4vw, 48px)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 64 }}>
 
@@ -142,24 +142,26 @@ function Nav() {
         </div>
 
         {/* Right side CTA group */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <a href="tel:+49711588654" className="hidden lg:flex font-condensed" style={{ alignItems: 'center', gap: 8, fontSize: 14, letterSpacing: '0.15em', color: '#E8E0D8', textDecoration: 'none', transition: 'color 0.2s' }}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          {/* Desktop — Telefonnummer */}
+          <a href="tel:+49711588654" className="hidden lg:flex font-condensed" style={{ alignItems: 'center', gap: 8, fontSize: 13, letterSpacing: '0.15em', color: '#C9BFB3', textDecoration: 'none', transition: 'color 0.2s' }}
             onMouseEnter={e => (e.currentTarget.style.color = '#F5F0E8')}
             onMouseLeave={e => (e.currentTarget.style.color = '#C9BFB3')}>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
             0711 588 654
           </a>
+          {/* Desktop — 14 Tage CTA */}
           <MitgliedButton className="btn-lime hidden md:inline-flex" style={{ padding: '10px 24px', fontSize: 11, letterSpacing: '0.15em' }}>
             <span>14 Tage gratis</span>
           </MitgliedButton>
-          {/* Mobile — kompakter Anrufen-Button */}
-          <a href="tel:+49711588654" className="flex md:hidden font-condensed" style={{ alignItems: 'center', gap: 6, padding: '8px 14px', background: 'var(--accent)', color: '#0F1419', textDecoration: 'none', fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700 }}>
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+          {/* Mobile — kleiner Anrufen-Button, nur Icon + Text */}
+          <a href="tel:+49711588654" className="flex md:hidden font-condensed" style={{ alignItems: 'center', gap: 5, padding: '7px 12px', background: 'rgba(196,69,82,0.15)', border: '1px solid rgba(196,69,82,0.3)', borderRadius: 6, color: '#F5F0E8', textDecoration: 'none', fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', fontWeight: 600, WebkitTapHighlightColor: 'transparent' }}>
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
             Anrufen
           </a>
 
           {/* Mobile Burger */}
-          <button className="md:hidden nav-burger" onClick={() => setOpen(!open)} aria-label="Menü" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 10, display: 'flex', flexDirection: 'column', gap: 5, position: 'relative', zIndex: 60 }}>
+          <button className="md:hidden nav-burger" onClick={() => setOpen(!open)} aria-label="Menü" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 10, display: 'flex', flexDirection: 'column', gap: 5, position: 'relative', zIndex: 60, WebkitTapHighlightColor: 'transparent' }}>
             <span style={{ width: 24, height: 2, background: '#F5F0E8', display: 'block', borderRadius: 1, transition: 'all 0.3s cubic-bezier(0.16,1,0.3,1)', transform: open ? 'rotate(45deg) translate(5px, 5px)' : 'none' }} />
             <span style={{ width: 16, height: 2, background: '#F5F0E8', display: 'block', borderRadius: 1, transition: 'all 0.2s ease', opacity: open ? 0 : 1, marginLeft: 'auto' }} />
             <span style={{ width: 24, height: 2, background: '#F5F0E8', display: 'block', borderRadius: 1, transition: 'all 0.3s cubic-bezier(0.16,1,0.3,1)', transform: open ? 'rotate(-45deg) translate(5px, -5px)' : 'none' }} />
@@ -171,46 +173,50 @@ function Nav() {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             style={{
-              position: 'fixed', inset: 0, top: 64,
-              background: 'rgba(15,20,25,0.98)', backdropFilter: 'blur(24px)',
-              display: 'flex', flexDirection: 'column', justifyContent: 'center',
-              padding: '0 32px', gap: 0, zIndex: 49,
+              position: 'fixed', inset: 0, top: 0,
+              background: '#0F1419',
+              display: 'flex', flexDirection: 'column',
+              paddingTop: 80, padding: '80px 28px 28px',
+              zIndex: 55, overflowY: 'auto',
             }}>
-            {links.map((l, i) => (
-              <motion.a
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.06, duration: 0.3 }}
-                style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 0', borderBottom: '1px solid rgba(245,240,232,0.06)', textDecoration: 'none' }}>
-                <span className="font-display" style={{ fontSize: 22, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.02em', color: '#F5F0E8' }}>{l.label}</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(245,240,232,0.3)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </motion.a>
-            ))}
-            <div style={{ marginTop: 28, display: 'flex', flexDirection: 'column', gap: 10 }}>
-              <a href="tel:+49711588654" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '14px 0', background: 'var(--accent)', color: '#0F1419', textDecoration: 'none', fontWeight: 700 }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
-                <span className="font-display" style={{ fontSize: 14, letterSpacing: '0.05em', textTransform: 'uppercase' }}>0711 588 654</span>
+            <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 0 }}>
+              {links.map((l, i) => (
+                <motion.a
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  initial={{ opacity: 0, x: -16 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05, duration: 0.25 }}
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 0', borderBottom: '1px solid rgba(245,240,232,0.08)', textDecoration: 'none' }}>
+                  <span className="font-display" style={{ fontSize: 'clamp(20px, 5vw, 28px)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.02em', color: '#F5F0E8' }}>{l.label}</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(245,240,232,0.25)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+                </motion.a>
+              ))}
+            </div>
+
+            <div style={{ marginTop: 24, display: 'flex', flexDirection: 'column', gap: 10, paddingBottom: 'env(safe-area-inset-bottom, 16px)' }}>
+              <a href="tel:+49711588654" className="font-display" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, padding: '16px 0', background: 'var(--accent)', color: '#fff', textDecoration: 'none', fontWeight: 700, fontSize: 15, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+                Jetzt anrufen
               </a>
-              <button onClick={() => { setOpen(false); window.dispatchEvent(new CustomEvent('open-mitglied-form')) }} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '12px 0', background: 'transparent', border: '1px solid rgba(245,240,232,0.15)', color: '#9A8878', fontSize: 12, cursor: 'pointer', letterSpacing: '0.05em', fontFamily: "'Barlow Condensed', sans-serif", textTransform: 'uppercase' }}>
+              <button onClick={() => { setOpen(false); window.dispatchEvent(new CustomEvent('open-mitglied-form')) }} className="font-condensed" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '14px 0', background: 'transparent', border: '1px solid rgba(245,240,232,0.12)', color: '#B5A99A', fontSize: 13, cursor: 'pointer', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                 14 Tage gratis testen →
               </button>
-            </div>
-            {/* Status badge at bottom */}
-            <div style={{ position: 'absolute', bottom: 'calc(80px + env(safe-area-inset-bottom, 0px))', left: 32, right: 32, display: 'flex', justifyContent: 'center' }}>
-              <span style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '6px 14px', borderRadius: 999, background: isOpen ? 'rgba(34,197,94,0.08)' : 'rgba(196,69,82,0.08)', border: `1px solid ${isOpen ? 'rgba(34,197,94,0.15)' : 'rgba(196,69,82,0.15)'}` }}>
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: isOpen ? '#22c55e' : '#C44552' }} />
-                <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: isOpen ? '#22c55e' : '#C44552', fontWeight: 600 }}>
-                  {isOpen ? '05:00 – 24:00 Uhr geöffnet' : 'Geschlossen'}
+              {/* Status */}
+              <div style={{ display: 'flex', justifyContent: 'center', marginTop: 8 }}>
+                <span style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '6px 14px', borderRadius: 999, background: isOpen ? 'rgba(34,197,94,0.06)' : 'rgba(196,69,82,0.06)', border: `1px solid ${isOpen ? 'rgba(34,197,94,0.12)' : 'rgba(196,69,82,0.12)'}` }}>
+                  <span style={{ width: 5, height: 5, borderRadius: '50%', background: isOpen ? '#22c55e' : '#C44552' }} />
+                  <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: isOpen ? '#22c55e' : '#C44552', fontWeight: 600 }}>
+                    {isOpen ? 'Geöffnet · 05–24 Uhr' : 'Geschlossen'}
+                  </span>
                 </span>
-              </span>
+              </div>
             </div>
           </motion.div>
         )}
@@ -330,7 +336,8 @@ function Hero() {
               <span>14 Tage gratis testen</span><span>→</span>
             </MitgliedButton>
             <MagneticButton href="tel:+49711588654" variant="outline">
-              <span>☎ Jetzt anrufen</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+              <span>Jetzt anrufen</span>
             </MagneticButton>
           </div>
 
