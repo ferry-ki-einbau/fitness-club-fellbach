@@ -313,7 +313,7 @@ function Hero() {
           </h1>
 
           <p style={{ color: '#F0E5D5', fontSize: 'clamp(1rem, 1.3vw, 1.2rem)', lineHeight: 1.8, marginBottom: 32, maxWidth: 520, fontWeight: 400, textShadow: '0 1px 2px rgba(0,0,0,0.4)' }}>
-            Familienstudio seit über 25 Jahren. 1.500m², Sauna, 30+ Kurse pro Woche — und ein Team, das dich beim Namen kennt.<br />
+            Familienstudio seit über 25 Jahren. 2.000m², Sauna, 30+ Kurse pro Woche — und ein Team, das dich beim Namen kennt.<br />
             <span style={{ color: '#FFFFFF', fontWeight: 600 }}>Täglich 05–24 Uhr.</span> Ab <span style={{ color: '#FFFFFF', fontWeight: 600 }}>13,99€/Woche.</span>
           </p>
 
@@ -330,7 +330,7 @@ function Hero() {
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'clamp(28px,4vw,56px)', paddingTop: 28, borderTop: '1px solid rgba(184, 146, 74, 0.2)' }}>
             {[
-              { end: 1500, suffix: 'm²', label: 'Fläche' },
+              { end: 2000, suffix: 'm²', label: 'Fläche' },
               { end: 30, suffix: '+', label: 'Kurse/Woche' },
               { end: 500, suffix: '+', label: 'Mitglieder' },
               { end: 14, suffix: '', label: 'Tage gratis' },

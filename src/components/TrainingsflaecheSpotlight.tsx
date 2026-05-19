@@ -44,7 +44,7 @@ export default function TrainingsflaecheSpotlight() {
           >
             <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '40%', background: 'linear-gradient(180deg, transparent 0%, rgba(15,20,25,0.8) 100%)', zIndex: 1 }} />
             <div style={{ position: 'absolute', bottom: 24, left: 24, padding: '8px 14px', background: 'rgba(15,20,25,0.85)', backdropFilter: 'blur(8px)', border: '1px solid rgba(184, 146, 74, 0.4)', zIndex: 2 }}>
-              <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>1.500m² Trainingsfläche</div>
+              <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.45em', textTransform: 'uppercase', color: 'var(--accent)', fontWeight: 600 }}>2.000m² Trainingsfläche</div>
             </div>
           </ParallaxImage>
         </motion.div>

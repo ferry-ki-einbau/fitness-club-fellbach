@@ -6,9 +6,9 @@ const zones = [
     id: 'training',
     label: 'Trainingsfläche',
     img: 'real-trainingsbereich',
-    headline: '1.500m² für jedes Ziel',
+    headline: '2.000m² für jedes Ziel',
     text: 'Großzügige Hauptfläche mit modernen Geräten, Free Weights und genug Platz auch zu Stoßzeiten.',
-    stats: ['1.500m²', 'modernste Geräte', 'kein Drängeln'],
+    stats: ['2.000m²', 'modernste Geräte', 'kein Drängeln'],
   },
   {
     id: 'cardio',
