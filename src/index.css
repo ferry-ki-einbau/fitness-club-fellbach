@@ -132,6 +132,23 @@ p { line-height: 1.7; max-width: 70ch; }
 h1, h2, h3, h4 { line-height: 1.1; letter-spacing: -0.01em; }
 button, a { transition: all 0.2s ease; }
 
+/* Mobile tap optimization */
+button, a, [role="button"] {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Prevent horizontal overflow on mobile */
+html, body {
+  overflow-x: hidden;
+}
+
+/* Ensure minimum touch target size for mobile sticky bar */
+.mobile-sticky-bar a,
+.mobile-sticky-bar button {
+  min-height: 48px;
+}
+
 /* Eyebrow labels — nie unter 11px, immer lesbar */
 .font-condensed { font-size: max(11px, 1em); }
 

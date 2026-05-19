@@ -18,6 +18,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="FC Fellbach" />
     <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
 
     <!-- PRIMARY SEO -->
     <title>Fitness Club Fellbach — 24/7 Training, Sauna &amp; Kurse | Bruckstraße 61</title>
@@ -129,6 +131,12 @@
             {"@type": "LocationFeatureSpecification", "name": "Kostenloser Parkplatz", "value": true},
             {"@type": "LocationFeatureSpecification", "name": "Duschen & Umkleiden", "value": true}
           ],
+          "speakable": {
+            "@type": "SpeakableSpecification",
+            "cssSelector": ["h1", "h2", ".font-display"]
+          },
+          "isAccessibleForFree": false,
+          "slogan": "Stärke. Disziplin. Gemeinschaft.",
           "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.7",
@@ -173,6 +181,11 @@
               "@type": "Question",
               "name": "Wo befindet sich der Fitness Club Fellbach?",
               "acceptedAnswer": {"@type": "Answer", "text": "Bruckstraße 61, 70734 Fellbach — neben dem Physio Zentrum Fellbach, kostenloser Parkplatz."}
+            },
+            {
+              "@type": "Question",
+              "name": "Was ist die Boxschule Charlie?",
+              "acceptedAnswer": {"@type": "Answer", "text": "Die Boxschule Charlie ist eine eigene Boxschule direkt im Fitness Club Fellbach. Für 69€ im Monat — Schlagtechnik, Fußarbeit und Verteidigung, für alle Levels."}
             }
           ]
         },

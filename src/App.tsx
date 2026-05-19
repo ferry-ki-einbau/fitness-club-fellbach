@@ -1058,10 +1058,19 @@ export default function App() {
   }, [])
   return (
     <>
+      <a href="#main" className="skip-link" style={{
+        position: 'absolute', top: -9999, left: -9999,
+        background: '#C44552', color: '#fff', padding: '12px 24px',
+        zIndex: 9999, fontSize: 14, fontWeight: 600,
+      }} onFocus={(e) => { e.currentTarget.style.top = '0'; e.currentTarget.style.left = '0' }}
+         onBlur={(e) => { e.currentTarget.style.top = '-9999px'; e.currentTarget.style.left = '-9999px' }}>
+        Zum Inhalt springen
+      </a>
       <ScrollProgress />
       <MouseSpotlight />
       <LiveTicker />
       <Nav />
+      <main id="main">
       <Hero />
       <Marquee />
 
@@ -1111,6 +1120,7 @@ export default function App() {
       </Suspense>
 
       <Footer />
+      </main>
 
       {/* Mobile Sticky Call Bar — nur Mobile, erst nach Hero */}
       <div className="mobile-sticky-bar" style={{
