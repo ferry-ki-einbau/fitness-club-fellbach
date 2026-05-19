@@ -34,9 +34,20 @@ export default function PhysioBridge() {
           className="physio-bridge-grid"
         >
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 24 }}>
-              <span style={{ width: 32, height: 1, background: '#FFFFFF', opacity: 0.5 }} />
-              <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#FFFFFF', fontWeight: 600, opacity: 0.85 }}>Bruckstraße 61 · Familie</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 28 }}>
+              <img
+                src="/images/physio-logo-80.png"
+                alt="Physio Zentrum Fellbach Logo"
+                width={56}
+                height={56}
+                loading="lazy"
+                decoding="async"
+                style={{ borderRadius: '50%', background: 'rgba(255,255,255,0.12)', padding: 6, border: '1px solid rgba(255,255,255,0.2)' }}
+              />
+              <div>
+                <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#FFFFFF', fontWeight: 600, opacity: 0.85, display: 'block' }}>Bruckstraße 61 · Familie</span>
+                <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.2em', color: '#FFE066', opacity: 0.8 }}>Physio Zentrum Fellbach</span>
+              </div>
             </div>
             <h2 className="font-display" style={{
               fontSize: 'clamp(2rem, 4.5vw, 3.5rem)', fontWeight: 800,
