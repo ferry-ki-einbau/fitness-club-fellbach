@@ -152,6 +152,11 @@ function Nav() {
           <MitgliedButton className="btn-lime hidden md:inline-flex" style={{ padding: '10px 24px', fontSize: 11, letterSpacing: '0.15em' }}>
             <span>14 Tage gratis</span>
           </MitgliedButton>
+          {/* Mobile — kompakter Anrufen-Button */}
+          <a href="tel:+49711588654" className="flex md:hidden font-condensed" style={{ alignItems: 'center', gap: 6, padding: '8px 14px', background: 'var(--accent)', color: '#0F1419', textDecoration: 'none', fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700 }}>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            Anrufen
+          </a>
 
           {/* Mobile Burger */}
           <button className="md:hidden nav-burger" onClick={() => setOpen(!open)} aria-label="Menü" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 10, display: 'flex', flexDirection: 'column', gap: 5, position: 'relative', zIndex: 60 }}>
@@ -190,13 +195,13 @@ function Nav() {
               </motion.a>
             ))}
             <div style={{ marginTop: 40, display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <MitgliedButton className="btn-lime" style={{ justifyContent: 'center', width: '100%' }}>
-                <span>14 Tage gratis testen</span><span>→</span>
-              </MitgliedButton>
-              <a href="tel:+49711588654" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '14px 0', color: '#9A8878', fontSize: 14, textDecoration: 'none', letterSpacing: '0.05em' }}>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
-                0711 588 654
+              <a href="tel:+49711588654" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10, padding: '16px 0', background: 'var(--accent)', color: '#0F1419', textDecoration: 'none', fontWeight: 700 }}>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+                <span className="font-display" style={{ fontSize: 16, letterSpacing: '0.05em', textTransform: 'uppercase' }}>Jetzt anrufen</span>
               </a>
+              <button onClick={() => { setOpen(false); window.dispatchEvent(new CustomEvent('open-mitglied-form')) }} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '14px 0', background: 'transparent', border: '1px solid rgba(245,240,232,0.15)', color: '#9A8878', fontSize: 13, cursor: 'pointer', letterSpacing: '0.05em' }}>
+                14 Tage gratis testen →
+              </button>
             </div>
             {/* Status badge at bottom */}
             <div style={{ position: 'absolute', bottom: 'calc(80px + env(safe-area-inset-bottom, 0px))', left: 32, right: 32, display: 'flex', justifyContent: 'center' }}>
