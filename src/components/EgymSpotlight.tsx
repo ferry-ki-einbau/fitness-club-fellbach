@@ -35,7 +35,7 @@ export default function EgymSpotlight() {
 
           <h2 className="font-display" style={{
             fontSize: 'clamp(2.5rem, 5.5vw, 5rem)',
-            fontWeight: 800, lineHeight: 0.92, letterSpacing: '-0.03em',
+            fontWeight: 800, lineHeight: 1.1, letterSpacing: '-0.03em',
             margin: '0 0 28px', textTransform: 'uppercase', color: '#F5F0E8',
           }}>
             EGYM. <span style={{ fontStyle: 'italic', color: 'var(--accent-bright)' }}>Daten</span><br />

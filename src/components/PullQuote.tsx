@@ -61,7 +61,7 @@ export default function PullQuote({ before, text, highlight, after, variant = 'd
         <h2 className="font-display" style={{
           fontSize: 'clamp(2.5rem, 7vw, 6.5rem)',
           fontWeight: 800,
-          lineHeight: 1,
+          lineHeight: 1.15,
           letterSpacing: '-0.03em',
           color: textColor,
           textTransform: 'uppercase',
