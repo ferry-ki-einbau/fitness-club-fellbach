@@ -111,10 +111,11 @@ function Nav() {
   return (
     <nav style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
-      transition: 'background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease',
-      background: scrolled ? 'rgba(15,20,25,0.95)' : 'transparent',
-      backdropFilter: scrolled ? 'blur(24px) saturate(1.2)' : 'none',
+      transition: 'box-shadow 0.4s ease',
+      background: 'rgba(15,20,25,0.92)',
+      backdropFilter: 'blur(24px) saturate(1.2)',
       boxShadow: scrolled ? '0 1px 0 rgba(245,240,232,0.06), 0 4px 20px rgba(0,0,0,0.3)' : 'none',
+      borderBottom: '1px solid rgba(245,240,232,0.06)',
     }}>
       <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 clamp(16px, 4vw, 48px)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 64 }}>
 
@@ -142,9 +143,9 @@ function Nav() {
 
         {/* Right side CTA group */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <a href="tel:+49711588654" className="hidden lg:flex font-condensed" style={{ alignItems: 'center', gap: 6, fontSize: 12, letterSpacing: '0.12em', color: '#9A8878', textDecoration: 'none', transition: 'color 0.2s' }}
+          <a href="tel:+49711588654" className="hidden lg:flex font-condensed" style={{ alignItems: 'center', gap: 6, fontSize: 12, letterSpacing: '0.12em', color: '#C9BFB3', textDecoration: 'none', transition: 'color 0.2s' }}
             onMouseEnter={e => (e.currentTarget.style.color = '#F5F0E8')}
-            onMouseLeave={e => (e.currentTarget.style.color = '#9A8878')}>
+            onMouseLeave={e => (e.currentTarget.style.color = '#C9BFB3')}>
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
             0711 588 654
           </a>
@@ -271,8 +272,8 @@ function Hero() {
 
       {/* Left gradient — text readability on left, image visible on right */}
       <div style={{ position: 'absolute', inset: 0, zIndex: 2, background: 'linear-gradient(90deg, rgba(15,20,25,0.85) 0%, rgba(15,20,25,0.6) 30%, rgba(15,20,25,0.2) 55%, transparent 75%)', pointerEvents: 'none' }} />
-      {/* Top vignette for nav readability */}
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '15%', zIndex: 2, background: 'linear-gradient(180deg, rgba(15,20,25,0.5) 0%, transparent 100%)', pointerEvents: 'none' }} />
+      {/* Top vignette — dezent für Bildkante */}
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '8%', zIndex: 2, background: 'linear-gradient(180deg, rgba(15,20,25,0.3) 0%, transparent 100%)', pointerEvents: 'none' }} />
       {/* Bottom fade into next section */}
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '20%', zIndex: 2, background: 'linear-gradient(180deg, transparent 0%, rgba(15,20,25,0.85) 100%)', pointerEvents: 'none' }} />
 
@@ -341,14 +342,6 @@ function Hero() {
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Scroll indicator */}
-        <div className="hidden md:flex" style={{ position: 'absolute', bottom: 'clamp(32px,5vh,48px)', left: '50%', transform: 'translateX(-50%)', zIndex: 11, flexDirection: 'column', alignItems: 'center', gap: 6, opacity: 0.5 }}>
-          <span className="font-condensed" style={{ fontSize: 9, letterSpacing: '0.4em', textTransform: 'uppercase', color: '#F5F0E8' }}>Scroll</span>
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ animation: 'bounce 2s ease-in-out infinite' }}>
-            <path d="M4 6L8 10L12 6" stroke="#F5F0E8" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
         </div>
 
         {/* Slide indicators */}

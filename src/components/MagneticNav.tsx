@@ -39,7 +39,7 @@ export default function MagneticNavLink({ href, children, strength = 0.4 }: Prop
       style={{
         x: springX, y: springY,
         fontSize: 14, letterSpacing: '0.18em', textTransform: 'uppercase',
-        color: '#C9BFB3', textDecoration: 'none',
+        color: '#E8E0D8', textDecoration: 'none',
         padding: '8px 16px', position: 'relative',
         display: 'inline-block',
       }}
