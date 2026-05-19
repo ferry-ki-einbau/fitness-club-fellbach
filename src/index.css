@@ -555,11 +555,9 @@ body {
     padding: 14px 24px !important;
     font-size: 13px !important;
   }
-  /* Scroll-Indicator weg auf Mobile */
-  [data-hero] .scroll-indicator { display: none !important; }
-  /* Carousel dots kompakter */
-  [data-hero] .hero-carousel-dots {
-    bottom: 12px !important;
+  /* Slide-Dots auf Mobile komplett weg — 10 Dots auf 375px ist schlechte UX, Carousel läuft auto */
+  .hero-slide-dots {
+    display: none !important;
   }
 }
 

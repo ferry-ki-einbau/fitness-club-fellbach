@@ -352,11 +352,12 @@ function Hero() {
         </div>
 
         {/* Slide indicators */}
-        <div style={{ position: 'absolute', bottom: 'clamp(32px,5vh,60px)', right: 'clamp(20px,5vw,80px)', display: 'flex', gap: 8, alignItems: 'center' }}>
+        <div className="hero-slide-dots" style={{ position: 'absolute', bottom: 'clamp(32px,5vh,60px)', right: 'clamp(20px,5vw,80px)', display: 'flex', gap: 8, alignItems: 'center' }}>
           {SLIDES.map((s, i) => (
             <button
               key={i}
               onClick={() => goTo(i)}
+              className="hero-dot"
               style={{
                 width: i === current ? 28 : 8, height: 8, borderRadius: 4,
                 background: i === current ? '#C44552' : 'rgba(245,240,232,0.3)',
@@ -366,7 +367,7 @@ function Hero() {
               aria-label={s.label}
             />
           ))}
-          <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.3em', color: 'rgba(245,240,232,0.4)', marginLeft: 4, textTransform: 'uppercase' }}>
+          <span className="font-condensed hero-dot-label" style={{ fontSize: 10, letterSpacing: '0.3em', color: 'rgba(245,240,232,0.4)', marginLeft: 4, textTransform: 'uppercase' }}>
             {SLIDES[current].label}
           </span>
         </div>
