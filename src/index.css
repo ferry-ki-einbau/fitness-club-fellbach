@@ -114,7 +114,7 @@ body {
 
 /* Mobile Touch-Targets — min 44px Höhe */
 @media (max-width: 767px) {
-  .btn-lime, .btn-outline { min-height: 48px; padding: 14px 28px; }
+  .btn-lime, .btn-outline { min-height: 44px; padding: 12px 24px; font-size: 12px; }
   .nav-link { min-height: 44px; display: flex; align-items: center; }
 }
 
@@ -554,12 +554,12 @@ body {
     margin-bottom: 24px !important;
   }
   .hero-cta-group .btn-lime {
-    padding: 14px 24px !important;
-    font-size: 13px !important;
+    padding: 12px 20px !important;
+    font-size: 12px !important;
   }
   .hero-cta-group .btn-outline {
-    padding: 14px 24px !important;
-    font-size: 13px !important;
+    padding: 12px 20px !important;
+    font-size: 12px !important;
   }
   /* Slide-Dots auf Mobile komplett weg — 10 Dots auf 375px ist schlechte UX, Carousel läuft auto */
   .hero-slide-dots {
