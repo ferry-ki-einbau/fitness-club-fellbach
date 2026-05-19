@@ -102,6 +102,8 @@ body {
   .hero-google-badge { display: none !important; }
   /* PromoBand responsive */
   .promo-headline { font-size: clamp(2.5rem, 10vw, 4rem) !important; }
+  /* Pricing: Preis-Preview direkt unter Toggle auf Mobile */
+  .pricing-preview-mobile { display: flex !important; }
 }
 
 @media (max-width: 400px) {

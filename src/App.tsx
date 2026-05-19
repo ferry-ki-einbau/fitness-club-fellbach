@@ -636,31 +636,58 @@ function Pricing() {
           </p>
         </div>
 
-        {/* Term tabs */}
-        <div style={{ textAlign: 'center', marginBottom: 48 }}>
-        <div className="pricing-tabs" style={{ display: 'inline-flex', gap: 4, padding: 4, background: 'rgba(58, 32, 32, 0.4)', border: '1px solid rgba(184, 146, 74, 0.2)' }}>
-          {(['12', '24'] as const).map(t => (
-            <button
-              key={t}
-              onClick={() => setTerm(t)}
-              className="font-condensed"
-              style={{
-                padding: '12px 24px',
-                fontSize: 11,
-                letterSpacing: '0.35em',
-                textTransform: 'uppercase',
-                fontWeight: 600,
-                background: term === t ? 'var(--accent)' : 'transparent',
-                color: term === t ? '#0F1419' : '#9A8470',
-                border: 'none',
-                cursor: 'pointer',
-                transition: 'all 0.2s',
-              }}
-            >
-              {t} Monate
-            </button>
-          ))}
-        </div>
+        {/* Term toggle + Live-Preis-Preview */}
+        <div style={{ textAlign: 'center', marginBottom: 32 }}>
+          <div className="pricing-tabs" style={{ display: 'inline-flex', gap: 4, padding: 4, background: 'rgba(58, 32, 32, 0.4)', border: '1px solid rgba(184, 146, 74, 0.2)' }}>
+            {(['12', '24'] as const).map(t => (
+              <button
+                key={t}
+                onClick={() => setTerm(t)}
+                className="font-condensed"
+                style={{
+                  padding: '12px 24px',
+                  fontSize: 11,
+                  letterSpacing: '0.35em',
+                  textTransform: 'uppercase',
+                  fontWeight: 600,
+                  background: term === t ? 'var(--accent)' : 'transparent',
+                  color: term === t ? '#0F1419' : '#9A8470',
+                  border: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s',
+                }}
+              >
+                {t} Monate
+              </button>
+            ))}
+          </div>
+
+          {/* Mobile: Preis-Preview direkt unter Toggle sichtbar */}
+          <div className="pricing-preview-mobile" style={{ display: 'none', marginTop: 20, gap: 12, justifyContent: 'center' }}>
+            {plans.map(plan => (
+              <motion.div
+                key={`${plan.key}-${term}`}
+                initial={{ scale: 1.15, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                style={{
+                  padding: '12px 20px',
+                  background: plan.featured ? 'rgba(184, 146, 74, 0.12)' : 'rgba(245, 240, 232, 0.04)',
+                  border: plan.featured ? '1px solid rgba(184, 146, 74, 0.4)' : '1px solid rgba(245, 240, 232, 0.08)',
+                }}
+              >
+                <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#9A8470', display: 'block', marginBottom: 4 }}>{plan.name}</span>
+                <span className="font-display" style={{ fontSize: 22, fontWeight: 800, color: plan.featured ? 'var(--accent-bright)' : '#F5F0E8', letterSpacing: '-0.02em' }}>{plan.price}€</span>
+                <span className="font-condensed" style={{ fontSize: 10, color: '#9A8470', letterSpacing: '0.1em' }}> /Wo</span>
+              </motion.div>
+            ))}
+          </div>
+
+          {term === '24' && (
+            <div className="font-condensed" style={{ marginTop: 12, fontSize: 11, letterSpacing: '0.2em', color: 'var(--accent)', textTransform: 'uppercase' }}>
+              2 Monate gratis · Bester Preis
+            </div>
+          )}
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 20, maxWidth: 760, margin: '0 auto' }}>
@@ -697,9 +724,16 @@ function Pricing() {
                 {/* Price block */}
                 <div style={{ marginBottom: 32 }}>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
-                    <span className="font-display" style={{ fontSize: 'clamp(2.5rem, 4vw, 3.5rem)', fontWeight: 800, color: plan.featured ? 'var(--accent-bright)' : '#F5F0E8', lineHeight: 1, letterSpacing: '-0.03em' }}>
+                    <motion.span
+                      key={`price-${plan.key}-${term}`}
+                      initial={{ scale: 1.12, opacity: 0.6 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                      className="font-display"
+                      style={{ fontSize: 'clamp(2.5rem, 4vw, 3.5rem)', fontWeight: 800, color: plan.featured ? 'var(--accent-bright)' : '#F5F0E8', lineHeight: 1, letterSpacing: '-0.03em' }}
+                    >
                       {plan.price}€
-                    </span>
+                    </motion.span>
                     <span className="font-condensed" style={{ fontSize: 12, color: '#9A8470', letterSpacing: '0.15em', textTransform: 'uppercase' }}>/ Woche</span>
                   </div>
                   <div style={{ fontSize: 12, color: '#9A8878', marginTop: 8, lineHeight: 1.5 }}>
