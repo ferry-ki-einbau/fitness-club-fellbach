@@ -81,10 +81,23 @@ function useReveal() {
 function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const [staffStatus, setStaffStatus] = useState<'staffed'|'open'>('open')
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 60)
     window.addEventListener('scroll', fn, { passive: true })
     return () => window.removeEventListener('scroll', fn)
+  }, [])
+  useEffect(() => {
+    const check = () => {
+      const now = new Date()
+      const h = now.getHours(), d = now.getDay()
+      const weekday = d >= 1 && d <= 5
+      const staffed = weekday ? ((h >= 8 && h < 12) || (h >= 16 && h < 21)) : (h >= 9 && h < 14)
+      setStaffStatus(staffed ? 'staffed' : 'open')
+    }
+    check()
+    const t = setInterval(check, 60000)
+    return () => clearInterval(t)
   }, [])
   // Lock body scroll when mobile menu open
   useEffect(() => {
@@ -112,6 +125,16 @@ function Nav() {
         {/* Logo + Status */}
         <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 10 }}>
           <Logo size="lg" variant="light" />
+          <span className="hidden sm:flex" style={{ alignItems: 'center', gap: 5, padding: '3px 10px', borderRadius: 999, background: staffStatus === 'staffed' ? 'rgba(34,197,94,0.08)' : 'rgba(196,69,82,0.06)', border: `1px solid ${staffStatus === 'staffed' ? 'rgba(34,197,94,0.2)' : 'rgba(245,240,232,0.08)'}` }}>
+            <span style={{ width: 5, height: 5, borderRadius: '50%', background: staffStatus === 'staffed' ? '#22c55e' : '#B5A99A', animation: staffStatus === 'staffed' ? 'pulse 2s ease-in-out infinite' : 'none' }} />
+            <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', color: staffStatus === 'staffed' ? '#22c55e' : '#B5A99A', fontWeight: 700 }}>
+              {staffStatus === 'staffed' ? 'Personal vor Ort' : 'Geöffnet'}
+            </span>
+          </span>
+          {/* Mobile — nur Dot */}
+          <span className="flex sm:hidden" style={{ alignItems: 'center', justifyContent: 'center', width: 16, height: 16 }}>
+            <span style={{ width: 6, height: 6, borderRadius: '50%', background: staffStatus === 'staffed' ? '#22c55e' : '#B5A99A', boxShadow: staffStatus === 'staffed' ? '0 0 6px #22c55e' : 'none' }} />
+          </span>
         </a>
 
         {/* Desktop Links — centered */}
@@ -748,7 +771,15 @@ function Pricing() {
           })}
         </div>
 
-        <p style={{ textAlign: 'center', color: '#8A7A68', fontSize: 12, marginTop: 36, letterSpacing: '0.08em', lineHeight: 1.6 }}>
+        <div style={{ textAlign: 'center', marginTop: 36, padding: '20px 16px', background: 'rgba(245,240,232,0.03)', border: '1px solid rgba(245,240,232,0.06)', borderRadius: 8 }}>
+          <p className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#B5A99A', marginBottom: 6, fontWeight: 600 }}>
+            Probetraining &amp; Beratung zu Betreuungszeiten
+          </p>
+          <p style={{ fontSize: 13, color: '#9A8470', lineHeight: 1.6 }}>
+            Mo–Fr 08–12 &amp; 16–21 Uhr · Sa+So 09–14 Uhr
+          </p>
+        </div>
+        <p style={{ textAlign: 'center', color: '#8A7A68', fontSize: 12, marginTop: 16, letterSpacing: '0.08em', lineHeight: 1.6 }}>
           Einmalige Aufnahmegebühr: 20,00€ (Transponder-Armband) · 14 Tage Widerrufsrecht mit voller Erstattung · Kündigungsfrist 13 Wochen zum Laufzeitende
         </p>
       </div>
