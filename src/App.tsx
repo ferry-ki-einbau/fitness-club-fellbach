@@ -143,10 +143,10 @@ function Nav() {
 
         {/* Right side CTA group */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <a href="tel:+49711588654" className="hidden lg:flex font-condensed" style={{ alignItems: 'center', gap: 6, fontSize: 12, letterSpacing: '0.12em', color: '#C9BFB3', textDecoration: 'none', transition: 'color 0.2s' }}
+          <a href="tel:+49711588654" className="hidden lg:flex font-condensed" style={{ alignItems: 'center', gap: 8, fontSize: 14, letterSpacing: '0.15em', color: '#E8E0D8', textDecoration: 'none', transition: 'color 0.2s' }}
             onMouseEnter={e => (e.currentTarget.style.color = '#F5F0E8')}
             onMouseLeave={e => (e.currentTarget.style.color = '#C9BFB3')}>
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
             0711 588 654
           </a>
           <MitgliedButton className="btn-lime hidden md:inline-flex" style={{ padding: '10px 24px', fontSize: 11, letterSpacing: '0.15em' }}>
