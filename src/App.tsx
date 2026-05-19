@@ -154,7 +154,7 @@ function Nav() {
             0711 588 654
           </a>
           {/* Desktop — 14 Tage CTA */}
-          <MitgliedButton className="btn-lime hidden md:inline-flex" style={{ padding: '10px 24px', fontSize: 11, letterSpacing: '0.15em' }}>
+          <MitgliedButton className="btn-lime hidden md:inline-flex" style={{ padding: '7px 16px', fontSize: 10, letterSpacing: '0.15em', minHeight: 'auto', lineHeight: 1.2 }}>
             <span>14 Tage gratis</span>
           </MitgliedButton>
           {/* Mobile — kleiner Anrufen-Button, nur Icon + Text */}
