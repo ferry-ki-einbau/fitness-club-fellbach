@@ -1065,33 +1065,33 @@ export default function App() {
       <Hero />
       <Marquee />
 
-      {/* 1. TRUST — Social Proof sofort nach Hero */}
-      <Testimonials />
-
-      {/* 2. PREIS — Früh zeigen, kein Geheimnis */}
+      {/* 1. PREIS — Früh zeigen, kein Geheimnis */}
       <Pricing />
 
-      {/* 3. INTRO — Was macht den Club besonders */}
+      {/* 2. INTRO — Was macht den Club besonders */}
       <WelcomeIntro />
 
-      {/* 4. BEREICHE — Was bekommt man im Detail */}
+      {/* 3. BEREICHE — Was bekommt man im Detail */}
       <div id="bereiche">
         <TrainingsflaecheSpotlight />
       </div>
       <EgymSpotlight />
       <WellnessSpotlight />
 
-      {/* 5. GALERIE — Visueller Beweis */}
+      {/* 4. GALERIE — Visueller Beweis */}
       <Gallery />
 
-      {/* 6. KURSE & PROGRAMME */}
+      {/* 5. KURSE & PROGRAMME */}
       <KurseGrid />
       <KursplanTeaser />
       <Suspense fallback={null}>
         <SpecialPrograms />
       </Suspense>
 
-      {/* 7. PULLQUOTE — Eine starke Aussage reicht */}
+      {/* 6. TRUST — Social Proof nach dem Rundgang */}
+      <Testimonials />
+
+      {/* 7. PULLQUOTE */}
       <PullQuote
         before="500+ Mitglieder · Fellbach"
         text="Manche kommen für die Geräte. Alle bleiben wegen der Menschen."
