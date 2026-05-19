@@ -328,7 +328,7 @@ function Hero() {
             </MagneticButton>
           </div>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'clamp(28px,4vw,56px)', paddingTop: 28, borderTop: '1px solid rgba(184, 146, 74, 0.2)' }}>
+          <div className="hero-stats-row" style={{ display: 'flex', flexWrap: 'wrap', gap: 'clamp(28px,4vw,56px)', paddingTop: 28, borderTop: '1px solid rgba(184, 146, 74, 0.2)' }}>
             {[
               { end: 2000, suffix: 'm²', label: 'Fläche' },
               { end: 30, suffix: '+', label: 'Kurse/Woche' },
@@ -380,7 +380,7 @@ function Marquee() {
   const items = ['Training', 'Sauna', 'Kurse', 'BodyPump', 'Yoga', 'Cardio', 'Spinning', 'Pilates', 'EGYM', '24/7', 'Zirkeltraining', 'Fitness', 'Familienstudio', 'Boxen',]
   const doubled = [...items, ...items]
   return (
-    <div style={{ overflow: 'hidden', borderTop: '1px solid var(--gray-border)', borderBottom: '1px solid var(--gray-border)', background: 'var(--gray-mid)', padding: '16px 0' }}>
+    <div className="marquee-band" style={{ overflow: 'hidden', borderTop: '1px solid var(--gray-border)', borderBottom: '1px solid var(--gray-border)', background: 'var(--gray-mid)', padding: '16px 0' }}>
       <div className="marquee-track">
         {doubled.map((item, i) => (
           <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 20, padding: '0 20px', whiteSpace: 'nowrap' }}>
@@ -514,7 +514,7 @@ function Gallery() {
           const sectionStartIdx = GALLERY_SECTIONS.slice(0, si).reduce((acc, s) => acc + s.items.length, 0)
           const config = getGridConfig(section.items)
           return (
-            <div key={section.title} style={{ marginBottom: si < GALLERY_SECTIONS.length - 1 ? 64 : 0 }}>
+            <div key={section.title} className="gallery-category" style={{ marginBottom: si < GALLERY_SECTIONS.length - 1 ? 64 : 0 }}>
               {/* Section divider */}
               <motion.div
                 initial={{ opacity: 0 }}
@@ -848,7 +848,7 @@ function KursplanTeaser() {
         <p style={{ color: '#9A8878', fontSize: 15, marginBottom: 32, maxWidth: 520, marginInline: 'auto' }}>
           Alle Kurse im Mitgliedsbeitrag inklusive — Platz reservieren über die <span style={{ color: '#F5F0E8', fontWeight: 600 }}>MySports App</span>.
         </p>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginBottom: 40 }}>
+        <div className="kurse-tags" style={{ display: 'flex', flexWrap: 'wrap', gap: 8, justifyContent: 'center', marginBottom: 40 }}>
           {kurse.map(k => (
             <span key={k} className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', padding: '6px 12px', border: '1px solid rgba(245,240,232,0.1)', color: '#9A8878', transition: 'all 0.2s' }}>{k}</span>
           ))}
@@ -953,7 +953,7 @@ function Contact() {
       </div>
 
       {/* Google Maps */}
-      <div style={{ position: 'relative', height: 300, overflow: 'hidden', borderTop: '1px solid var(--gray-border)' }}>
+      <div className="contact-map" style={{ position: 'relative', height: 300, overflow: 'hidden', borderTop: '1px solid var(--gray-border)' }}>
         <iframe
           src="https://maps.google.com/maps?q=Fitness+Club+Fellbach,+Bruckstraße+61,+70734+Fellbach&z=16&output=embed&hl=de"
           width="100%" height="100%"

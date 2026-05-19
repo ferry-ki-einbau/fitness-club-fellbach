@@ -489,6 +489,213 @@ body {
   .family-badge { flex-direction: column !important; text-align: center; }
 }
 
+/* ══════════════════════════════════════════════════════════════
+   MOBILE KOMPLETT-PASS — Weniger Scrollen, alles sichtbar
+   ══════════════════════════════════════════════════════════════ */
+
+/* 1. SECTION PADDING — Straffer auf Mobile (nicht global, gezielt) */
+@media (max-width: 767px) {
+  /* Dark sections — alle gleich kompakt */
+  section[style*="#0F1419"],
+  section[style*="linear-gradient"],
+  section[style*="#1A"] {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+  }
+  /* Light sections etwas mehr Luft */
+  .testimonials-section {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+  /* Eyebrow + Heading spacing tighter */
+  section h2 {
+    margin-bottom: 16px !important;
+  }
+}
+
+/* 2. HERO — Kompakter, CTAs immer sichtbar */
+@media (max-width: 767px) {
+  [data-hero] {
+    height: auto !important;
+    min-height: 100svh !important;
+    max-height: none !important;
+  }
+  /* Hero padding top unter Navbar + etwas Luft */
+  [data-hero] > div[style*="paddingTop"] {
+    padding-top: 80px !important;
+    padding-bottom: 24px !important;
+  }
+  /* Hero Headline kleiner */
+  [data-hero] h1 {
+    font-size: clamp(2.2rem, 9vw, 3rem) !important;
+    margin-bottom: 16px !important;
+  }
+  /* Hero paragraph */
+  [data-hero] p {
+    font-size: 15px !important;
+    margin-bottom: 20px !important;
+  }
+  /* Hero stats row — 2×2 statt 4 in einer Reihe */
+  .hero-stats-row {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px 24px !important;
+    padding-top: 20px !important;
+  }
+  /* Hero CTA buttons volle Breite */
+  .hero-cta-group {
+    gap: 10px !important;
+    margin-bottom: 24px !important;
+  }
+  .hero-cta-group .btn-lime {
+    padding: 14px 24px !important;
+    font-size: 13px !important;
+  }
+  .hero-cta-group .btn-outline {
+    padding: 14px 24px !important;
+    font-size: 13px !important;
+  }
+  /* Scroll-Indicator weg auf Mobile */
+  [data-hero] .scroll-indicator { display: none !important; }
+  /* Carousel dots kompakter */
+  [data-hero] .hero-carousel-dots {
+    bottom: 12px !important;
+  }
+}
+
+/* 3. BIG STATS — Kompakter auf Mobile */
+@media (max-width: 767px) {
+  .big-stats-grid {
+    gap: 16px 12px !important;
+  }
+  .big-stats-grid > div {
+    padding-top: 14px !important;
+  }
+  /* Zahlen kleiner */
+  .big-stats-grid .font-display[style*="fontSize"] {
+    font-size: clamp(2rem, 12vw, 3.5rem) !important;
+  }
+}
+
+/* 4. WELCOME INTRO — Kompakter */
+@media (max-width: 767px) {
+  /* Value props tighter */
+  .welcome-value-props {
+    gap: 24px !important;
+    margin-top: 32px !important;
+  }
+  /* Smaller icon circles */
+  .welcome-value-props > div > div:first-child {
+    width: 56px !important;
+    height: 56px !important;
+  }
+  .welcome-value-props svg {
+    width: 28px !important;
+    height: 28px !important;
+  }
+}
+
+/* 5. GALLERY — Weniger Bilder sichtbar auf Mobile, kompakter */
+@media (max-width: 767px) {
+  /* Gallery section padding override */
+  #galerie {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+  }
+  /* Kategorie-Abstand kleiner */
+  .gallery-category {
+    margin-bottom: 24px !important;
+  }
+  /* Gallery grid tighter */
+  .gallery-grid {
+    gap: 3px !important;
+  }
+  /* Nur 4 Bilder pro Kategorie auf Mobile zeigen (featured + 3) */
+  .gallery-grid > *:nth-child(n+6) {
+    display: none !important;
+  }
+  /* Kategorie-Header kompakter */
+  .gallery-category h3 {
+    font-size: 14px !important;
+    margin-bottom: 12px !important;
+  }
+}
+
+/* 6. KURSE SECTION — Kompakter */
+@media (max-width: 767px) {
+  /* Kurs-Tags smaller + wrapping */
+  .kurse-tags {
+    gap: 6px !important;
+    margin-bottom: 28px !important;
+  }
+  .kurse-tags span {
+    padding: 4px 10px !important;
+    font-size: 9px !important;
+  }
+}
+
+/* 7. PHYSIO BRIDGE — Kompakter auf Mobile */
+@media (max-width: 767px) {
+  .physio-bridge-grid {
+    gap: 24px !important;
+  }
+  /* Stats Grid in PhysioBridge: 2×2 kompakter */
+  .physio-bridge-grid > div:last-child {
+    gap: 8px !important;
+  }
+  .physio-bridge-grid > div:last-child > div {
+    padding: 14px 12px !important;
+  }
+}
+
+/* 8. FAQ — Kompakter auf Mobile */
+@media (max-width: 767px) {
+  .faq-answer.open {
+    max-height: 400px;
+  }
+}
+
+/* 8b. PRICING — Kompaktere Cards auf Mobile */
+@media (max-width: 767px) {
+  #preise {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+  .pricing-shimmer,
+  #preise [style*="padding: 36"] {
+    padding: 24px !important;
+  }
+}
+
+/* 9. CONTACT — Map kleiner auf Mobile */
+@media (max-width: 767px) {
+  .contact-map {
+    height: 200px !important;
+  }
+}
+
+/* 10. PULL QUOTE — Kompakter */
+@media (max-width: 767px) {
+  .pull-quote-section {
+    padding: 40px 20px !important;
+  }
+}
+
+/* 11. BOXSCHULE — Bild nicht zu groß auf Mobile */
+@media (max-width: 767px) {
+  .boxschule-grid > div:first-child {
+    aspect-ratio: 16/9 !important;
+    max-height: 220px !important;
+  }
+}
+
+/* 12. MARQUEE BAND — Dünner auf Mobile */
+@media (max-width: 767px) {
+  .marquee-band {
+    padding: 10px 0 !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
