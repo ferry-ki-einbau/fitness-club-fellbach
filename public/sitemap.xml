@@ -31,6 +31,12 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://fitness-club-fellbach.de/kurse</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://fitness-club-fellbach.de/blog/</loc>
     <lastmod>2026-05-16</lastmod>
     <changefreq>weekly</changefreq>

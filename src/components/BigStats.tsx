@@ -8,7 +8,7 @@ import { useEffect, useRef, useState } from 'react'
 const stats = [
   { num: 24, suffix: '/7', label: 'Geöffnet', sub: '05:00 – 24:00 täglich' },
   { num: 2000, prefix: '', suffix: 'm²', label: 'Trainingsfläche', sub: 'Modern + viel Raum' },
-  { num: 8, suffix: '+', label: 'Bereiche', sub: 'Cardio · Kraft · Kurse · Wellness' },
+  { num: 8, suffix: '+', label: 'Bereiche', sub: 'Cardio · Kraft · Kurse · Sauna' },
   { num: 30, suffix: '+', label: 'Kurse / Woche', sub: 'BodyPump · Yoga · Pilates' },
   { num: 200, suffix: '+', label: 'Bewertungen', sub: '4,7 ★ auf Google' },
   { num: 14, suffix: ' Tage', label: 'Risikofrei testen', sub: 'Volle Erstattung' },

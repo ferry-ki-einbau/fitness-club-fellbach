@@ -1,13 +1,13 @@
 # Fitness Club Fellbach
 
-> Familiäres Fitnessstudio in Fellbach bei Stuttgart mit 1.500m² Trainingsfläche, Box-Ring, EGYM-Zirkel, Sauna und über 30 Kursen pro Woche.
+> Familiäres Fitnessstudio in Fellbach bei Stuttgart mit 2.000m² Trainingsfläche, Boxschule Charlie, EGYM-Zirkel, Sauna und über 30 Kursen pro Woche.
 
 ## Eckdaten
 
 - Name: Fitness Club Fellbach
 - Betreiber: Fitness & Sport GmbH (HRB 260750, AG Waiblingen)
 - Geschäftsführer: Marcel Röhrle
-- Adresse: Bruckstraße 61, 70736 Fellbach, Deutschland
+- Adresse: Bruckstraße 61, 70734 Fellbach, Deutschland
 - Telefon: 0711-588654
 - E-Mail: info@fitnessclubfellbach.de
 - Website: https://fitness-club-fellbach.de
@@ -21,11 +21,9 @@
 - Krafttraining: Freie Gewichte, Maschinen, Functional-Training-Bereich
 - Cardio: Laufbänder, Crosstrainer, Rudergeräte, Spinning-Bikes
 - EGYM-Zirkel: Digitales, geführtes Kraft- und Ausdauertraining
-- Box-Ring: Boxtraining und BoxFit-Kurse
+- Boxschule Charlie: Eigene Boxschule im Studio — Schlagtechnik, Fußarbeit, Verteidigung (69€/Monat)
 - Sauna: Finnische Sauna, Damen-Sauna, Ruhebereich
 - Gruppenkurse: 30+ Kurse/Woche (BodyPump, Yoga, Pilates, Spinning, Rückenfit, BoxFit, Zirkel, Stretching)
-- Präventionskurse: Rückenfit, Beweglichkeit
-- Wellness: Solarium, Massageliegen
 
 ## Mitgliedschaft & Preise
 
@@ -37,7 +35,7 @@
 
 ## Besonderheiten
 
-- 1.500m² Trainingsfläche
+- 2.000m² Trainingsfläche
 - Kostenlose Parkplätze direkt am Studio
 - Duschen und Umkleiden (Damen & Herren getrennt)
 - Kursplan-Buchung über MySports App
@@ -49,4 +47,4 @@ Fellbach, Stuttgart (Bad Cannstatt, Untertürkheim), Waiblingen, Kernen, Schmide
 
 ## Blog
 
-- https://fitness-club-fellbach.de/blog/ — Ratgeber zu Training, Fitness und Wellness
+- https://fitness-club-fellbach.de/blog/ — Ratgeber zu Training, Fitness und Sauna
