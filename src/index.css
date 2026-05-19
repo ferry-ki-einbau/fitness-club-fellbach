@@ -98,9 +98,8 @@ body {
   .big-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
   /* Kursplan iframe kleiner auf Mobile */
   .kursplan-iframe { height: 500px !important; }
-  /* Hero Google Badge auf Mobile dezenter */
-  .hero-google-badge { top: 76px !important; right: 16px !important; }
-  .hero-google-badge .badge-text { display: none !important; }
+  /* Hero Google Badge auf Mobile komplett weg — nur G-Icon sieht kaputt aus */
+  .hero-google-badge { display: none !important; }
   /* PromoBand responsive */
   .promo-headline { font-size: clamp(2.5rem, 10vw, 4rem) !important; }
 }
