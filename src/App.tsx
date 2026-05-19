@@ -110,7 +110,7 @@ function Nav() {
   ]
   return (
     <nav style={{
-      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 60,
+      position: 'fixed', top: 0, left: 0, right: 0, zIndex: 120,
       transition: 'box-shadow 0.4s ease',
       background: open ? '#0F1419' : 'rgba(15,20,25,0.92)',
       backdropFilter: open ? 'none' : 'blur(24px) saturate(1.2)',
@@ -182,7 +182,7 @@ function Nav() {
               background: '#0F1419',
               display: 'flex', flexDirection: 'column',
               paddingTop: 80, padding: '80px 28px 28px',
-              zIndex: 55, overflowY: 'auto',
+              zIndex: 115, overflowY: 'auto',
             }}>
             <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 0 }}>
               {links.map((l, i) => (
@@ -1167,6 +1167,7 @@ export default function App() {
       {/* Mobile Sticky Call Bar — nur Mobile, erst nach Hero */}
       <div className="mobile-sticky-bar" style={{
         position: 'fixed', bottom: 0, left: 0, right: 0, zIndex: 100,
+        background: '#0F1419',
         gap: 1, boxShadow: '0 -4px 24px rgba(0,0,0,0.4)',
         transform: pastHero && !nearFooter ? 'translateY(0)' : 'translateY(100%)',
         transition: 'transform 0.35s cubic-bezier(0.16,1,0.3,1)',
