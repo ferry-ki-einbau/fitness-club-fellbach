@@ -627,8 +627,8 @@ function Pricing() {
   const p = pricing[term]
 
   const plans = [
+    { key: 'allin', name: 'All-In', tag: 'Empfohlen', featured: true, price: p.allin, features: ['Fitnessfläche', 'Duschen', 'Getränkeflatrate', 'Sauna-Oase', 'Vielfältige Kurse', 'EGYM Training', 'Betreutes Zirkeltraining', 'Weitere Add-Ons ab 3,49€'] },
     { key: 'basic', name: 'Basic', tag: 'Einstieg', featured: false, price: p.basic, features: ['Fitnessfläche', 'Duschen', 'Zubuchbare Add-Ons ab 2,99€/Woche'] },
-    { key: 'allin', name: 'All-In', tag: 'Komplett', featured: true, price: p.allin, features: ['Fitnessfläche', 'Duschen', 'Getränkeflatrate', 'Sauna-Oase', 'Vielfältige Kurse', 'EGYM Training', 'Betreutes Zirkeltraining', 'Weitere Add-Ons ab 3,49€'] },
   ]
 
   return (
@@ -722,10 +722,12 @@ function Pricing() {
                   flex: 1,
                 }}
               >
-                {/* Top corner — 2 Monate gratis Badge */}
-                <div style={{ position: 'absolute', top: -1, right: -1, padding: '8px 14px', background: 'var(--accent)', color: '#fff' }}>
-                  <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', fontWeight: 700 }}>2 Monate gratis</span>
-                </div>
+                {/* Top corner badge */}
+                {plan.featured && (
+                  <div style={{ position: 'absolute', top: -1, right: -1, padding: '8px 16px', background: 'var(--accent)', color: '#fff' }}>
+                    <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.25em', textTransform: 'uppercase', fontWeight: 700 }}>★ Empfohlen</span>
+                  </div>
+                )}
 
                 {/* Tag */}
                 <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.4em', textTransform: 'uppercase', color: plan.featured ? 'var(--accent-bright)' : '#5A4030', marginBottom: 8, fontWeight: 600 }}>{plan.tag}</div>
@@ -749,7 +751,7 @@ function Pricing() {
                     <span className="font-condensed" style={{ fontSize: 12, color: '#9A8470', letterSpacing: '0.15em', textTransform: 'uppercase' }}>/ Woche</span>
                   </div>
                   <div style={{ fontSize: 12, color: '#9A8878', marginTop: 8, lineHeight: 1.5 }}>
-                    Laufzeit {term} Monate · 2 Monate gratis sichern
+                    Laufzeit {term} Monate{term === '24' ? ' · 2 Monate gratis' : ''}
                   </div>
                 </div>
 
