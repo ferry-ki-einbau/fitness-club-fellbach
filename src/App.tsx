@@ -627,8 +627,8 @@ function Pricing() {
   const p = pricing[term]
 
   const plans = [
-    { key: 'allin', name: 'All-In', tag: 'Empfohlen', featured: true, price: p.allin, features: ['Fitnessfläche', 'Duschen', 'Getränkeflatrate', 'Sauna-Oase', 'Vielfältige Kurse', 'EGYM Training', 'Betreutes Zirkeltraining', 'Weitere Add-Ons ab 3,49€'] },
     { key: 'basic', name: 'Basic', tag: 'Einstieg', featured: false, price: p.basic, features: ['Fitnessfläche', 'Duschen', 'Zubuchbare Add-Ons ab 2,99€/Woche'] },
+    { key: 'allin', name: 'All-In', tag: 'Empfohlen', featured: true, price: p.allin, features: ['Fitnessfläche', 'Duschen', 'Getränkeflatrate', 'Sauna-Oase', 'Vielfältige Kurse', 'EGYM Training', 'Betreutes Zirkeltraining', 'Weitere Add-Ons ab 3,49€'] },
   ]
 
   return (
