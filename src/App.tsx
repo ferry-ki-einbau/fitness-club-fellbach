@@ -81,20 +81,10 @@ function useReveal() {
 function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-  const [isOpen, setIsOpen] = useState(false)
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 60)
     window.addEventListener('scroll', fn, { passive: true })
     return () => window.removeEventListener('scroll', fn)
-  }, [])
-  useEffect(() => {
-    const check = () => {
-      const h = new Date().getHours()
-      setIsOpen(h >= 5 && h < 24)
-    }
-    check()
-    const t = setInterval(check, 60000)
-    return () => clearInterval(t)
   }, [])
   // Lock body scroll when mobile menu open
   useEffect(() => {
@@ -122,16 +112,6 @@ function Nav() {
         {/* Logo + Status */}
         <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 10 }}>
           <Logo size="lg" variant="light" />
-          <span className="hidden sm:flex" style={{ alignItems: 'center', gap: 5, padding: '3px 10px', borderRadius: 999, background: isOpen ? 'rgba(34,197,94,0.08)' : 'rgba(196,69,82,0.08)', border: `1px solid ${isOpen ? 'rgba(34,197,94,0.2)' : 'rgba(196,69,82,0.2)'}` }}>
-            <span style={{ width: 5, height: 5, borderRadius: '50%', background: isOpen ? '#22c55e' : '#C44552', animation: 'pulse 2s ease-in-out infinite' }} />
-            <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: isOpen ? '#22c55e' : '#C44552', fontWeight: 700 }}>
-              {isOpen ? 'Geöffnet' : 'Geschlossen'}
-            </span>
-          </span>
-          {/* Mobile — nur Dot */}
-          <span className="flex sm:hidden" style={{ alignItems: 'center', justifyContent: 'center', width: 20, height: 20 }}>
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: isOpen ? '#22c55e' : '#C44552', boxShadow: `0 0 6px ${isOpen ? '#22c55e' : '#C44552'}` }} />
-          </span>
         </a>
 
         {/* Desktop Links — centered */}
@@ -208,15 +188,6 @@ function Nav() {
               <button onClick={() => { setOpen(false); window.dispatchEvent(new CustomEvent('open-mitglied-form')) }} className="font-condensed" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '14px 0', background: 'transparent', border: '1px solid rgba(245,240,232,0.12)', color: '#B5A99A', fontSize: 13, cursor: 'pointer', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
                 14 Tage gratis testen →
               </button>
-              {/* Status */}
-              <div style={{ display: 'flex', justifyContent: 'center', marginTop: 8 }}>
-                <span style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '6px 14px', borderRadius: 999, background: isOpen ? 'rgba(34,197,94,0.06)' : 'rgba(196,69,82,0.06)', border: `1px solid ${isOpen ? 'rgba(34,197,94,0.12)' : 'rgba(196,69,82,0.12)'}` }}>
-                  <span style={{ width: 5, height: 5, borderRadius: '50%', background: isOpen ? '#22c55e' : '#C44552' }} />
-                  <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.2em', textTransform: 'uppercase', color: isOpen ? '#22c55e' : '#C44552', fontWeight: 600 }}>
-                    {isOpen ? 'Geöffnet · 05–24 Uhr' : 'Geschlossen'}
-                  </span>
-                </span>
-              </div>
             </div>
           </motion.div>
         )}
