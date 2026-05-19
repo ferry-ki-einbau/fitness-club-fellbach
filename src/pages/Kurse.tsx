@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import Logo from '../components/Logo'
+import SubNav from '../components/SubNav'
 import CookieBanner from '../components/CookieBanner'
 
 const KURSE = ['BodyPump','Yoga','Pilates','Rückenfit','Zumba','Spinning','Bauch Beine Po','Bodytoning','Vinyasa Yoga','Zirkeltraining','Step','Bodycross']
@@ -14,24 +14,7 @@ export default function Kurse() {
 
   return (
     <div style={{ background: '#0F1419', minHeight: '100vh' }}>
-      {/* Nav */}
-      <nav style={{ position: 'sticky', top: 0, zIndex: 50, background: 'rgba(15,20,25,0.95)', backdropFilter: 'blur(24px)', boxShadow: '0 1px 0 rgba(245,240,232,0.06)' }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 clamp(16px, 4vw, 48px)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 64 }}>
-          <a href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 10 }}>
-            <Logo size="lg" variant="light" />
-          </a>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-            <a href="/" className="font-condensed" style={{ fontSize: 12, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#9A8878', textDecoration: 'none', transition: 'color 0.2s' }}
-              onMouseEnter={e => (e.currentTarget.style.color = '#F5F0E8')}
-              onMouseLeave={e => (e.currentTarget.style.color = '#9A8878')}>
-              ← Zurück
-            </a>
-            <a href="tel:+49711588654" className="font-condensed hidden sm:flex" style={{ alignItems: 'center', gap: 6, fontSize: 12, letterSpacing: '0.12em', color: '#9A8878', textDecoration: 'none' }}>
-              0711 588 654
-            </a>
-          </div>
-        </div>
-      </nav>
+      <SubNav />
 
       {/* Header */}
       <header style={{ padding: 'clamp(48px, 8vh, 80px) clamp(16px, 4vw, 48px) clamp(32px, 5vh, 48px)', textAlign: 'center' }}>

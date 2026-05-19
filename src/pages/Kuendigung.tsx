@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
-import Logo from '../components/Logo'
+import SubNav from '../components/SubNav'
 
 export default function Kuendigung() {
   useEffect(() => { window.scrollTo(0, 0) }, [])
@@ -37,21 +37,7 @@ export default function Kuendigung() {
 
   return (
     <div style={{ background: '#0F1419', minHeight: '100vh', color: '#F5F0E8' }}>
-      {/* Header */}
-      <header style={{
-        position: 'sticky', top: 0, zIndex: 50,
-        background: 'rgba(15,20,25,0.95)', backdropFilter: 'blur(20px)',
-        borderBottom: '1px solid rgba(245,240,232,0.06)',
-      }}>
-        <div style={{ maxWidth: 1280, margin: '0 auto', padding: '0 clamp(20px, 4vw, 48px)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: 68 }}>
-          <a href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 12 }}>
-            <Logo size="lg" variant="light" />
-          </a>
-          <a href="/" style={{ fontSize: 13, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#9A8470', textDecoration: 'none' }}>
-            ← Zurück zur Startseite
-          </a>
-        </div>
-      </header>
+      <SubNav />
 
       {/* Content */}
       <motion.main
