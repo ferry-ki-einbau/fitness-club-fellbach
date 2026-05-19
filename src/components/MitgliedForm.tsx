@@ -208,7 +208,7 @@ function Step1({
                 transform: 'translateX(-50%)',
                 background: C.gold,
                 color: '#0F1419',
-                fontSize: 9,
+                fontSize: 11,
                 fontFamily: "'Barlow Condensed', sans-serif",
                 fontWeight: 700,
                 letterSpacing: '0.25em',

@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "@fontsource-variable/dm-sans": "^5.2.8",
+    "@fontsource-variable/oswald": "^5.2.8",
+    "@fontsource/barlow-condensed": "^5.2.8",
     "@react-three/fiber": "^9.6.0",
     "@react-three/postprocessing": "^3.0.4",
     "@studio-freight/lenis": "^1.0.42",

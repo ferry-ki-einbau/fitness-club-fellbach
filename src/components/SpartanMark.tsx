@@ -20,7 +20,7 @@ export default function SpartanMark({ size = 48, variant = 'light' }: { size?: n
       }}
     >
       <img
-        src="/images/logo-headermark.png"
+        src="/images/logo-headermark.webp"
         alt="Fitness Club Fellbach"
         width={size * 0.7}
         height={size * 0.7}

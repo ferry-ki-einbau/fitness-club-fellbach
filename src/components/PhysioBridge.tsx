@@ -36,7 +36,7 @@ export default function PhysioBridge() {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 28 }}>
               <img
-                src="/images/physio-logo-80.png"
+                src="/images/physio-logo-80.webp"
                 alt="Physio Zentrum Fellbach Logo"
                 width={56}
                 height={56}

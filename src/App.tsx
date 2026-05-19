@@ -338,7 +338,7 @@ function Hero() {
             ].map(s => (
               <div key={s.label}>
                 <AnimatedCounter end={s.end} suffix={s.suffix} duration={2} className="font-display" style={{ fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)', fontWeight: 700, color: 'var(--accent-bright)', lineHeight: 1, letterSpacing: '-0.02em' }} />
-                <div className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#9A8470', marginTop: 6 }}>{s.label}</div>
+                <div className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#C4B098', marginTop: 6 }}>{s.label}</div>
               </div>
             ))}
           </div>
@@ -498,7 +498,7 @@ function Gallery() {
           <h2 className="font-display" style={{ fontSize: 'clamp(2.5rem, 5.5vw, 5rem)', fontWeight: 800, letterSpacing: '-0.025em', textTransform: 'uppercase', color: '#F5F0E8', lineHeight: 1.05 }}>
             In den <span style={{ color: 'var(--accent-bright)', fontStyle: 'italic' }}>Club.</span>
           </h2>
-          <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#5A6770', fontWeight: 500, paddingBottom: 8 }}>{allItems.length} Bereiche</span>
+          <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.3em', textTransform: 'uppercase', color: '#8A94A0', fontWeight: 500, paddingBottom: 8 }}>{allItems.length} Bereiche</span>
         </div>
       </div>
 
@@ -517,9 +517,9 @@ function Gallery() {
                 transition={{ duration: 0.5 }}
                 style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 24 }}
               >
-                <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#5A6770', fontWeight: 600, whiteSpace: 'nowrap' }}>{section.title}</span>
-                <span style={{ flex: 1, height: 1, background: 'rgba(245,240,232,0.06)' }} />
-                <span className="font-condensed" style={{ fontSize: 10, letterSpacing: '0.2em', color: '#3A4450' }}>{String(si + 1).padStart(2, '0')}</span>
+                <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.5em', textTransform: 'uppercase', color: '#8A94A0', fontWeight: 600, whiteSpace: 'nowrap' }}>{section.title}</span>
+                <span style={{ flex: 1, height: 1, background: 'rgba(245,240,232,0.08)' }} />
+                <span className="font-condensed" style={{ fontSize: 11, letterSpacing: '0.2em', color: '#6A7480' }}>{String(si + 1).padStart(2, '0')}</span>
               </motion.div>
               {/* Grid */}
               <div className="gallery-grid" style={{
@@ -702,7 +702,7 @@ function Pricing() {
                     </span>
                     <span className="font-condensed" style={{ fontSize: 12, color: '#9A8470', letterSpacing: '0.15em', textTransform: 'uppercase' }}>/ Woche</span>
                   </div>
-                  <div style={{ fontSize: 12, color: '#6E5A48', marginTop: 8, lineHeight: 1.5 }}>
+                  <div style={{ fontSize: 12, color: '#9A8878', marginTop: 8, lineHeight: 1.5 }}>
                     Laufzeit {term} Monate · 2 Monate gratis sichern
                   </div>
                 </div>
@@ -729,7 +729,7 @@ function Pricing() {
           })}
         </div>
 
-        <p style={{ textAlign: 'center', color: '#5A4030', fontSize: 11, marginTop: 36, letterSpacing: '0.08em', lineHeight: 1.6 }}>
+        <p style={{ textAlign: 'center', color: '#8A7A68', fontSize: 12, marginTop: 36, letterSpacing: '0.08em', lineHeight: 1.6 }}>
           Einmalige Aufnahmegebühr: 20,00€ (Transponder-Armband) · 14 Tage Widerrufsrecht mit voller Erstattung · Kündigungsfrist 13 Wochen zum Laufzeitende
         </p>
       </div>

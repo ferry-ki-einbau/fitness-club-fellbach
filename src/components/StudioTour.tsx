@@ -111,6 +111,7 @@ export default function StudioTour() {
                 srcSet={`/images/${z.img}-sm.webp 800w, /images/${z.img}-md.webp 1600w`}
                 sizes="(max-width: 900px) 100vw, 55vw"
                 alt={z.label}
+                loading="lazy"
                 decoding="async"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'contrast(1.02) brightness(1.05) saturate(1.05)' }}
               />
