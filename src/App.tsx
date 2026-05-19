@@ -103,7 +103,7 @@ function Nav() {
   }, [open])
   const links = [
     { label: 'Training', href: '#training' },
-    { label: 'Kurse', href: '/kurse' },
+    { label: 'Kurse', href: '#kurse' },
     { label: 'Preise', href: '#preise' },
     { label: 'Blog', href: '/blog/' },
     { label: 'Kontakt', href: '#kontakt' },
