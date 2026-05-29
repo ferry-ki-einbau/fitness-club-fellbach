@@ -70,7 +70,6 @@ interface FunnelData {
 
 const API_BASE = 'https://fitness-club-fellbach.api.magicline.com/connect/v1'
 const STUDIO_ID = '1210011390'
-const RECAPTCHA_SITE_KEY = '6Ld5qKcgAAAAAMoywArOgIrC0lQ7NpYUTsF92PIC'
 
 const STEPS = [
   { num: '01', label: 'TARIF' },
@@ -143,6 +142,13 @@ function validateEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 }
 
+// Magicline erwartet Straße und Hausnummer getrennt
+function splitStreet(full: string): { street: string; houseNumber: string } {
+  const m = full.trim().match(/^(.*?)[\s,]+(\d+\s*[a-zA-Z]?(?:[-/]\d+\s*[a-zA-Z]?)?)$/)
+  if (m) return { street: m[1].trim(), houseNumber: m[2].replace(/\s/g, '') }
+  return { street: full.trim(), houseNumber: '' }
+}
+
 function validateDate(dateStr: string): boolean {
   if (!dateStr) return false
   const d = new Date(dateStr)
@@ -153,28 +159,6 @@ function validateDate(dateStr: string): boolean {
   const monthDiff = now.getMonth() - d.getMonth()
   if (age < 14 || (age === 14 && (monthDiff < 0 || (monthDiff === 0 && now.getDate() < d.getDate())))) return false
   return true
-}
-
-// ─── reCAPTCHA v3 ────────────────────────────────────────────────────────────
-
-function loadRecaptcha(): Promise<void> {
-  if (typeof window === 'undefined') return Promise.resolve()
-  if ((window as any).grecaptcha) return Promise.resolve()
-  return new Promise((resolve, reject) => {
-    const script = document.createElement('script')
-    script.src = `https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`
-    script.async = true
-    script.onload = () => {
-      ;(window as any).grecaptcha.ready(() => resolve())
-    }
-    script.onerror = () => reject(new Error('reCAPTCHA konnte nicht geladen werden'))
-    document.head.appendChild(script)
-  })
-}
-
-async function getRecaptchaToken(action: string): Promise<string> {
-  await loadRecaptcha()
-  return (window as any).grecaptcha.execute(RECAPTCHA_SITE_KEY, { action })
 }
 
 // ─── Sub-components ──────────────────────────────────────────────────────────
@@ -1352,7 +1336,6 @@ export default function MitgliedFunnel() {
   const [submitError, setSubmitError] = useState<string | null>(null)
   const [leadError, setLeadError] = useState<string | null>(null)
   const [leadCreated, setLeadCreated] = useState(false)
-  const ibanRef = useRef<string>('')
   const honeypotRef = useRef<HTMLInputElement>(null)
 
   const isSSR = typeof window === 'undefined'
@@ -1470,46 +1453,58 @@ export default function MitgliedFunnel() {
     setSubmitLoading(true)
     setSubmitError(null)
 
-    // Store IBAN in ref temporarily for submission, then clear from state
-    ibanRef.current = data.iban
+    // Heutiges Datum SSR-safe (für Vertragsbeginn)
+    const today = new Date()
+    const pad = (n: number) => String(n).padStart(2, '0')
+    const startDate = `${today.getFullYear()}-${pad(today.getMonth() + 1)}-${pad(today.getDate())}`
 
-    try {
-      const token = await getRecaptchaToken('contract_submit')
+    const { street, houseNumber } = splitStreet(data.strasse)
+    const iban = data.iban.replace(/\s/g, '').toUpperCase()
 
-      const contractBody = {
-        studioId: parseInt(STUDIO_ID),
-        firstname: data.vorname,
-        lastname: data.nachname,
-        email: data.email,
-        phone: data.telefon,
+    // Verschachtelter Body — exakt wie der offizielle Magicline-Funnel.
+    // Endpoint: POST /connect/v1/rate-bundle (kein recaptcha nötig)
+    const body = {
+      studioId: parseInt(STUDIO_ID),
+      voucherCode: '',
+      contract: {
+        rateBundleTermId: data.termId,
+        startDate,
+        preuseDate: startDate,
+        selectedRateBundleModules: [],
+        optionalRateBundleTermModules: data.selectedAddons.map(id => ({ id })),
+      },
+      customer: {
+        countryCode: 'DE',
+        paymentChoice: 'DIRECT_DEBIT',
+        firstname: data.vorname.trim(),
+        lastname: data.nachname.trim(),
+        email: data.email.trim(),
+        telephone_mobile: data.telefon.trim(),
         dateOfBirth: data.geburtsdatum,
         gender: data.gender,
-        street: data.strasse,
-        city: data.stadt,
-        zipCode: data.plz,
-        rateBundleTermId: data.termId,
-        optionalModuleIds: data.selectedAddons,
-        iban: ibanRef.current,
-        accountHolder: data.kontoinhaber,
-        sepaAccepted: data.sepaMandat,
-        agbAccepted: data.agb,
-      }
+        street,
+        houseNumber,
+        zipCode: data.plz.trim(),
+        city: data.stadt.trim(),
+        bankAccount: {
+          accountHolder: data.kontoinhaber.trim(),
+          iban,
+        },
+      },
+    }
 
-      const res = await fetch(
-        `${API_BASE}/contracts?recaptchaToken=${encodeURIComponent(token)}&studioId=${STUDIO_ID}`,
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(contractBody),
-        }
-      )
+    try {
+      const res = await fetch(`${API_BASE}/rate-bundle`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      })
 
       if (!res.ok) {
-        throw new Error('Vertrag konnte nicht erstellt werden.')
+        throw new Error('Vertrag konnte nicht erstellt werden. Bitte prüfe deine Angaben oder ruf uns an: 0711 588 654')
       }
 
-      // Clear sensitive data
-      ibanRef.current = ''
+      // Sensible Daten sofort aus dem State löschen
       update({ iban: '', kontoinhaber: '' })
 
       setDirection(1)
@@ -1654,17 +1649,13 @@ export default function MitgliedFunnel() {
         style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0, pointerEvents: 'none' }}
       />
 
-      {/* reCAPTCHA badge notice */}
+      {/* Sicherheits-Hinweis */}
       <div style={{
         padding: '12px 16px', textAlign: 'center',
         borderTop: `1px solid ${C.border}`,
       }}>
         <p style={{ fontSize: 10, color: 'rgba(245,240,232,0.25)', lineHeight: 1.5 }}>
-          Diese Seite wird durch reCAPTCHA geschützt. Es gelten die{' '}
-          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(245,240,232,0.35)' }}>Datenschutzbestimmungen</a>
-          {' '}und{' '}
-          <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" style={{ color: 'rgba(245,240,232,0.35)' }}>Nutzungsbedingungen</a>
-          {' '}von Google.
+          🔒 Verschlüsselte Übertragung · Deine Daten werden direkt &amp; sicher an unser Verwaltungssystem übermittelt.
         </p>
       </div>
 
