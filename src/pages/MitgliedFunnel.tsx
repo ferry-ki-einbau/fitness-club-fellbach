@@ -16,6 +16,29 @@ interface RateBundle {
   id: number
   name: string
   terms: RateBundleTerm[]
+  displayName?: string
+  features?: string[]
+}
+
+// ─── Kuratierte Mitgliedschaften ───────────────────────────────────────────────
+// Die Magicline rate-bundle API liefert ALLE im Studio konfigurierten Tarife —
+// auch interne, alte und abgelaufene Aktionen (z.B. "50 Jahre Jubiläum" 6,50€,
+// oder den Grundtarif ohne 2-Monate-Aktion). Diese dürfen NICHT öffentlich
+// buchbar sein. Wir zeigen ausschließlich die kuratierten Tarife unten —
+// identisch zur offiziellen Anmeldeseite. Bei neuer Aktion: IDs hier anpassen.
+const MEMBERSHIP_CONFIG: Record<number, { displayName: string; order: number; features: string[] }> = {
+  // BASIC — 2 Monate GRATIS Training (Grundtarif mit zubuchbaren Modulen)
+  1229471790: {
+    displayName: 'Basic',
+    order: 1,
+    features: ['Fitnessfläche', 'Duschen inklusive', 'Zubuchbare Add-Ons ab 2,99€/Woche'],
+  },
+  // ALL-IN — 2 Monate GRATIS Training (Vollausstattung, Module inklusive)
+  1229471690: {
+    displayName: 'All-In',
+    order: 2,
+    features: ['Fitnessfläche', 'Duschen inklusive', 'Getränke inklusive', 'Sauna-Modul', 'Kurs-Modul', 'EGYM Training', 'Betreutes Zirkeltraining', 'Weitere Add-Ons ab 3,49€'],
+  },
 }
 
 interface FunnelData {
@@ -371,6 +394,10 @@ function StepTarif({
                 textAlign: 'left',
                 transition: 'all 0.25s',
                 outline: 'none',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'stretch',
+                justifyContent: 'flex-start',
               }}
             >
               {isSelected && (
@@ -397,7 +424,7 @@ function StepTarif({
                 fontSize: 18, fontWeight: 700, color: C.cream,
                 textTransform: 'uppercase', marginBottom: 12,
               }}>
-                {bundle.name}
+                {bundle.displayName ?? bundle.name}
               </div>
 
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
@@ -416,9 +443,15 @@ function StepTarif({
                 </div>
               )}
 
-              <div style={{ marginTop: 12, fontSize: 12, color: C.muted }}>
-                {bundle.terms.length} Laufzeit{bundle.terms.length > 1 ? 'en' : ''} verfügbar
-              </div>
+              {bundle.features && bundle.features.length > 0 && (
+                <ul style={{ listStyle: 'none', padding: 0, margin: '16px 0 0', display: 'flex', flexDirection: 'column', gap: 7 }}>
+                  {bundle.features.map(f => (
+                    <li key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 8, fontSize: 12, color: 'rgba(245,240,232,0.7)', lineHeight: 1.4 }}>
+                      <span style={{ color: C.burgund, flexShrink: 0, fontWeight: 700 }}>+</span>{f}
+                    </li>
+                  ))}
+                </ul>
+              )}
             </motion.button>
           )
         })}
@@ -474,7 +507,7 @@ function StepTarif({
         }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
             <div>
-              <div style={{ color: C.cream, fontSize: 14, fontWeight: 600 }}>{selectedBundle!.name}</div>
+              <div style={{ color: C.cream, fontSize: 14, fontWeight: 600 }}>{selectedBundle!.displayName ?? selectedBundle!.name}</div>
               <div style={{ color: C.muted, fontSize: 12, marginTop: 2 }}>
                 {selectedTerm.termValue} Monate Laufzeit
               </div>
@@ -1111,7 +1144,7 @@ function StepSummary({
       }}>
         <div style={rowStyle}>
           <span style={rowLabel}>Tarif</span>
-          <span style={rowValue}>{selectedBundle?.name} — {selectedTerm?.termValue} Monate</span>
+          <span style={rowValue}>{selectedBundle?.displayName ?? selectedBundle?.name} — {selectedTerm?.termValue} Monate</span>
         </div>
 
         <div style={rowStyle}>
@@ -1251,7 +1284,7 @@ function StepSuccess({ data, bundles }: { data: FunnelData; bundles: RateBundle[
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <span style={{ color: C.muted, fontSize: 13 }}>Dein Tarif</span>
           <span className="font-display" style={{ fontSize: 18, fontWeight: 700, color: C.gold }}>
-            {selectedBundle?.name}
+            {selectedBundle?.displayName ?? selectedBundle?.name}
           </span>
         </div>
       </div>
@@ -1325,9 +1358,25 @@ export default function MitgliedFunnel() {
       try {
         const res = await fetch(`${API_BASE}/rate-bundle?studioId=${STUDIO_ID}`)
         if (!res.ok) throw new Error(`HTTP ${res.status}`)
-        const json = await res.json()
+        const json: RateBundle[] = await res.json()
+
+        // Nur kuratierte Tarife zeigen — interne/alte Tarife ausblenden
+        const curated = json
+          .filter(b => MEMBERSHIP_CONFIG[b.id])
+          .map(b => ({
+            ...b,
+            displayName: MEMBERSHIP_CONFIG[b.id].displayName,
+            features: MEMBERSHIP_CONFIG[b.id].features,
+          }))
+          .sort((a, b) => MEMBERSHIP_CONFIG[a.id].order - MEMBERSHIP_CONFIG[b.id].order)
+
         if (!cancelled) {
-          setBundles(json)
+          if (curated.length === 0) {
+            // Aktion/Tarife geändert → lieber gar nichts anzeigen als falsche Preise
+            setBundlesError('Unsere Online-Tarife werden gerade aktualisiert. Bitte ruf uns kurz an: 0711 588 654 — wir melden dich direkt an.')
+          } else {
+            setBundles(curated)
+          }
           setBundlesLoading(false)
         }
       } catch {
