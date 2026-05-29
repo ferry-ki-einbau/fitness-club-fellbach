@@ -2,7 +2,7 @@ import { useEffect, useState, lazy, Suspense } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import './index.css'
 import MagneticButton from './components/MagneticButton'
-import MitgliedForm, { MitgliedButton } from './components/MitgliedForm'
+// MitgliedForm overlay replaced by /mitglied route (MitgliedFunnel)
 import LiveTicker from './components/LiveTicker'
 import Logo from './components/Logo'
 import EgymSpotlight from './components/EgymSpotlight'
@@ -154,9 +154,9 @@ function Nav() {
             0711 588 654
           </a>
           {/* Desktop — 14 Tage CTA */}
-          <MitgliedButton className="btn-lime hidden md:inline-flex" style={{ padding: '7px 16px', fontSize: 10, letterSpacing: '0.15em', minHeight: 'auto', lineHeight: 1.2 }}>
+          <a href="/mitglied" className="btn-lime hidden md:inline-flex" style={{ padding: '7px 16px', fontSize: 10, letterSpacing: '0.15em', minHeight: 'auto', lineHeight: 1.2, textDecoration: 'none' }}>
             <span>14 Tage gratis</span>
-          </MitgliedButton>
+          </a>
           {/* Mobile — kleiner Anrufen-Button, nur Icon + Text */}
           <a href="tel:+49711588654" className="flex md:hidden font-condensed" style={{ alignItems: 'center', gap: 5, padding: '7px 12px', background: 'rgba(196,69,82,0.15)', border: '1px solid rgba(196,69,82,0.3)', borderRadius: 6, color: '#F5F0E8', textDecoration: 'none', fontSize: 10, letterSpacing: '0.15em', textTransform: 'uppercase', fontWeight: 600, WebkitTapHighlightColor: 'transparent' }}>
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
@@ -208,9 +208,9 @@ function Nav() {
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
                 Jetzt anrufen
               </a>
-              <button onClick={() => { setOpen(false); window.dispatchEvent(new CustomEvent('open-mitglied-form')) }} className="font-condensed" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '14px 0', background: 'transparent', border: '1px solid rgba(245,240,232,0.12)', color: '#B5A99A', fontSize: 13, cursor: 'pointer', letterSpacing: '0.1em', textTransform: 'uppercase' }}>
+              <a href="/mitglied" className="font-condensed" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '14px 0', background: 'transparent', border: '1px solid rgba(245,240,232,0.12)', color: '#B5A99A', fontSize: 13, letterSpacing: '0.1em', textTransform: 'uppercase', textDecoration: 'none' }}>
                 14 Tage gratis testen →
-              </button>
+              </a>
             </div>
           </motion.div>
         )}
@@ -326,9 +326,9 @@ function Hero() {
           <div
             className="hero-cta-group"
             style={{ display: 'flex', flexWrap: 'wrap', gap: 14, marginBottom: 40 }}>
-            <MitgliedButton variant="lime">
+            <MagneticButton href="/mitglied" variant="lime">
               <span>14 Tage gratis testen</span><span>→</span>
-            </MitgliedButton>
+            </MagneticButton>
             <MagneticButton href="tel:+49711588654" variant="outline">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0 }}><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
               <span>Jetzt anrufen</span>
@@ -759,7 +759,7 @@ function Pricing() {
                 </ul>
 
                 <MagneticButton
-                  onClick={() => window.dispatchEvent(new CustomEvent('open-mitglied-form'))}
+                  href="/mitglied"
                   variant={plan.featured ? 'lime' : 'outline'}
                   className="w-full"
                 >
@@ -995,7 +995,7 @@ function Contact() {
             Starte noch heute mit 14 Tagen komplett kostenlos. Kein Risiko — voller Zugang ab Tag 1.
           </p>
           <MagneticButton
-            onClick={() => window.dispatchEvent(new CustomEvent('open-mitglied-form'))}
+            href="/mitglied"
             variant="lime" className="w-full"
           >
             <span>14 Tage gratis starten</span><span>→</span>
@@ -1095,7 +1095,6 @@ export default function App() {
   useReveal()
   const [pastHero, setPastHero] = useState(false)
   const [nearFooter, setNearFooter] = useState(false)
-  const [mitgliedOpen, setMitgliedOpen] = useState(false)
 
   useEffect(() => {
     const fn = () => {
@@ -1104,12 +1103,6 @@ export default function App() {
     }
     window.addEventListener('scroll', fn, { passive: true })
     return () => window.removeEventListener('scroll', fn)
-  }, [])
-
-  useEffect(() => {
-    const fn = () => setMitgliedOpen(true)
-    window.addEventListener('open-mitglied-form', fn)
-    return () => window.removeEventListener('open-mitglied-form', fn)
   }, [])
   return (
     <>
@@ -1194,19 +1187,14 @@ export default function App() {
           </svg>
           <span className="font-display" style={{ fontSize: 14, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Anrufen</span>
         </a>
-        <button onClick={() => window.dispatchEvent(new CustomEvent('open-mitglied-form'))} style={{
+        <a href="/mitglied" style={{
           flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
           background: '#0F1419', color: '#F5F0E8', padding: '16px 12px',
-          border: 'none', borderTop: '1px solid rgba(245,240,232,0.1)', cursor: 'pointer',
+          borderTop: '1px solid rgba(245,240,232,0.1)', textDecoration: 'none',
         }}>
           <span className="font-display" style={{ fontSize: 14, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase' }}>Mitglied werden</span>
-        </button>
+        </a>
       </div>
-
-      {/* Mitglied Form Overlay */}
-      <AnimatePresence>
-        {mitgliedOpen && <MitgliedForm onClose={() => setMitgliedOpen(false)} />}
-      </AnimatePresence>
 
       {/* Cookie Consent Banner — DSGVO Pflicht */}
       <CookieBanner />

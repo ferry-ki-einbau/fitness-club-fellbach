@@ -7,6 +7,7 @@ import Datenschutz from './pages/Datenschutz'
 import Karriere from './pages/Karriere'
 import Kuendigung from './pages/Kuendigung'
 import Kurse from './pages/Kurse'
+import MitgliedFunnel from './pages/MitgliedFunnel'
 
 export function render(url: string) {
   const html = renderToString(
@@ -19,6 +20,7 @@ export function render(url: string) {
           <Route path="/karriere" element={<Karriere />} />
           <Route path="/kuendigung" element={<Kuendigung />} />
           <Route path="/kurse" element={<Kurse />} />
+          <Route path="/mitglied" element={<MitgliedFunnel />} />
         </Routes>
       </StaticRouter>
     </StrictMode>

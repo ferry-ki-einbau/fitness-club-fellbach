@@ -9,6 +9,7 @@ const Datenschutz = lazy(() => import('./pages/Datenschutz.tsx'))
 const Karriere = lazy(() => import('./pages/Karriere.tsx'))
 const Kuendigung = lazy(() => import('./pages/Kuendigung.tsx'))
 const Kurse = lazy(() => import('./pages/Kurse.tsx'))
+const MitgliedFunnel = lazy(() => import('./pages/MitgliedFunnel.tsx'))
 
 const rootEl = document.getElementById('root')!
 
@@ -22,6 +23,7 @@ const app = (
         <Route path="/karriere" element={<Suspense fallback={null}><Karriere /></Suspense>} />
         <Route path="/kuendigung" element={<Suspense fallback={null}><Kuendigung /></Suspense>} />
         <Route path="/kurse" element={<Suspense fallback={null}><Kurse /></Suspense>} />
+        <Route path="/mitglied" element={<Suspense fallback={null}><MitgliedFunnel /></Suspense>} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
