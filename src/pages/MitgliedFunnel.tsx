@@ -853,10 +853,6 @@ function StepDaten({
           </div>
         </div>
 
-        {/* Honeypot */}
-        <div style={{ position: 'absolute', opacity: 0, pointerEvents: 'none', height: 0, overflow: 'hidden' }} aria-hidden="true">
-          <input type="text" name="website" tabIndex={-1} autoComplete="off" />
-        </div>
       </div>
 
       {error && <ErrorBox message={error} />}
@@ -1312,6 +1308,7 @@ export default function MitgliedFunnel() {
   const [leadError, setLeadError] = useState<string | null>(null)
   const [leadCreated, setLeadCreated] = useState(false)
   const ibanRef = useRef<string>('')
+  const honeypotRef = useRef<HTMLInputElement>(null)
 
   const isSSR = typeof window === 'undefined'
 
@@ -1373,7 +1370,7 @@ export default function MitgliedFunnel() {
 
     setLeadError(null)
     try {
-      const leadRes = await fetch(`${API_BASE}/lead`, {
+      await fetch(`${API_BASE}/lead`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -1390,12 +1387,7 @@ export default function MitgliedFunnel() {
         }),
       })
 
-      if (!leadRes.ok) {
-        const errBody = await leadRes.text()
-        console.error('Lead creation failed:', errBody)
-        // Non-blocking — continue even if lead fails
-      }
-
+      // Lead creation is non-blocking — continue regardless of result
       setLeadCreated(true)
       goNext()
     } catch {
@@ -1407,6 +1399,13 @@ export default function MitgliedFunnel() {
 
   // Final submit: reCAPTCHA + contract
   async function handleSubmit() {
+    // Honeypot — if a bot filled the hidden field, fake success silently
+    if (honeypotRef.current?.value) {
+      setDirection(1)
+      setStep(6)
+      return
+    }
+
     setSubmitLoading(true)
     setSubmitError(null)
 
@@ -1445,8 +1444,6 @@ export default function MitgliedFunnel() {
       )
 
       if (!res.ok) {
-        const errText = await res.text()
-        console.error('Contract creation failed:', errText)
         throw new Error('Vertrag konnte nicht erstellt werden.')
       }
 
@@ -1584,6 +1581,17 @@ export default function MitgliedFunnel() {
           </AnimatePresence>
         </div>
       </div>
+
+      {/* Honeypot — hidden field, bots fill it, humans don't */}
+      <input
+        ref={honeypotRef}
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0, pointerEvents: 'none' }}
+      />
 
       {/* reCAPTCHA badge notice */}
       <div style={{
