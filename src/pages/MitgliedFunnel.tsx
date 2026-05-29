@@ -45,6 +45,7 @@ interface FunnelData {
   // Step 1
   bundleId: number | null
   termId: number | null
+  termMonths: number // global Laufzeit-Auswahl (12 oder 24)
   // Step 2
   selectedAddons: number[]
   // Step 3
@@ -95,6 +96,7 @@ const C = {
 const DEFAULT_DATA: FunnelData = {
   bundleId: null,
   termId: null,
+  termMonths: 24,
   selectedAddons: [],
   gender: '',
   vorname: '',
@@ -347,13 +349,27 @@ function StepTarif({
   const selectedBundle = bundles.find(b => b.id === data.bundleId)
   const selectedTerm = selectedBundle?.terms.find(t => t.id === data.termId)
 
-  // Group terms by termValue for toggle
-  const termValues = selectedBundle
-    ? [...new Set(selectedBundle.terms.map(t => t.termValue))].sort((a, b) => b - a)
-    : []
+  // Alle verfügbaren Laufzeiten über alle Tarife hinweg (für globalen Toggle)
+  const allTermValues = [...new Set(bundles.flatMap(b => b.terms.map(t => t.termValue)))].sort((a, b) => b - a)
+
+  // Term für einen Tarif anhand der global gewählten Laufzeit finden (Fallback: günstigster)
+  function termForBundle(bundle: RateBundle) {
+    return bundle.terms.find(t => t.termValue === data.termMonths)
+      ?? bundle.terms.reduce((min, t) => t.price < min.price ? t : min, bundle.terms[0])
+  }
+
+  function selectTermMonths(tv: number) {
+    const patch: Partial<FunnelData> = { termMonths: tv }
+    // Wenn schon ein Tarif gewählt ist, termId auf passende Laufzeit aktualisieren
+    if (selectedBundle) {
+      const t = selectedBundle.terms.find(x => x.termValue === tv)
+      if (t) patch.termId = t.id
+    }
+    onChange(patch)
+  }
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
       <div>
         <h3 className="font-display" style={{
           fontSize: 'clamp(1.2rem, 3vw, 1.6rem)',
@@ -363,15 +379,51 @@ function StepTarif({
           Tarif wählen
         </h3>
         <p style={{ color: C.muted, fontSize: 13, lineHeight: 1.6 }}>
-          Wähle deinen Tarif und deine gewünschte Laufzeit.
+          Wähle deine Laufzeit und deinen Tarif. 24 Monate = bester Preis.
         </p>
       </div>
+
+      {/* Globaler Laufzeit-Toggle — über den Cards */}
+      {allTermValues.length > 1 && (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10 }}>
+          <span className="font-condensed" style={{ color: C.muted, fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase' }}>
+            Laufzeit
+          </span>
+          <div style={{
+            display: 'flex',
+            background: 'rgba(245,240,232,0.05)',
+            border: `1px solid ${C.border}`,
+            borderRadius: 4,
+            padding: 3,
+          }}>
+            {allTermValues.map(tv => {
+              const isActive = data.termMonths === tv
+              return (
+                <button
+                  key={tv}
+                  onClick={() => selectTermMonths(tv)}
+                  className="font-condensed"
+                  style={{
+                    padding: '10px 28px', borderRadius: 2, border: 'none', cursor: 'pointer',
+                    background: isActive ? C.burgund : 'transparent',
+                    color: isActive ? '#fff' : C.muted,
+                    fontSize: 13, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase',
+                    transition: 'all 0.2s',
+                  }}
+                >
+                  {tv} Monate
+                </button>
+              )
+            })}
+          </div>
+        </div>
+      )}
 
       {/* Bundle Cards */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 16 }}>
         {bundles.map(bundle => {
           const isSelected = data.bundleId === bundle.id
-          const cheapestTerm = bundle.terms.reduce((min, t) => t.price < min.price ? t : min, bundle.terms[0])
+          const cardTerm = termForBundle(bundle)
 
           return (
             <motion.button
@@ -379,7 +431,7 @@ function StepTarif({
               onClick={() => {
                 onChange({
                   bundleId: bundle.id,
-                  termId: cheapestTerm.id,
+                  termId: cardTerm.id,
                   selectedAddons: [],
                 })
               }}
@@ -432,14 +484,14 @@ function StepTarif({
                   fontSize: 32, fontWeight: 700, color: isSelected ? C.gold : C.cream,
                   lineHeight: 1, letterSpacing: '-0.02em',
                 }}>
-                  ab {fmt(cheapestTerm.price)}€
+                  {fmt(cardTerm.price)}€
                 </span>
                 <span style={{ color: C.muted, fontSize: 12 }}>/Woche</span>
               </div>
 
-              {cheapestTerm.flatFees.length > 0 && (
+              {cardTerm.flatFees.length > 0 && (
                 <div style={{ marginTop: 8, fontSize: 11, color: C.muted }}>
-                  + {cheapestTerm.flatFees.map(f => `${f.name} ${fmt(f.price)}€`).join(', ')}
+                  + {cardTerm.flatFees.map(f => `${f.name} ${fmt(f.price)}€`).join(', ')}
                 </div>
               )}
 
@@ -456,46 +508,6 @@ function StepTarif({
           )
         })}
       </div>
-
-      {/* Term Selection — only if bundle selected */}
-      {selectedBundle && termValues.length > 1 && (
-        <div>
-          <p className="font-condensed" style={{ textAlign: 'center', color: C.muted, fontSize: 12, marginBottom: 16, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-            Laufzeit wählen
-          </p>
-          <div style={{
-            display: 'flex',
-            background: 'rgba(245,240,232,0.05)',
-            border: `1px solid ${C.border}`,
-            borderRadius: 4,
-            padding: 3,
-            width: 'fit-content',
-            margin: '0 auto',
-          }}>
-            {termValues.map(tv => {
-              const term = selectedBundle.terms.find(t => t.termValue === tv)
-              if (!term) return null
-              const isActive = data.termId === term.id
-              return (
-                <button
-                  key={tv}
-                  onClick={() => onChange({ termId: term.id })}
-                  className="font-condensed"
-                  style={{
-                    padding: '10px 28px', borderRadius: 2, border: 'none', cursor: 'pointer',
-                    background: isActive ? C.burgund : 'transparent',
-                    color: isActive ? '#fff' : C.muted,
-                    fontSize: 13, fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase',
-                    transition: 'all 0.2s',
-                  }}
-                >
-                  {tv} Monate
-                </button>
-              )
-            })}
-          </div>
-        </div>
-      )}
 
       {/* Price Summary */}
       {selectedTerm && (
