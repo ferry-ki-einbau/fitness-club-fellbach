@@ -1,4 +1,4 @@
-import { useEffect, useState, lazy, Suspense } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import './index.css'
 import MagneticButton from './components/MagneticButton'
@@ -19,8 +19,10 @@ import TiltCard from './components/TiltCard'
 import AnimatedCounter from './components/AnimatedCounter'
 
 // Lazy-loaded
-const SpecialPrograms = lazy(() => import('./components/SpecialPrograms'))
-const PhysioBridge = lazy(() => import('./components/PhysioBridge'))
+// Direkt importiert (nicht lazy): werden per SSR gerendert → mit lazy+Suspense
+// gäbe es einen Hydration-Mismatch (#419). Beide Komponenten sind winzig (~4KB).
+import SpecialPrograms from './components/SpecialPrograms'
+import PhysioBridge from './components/PhysioBridge'
 
 
 const GALLERY_SECTIONS = [
@@ -1141,9 +1143,7 @@ export default function App() {
       {/* 5. KURSE & PROGRAMME */}
       <KurseGrid />
       <KursplanTeaser />
-      <Suspense fallback={null}>
-        <SpecialPrograms />
-      </Suspense>
+      <SpecialPrograms />
 
       {/* 6. TRUST — Social Proof nach dem Rundgang */}
       <Testimonials />
@@ -1163,9 +1163,7 @@ export default function App() {
       <Contact />
 
       {/* 10. PHYSIO-BRIDGE — Cross-Sell ganz am Ende */}
-      <Suspense fallback={null}>
-        <PhysioBridge />
-      </Suspense>
+      <PhysioBridge />
 
       <Footer />
       </main>

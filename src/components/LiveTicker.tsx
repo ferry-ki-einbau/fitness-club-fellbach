@@ -18,11 +18,16 @@ function statusText(d: Date) {
 }
 
 export default function LiveTicker() {
-  const [now, setNow] = useState(() => new Date())
+  // null bei SSR + erstem Client-Render → identisch, kein Hydration-Mismatch (#418).
+  // Echte (zeitabhängige) Anzeige erst nach Mount via useEffect.
+  const [now, setNow] = useState<Date | null>(null)
   useEffect(() => {
+    setNow(new Date())
     const t = setInterval(() => setNow(new Date()), 30_000)
     return () => clearInterval(t)
   }, [])
+
+  if (!now) return null
 
   const s = statusText(now)
 

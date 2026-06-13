@@ -81,12 +81,19 @@ async function prerender() {
   const { render } = await import(path.resolve(distDir, 'server/entry-server.js'))
 
   for (const route of routes) {
-    const { html: appHtml } = render(route)
-
-    // Per-Page SEO anwenden, dann gerendertes HTML injizieren
     const seo = SEO[route]
     const seoTemplate = seo ? applySeo(template, seo) : template
-    const finalHtml = seoTemplate.replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`)
+
+    // /mitglied (Funnel, noindex): leerer Root → Client macht createRoot statt
+    // hydrateRoot. So bleibt der Funnel lazy (nicht im Haupt-Bundle) OHNE
+    // Hydration-Mismatch. Bei allen anderen Routen: gerendertes HTML injizieren.
+    let finalHtml: string
+    if (route === '/mitglied') {
+      finalHtml = seoTemplate // Root bleibt leer (<div id="root"></div>)
+    } else {
+      const { html: appHtml } = render(route)
+      finalHtml = seoTemplate.replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`)
+    }
 
     // Write to the correct path
     const filePath = route === '/'
